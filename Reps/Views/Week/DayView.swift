@@ -105,6 +105,6 @@ struct DayView: View {
     }
 }
 
-//#Preview {
-//    DayView(day: DayOfWeek.monday)
-//}
+#Preview {
+    DayView(day: DayOfWeek.monday)
+}

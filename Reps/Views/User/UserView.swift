@@ -34,6 +34,12 @@ struct UserView: View {
                         ExerciseStagePicker(selectedOption: $legraiseStageSelectedOption, exerciseType: ExerciseType.legraise.rawValue)
                         ExerciseStagePicker(selectedOption: $handstandpushupStageSelectedOption, exerciseType: ExerciseType.handstandpushup.rawValue)
                     }
+                    
+                    Section("Admin") {
+                        Button("Clear all data (dev)") {
+                            clearUser()
+                        }
+                    }
                 }
                 .navigationTitle("Settings")
             }
@@ -53,8 +59,14 @@ struct UserView: View {
             handstandpushupStageSelectedOption = user.handstandpushupStage
         }
     }
+    
+    func clearUser() {
+        for user in users {
+            context.delete(user)
+        }
+    }
 }
 
-#Preview {
-    UserView()
-}
+//#Preview {
+//    UserView()
+//}

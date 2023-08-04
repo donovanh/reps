@@ -26,6 +26,7 @@ struct TodayView: View {
     @Query private var users: [User]
     
     @State var todayExercises: [Exercise] = []
+    @State private var showingPlanBuilder = false
     
     var body: some View {
         VStack {
@@ -41,12 +42,21 @@ struct TodayView: View {
                             }
                         }
                     } else {
-                        Text("Rest day! Maybe go for a walk.")
+                        if routines.count == 0 {
+                            Button("Set up a new routine") {
+                                showingPlanBuilder = true
+                            }
+                        } else {
+                            Text("Rest day! Maybe go for a walk.")
+                        }
                     }
                 }
             } else {
                 Text("New user")
             }
+        }
+        .sheet(isPresented: $showingPlanBuilder) {
+            PlanBuilderView(showingPlanBuilder: $showingPlanBuilder)
         }
         .onAppear {
             todayExercises = getTodayExercises()
@@ -98,7 +108,6 @@ struct ExerciseView: View {
     }
 }
 
-
-#Preview {
-    TodayView()
-}
+//#Preview {
+//    TodayView()
+//}
