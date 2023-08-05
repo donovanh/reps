@@ -15,19 +15,19 @@ struct ExerciseStagePicker: View {
     @Query private var users: [User]
     
     @Binding var selectedOption: Int
-    var exerciseType: String
+    var exerciseType: ExerciseType
     
     var body: some View {
         
-        Picker(exerciseType, selection: $selectedOption) {
-            let progressions = getExercises(ofType: exerciseType)
+        Picker(String(localized: exerciseType.localizedStringResource), selection: $selectedOption) {
+            let progressions = getExercises(ofType: exerciseType.rawValue)
             ForEach(progressions, id: \.self) { progression in
-                Text(progression.name)
+                Text(String(localized: progression.name.rawValue))
                     .tag(progression.stage)
             }
         }
         .onChange(of: selectedOption) {
-            saveProgressionStage(exerciseType, stage: selectedOption)
+            saveProgressionStage(exerciseType.rawValue, stage: selectedOption)
         }
     }
     

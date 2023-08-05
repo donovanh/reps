@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum ExperienceLevel: String, CaseIterable {
+enum ExperienceLevel: LocalizedStringResource, CaseIterable {
     case gettingStarted = "Getting started"
     case intermediate = "Intermediate"
     case advanced = "Advanced"
 }
 
-enum Schedule: String, CaseIterable {
+enum Schedule: LocalizedStringResource, CaseIterable {
     case defaultSchedule = "Default"
     case intermediateSchedule = "Intermediate"
     case advancedPushPullSchedule = "Advanced (push/pull) "

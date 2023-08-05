@@ -35,12 +35,11 @@ struct ScheduleOverviewView: View {
         ForEach(DayOfWeek.allCases, id: \.self) { day in
             let dayExercises = schedule[day] ?? []
             if dayExercises.count > 0 {
-                let exerciseListString = createExerciseString(dayExercises)
+                let exerciseListStrings = exerciseListStrings(dayExercises)
                 HStack {
-                    Text(exerciseListString)
-                        .font(.caption)
+                    Text(ListFormatter.localizedString(byJoining: exerciseListStrings))
                     Spacer()
-                    Text(day.rawValue)
+                    Text(String(localized: day.localizedStringResource))
                         .font(.caption2)
                         .padding(.leading)
                 }
@@ -48,13 +47,14 @@ struct ScheduleOverviewView: View {
         }
     }
     
-    func createExerciseString(_ dayExercises: [ExerciseType]) -> String {
+    func exerciseListStrings(_ dayExercises: [ExerciseType]) -> [String] {
         var updatedExercises = dayExercises
         if (experienceLevelOption == ExperienceLevel.gettingStarted) {
             updatedExercises.removeAll { $0 == .handstandpushup }
         }
-        let exerciseTypeRawValues = updatedExercises.map { $0.rawValue }
-        return exerciseTypeRawValues.joined(separator: ", ")
+        return updatedExercises.map({ exerciseType in
+            String(localized: exerciseType.localizedStringResource)
+        })
     }
 }
 

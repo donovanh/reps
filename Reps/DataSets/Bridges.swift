@@ -8,7 +8,7 @@
 import Foundation
 
 let bridgeDataSet: [Progression] = [
-    Progression(stage: 1, type: .bridge, name: "Short bridges", reps: [
+    Progression(stage: 1, type: .bridge, name: .shortBridges, reps: [
         .beginner: 10,
         .intermediate: 25,
         .progression: 50
@@ -17,7 +17,7 @@ let bridgeDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 3
     ]),
-    Progression(stage: 2, type: .bridge, name: "Straight bridges", reps: [
+    Progression(stage: 2, type: .bridge, name: .straightBridges, reps: [
         .beginner: 10,
         .intermediate: 20,
         .progression: 40
@@ -26,7 +26,7 @@ let bridgeDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 3
     ]),
-    Progression(stage: 3, type: .bridge, name: "Angled bridges", reps: [
+    Progression(stage: 3, type: .bridge, name: .angledBridges, reps: [
         .beginner: 8,
         .intermediate: 15,
         .progression: 30
@@ -35,7 +35,7 @@ let bridgeDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 3
     ]),
-    Progression(stage: 4, type: .bridge, name: "Head bridges", reps: [
+    Progression(stage: 4, type: .bridge, name: .headBridges, reps: [
         .beginner: 8,
         .intermediate: 15,
         .progression: 25
@@ -44,7 +44,7 @@ let bridgeDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 5, type: .bridge, name: "Half bridges", reps: [
+    Progression(stage: 5, type: .bridge, name: .halfBridges, reps: [
         .beginner: 8,
         .intermediate: 15,
         .progression: 20
@@ -53,7 +53,7 @@ let bridgeDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 6, type: .bridge, name: "Full bridges", reps: [
+    Progression(stage: 6, type: .bridge, name: .fullBridges, reps: [
         .beginner: 6,
         .intermediate: 10,
         .progression: 15
@@ -62,7 +62,7 @@ let bridgeDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 7, type: .bridge, name: "Wall Walking (Down)", reps: [
+    Progression(stage: 7, type: .bridge, name: .wallWalkingDown, reps: [
         .beginner: 3,
         .intermediate: 6,
         .progression: 10
@@ -71,7 +71,7 @@ let bridgeDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 8, type: .bridge, name: "Wall Walking (Up)", reps: [
+    Progression(stage: 8, type: .bridge, name: .wallWalkingUp, reps: [
         .beginner: 2,
         .intermediate: 4,
         .progression: 8
@@ -80,7 +80,7 @@ let bridgeDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 9, type: .bridge, name: "Closing bridges", reps: [
+    Progression(stage: 9, type: .bridge, name: .closingBridges, reps: [
         .beginner: 1,
         .intermediate: 3,
         .progression: 6
@@ -89,7 +89,7 @@ let bridgeDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 10, type: .bridge, name: "Stand-to-Stand bridges", reps: [
+    Progression(stage: 10, type: .bridge, name: .standToStandBridges, reps: [
         .beginner: 1,
         .intermediate: 3,
         .progression: 30

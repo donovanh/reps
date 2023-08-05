@@ -14,6 +14,7 @@ struct UserView: View {
     
     @Environment(\.modelContext) private var context
     @Query private var users: [User]
+    @Query private var routines: [User]
     
     @State var pushupStageSelectedOption = 1
     @State var pullupStageSelectedOption = 1
@@ -27,12 +28,12 @@ struct UserView: View {
             NavigationView {
                 Form {
                     Section("Your progressions") {
-                        ExerciseStagePicker(selectedOption: $pushupStageSelectedOption, exerciseType: ExerciseType.pushup.rawValue)
-                        ExerciseStagePicker(selectedOption: $pullupStageSelectedOption, exerciseType: ExerciseType.pullup.rawValue)
-                        ExerciseStagePicker(selectedOption: $squatStageSelectedOption, exerciseType: ExerciseType.squat.rawValue)
-                        ExerciseStagePicker(selectedOption: $bridgeStageSelectedOption, exerciseType: ExerciseType.bridge.rawValue)
-                        ExerciseStagePicker(selectedOption: $legraiseStageSelectedOption, exerciseType: ExerciseType.legraise.rawValue)
-                        ExerciseStagePicker(selectedOption: $handstandpushupStageSelectedOption, exerciseType: ExerciseType.handstandpushup.rawValue)
+                        ExerciseStagePicker(selectedOption: $pushupStageSelectedOption, exerciseType: ExerciseType.pushup)
+                        ExerciseStagePicker(selectedOption: $pullupStageSelectedOption, exerciseType: ExerciseType.pullup)
+                        ExerciseStagePicker(selectedOption: $squatStageSelectedOption, exerciseType: ExerciseType.squat)
+                        ExerciseStagePicker(selectedOption: $bridgeStageSelectedOption, exerciseType: ExerciseType.bridge)
+                        ExerciseStagePicker(selectedOption: $legraiseStageSelectedOption, exerciseType: ExerciseType.legraise)
+                        ExerciseStagePicker(selectedOption: $handstandpushupStageSelectedOption, exerciseType: ExerciseType.handstandpushup)
                     }
                     
                     Section("Admin") {
@@ -63,6 +64,9 @@ struct UserView: View {
     func clearUser() {
         for user in users {
             context.delete(user)
+        }
+        for routine in routines {
+            context.delete(routine)
         }
     }
 }

@@ -23,7 +23,7 @@ struct DayView: View {
     @State private var isPresentingAddExercise: Bool = false
     
     var body: some View {
-        Section(day.rawValue) {
+        Section(String(localized: day.localizedStringResource)) {
             let routine = getRoutine(forDay: day.rawValue, fromRoutines: routines)
             if (routine.exercises.count == 0) {
                 Text("Rest Day")
@@ -43,10 +43,10 @@ struct DayView: View {
                     Button("Add") {
                         setIsPresentingExercise()
                     }
-                    .confirmationDialog("Adding exercise \(day.rawValue)", isPresented: $isPresentingAddExercise) {
+                    .confirmationDialog("Adding exercise \(day.localizedStringResource)", isPresented: $isPresentingAddExercise) {
                         ForEach(ExerciseType.allCases, id: \.self) { exerciseType in
                             if (!routineContainsExercise(ofType: exerciseType)) {
-                                Button(exerciseType.rawValue) {
+                                Button(String(localized: exerciseType.localizedStringResource)) {
                                     addExercise(ofType: exerciseType)
                                 }
                             }
@@ -105,6 +105,6 @@ struct DayView: View {
     }
 }
 
-#Preview {
-    DayView(day: DayOfWeek.monday)
-}
+//#Preview {
+//    DayView(day: DayOfWeek.monday)
+//}

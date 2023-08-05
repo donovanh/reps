@@ -95,7 +95,7 @@ struct PlanBuilderView: View {
                         dayExercises.append(Exercise(id: UUID(), type: exerciseType.rawValue))
                     }
                 }
-                 if let index = routines.firstIndex(where: { $0.day == day.rawValue }) {
+                if let index = routines.firstIndex(where: { $0.day == day.rawValue }) {
                      routines[index].exercises = dayExercises
                  } else {
                      let newRoutine = Routine(day: day.rawValue, exercises: dayExercises)

@@ -8,7 +8,7 @@
 import Foundation
 
 let squatDataSet: [Progression] = [
-    Progression(stage: 1, type: .squat, name: "Shoulder stands", reps: [
+    Progression(stage: 1, type: .squat, name: .shoulderStands, reps: [
         .beginner: 10,
         .intermediate: 25,
         .progression: 50
@@ -17,7 +17,7 @@ let squatDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 3
     ]),
-    Progression(stage: 2, type: .squat, name: "Jackknife squats", reps: [
+    Progression(stage: 2, type: .squat, name: .jackknifeSquats, reps: [
         .beginner: 10,
         .intermediate: 20,
         .progression: 40
@@ -26,7 +26,7 @@ let squatDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 3
     ]),
-    Progression(stage: 3, type: .squat, name: "Supported squats", reps: [
+    Progression(stage: 3, type: .squat, name: .supportedSquats, reps: [
         .beginner: 10,
         .intermediate: 15,
         .progression: 30
@@ -35,7 +35,7 @@ let squatDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 3
     ]),
-    Progression(stage: 4, type: .squat, name: "Half squats", reps: [
+    Progression(stage: 4, type: .squat, name: .halfSquats, reps: [
         .beginner: 8,
         .intermediate: 35,
         .progression: 50
@@ -44,7 +44,7 @@ let squatDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 5, type: .squat, name: "Full squats", reps: [
+    Progression(stage: 5, type: .squat, name: .fullSquats, reps: [
         .beginner: 5,
         .intermediate: 10,
         .progression: 30
@@ -53,7 +53,7 @@ let squatDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 6, type: .squat, name: "Close squats", reps: [
+    Progression(stage: 6, type: .squat, name: .closeSquats, reps: [
         .beginner: 5,
         .intermediate: 10,
         .progression: 20
@@ -62,7 +62,7 @@ let squatDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 7, type: .squat, name: "Uneven squats", reps: [
+    Progression(stage: 7, type: .squat, name: .unevenSquats, reps: [
         .beginner: 5,
         .intermediate: 10,
         .progression: 20
@@ -71,7 +71,7 @@ let squatDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 8, type: .squat, name: "Half One-leg squats", reps: [
+    Progression(stage: 8, type: .squat, name: .halfOneLegSquats, reps: [
         .beginner: 5,
         .intermediate: 10,
         .progression: 20
@@ -80,7 +80,7 @@ let squatDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 9, type: .squat, name: "Assisted One-leg squats", reps: [
+    Progression(stage: 9, type: .squat, name: .assistedOneLegSquats, reps: [
         .beginner: 5,
         .intermediate: 10,
         .progression: 20
@@ -89,7 +89,7 @@ let squatDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 10, type: .squat, name: "One-leg squats", reps: [
+    Progression(stage: 10, type: .squat, name: .oneLegSquats, reps: [
         .beginner: 5,
         .intermediate: 10,
         .progression: 50

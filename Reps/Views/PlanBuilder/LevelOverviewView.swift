@@ -28,9 +28,9 @@ struct LevelOverviewView: View {
                 ForEach(exerciseLevels.sorted(by: { $0.key.rawValue < $1.key.rawValue }), id: \.key) { exerciseType, stage in
                     let exercise = getExercise(ofType: exerciseType.rawValue, atStage: stage)
                         HStack {
-                            Text(exercise?.name ?? "")
+                            Text(exercise?.name.rawValue ?? "")
                             Spacer()
-                            Text(exerciseType.rawValue)
+                            Text(String(localized: exerciseType.localizedStringResource))
                                 .font(.caption)
                         }
                 }

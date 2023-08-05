@@ -21,6 +21,9 @@
 		4549BD122A78E51B00F3E2AD /* PlanSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD112A78E51B00F3E2AD /* PlanSummaryView.swift */; };
 		4549BD142A7AE2F200F3E2AD /* Stages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD132A7AE2F200F3E2AD /* Stages.swift */; };
 		4549BD172A7BB0EE00F3E2AD /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD162A7BB0EE00F3E2AD /* TodayView.swift */; };
+		4549BD192A7D86A000F3E2AD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4549BD182A7D86A000F3E2AD /* Localizable.xcstrings */; };
+		4549BD1C2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD1B2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift */; };
+		4549BD1E2A7DA69F00F3E2AD /* DayOfWeekStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD1D2A7DA69F00F3E2AD /* DayOfWeekStrings.swift */; };
 		459355202A6D90F2009EC063 /* RepsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593551F2A6D90F2009EC063 /* RepsApp.swift */; };
 		459355222A6D90F2009EC063 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459355212A6D90F2009EC063 /* WeekView.swift */; };
 		459355242A6D90F8009EC063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459355232A6D90F8009EC063 /* Assets.xcassets */; };
@@ -52,6 +55,9 @@
 		4549BD112A78E51B00F3E2AD /* PlanSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanSummaryView.swift; sourceTree = "<group>"; };
 		4549BD132A7AE2F200F3E2AD /* Stages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stages.swift; sourceTree = "<group>"; };
 		4549BD162A7BB0EE00F3E2AD /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		4549BD182A7D86A000F3E2AD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		4549BD1B2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeStrings.swift; sourceTree = "<group>"; };
+		4549BD1D2A7DA69F00F3E2AD /* DayOfWeekStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekStrings.swift; sourceTree = "<group>"; };
 		4593551C2A6D90F2009EC063 /* Reps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4593551F2A6D90F2009EC063 /* RepsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsApp.swift; sourceTree = "<group>"; };
 		459355212A6D90F2009EC063 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
@@ -138,6 +144,15 @@
 			path = Today;
 			sourceTree = "<group>";
 		};
+		4549BD1A2A7D9ADF00F3E2AD /* View Strings */ = {
+			isa = PBXGroup;
+			children = (
+				4549BD1B2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift */,
+				4549BD1D2A7DA69F00F3E2AD /* DayOfWeekStrings.swift */,
+			);
+			path = "View Strings";
+			sourceTree = "<group>";
+		};
 		459355132A6D90F2009EC063 = {
 			isa = PBXGroup;
 			children = (
@@ -162,8 +177,10 @@
 				459355402A6D9CFF009EC063 /* Helpers */,
 				459355332A6D9B92009EC063 /* DataSets */,
 				4593552D2A6D9104009EC063 /* Models */,
+				4549BD1A2A7D9ADF00F3E2AD /* View Strings */,
 				459355232A6D90F8009EC063 /* Assets.xcassets */,
 				459355252A6D90F8009EC063 /* Preview Content */,
+				4549BD182A7D86A000F3E2AD /* Localizable.xcstrings */,
 			);
 			path = Reps;
 			sourceTree = "<group>";
@@ -253,6 +270,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 459355132A6D90F2009EC063;
 			productRefGroup = 4593551D2A6D90F2009EC063 /* Products */;
@@ -271,6 +289,7 @@
 			files = (
 				459355272A6D90F8009EC063 /* Preview Assets.xcassets in Resources */,
 				459355242A6D90F8009EC063 /* Assets.xcassets in Resources */,
+				4549BD192A7D86A000F3E2AD /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +320,9 @@
 				459355442A6DB811009EC063 /* DayOfWeek.swift in Sources */,
 				4549BD0A2A778C1800F3E2AD /* Schedules.swift in Sources */,
 				4549BD042A71B6E400F3E2AD /* ExerciseStagePicker.swift in Sources */,
+				4549BD1C2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift in Sources */,
 				4549BCFE2A706BEC00F3E2AD /* UserView.swift in Sources */,
+				4549BD1E2A7DA69F00F3E2AD /* DayOfWeekStrings.swift in Sources */,
 				4593553D2A6D9C3A009EC063 /* Squats.swift in Sources */,
 				4549BCFC2A7064A600F3E2AD /* UserModel.swift in Sources */,
 				459355422A6D9D18009EC063 /* ExercisesHelpers.swift in Sources */,

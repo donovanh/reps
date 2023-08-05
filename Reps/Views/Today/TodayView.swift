@@ -29,16 +29,14 @@ struct TodayView: View {
     @State private var showingPlanBuilder = false
     
     var body: some View {
-        VStack {
+        NavigationView {
             if let user = users.first {
                 VStack(alignment: .leading) {
-                    Text("Your Day")
-                        .font(.largeTitle)
                     if todayExercises.count > 0 {
                         ForEach(todayExercises, id: \.self) { exercise in
                             let level = user.getLevel(forType: exercise.type)
                             if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
-                                ExerciseView(progression: progression, exerciseType: exercise.type, levelStr: level)
+                                ExerciseView(progression: progression, exerciseType: ExerciseType(rawValue: exercise.type) ?? .bridge, levelStr: level)
                             }
                         }
                     } else {
@@ -51,18 +49,23 @@ struct TodayView: View {
                         }
                     }
                 }
+                .navigationTitle("Your Day")
             } else {
                 Text("New user")
             }
+            
         }
         .sheet(isPresented: $showingPlanBuilder) {
             PlanBuilderView(showingPlanBuilder: $showingPlanBuilder)
         }
         .onAppear {
-            todayExercises = getTodayExercises()
             if users.isEmpty {
                 initUser()
             }
+            if routines.isEmpty {
+                applyEmptySchedule()
+            }
+            todayExercises = getTodayExercises()
         }
     }
     
@@ -80,30 +83,39 @@ struct TodayView: View {
         let user = DefaultUser
         context.insert(user)
     }
+    
+    func applyEmptySchedule() {
+        for day in DayOfWeek.allCases {
+            let newRoutine = Routine(day: day.rawValue, exercises: [])
+            context.insert(newRoutine)
+        }
+    }
 }
 
 struct ExerciseView: View {
     
     var progression: Progression
-    var exerciseType: String
+    var exerciseType: ExerciseType
     var levelStr: String
     
     var body: some View {
-        let level = Level(fromString: levelStr) ?? .beginner
+        let level = Level(rawValue: levelStr) ?? .beginner
         let reps = progression.getReps(for: level)
         let sets = progression.getSets(for: level)
         
         VStack(alignment: .leading) {
-            Text(progression.name)
+            Text(String(localized: progression.name.rawValue))
                 .font(.title)
-                .accessibility(label: Text("Exercise Name: \(progression.name)"))
                 .padding(.top, 10)
             
-            Text(exerciseType)
+            Text(String(localized: exerciseType.localizedStringResource))
                 .font(.caption)
-                .accessibility(label: Text("Exercise Type: \(exerciseType)"))
+            if (progression.showSecondsForReps == true) {
+                Text("\(sets) x \(reps) seconds")
+            } else {
+                Text("\(sets) x \(reps) reps")
+            }
             
-            Text("\(sets) x \(reps) \(progression.showSecondsForReps == true ? "seconds" : "reps")")
         }
     }
 }

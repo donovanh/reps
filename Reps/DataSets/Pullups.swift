@@ -8,7 +8,7 @@
 import Foundation
 
 let pullupDataSet: [Progression] = [
-    Progression(stage: 1, type: .pullup, name: "Vertical pull-ups", reps: [
+    Progression(stage: 1, type: .pullup, name: .verticalPullups, reps: [
         .beginner: 10,
         .intermediate: 20,
         .progression: 40
@@ -17,7 +17,7 @@ let pullupDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 3
     ]),
-    Progression(stage: 2, type: .pullup, name: "Horizontal pull-ups", reps: [
+    Progression(stage: 2, type: .pullup, name: .horizontalPullups, reps: [
         .beginner: 10,
         .intermediate: 20,
         .progression: 30
@@ -26,7 +26,7 @@ let pullupDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 3
     ]),
-    Progression(stage: 3, type: .pullup, name: "Jackknife pull-ups", reps: [
+    Progression(stage: 3, type: .pullup, name: .jackknifePullups, reps: [
         .beginner: 10,
         .intermediate: 15,
         .progression: 20
@@ -35,7 +35,7 @@ let pullupDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 3
     ]),
-    Progression(stage: 4, type: .pullup, name: "Half pull-ups", reps: [
+    Progression(stage: 4, type: .pullup, name: .halfPullups, reps: [
         .beginner: 8,
         .intermediate: 11,
         .progression: 15
@@ -44,7 +44,7 @@ let pullupDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 5, type: .pullup, name: "Full pull-ups", reps: [
+    Progression(stage: 5, type: .pullup, name: .fullPullups, reps: [
         .beginner: 5,
         .intermediate: 8,
         .progression: 10
@@ -53,7 +53,7 @@ let pullupDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 6, type: .pullup, name: "Close pull-ups", reps: [
+    Progression(stage: 6, type: .pullup, name: .closePullups, reps: [
         .beginner: 5,
         .intermediate: 8,
         .progression: 10
@@ -62,7 +62,7 @@ let pullupDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 7, type: .pullup, name: "Uneven pull-ups", reps: [
+    Progression(stage: 7, type: .pullup, name: .unevenPullups, reps: [
         .beginner: 5,
         .intermediate: 7,
         .progression: 9
@@ -71,7 +71,7 @@ let pullupDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 8, type: .pullup, name: "1/2 One-arm pull-ups", reps: [
+    Progression(stage: 8, type: .pullup, name: .halfOneArmPullups, reps: [
         .beginner: 4,
         .intermediate: 6,
         .progression: 8
@@ -80,7 +80,7 @@ let pullupDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 9, type: .pullup, name: "Assisted One-arm pull-ups", reps: [
+    Progression(stage: 9, type: .pullup, name: .assistedOneArmPullups, reps: [
         .beginner: 3,
         .intermediate: 5,
         .progression: 7
@@ -89,7 +89,7 @@ let pullupDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 10, type: .pullup, name: "One-arm pull-ups", reps: [
+    Progression(stage: 10, type: .pullup, name: .oneArmPullups, reps: [
         .beginner: 1,
         .intermediate: 3,
         .progression: 6

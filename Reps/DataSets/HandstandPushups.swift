@@ -8,7 +8,7 @@
 import Foundation
 
 let handstandpushupsDataSet: [Progression] = [
-    Progression(stage: 1, type: .handstandpushup, name: "Wall headstands", reps: [
+    Progression(stage: 1, type: .handstandpushup, name: .wallHeadstands, reps: [
         .beginner: 30,
         .intermediate: 60,
         .progression: 120
@@ -17,7 +17,7 @@ let handstandpushupsDataSet: [Progression] = [
         .intermediate: 1,
         .progression: 1
     ], showSecondsForReps: true),
-    Progression(stage: 2, type: .handstandpushup, name: "Crow", reps: [
+    Progression(stage: 2, type: .handstandpushup, name: .crow, reps: [
         .beginner: 10,
         .intermediate: 30,
         .progression: 60
@@ -26,7 +26,7 @@ let handstandpushupsDataSet: [Progression] = [
         .intermediate: 1,
         .progression: 1
     ], showSecondsForReps: true),
-    Progression(stage: 3, type: .handstandpushup, name: "Wall handstands", reps: [
+    Progression(stage: 3, type: .handstandpushup, name: .wallHandstands, reps: [
         .beginner: 30,
         .intermediate: 60,
         .progression: 120
@@ -35,7 +35,7 @@ let handstandpushupsDataSet: [Progression] = [
         .intermediate: 1,
         .progression: 1
     ], showSecondsForReps: true),
-    Progression(stage: 4, type: .handstandpushup, name: "Half-handstand pushups", reps: [
+    Progression(stage: 4, type: .handstandpushup, name: .halfHandstandPushups, reps: [
         .beginner: 5,
         .intermediate: 10,
         .progression: 20
@@ -44,7 +44,7 @@ let handstandpushupsDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 5, type: .handstandpushup, name: "Handstand pushups", reps: [
+    Progression(stage: 5, type: .handstandpushup, name: .handstandPushups, reps: [
         .beginner: 5,
         .intermediate: 10,
         .progression: 15
@@ -53,7 +53,7 @@ let handstandpushupsDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 6, type: .handstandpushup, name: "Close handstand pushups", reps: [
+    Progression(stage: 6, type: .handstandpushup, name: .closeHandstandPushups, reps: [
         .beginner: 5,
         .intermediate: 9,
         .progression: 12
@@ -62,7 +62,7 @@ let handstandpushupsDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 7, type: .handstandpushup, name: "Uneven handstand pushups", reps: [
+    Progression(stage: 7, type: .handstandpushup, name: .unevenHandstandPushups, reps: [
         .beginner: 5,
         .intermediate: 8,
         .progression: 10
@@ -71,7 +71,7 @@ let handstandpushupsDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 8, type: .handstandpushup, name: "Half One-arm handstand pushups", reps: [
+    Progression(stage: 8, type: .handstandpushup, name: .halfOneArmHandstandPushups, reps: [
         .beginner: 4,
         .intermediate: 6,
         .progression: 8
@@ -80,7 +80,7 @@ let handstandpushupsDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 9, type: .handstandpushup, name: "Lever handstand pushups", reps: [
+    Progression(stage: 9, type: .handstandpushup, name: .leverHandstandPushups, reps: [
         .beginner: 3,
         .intermediate: 4,
         .progression: 6
@@ -89,7 +89,7 @@ let handstandpushupsDataSet: [Progression] = [
         .intermediate: 2,
         .progression: 2
     ]),
-    Progression(stage: 10, type: .handstandpushup, name: "One-arm handstand pushups", reps: [
+    Progression(stage: 10, type: .handstandpushup, name: .oneArmHandstandPushups, reps: [
         .beginner: 1,
         .intermediate: 2,
         .progression: 5
