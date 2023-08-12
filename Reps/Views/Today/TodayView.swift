@@ -27,6 +27,7 @@ struct TodayView: View {
     
     @State var todayExercises: [Exercise] = []
     @State private var showingPlanBuilder = false
+    @State private var showingTodayRoutine = false
     
     var body: some View {
         NavigationView {
@@ -36,8 +37,14 @@ struct TodayView: View {
                         ForEach(todayExercises, id: \.self) { exercise in
                             let level = user.getLevel(forType: exercise.type)
                             if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
-                                ExerciseView(progression: progression, exerciseType: ExerciseType(rawValue: exercise.type) ?? .bridge, levelStr: level)
+                                ExerciseItemView(
+                                    progression: progression,
+                                    exerciseType: ExerciseType(rawValue: exercise.type) ?? .bridge, levelStr: level
+                                )
                             }
+                        }
+                        Button("Start Workout") {
+                            showingTodayRoutine = true
                         }
                     } else {
                         if routines.count == 0 {
@@ -58,6 +65,20 @@ struct TodayView: View {
         .sheet(isPresented: $showingPlanBuilder) {
             PlanBuilderView(showingPlanBuilder: $showingPlanBuilder)
         }
+        .sheet(isPresented: $showingTodayRoutine) {
+//            if let user = users.first {
+//                ForEach(todayExercises, id: \.self) { exercise in
+//                    let level = user.getLevel(forType: exercise.type)
+//                    if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
+//                        ExerciseItemView(
+//                            progression: progression,
+//                            exerciseType: ExerciseType(rawValue: exercise.type) ?? .bridge, levelStr: level
+//                        )
+//                    }
+//                }
+//            }
+            ExercisesView(todayExercises: todayExercises)
+        }
         .onAppear {
             if users.isEmpty {
                 initUser()
@@ -72,9 +93,8 @@ struct TodayView: View {
     func getTodayExercises() -> [Exercise] {
         let currentDate = Date()
         let calendar = Calendar.current
-        let dayNum = calendar.component(.day, from: currentDate)
-        let currentDayOfWeek = DayOfWeek.allCases[dayNum]
-        let routine = getRoutine(forDay: currentDayOfWeek.rawValue, fromRoutines: routines)
+        let dayNum = calendar.component(.weekday, from: currentDate)
+        let routine = getRoutine(forDay: dayNum, fromRoutines: routines)
         return routine.exercises
     }
     
@@ -85,37 +105,9 @@ struct TodayView: View {
     }
     
     func applyEmptySchedule() {
-        for day in DayOfWeek.allCases {
-            let newRoutine = Routine(day: day.rawValue, exercises: [])
+        for dayNum in 1...7 {
+            let newRoutine = Routine(day: dayNum, exercises: [])
             context.insert(newRoutine)
-        }
-    }
-}
-
-struct ExerciseView: View {
-    
-    var progression: Progression
-    var exerciseType: ExerciseType
-    var levelStr: String
-    
-    var body: some View {
-        let level = Level(rawValue: levelStr) ?? .beginner
-        let reps = progression.getReps(for: level)
-        let sets = progression.getSets(for: level)
-        
-        VStack(alignment: .leading) {
-            Text(String(localized: progression.name.rawValue))
-                .font(.title)
-                .padding(.top, 10)
-            
-            Text(String(localized: exerciseType.localizedStringResource))
-                .font(.caption)
-            if (progression.showSecondsForReps == true) {
-                Text("\(sets) x \(reps) seconds")
-            } else {
-                Text("\(sets) x \(reps) reps")
-            }
-            
         }
     }
 }

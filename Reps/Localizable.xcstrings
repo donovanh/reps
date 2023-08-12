@@ -191,15 +191,8 @@
         }
       }
     },
-    "Adding exercise %@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Übung hinzufügen: %@"
-          }
-        }
-      }
+    "Adding exercise" : {
+
     },
     "Admin" : {
       "localizations" : {
@@ -477,16 +470,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Flaches Heben mit geradem Bein"
-          }
-        }
-      }
-    },
-    "Friday" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Freitag"
           }
         }
       }
@@ -801,16 +784,6 @@
         }
       }
     },
-    "Monday" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Montag"
-          }
-        }
-      }
-    },
     "New user" : {
       "localizations" : {
         "de" : {
@@ -971,16 +944,6 @@
         }
       }
     },
-    "Saturday" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Samstag"
-          }
-        }
-      }
-    },
     "Schedule" : {
       "localizations" : {
         "de" : {
@@ -1061,22 +1024,15 @@
         }
       }
     },
+    "Start Workout" : {
+
+    },
     "Straight bridges" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gerade Brücken"
-          }
-        }
-      }
-    },
-    "Sunday" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sonntag"
           }
         }
       }
@@ -1091,32 +1047,12 @@
         }
       }
     },
-    "Thursday" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Donnerstag"
-          }
-        }
-      }
-    },
     "Today" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heute"
-          }
-        }
-      }
-    },
-    "Tuesday" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dienstag"
           }
         }
       }
@@ -1217,16 +1153,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mauerwandern (nach oben)"
-          }
-        }
-      }
-    },
-    "Wednesday" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mittwoch"
           }
         }
       }

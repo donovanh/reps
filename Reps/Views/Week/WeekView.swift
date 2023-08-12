@@ -14,25 +14,24 @@ struct WeekView: View {
     @Query private var routines: [Routine]
     @State private var isPresentingAddExercise: Bool = false
     @State private var showingPlanBuilder = false
+    let weekDays = [2,3,4,5,6,7,1]
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                VStack {
-                    HStack {
-                        Button {
-                            showingPlanBuilder.toggle()
-                        } label: {
-                            Text("Build new plan")
-                        }
-                        Spacer()
-                        EditButton()
+                HStack {
+                    Button {
+                        showingPlanBuilder.toggle()
+                    } label: {
+                        Text("Build new plan")
                     }
-                    .padding()
-                    List {
-                        ForEach(DayOfWeek.allCases, id: \.self) { day in
-                            DayView(day: day)
-                        }
+                    Spacer()
+                    EditButton()
+                }
+                .padding()
+                List {
+                    ForEach(weekDays, id: \.self) { day in
+                        DayView(day: day)
                     }
                 }
             }

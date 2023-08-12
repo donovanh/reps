@@ -18,13 +18,15 @@ struct DayView: View {
     
     @State private var reorderedExercises: [Exercise] = []
     
-    var day: DayOfWeek
+    var day: Int
     
     @State private var isPresentingAddExercise: Bool = false
     
     var body: some View {
-        Section(String(localized: day.localizedStringResource)) {
-            let routine = getRoutine(forDay: day.rawValue, fromRoutines: routines)
+        let f = DateFormatter()
+        let dayString = f.weekdaySymbols[day - 1]
+        Section(dayString) {
+            let routine = getRoutine(forDay: day, fromRoutines: routines)
             if (routine.exercises.count == 0) {
                 Text("Rest Day")
             } else {
@@ -43,7 +45,7 @@ struct DayView: View {
                     Button("Add") {
                         setIsPresentingExercise()
                     }
-                    .confirmationDialog("Adding exercise \(day.localizedStringResource)", isPresented: $isPresentingAddExercise) {
+                    .confirmationDialog("Adding exercise", isPresented: $isPresentingAddExercise) {
                         ForEach(ExerciseType.allCases, id: \.self) { exerciseType in
                             if (!routineContainsExercise(ofType: exerciseType)) {
                                 Button(String(localized: exerciseType.localizedStringResource)) {
@@ -75,7 +77,7 @@ struct DayView: View {
     }
     
     func routineContainsExercise(ofType type: ExerciseType) -> Bool {
-        let routine = getRoutine(forDay: day.rawValue, fromRoutines: routines)
+        let routine = getRoutine(forDay: day, fromRoutines: routines)
         for exercise in routine.exercises {
             if exercise.type == type.rawValue {
                 return true
@@ -88,16 +90,16 @@ struct DayView: View {
         guard users.first != nil else { return }
         let newExercise = Exercise(id: UUID(), type: type.rawValue)
         
-        if let index = routines.firstIndex(where: { $0.day == day.rawValue }) {
+        if let index = routines.firstIndex(where: { $0.day == day }) {
             routines[index].exercises.append(newExercise)
         } else {
-            let newRoutine = Routine(day: day.rawValue, exercises: [newExercise])
+            let newRoutine = Routine(day: day, exercises: [newExercise])
             context.insert(newRoutine)
         }
     }
     
     func moveExercise(fromOffsets source: IndexSet, toOffset destination: Int) {
-        let routine = getRoutine(forDay: day.rawValue, fromRoutines: routines)
+        let routine = getRoutine(forDay: day, fromRoutines: routines)
         reorderedExercises = routine.exercises
         reorderedExercises.move(fromOffsets: source, toOffset: destination)
         routine.exercises.removeAll()

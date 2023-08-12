@@ -7,41 +7,41 @@
 
 import Foundation
 
-let schedules: [Schedule: [DayOfWeek: [ExerciseType]]] = [
+let schedules: [Schedule: [Int: [ExerciseType]]] = [
     .defaultSchedule: [
-        .monday: [.pushup, .pullup, .squat, .bridge, .legraise, .handstandpushup],
-        .tuesday: [],
-        .wednesday: [.pushup, .pullup, .squat, .bridge, .legraise, .handstandpushup],
-        .thursday: [],
-        .friday: [.pushup, .pullup, .squat, .bridge, .legraise, .handstandpushup],
-        .saturday: [],
-        .sunday: []
+        2: [.pushup, .pullup, .squat, .bridge, .legraise, .handstandpushup],
+        3: [],
+        4: [.pushup, .pullup, .squat, .bridge, .legraise, .handstandpushup],
+        5: [],
+        6: [.pushup, .pullup, .squat, .bridge, .legraise, .handstandpushup],
+        7: [],
+        1: []
     ],
     .intermediateSchedule: [
-        .monday: [.pushup, .squat, .legraise, .handstandpushup],
-        .tuesday: [.pullup, .bridge, .legraise],
-        .wednesday: [],
-        .thursday: [.pushup, .squat, .legraise, .handstandpushup],
-        .friday: [.pullup, .bridge, .legraise],
-        .saturday: [],
-        .sunday: []
+        2: [.pushup, .squat, .legraise, .handstandpushup],
+        3: [.pullup, .bridge, .legraise],
+        4: [],
+        5: [.pushup, .squat, .legraise, .handstandpushup],
+        6: [.pullup, .bridge, .legraise],
+        7: [],
+        1: []
     ],
     .advancedPushPullSchedule: [
-        .monday: [.pushup, .squat, .legraise, .handstandpushup],
-        .tuesday: [.pullup, .bridge, .legraise],
-        .wednesday: [.pushup, .squat, .legraise, .handstandpushup],
-        .thursday: [.pullup, .bridge, .legraise],
-        .friday: [.pushup, .squat, .legraise, .handstandpushup],
-        .saturday: [.pullup, .bridge, .legraise],
-        .sunday: []
+        2: [.pushup, .squat, .legraise, .handstandpushup],
+        3: [.pullup, .bridge, .legraise],
+        4: [.pushup, .squat, .legraise, .handstandpushup],
+        5: [.pullup, .bridge, .legraise],
+        6: [.pushup, .squat, .legraise, .handstandpushup],
+        7: [.pullup, .bridge, .legraise],
+        1: []
     ],
     .advancedUpperLowerSchedule: [
-        .monday: [.pushup, .pullup, .handstandpushup],
-        .tuesday: [.squat, .bridge, .legraise],
-        .wednesday: [.pushup, .pullup, .handstandpushup],
-        .thursday: [.squat, .bridge, .legraise],
-        .friday: [.pushup, .pullup, .handstandpushup],
-        .saturday: [.squat, .bridge, .legraise],
-        .sunday: []
+        2: [.pushup, .pullup, .handstandpushup],
+        3: [.squat, .bridge, .legraise],
+        4: [.pushup, .pullup, .handstandpushup],
+        5: [.squat, .bridge, .legraise],
+        6: [.pushup, .pullup, .handstandpushup],
+        7: [.squat, .bridge, .legraise],
+        1: []
     ]
 ]

@@ -32,14 +32,16 @@ struct ScheduleOverviewView: View {
             }
         }
         let schedule = schedules[scheduleOption] ?? [:]
-        ForEach(DayOfWeek.allCases, id: \.self) { day in
+        ForEach(1...7, id: \.self) { day in
             let dayExercises = schedule[day] ?? []
+            let f = DateFormatter()
+            let dayString = f.weekdaySymbols[day - 1]
             if dayExercises.count > 0 {
                 let exerciseListStrings = exerciseListStrings(dayExercises)
                 HStack {
                     Text(ListFormatter.localizedString(byJoining: exerciseListStrings))
                     Spacer()
-                    Text(String(localized: day.localizedStringResource))
+                    Text(dayString)
                         .font(.caption2)
                         .padding(.leading)
                 }

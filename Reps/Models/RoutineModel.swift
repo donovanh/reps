@@ -12,16 +12,16 @@ import SwiftData
 final class Routine: Identifiable {
     
     let id: String
-    let day: String
+    let day: Int
     var exercises: [Exercise]
     
-    init(day: String, exercises: [Exercise]) {
+    init(day: Int, exercises: [Exercise]) {
         self.id = UUID().uuidString
         self.day = day
         self.exercises = exercises
     }
 }
 
-func getRoutine(forDay day: String, fromRoutines routines: [Routine]) -> Routine {
+func getRoutine(forDay day: Int, fromRoutines routines: [Routine]) -> Routine {
     return routines.first { $0.day == day } ?? Routine(day: day, exercises: [])
 }

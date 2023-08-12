@@ -23,7 +23,9 @@
 		4549BD172A7BB0EE00F3E2AD /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD162A7BB0EE00F3E2AD /* TodayView.swift */; };
 		4549BD192A7D86A000F3E2AD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4549BD182A7D86A000F3E2AD /* Localizable.xcstrings */; };
 		4549BD1C2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD1B2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift */; };
-		4549BD1E2A7DA69F00F3E2AD /* DayOfWeekStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD1D2A7DA69F00F3E2AD /* DayOfWeekStrings.swift */; };
+		4549BD202A8220F100F3E2AD /* ExerciseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD1F2A8220F100F3E2AD /* ExerciseItemView.swift */; };
+		4549BD222A8817D600F3E2AD /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD212A8817D600F3E2AD /* ExercisesView.swift */; };
+		4549BD242A881A6200F3E2AD /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD232A881A6200F3E2AD /* ExerciseView.swift */; };
 		459355202A6D90F2009EC063 /* RepsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593551F2A6D90F2009EC063 /* RepsApp.swift */; };
 		459355222A6D90F2009EC063 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459355212A6D90F2009EC063 /* WeekView.swift */; };
 		459355242A6D90F8009EC063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459355232A6D90F8009EC063 /* Assets.xcassets */; };
@@ -57,7 +59,9 @@
 		4549BD162A7BB0EE00F3E2AD /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		4549BD182A7D86A000F3E2AD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4549BD1B2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeStrings.swift; sourceTree = "<group>"; };
-		4549BD1D2A7DA69F00F3E2AD /* DayOfWeekStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekStrings.swift; sourceTree = "<group>"; };
+		4549BD1F2A8220F100F3E2AD /* ExerciseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemView.swift; sourceTree = "<group>"; };
+		4549BD212A8817D600F3E2AD /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
+		4549BD232A881A6200F3E2AD /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		4593551C2A6D90F2009EC063 /* Reps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4593551F2A6D90F2009EC063 /* RepsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsApp.swift; sourceTree = "<group>"; };
 		459355212A6D90F2009EC063 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
@@ -140,6 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				4549BD162A7BB0EE00F3E2AD /* TodayView.swift */,
+				4549BD1F2A8220F100F3E2AD /* ExerciseItemView.swift */,
+				4549BD212A8817D600F3E2AD /* ExercisesView.swift */,
+				4549BD232A881A6200F3E2AD /* ExerciseView.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -148,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				4549BD1B2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift */,
-				4549BD1D2A7DA69F00F3E2AD /* DayOfWeekStrings.swift */,
 			);
 			path = "View Strings";
 			sourceTree = "<group>";
@@ -312,6 +318,8 @@
 				459355202A6D90F2009EC063 /* RepsApp.swift in Sources */,
 				4549BD102A78E4FA00F3E2AD /* ScheduleOverviewView.swift in Sources */,
 				4593552F2A6D9118009EC063 /* RoutineModel.swift in Sources */,
+				4549BD222A8817D600F3E2AD /* ExercisesView.swift in Sources */,
+				4549BD202A8220F100F3E2AD /* ExerciseItemView.swift in Sources */,
 				459355392A6D9BF8009EC063 /* LegRaises.swift in Sources */,
 				4549BCFA2A70230100F3E2AD /* ExerciseListItemView.swift in Sources */,
 				459355372A6D9BDA009EC063 /* Pullups.swift in Sources */,
@@ -322,7 +330,7 @@
 				4549BD042A71B6E400F3E2AD /* ExerciseStagePicker.swift in Sources */,
 				4549BD1C2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift in Sources */,
 				4549BCFE2A706BEC00F3E2AD /* UserView.swift in Sources */,
-				4549BD1E2A7DA69F00F3E2AD /* DayOfWeekStrings.swift in Sources */,
+				4549BD242A881A6200F3E2AD /* ExerciseView.swift in Sources */,
 				4593553D2A6D9C3A009EC063 /* Squats.swift in Sources */,
 				4549BCFC2A7064A600F3E2AD /* UserModel.swift in Sources */,
 				459355422A6D9D18009EC063 /* ExercisesHelpers.swift in Sources */,
