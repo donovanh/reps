@@ -14,6 +14,7 @@ struct WeekView: View {
     @Query private var routines: [Routine]
     @State private var isPresentingAddExercise: Bool = false
     @State private var showingPlanBuilder = false
+    
     let weekDays = [2,3,4,5,6,7,1]
     
     var body: some View {

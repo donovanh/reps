@@ -20,12 +20,12 @@ struct PlanBuilderView: View {
     // Enthusiast - you know your way around a pushup or two, but would like guidance on how to get really good
     // Advanced - choose your own starting level for each exercise
     // Have a way to skip the weekly plan with "Keep current week" or "Don't plan my week" depending on if a plan exists
-    
-    @Binding var showingPlanBuilder: Bool
-    
+   
     @Environment(\.modelContext) private var context
     @Query private var routines: [Routine]
     @Query private var users: [User]
+    
+    @Binding var showingPlanBuilder: Bool
     
     @State private var formStep: Int = 1
     @State private var experienceLevelOption: ExperienceLevel = ExperienceLevel.gettingStarted

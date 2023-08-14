@@ -31,7 +31,7 @@ let pushupDataSet: [Progression] = [
         .intermediate: 15,
         .progression: 30
     ], sets: [
-        .beginner: 1,
+        .beginner: 3, // TODO: Change back to 1
         .intermediate: 2,
         .progression: 3
     ]),

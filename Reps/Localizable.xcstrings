@@ -11,6 +11,9 @@
         }
       }
     },
+    "%lld" : {
+
+    },
     "%lld x %lld reps" : {
       "localizations" : {
         "de" : {
@@ -234,6 +237,9 @@
         }
       }
     },
+    "All sets done!" : {
+
+    },
     "Angled bridges" : {
       "localizations" : {
         "de" : {
@@ -355,6 +361,7 @@
       }
     },
     "Clear all data (dev)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -363,6 +370,18 @@
           }
         }
       }
+    },
+    "Clear Journal" : {
+
+    },
+    "Clear Routines" : {
+
+    },
+    "Clear User Data" : {
+
+    },
+    "Close" : {
+
     },
     "Close handstand pushups" : {
       "localizations" : {
@@ -433,6 +452,15 @@
           }
         }
       }
+    },
+    "Difficult" : {
+
+    },
+    "Difficulty level" : {
+
+    },
+    "Easy" : {
+
     },
     "Flat bent leg raises" : {
       "localizations" : {
@@ -684,6 +712,9 @@
         }
       }
     },
+    "I managed..." : {
+
+    },
     "Incline push-ups" : {
       "localizations" : {
         "de" : {
@@ -703,6 +734,9 @@
           }
         }
       }
+    },
+    "It was..." : {
+
     },
     "Jackknife pull-ups" : {
       "localizations" : {
@@ -783,6 +817,9 @@
           }
         }
       }
+    },
+    "Moderate" : {
+
     },
     "New user" : {
       "localizations" : {
@@ -924,6 +961,9 @@
         }
       }
     },
+    "reps" : {
+
+    },
     "Rest Day" : {
       "localizations" : {
         "de" : {
@@ -944,6 +984,9 @@
         }
       }
     },
+    "Save" : {
+
+    },
     "Schedule" : {
       "localizations" : {
         "de" : {
@@ -963,6 +1006,22 @@
           }
         }
       }
+    },
+    "seconds" : {
+
+    },
+    "Set %lld of %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Set %1$lld of %2$lld"
+          }
+        }
+      }
+    },
+    "Set done" : {
+
     },
     "Set up a new routine" : {
       "localizations" : {

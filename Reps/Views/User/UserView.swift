@@ -15,6 +15,7 @@ struct UserView: View {
     @Environment(\.modelContext) private var context
     @Query private var users: [User]
     @Query private var routines: [User]
+    @Query private var journalEntries: [JournalEntry]
     
     @State var pushupStageSelectedOption = 1
     @State var pullupStageSelectedOption = 1
@@ -37,8 +38,14 @@ struct UserView: View {
                     }
                     
                     Section("Admin") {
-                        Button("Clear all data (dev)") {
+                        Button("Clear User Data") {
                             clearUser()
+                        }
+                        Button("Clear Routines") {
+                            clearRoutines()
+                        }
+                        Button("Clear Journal") {
+                            clearJournalEntries()
                         }
                     }
                 }
@@ -65,8 +72,17 @@ struct UserView: View {
         for user in users {
             context.delete(user)
         }
+    }
+    
+    func clearRoutines() {
         for routine in routines {
             context.delete(routine)
+        }
+    }
+    
+    func clearJournalEntries() {
+        for entry in journalEntries {
+            context.delete(entry)
         }
     }
 }

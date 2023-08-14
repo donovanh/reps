@@ -30,63 +30,54 @@ struct TodayView: View {
     @State private var showingTodayRoutine = false
     
     var body: some View {
-        NavigationView {
-            if let user = users.first {
-                VStack(alignment: .leading) {
-                    if todayExercises.count > 0 {
-                        ForEach(todayExercises, id: \.self) { exercise in
-                            let level = user.getLevel(forType: exercise.type)
-                            if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
-                                ExerciseItemView(
-                                    progression: progression,
-                                    exerciseType: ExerciseType(rawValue: exercise.type) ?? .bridge, levelStr: level
-                                )
+        GeometryReader { geo in
+            NavigationView {
+                if let user = users.first {
+                    VStack(alignment: .leading) {
+                        if todayExercises.count > 0 {
+                            ForEach(todayExercises, id: \.self) { exercise in
+                                let level = user.getLevel(forType: exercise.type)
+                                if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
+                                    ExerciseItemView(
+                                        progression: progression,
+                                        exerciseType: ExerciseType(rawValue: exercise.type) ?? .bridge, levelStr: level
+                                    )
+                                }
                             }
-                        }
-                        Button("Start Workout") {
-                            showingTodayRoutine = true
-                        }
-                    } else {
-                        if routines.count == 0 {
-                            Button("Set up a new routine") {
-                                showingPlanBuilder = true
+                            Button("Start Workout") {
+                                showingTodayRoutine = true
                             }
                         } else {
-                            Text("Rest day! Maybe go for a walk.")
+                            if routines.count == 0 {
+                                Button("Set up a new routine") {
+                                    showingPlanBuilder = true
+                                }
+                            } else {
+                                Text("Rest day! Maybe go for a walk.")
+                            }
                         }
                     }
+                    .navigationTitle("Your Day")
+                } else {
+                    Text("New user")
                 }
-                .navigationTitle("Your Day")
-            } else {
-                Text("New user")
+                
             }
-            
-        }
-        .sheet(isPresented: $showingPlanBuilder) {
-            PlanBuilderView(showingPlanBuilder: $showingPlanBuilder)
-        }
-        .sheet(isPresented: $showingTodayRoutine) {
-//            if let user = users.first {
-//                ForEach(todayExercises, id: \.self) { exercise in
-//                    let level = user.getLevel(forType: exercise.type)
-//                    if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
-//                        ExerciseItemView(
-//                            progression: progression,
-//                            exerciseType: ExerciseType(rawValue: exercise.type) ?? .bridge, levelStr: level
-//                        )
-//                    }
-//                }
-//            }
-            ExercisesView(todayExercises: todayExercises)
-        }
-        .onAppear {
-            if users.isEmpty {
-                initUser()
+            .sheet(isPresented: $showingPlanBuilder) {
+                PlanBuilderView(showingPlanBuilder: $showingPlanBuilder)
             }
-            if routines.isEmpty {
-                applyEmptySchedule()
+            .sheet(isPresented: $showingTodayRoutine) {
+                ExercisesView(showingTodayRoutine: $showingTodayRoutine, todayExercises: todayExercises, screenWidth: geo.size.width)
             }
-            todayExercises = getTodayExercises()
+            .onAppear {
+                if users.isEmpty {
+                    initUser()
+                }
+                if routines.isEmpty {
+                    applyEmptySchedule()
+                }
+                todayExercises = getTodayExercises()
+            }
         }
     }
     

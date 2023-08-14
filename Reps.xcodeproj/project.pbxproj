@@ -25,7 +25,9 @@
 		4549BD1C2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD1B2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift */; };
 		4549BD202A8220F100F3E2AD /* ExerciseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD1F2A8220F100F3E2AD /* ExerciseItemView.swift */; };
 		4549BD222A8817D600F3E2AD /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD212A8817D600F3E2AD /* ExercisesView.swift */; };
-		4549BD242A881A6200F3E2AD /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD232A881A6200F3E2AD /* ExerciseView.swift */; };
+		4549BD242A881A6200F3E2AD /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */; };
+		4549BD262A88202A00F3E2AD /* JournalEntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD252A88202A00F3E2AD /* JournalEntryModel.swift */; };
+		4549BD282A8A101000F3E2AD /* DifficultyStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD272A8A101000F3E2AD /* DifficultyStrings.swift */; };
 		459355202A6D90F2009EC063 /* RepsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593551F2A6D90F2009EC063 /* RepsApp.swift */; };
 		459355222A6D90F2009EC063 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459355212A6D90F2009EC063 /* WeekView.swift */; };
 		459355242A6D90F8009EC063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459355232A6D90F8009EC063 /* Assets.xcassets */; };
@@ -39,7 +41,6 @@
 		4593553D2A6D9C3A009EC063 /* Squats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593553C2A6D9C3A009EC063 /* Squats.swift */; };
 		4593553F2A6D9C5F009EC063 /* HandstandPushups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593553E2A6D9C5F009EC063 /* HandstandPushups.swift */; };
 		459355422A6D9D18009EC063 /* ExercisesHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459355412A6D9D18009EC063 /* ExercisesHelpers.swift */; };
-		459355442A6DB811009EC063 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459355432A6DB811009EC063 /* DayOfWeek.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +62,9 @@
 		4549BD1B2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeStrings.swift; sourceTree = "<group>"; };
 		4549BD1F2A8220F100F3E2AD /* ExerciseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemView.swift; sourceTree = "<group>"; };
 		4549BD212A8817D600F3E2AD /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
-		4549BD232A881A6200F3E2AD /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
+		4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
+		4549BD252A88202A00F3E2AD /* JournalEntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryModel.swift; sourceTree = "<group>"; };
+		4549BD272A8A101000F3E2AD /* DifficultyStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyStrings.swift; sourceTree = "<group>"; };
 		4593551C2A6D90F2009EC063 /* Reps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4593551F2A6D90F2009EC063 /* RepsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsApp.swift; sourceTree = "<group>"; };
 		459355212A6D90F2009EC063 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
@@ -76,7 +79,6 @@
 		4593553C2A6D9C3A009EC063 /* Squats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squats.swift; sourceTree = "<group>"; };
 		4593553E2A6D9C5F009EC063 /* HandstandPushups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandstandPushups.swift; sourceTree = "<group>"; };
 		459355412A6D9D18009EC063 /* ExercisesHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesHelpers.swift; sourceTree = "<group>"; };
-		459355432A6DB811009EC063 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +148,7 @@
 				4549BD162A7BB0EE00F3E2AD /* TodayView.swift */,
 				4549BD1F2A8220F100F3E2AD /* ExerciseItemView.swift */,
 				4549BD212A8817D600F3E2AD /* ExercisesView.swift */,
-				4549BD232A881A6200F3E2AD /* ExerciseView.swift */,
+				4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				4549BD1B2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift */,
+				4549BD272A8A101000F3E2AD /* DifficultyStrings.swift */,
 			);
 			path = "View Strings";
 			sourceTree = "<group>";
@@ -204,9 +207,9 @@
 			children = (
 				459355302A6D9380009EC063 /* ExerciseModel.swift */,
 				4593552E2A6D9118009EC063 /* RoutineModel.swift */,
-				459355432A6DB811009EC063 /* DayOfWeek.swift */,
 				4549BCFB2A7064A600F3E2AD /* UserModel.swift */,
 				4549BD0B2A7853C300F3E2AD /* PlanBuilderModel.swift */,
+				4549BD252A88202A00F3E2AD /* JournalEntryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4549BD282A8A101000F3E2AD /* DifficultyStrings.swift in Sources */,
 				4593553F2A6D9C5F009EC063 /* HandstandPushups.swift in Sources */,
 				4593553B2A6D9C20009EC063 /* Bridges.swift in Sources */,
 				4549BD082A7241DC00F3E2AD /* PlanBuilderView.swift in Sources */,
@@ -325,14 +329,14 @@
 				459355372A6D9BDA009EC063 /* Pullups.swift in Sources */,
 				4549BD022A70FB1F00F3E2AD /* MainView.swift in Sources */,
 				4549BD122A78E51B00F3E2AD /* PlanSummaryView.swift in Sources */,
-				459355442A6DB811009EC063 /* DayOfWeek.swift in Sources */,
 				4549BD0A2A778C1800F3E2AD /* Schedules.swift in Sources */,
 				4549BD042A71B6E400F3E2AD /* ExerciseStagePicker.swift in Sources */,
 				4549BD1C2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift in Sources */,
 				4549BCFE2A706BEC00F3E2AD /* UserView.swift in Sources */,
-				4549BD242A881A6200F3E2AD /* ExerciseView.swift in Sources */,
+				4549BD242A881A6200F3E2AD /* ExerciseDetailView.swift in Sources */,
 				4593553D2A6D9C3A009EC063 /* Squats.swift in Sources */,
 				4549BCFC2A7064A600F3E2AD /* UserModel.swift in Sources */,
+				4549BD262A88202A00F3E2AD /* JournalEntryModel.swift in Sources */,
 				459355422A6D9D18009EC063 /* ExercisesHelpers.swift in Sources */,
 				4549BD0E2A78E48F00F3E2AD /* LevelOverviewView.swift in Sources */,
 				4549BD0C2A7853C300F3E2AD /* PlanBuilderModel.swift in Sources */,
