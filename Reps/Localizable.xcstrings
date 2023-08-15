@@ -433,6 +433,9 @@
         }
       }
     },
+    "Continue Workout" : {
+
+    },
     "Crow" : {
       "localizations" : {
         "de" : {
@@ -818,6 +821,9 @@
         }
       }
     },
+    "Maybe go for a walk!" : {
+
+    },
     "Moderate" : {
 
     },
@@ -961,7 +967,13 @@
         }
       }
     },
+    "Record Set" : {
+
+    },
     "reps" : {
+
+    },
+    "Rest day" : {
 
     },
     "Rest Day" : {
@@ -975,6 +987,7 @@
       }
     },
     "Rest day! Maybe go for a walk." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1019,9 +1032,6 @@
           }
         }
       }
-    },
-    "Set done" : {
-
     },
     "Set up a new routine" : {
       "localizations" : {
@@ -1257,6 +1267,7 @@
       }
     },
     "Your Day" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1265,6 +1276,9 @@
           }
         }
       }
+    },
+    "Your Day: %@" : {
+
     },
     "Your progressions" : {
       "localizations" : {

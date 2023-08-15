@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 import Combine
 
-struct ExercisesView: View {
+struct WorkoutView: View {
     
     @Environment(\.modelContext) private var context
     @Query private var users: [User]
@@ -17,18 +17,14 @@ struct ExercisesView: View {
     
     @Binding var showingTodayRoutine: Bool
     
-    // TODO: Use this to show the same exercise on opening
-    // If zero, look up first exercise with sets needing done
-    // Defaulting to first exercise id
-    @State var currentExerciseId: UUID = UUID()
+    var currentExerciseId: UUID?
     
     let todayExercises: [Exercise]
     let screenWidth: CGFloat
-    
+
     @State private var offset = CGFloat.zero
     @State private var scrollWidth = CGFloat.zero
     @State private var currentExerciseIndex: Int = 0
-    @State private var scrollViewValueProxy: ScrollViewProxy? = nil
     
     var body: some View {
         if let user = users.first {
@@ -41,8 +37,8 @@ struct ExercisesView: View {
                                     let level = user.getLevel(forType: exercise.type)
                                     if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
                                         ExerciseDetailView(
-                                            currentExerciseId: $currentExerciseId,
                                             showingTodayRoutine: $showingTodayRoutine,
+                                            currentExerciseId: currentExerciseId,
                                             progression: progression,
                                             exerciseType: ExerciseType(rawValue: exercise.type) ?? .bridge, levelStr: level,
                                             scrollViewValue: scrollViewValue,
@@ -66,18 +62,18 @@ struct ExercisesView: View {
                             .onPreferenceChange(ViewOffsetKey.self) {
                                 currentExerciseIndex = visibleExerciseIndex(forOffset: $0)
                             }
-                            .onChange(of: currentExerciseIndex) {
-                                print(currentExerciseIndex)
-                            }
-                            .onAppear {
-                                scrollViewValueProxy = scrollViewValue
-                            }
                             .scrollTargetLayout()
                         }
                         .scrollTargetBehavior(.viewAligned)
+                        .onAppear {
+                            DispatchQueue.main.async() {
+                                scrollViewValue.scrollTo(currentExerciseId)
+                            }
+                        }
                         
                         Spacer()
                         
+                        // Progress Indicator
                         HStack {
                             ForEach(todayExercises.indices, id: \.self) { index in
                                 let exercise = todayExercises[index]
@@ -87,11 +83,6 @@ struct ExercisesView: View {
                                     .opacity(currentExerciseIndex == index ? 1 : 0.3)
                                     .frame(width: 10)
                                     .padding(2)
-//                                    .onTapGesture {
-//                                        withAnimation {
-//                                            scrollViewValueProxy?.scrollTo(exercise.id)
-//                                        }
-//                                    }
                             }
                         }
                         .padding(.bottom)
@@ -100,8 +91,6 @@ struct ExercisesView: View {
                         }
                     }
                 }
-                // TODO: For above determine which is next based on combination of journal state and current session
-                
             }
             .onAppear {
                 setScrollWidth()

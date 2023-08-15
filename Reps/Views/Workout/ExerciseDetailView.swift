@@ -12,19 +12,20 @@ import Foundation
 struct ExerciseDetailView: View {
     
     // TODO
-    // Show a success screen when all exercises done
+    // Show a success screen when all exercises done - or return to home view with a success message there?
     // Offer option to record another set even if complete
-    // Think about how to allow users to add extra sets of whatever exercise / progression
+    // Think about how to allow users to add extra sets of *any* exercise / progression
     
     @Environment(\.modelContext) private var context
     @Query private var journalEntries: [JournalEntry]
     
-    @Binding var currentExerciseId: UUID
+    
     @Binding var showingTodayRoutine: Bool
     
     @State var reps = 0
     @State var difficulty: Difficulty = .moderate
-    @State var isSetDone = false
+    @State var isRecordingSet = false
+    @State var currentExerciseId: UUID?
     
     let progression: Progression
     let exerciseType: ExerciseType
@@ -70,14 +71,13 @@ struct ExerciseDetailView: View {
                         .padding(.vertical)
                 }
                 Spacer()
-                Button("Set done") {
-                    isSetDone = true
+                Button("Record Set") {
+                    isRecordingSet = true
                 }
                 Spacer()
             }
             Spacer()
-            .sheet(isPresented: $isSetDone) {
-                // TODO: Move this to a view
+            .sheet(isPresented: $isRecordingSet) {
                 VStack {
                     Text("I managed...")
                     HStack {
@@ -123,20 +123,7 @@ struct ExerciseDetailView: View {
                     .pickerStyle(.segmented)
                     .padding(.horizontal)
                     Button("Save") {
-                        // TODO: Make into a function
-                        isSetDone = false
-                        finishSet(type: progression.type, stage: progression.stage, reps: reps)
-                        if exerciseId == nextExerciseWithSetsId {
-                            print(setsDoneToday)
-                            print(sets)
-                            if setsDoneToday + 1 >= sets {
-                                showingTodayRoutine = false
-                            }
-                        } else {
-                            withAnimation {
-                                scrollViewValue.scrollTo(nextExerciseWithSetsId)
-                            }
-                        }
+                        saveSet(setsDoneToday: setsDoneToday, sets: sets)
                     }
                     .padding()
                 }
@@ -152,16 +139,28 @@ struct ExerciseDetailView: View {
         }
     }
     
-    func finishSet(type: ExerciseType, stage: Int, reps: Int) {
+    func saveSet(setsDoneToday: Int, sets: Int) {
+        isRecordingSet = false
         context.insert(
             JournalEntry(
                 date: Date(),
-                exerciseType: type.rawValue,
-                stage: stage,
+                exerciseType: progression.type.rawValue,
+                stage: progression.stage,
                 reps: reps,
                 difficulty: difficulty.rawValue
             )
         )
+        if exerciseId == nextExerciseWithSetsId {
+            print(setsDoneToday)
+            print(sets)
+            if setsDoneToday + 1 >= sets {
+                showingTodayRoutine = false
+            }
+        } else {
+            withAnimation {
+                scrollViewValue.scrollTo(nextExerciseWithSetsId)
+            }
+        }
     }
     
     func incrementReps() {

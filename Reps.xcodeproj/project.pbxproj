@@ -24,7 +24,7 @@
 		4549BD192A7D86A000F3E2AD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4549BD182A7D86A000F3E2AD /* Localizable.xcstrings */; };
 		4549BD1C2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD1B2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift */; };
 		4549BD202A8220F100F3E2AD /* ExerciseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD1F2A8220F100F3E2AD /* ExerciseItemView.swift */; };
-		4549BD222A8817D600F3E2AD /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD212A8817D600F3E2AD /* ExercisesView.swift */; };
+		4549BD222A8817D600F3E2AD /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD212A8817D600F3E2AD /* WorkoutView.swift */; };
 		4549BD242A881A6200F3E2AD /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */; };
 		4549BD262A88202A00F3E2AD /* JournalEntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD252A88202A00F3E2AD /* JournalEntryModel.swift */; };
 		4549BD282A8A101000F3E2AD /* DifficultyStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD272A8A101000F3E2AD /* DifficultyStrings.swift */; };
@@ -61,7 +61,7 @@
 		4549BD182A7D86A000F3E2AD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4549BD1B2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeStrings.swift; sourceTree = "<group>"; };
 		4549BD1F2A8220F100F3E2AD /* ExerciseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemView.swift; sourceTree = "<group>"; };
-		4549BD212A8817D600F3E2AD /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
+		4549BD212A8817D600F3E2AD /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
 		4549BD252A88202A00F3E2AD /* JournalEntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryModel.swift; sourceTree = "<group>"; };
 		4549BD272A8A101000F3E2AD /* DifficultyStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyStrings.swift; sourceTree = "<group>"; };
@@ -95,6 +95,7 @@
 		4549BCF52A700BD400F3E2AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4549BD2B2A8B531800F3E2AD /* Workout */,
 				4549BD152A7BB0DE00F3E2AD /* Today */,
 				4549BD062A7241C900F3E2AD /* PlanBuilder */,
 				4549BD002A70FB1100F3E2AD /* Main */,
@@ -147,8 +148,6 @@
 			children = (
 				4549BD162A7BB0EE00F3E2AD /* TodayView.swift */,
 				4549BD1F2A8220F100F3E2AD /* ExerciseItemView.swift */,
-				4549BD212A8817D600F3E2AD /* ExercisesView.swift */,
-				4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -160,6 +159,15 @@
 				4549BD272A8A101000F3E2AD /* DifficultyStrings.swift */,
 			);
 			path = "View Strings";
+			sourceTree = "<group>";
+		};
+		4549BD2B2A8B531800F3E2AD /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				4549BD212A8817D600F3E2AD /* WorkoutView.swift */,
+				4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */,
+			);
+			path = Workout;
 			sourceTree = "<group>";
 		};
 		459355132A6D90F2009EC063 = {
@@ -322,7 +330,7 @@
 				459355202A6D90F2009EC063 /* RepsApp.swift in Sources */,
 				4549BD102A78E4FA00F3E2AD /* ScheduleOverviewView.swift in Sources */,
 				4593552F2A6D9118009EC063 /* RoutineModel.swift in Sources */,
-				4549BD222A8817D600F3E2AD /* ExercisesView.swift in Sources */,
+				4549BD222A8817D600F3E2AD /* WorkoutView.swift in Sources */,
 				4549BD202A8220F100F3E2AD /* ExerciseItemView.swift in Sources */,
 				459355392A6D9BF8009EC063 /* LegRaises.swift in Sources */,
 				4549BCFA2A70230100F3E2AD /* ExerciseListItemView.swift in Sources */,
