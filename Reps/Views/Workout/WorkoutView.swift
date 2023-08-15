@@ -17,8 +17,7 @@ struct WorkoutView: View {
     
     @Binding var showingTodayRoutine: Bool
     
-    var currentExerciseId: UUID?
-    
+    let currentExerciseId: UUID?
     let todayExercises: [Exercise]
     let screenWidth: CGFloat
 

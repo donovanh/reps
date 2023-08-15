@@ -10,12 +10,8 @@ import SwiftData
 
 /*
  TODO
- - Set out today's routine, with a check indicator for if each exercise is done
- - Start / Continue button
- - Sheet overlay with the exercise and a "Done" option (or enter reps / time option fallback)
- - Maybe a skip button to skip a certain exercise
- - Each done exercise put into database for this date as an exercise done. Noting date/time done, exercise type, stage, level, reps or time
- - At end of routine, if all done, congrats
+ - When continuing set first in-progress as currentExerciseId
+ - At end of routine, if all done, show congrats
  - Maybe show progress here in terms of how much along they are to being levelled up
  */
 
@@ -31,7 +27,7 @@ struct TodayView: View {
     @State private var showingTodayRoutine = false
     @State private var isWorkoutInProgress = false
     @State private var isWorkoutComplete = false
-    @State private var firstInProgressExerciseId: UUID?
+//    @State private var firstInProgressExerciseId: UUID?
     @State private var currentExerciseId: UUID?
     
     var body: some View {
@@ -42,6 +38,7 @@ struct TodayView: View {
                         if todayExercises.count > 0 {
                             ForEach(todayExercises, id: \.self) { exercise in
                                 let level = user.getLevel(forType: exercise.type)
+                                let sets = getSets(forExerciseType: exercise.type)
                                 let setsDone = getSetsDone(entries: journalEntries, forDate: Date(), ofType: exercise.type)
                                 if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
                                     ExerciseItemView(
@@ -53,10 +50,28 @@ struct TodayView: View {
                                         currentExerciseId = exercise.id
                                         showingTodayRoutine = true
                                     }
+                                    .onAppear {
+                                        if setsDone < sets {
+                                            currentExerciseId = exercise.id
+                                        }
+                                        if setsDone > 0 {
+                                            isWorkoutInProgress = true
+                                        }
+                                    }
                                 }
                             }
                             if isWorkoutComplete != true {
                                 Button(isWorkoutInProgress ? "Continue Workout" : "Start Workout") {
+                                    if isWorkoutInProgress == true {
+                                        for exercise in todayExercises {
+                                            let sets = getSets(forExerciseType: exercise.type)
+                                            let setsDone = getSetsDone(entries: journalEntries, forDate: Date(), ofType: exercise.type)
+                                            if setsDone < sets {
+                                                currentExerciseId = exercise.id
+                                                break
+                                            }
+                                        }
+                                    }
                                     showingTodayRoutine = true
                                 }
                                 .padding()
@@ -74,9 +89,6 @@ struct TodayView: View {
                         }
                     }
                     .navigationTitle("Your Day: \(getDayName(forDate: Date()))")
-                    .onAppear {
-                        setupCurrentExerciseId()
-                    }
                 } else {
                     Text("New user")
                 }
@@ -130,26 +142,6 @@ struct TodayView: View {
         for dayNum in 1...7 {
             let newRoutine = Routine(day: dayNum, exercises: [])
             context.insert(newRoutine)
-        }
-    }
-    
-    func setupCurrentExerciseId() {
-        let todayExercises = getTodayExercises()
-        for exercise in todayExercises {
-            let sets = getSets(forExerciseType: exercise.type)
-            let setsDone = getSetsDone(entries: journalEntries, forDate: Date(), ofType: exercise.type)
-            if currentExerciseId == nil {
-                currentExerciseId = exercise.id
-            }
-            if setsDone < sets {
-                if firstInProgressExerciseId == nil {
-                    firstInProgressExerciseId = exercise.id
-                    currentExerciseId = exercise.id
-                }
-            }
-            if setsDone > 0 {
-                isWorkoutInProgress = true
-            }
         }
     }
     
