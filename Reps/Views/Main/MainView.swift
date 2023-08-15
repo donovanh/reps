@@ -14,7 +14,7 @@ struct MainView: View {
                 TodayView()
                     .tabItem {
                         VStack {
-                            Image(systemName: "book.circle.fill")
+                            Image(systemName: "list.bullet.clipboard.fill")
                             Text("Today")
                         }
                     }
@@ -22,16 +22,16 @@ struct MainView: View {
                 WeekView()
                     .tabItem {
                         VStack {
-                            Image(systemName: "menucard")
+                            Image(systemName: "book.pages")
                             Text("Week")
                         }
                     }
                 
-                UserView()
+                JournalView()
                     .tabItem {
                         VStack {
-                            Image(systemName: "info.circle")
-                            Text("Settings")
+                            Image(systemName: "chart.bar.xaxis")
+                            Text("Journal")
                         }
                     }
             }
@@ -39,6 +39,6 @@ struct MainView: View {
     }
 }
 
-#Preview {
-    MainView()
-}
+//#Preview {
+//    MainView()
+//}

@@ -21,6 +21,8 @@ struct ExerciseDetailView: View {
     
     
     @Binding var showingTodayRoutine: Bool
+    @Binding var isWorkoutComplete: Bool
+    @Binding var isWorkoutInProgress: Bool
     
     @State var reps = 0
     @State var difficulty: Difficulty = .moderate
@@ -150,10 +152,11 @@ struct ExerciseDetailView: View {
                 difficulty: difficulty.rawValue
             )
         )
+        isWorkoutInProgress = true
         if exerciseId == nextExerciseWithSetsId {
-            print(setsDoneToday)
-            print(sets)
             if setsDoneToday + 1 >= sets {
+                // Mark complete
+                isWorkoutComplete = true
                 showingTodayRoutine = false
             }
         } else {

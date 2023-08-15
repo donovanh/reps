@@ -28,6 +28,8 @@
 		4549BD242A881A6200F3E2AD /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */; };
 		4549BD262A88202A00F3E2AD /* JournalEntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD252A88202A00F3E2AD /* JournalEntryModel.swift */; };
 		4549BD282A8A101000F3E2AD /* DifficultyStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD272A8A101000F3E2AD /* DifficultyStrings.swift */; };
+		4549BD302A8BB2A100F3E2AD /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD2F2A8BB2A100F3E2AD /* JournalView.swift */; };
+		4549BD382A8BCD3000F3E2AD /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 4549BD372A8BCD3000F3E2AD /* Algorithms */; };
 		459355202A6D90F2009EC063 /* RepsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593551F2A6D90F2009EC063 /* RepsApp.swift */; };
 		459355222A6D90F2009EC063 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459355212A6D90F2009EC063 /* WeekView.swift */; };
 		459355242A6D90F8009EC063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459355232A6D90F8009EC063 /* Assets.xcassets */; };
@@ -65,6 +67,7 @@
 		4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
 		4549BD252A88202A00F3E2AD /* JournalEntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryModel.swift; sourceTree = "<group>"; };
 		4549BD272A8A101000F3E2AD /* DifficultyStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyStrings.swift; sourceTree = "<group>"; };
+		4549BD2F2A8BB2A100F3E2AD /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		4593551C2A6D90F2009EC063 /* Reps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4593551F2A6D90F2009EC063 /* RepsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsApp.swift; sourceTree = "<group>"; };
 		459355212A6D90F2009EC063 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4549BD382A8BCD3000F3E2AD /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,12 +99,13 @@
 		4549BCF52A700BD400F3E2AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4549BD2B2A8B531800F3E2AD /* Workout */,
-				4549BD152A7BB0DE00F3E2AD /* Today */,
-				4549BD062A7241C900F3E2AD /* PlanBuilder */,
 				4549BD002A70FB1100F3E2AD /* Main */,
-				4549BCFF2A70FAAF00F3E2AD /* User */,
+				4549BD152A7BB0DE00F3E2AD /* Today */,
+				4549BD2B2A8B531800F3E2AD /* Workout */,
 				4549BCF62A700BE600F3E2AD /* Week */,
+				4549BD2E2A8BB27000F3E2AD /* Journal */,
+				4549BD062A7241C900F3E2AD /* PlanBuilder */,
+				4549BCFF2A70FAAF00F3E2AD /* User */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,6 +173,14 @@
 				4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */,
 			);
 			path = Workout;
+			sourceTree = "<group>";
+		};
+		4549BD2E2A8BB27000F3E2AD /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				4549BD2F2A8BB2A100F3E2AD /* JournalView.swift */,
+			);
+			path = Journal;
 			sourceTree = "<group>";
 		};
 		459355132A6D90F2009EC063 = {
@@ -261,6 +274,9 @@
 			dependencies = (
 			);
 			name = Reps;
+			packageProductDependencies = (
+				4549BD372A8BCD3000F3E2AD /* Algorithms */,
+			);
 			productName = Reps;
 			productReference = 4593551C2A6D90F2009EC063 /* Reps.app */;
 			productType = "com.apple.product-type.application";
@@ -290,6 +306,10 @@
 				de,
 			);
 			mainGroup = 459355132A6D90F2009EC063;
+			packageReferences = (
+				4549BD312A8BC3CD00F3E2AD /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				4549BD362A8BCD3000F3E2AD /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+			);
 			productRefGroup = 4593551D2A6D90F2009EC063 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -319,6 +339,7 @@
 			files = (
 				4549BD282A8A101000F3E2AD /* DifficultyStrings.swift in Sources */,
 				4593553F2A6D9C5F009EC063 /* HandstandPushups.swift in Sources */,
+				4549BD302A8BB2A100F3E2AD /* JournalView.swift in Sources */,
 				4593553B2A6D9C20009EC063 /* Bridges.swift in Sources */,
 				4549BD082A7241DC00F3E2AD /* PlanBuilderView.swift in Sources */,
 				4549BCF82A70228E00F3E2AD /* DayView.swift in Sources */,
@@ -553,6 +574,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4549BD312A8BC3CD00F3E2AD /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		4549BD362A8BCD3000F3E2AD /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4549BD372A8BCD3000F3E2AD /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4549BD312A8BC3CD00F3E2AD /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 459355142A6D90F2009EC063 /* Project object */;
 }

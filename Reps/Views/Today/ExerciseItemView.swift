@@ -23,7 +23,6 @@ struct ExerciseItemView: View {
             VStack(alignment: .leading) {
                 Text(String(localized: progression.name.rawValue))
                     .font(.title)
-                    .padding(.top, 10)
                 
                 Text(String(localized: exerciseType.localizedStringResource))
                     .font(.caption)

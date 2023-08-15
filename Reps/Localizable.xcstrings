@@ -11,6 +11,9 @@
         }
       }
     },
+    "%@" : {
+
+    },
     "%lld" : {
 
     },
@@ -462,6 +465,9 @@
     "Difficulty level" : {
 
     },
+    "Do more" : {
+
+    },
     "Easy" : {
 
     },
@@ -761,6 +767,9 @@
         }
       }
     },
+    "Journal" : {
+
+    },
     "Knee tucks" : {
       "localizations" : {
         "de" : {
@@ -846,6 +855,9 @@
           }
         }
       }
+    },
+    "No journal entries yet!" : {
+
     },
     "No progression found" : {
       "localizations" : {
@@ -973,6 +985,9 @@
     "reps" : {
 
     },
+    "Reps: " : {
+
+    },
     "Rest day" : {
 
     },
@@ -1021,6 +1036,9 @@
       }
     },
     "seconds" : {
+
+    },
+    "Seconds: " : {
 
     },
     "Set %lld of %lld" : {
@@ -1166,6 +1184,9 @@
         }
       }
     },
+    "User Profile" : {
+
+    },
     "Vertical pull-ups" : {
       "localizations" : {
         "de" : {
@@ -1255,6 +1276,9 @@
           }
         }
       }
+    },
+    "You're all done for today!" : {
+
     },
     "You've been doing this for a while and you're ready to take it to the next level." : {
       "localizations" : {

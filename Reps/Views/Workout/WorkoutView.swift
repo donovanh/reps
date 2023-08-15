@@ -16,6 +16,8 @@ struct WorkoutView: View {
     @Query private var journalEntries: [JournalEntry]
     
     @Binding var showingTodayRoutine: Bool
+    @Binding var isWorkoutComplete: Bool
+    @Binding var isWorkoutInProgress: Bool
     
     let currentExerciseId: UUID?
     let todayExercises: [Exercise]
@@ -37,6 +39,8 @@ struct WorkoutView: View {
                                     if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
                                         ExerciseDetailView(
                                             showingTodayRoutine: $showingTodayRoutine,
+                                            isWorkoutComplete: $isWorkoutComplete,
+                                            isWorkoutInProgress: $isWorkoutInProgress,
                                             currentExerciseId: currentExerciseId,
                                             progression: progression,
                                             exerciseType: ExerciseType(rawValue: exercise.type) ?? .bridge, levelStr: level,
