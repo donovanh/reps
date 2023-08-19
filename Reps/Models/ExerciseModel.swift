@@ -91,6 +91,8 @@ struct Progression: Hashable {
     let reps: [Level: Int]
     let sets: [Level: Int]
     var showSecondsForReps: Bool?
+    var showForEachSide: Bool?
+    var animationFileName: String?
     
     func getReps(for level: Level) -> Int {
         return reps[level] ?? 0

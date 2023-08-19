@@ -8,6 +8,25 @@
 import SwiftUI
 import SwiftData
 import Combine
+import SceneKit
+
+struct AnimationView: View {
+    
+    let currentProgressionAnimationName: String
+    let currentExerciseIndex: Int
+    let width: CGFloat
+    let height: CGFloat
+    
+    var body: some View {
+        SceneView(scene: {
+            let scene = SCNScene(named: currentProgressionAnimationName)
+            // scene?.background.contents = UIColor.darkText TODO: Handle dark mode with specific bg color
+            return scene
+        }())
+        .edgesIgnoringSafeArea(.all)
+        .frame(width: width, height: height)
+    }
+}
 
 struct WorkoutView: View {
     
@@ -26,15 +45,32 @@ struct WorkoutView: View {
     @State private var offset = CGFloat.zero
     @State private var scrollWidth = CGFloat.zero
     @State private var currentExerciseIndex: Int = 0
+    @State private var currentAnimationOpacity: CGFloat = 1.0
+    @State private var currentXOffset: Double = 0.0
+    @State private var currentProgressionAnimationName: String?
     
     var body: some View {
         if let user = users.first {
             GeometryReader { geo in
-                VStack {
+                ZStack {
+                    VStack {
+                        // .temporalAntialiasingEnabled, .allowsCameraControl
+                        ZStack {
+                            AnimationView(
+                                currentProgressionAnimationName: currentProgressionAnimationName ?? "pushup-07.dae",
+                                currentExerciseIndex: currentExerciseIndex,
+                                width: geo.size.width,
+                                height: geo.size.width
+                            )
+                            .opacity(currentAnimationOpacity)
+                            .offset(x: currentXOffset, y: 0)
+                        }
+                        Spacer()
+                    }
                     ScrollViewReader { scrollViewValue in
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(todayExercises, id: \.self) { exercise in
+                                ForEach(Array(todayExercises.enumerated()), id: \.1.id) { index, exercise in
                                     let level = user.getLevel(forType: exercise.type)
                                     if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
                                         ExerciseDetailView(
@@ -47,12 +83,14 @@ struct WorkoutView: View {
                                             scrollViewValue: scrollViewValue,
                                             exerciseId: exercise.id,
                                             nextExerciseWithSetsId: nextExerciseWithSetsId(after: exercise),
-                                            nextExerciseId: nextExerciseId(after: exercise)
+                                            nextExerciseId: nextExerciseId(after: exercise),
+                                            currentExerciseIndex: currentExerciseIndex,
+                                            exerciseIndex: index
                                         )
                                         .id(exercise.id)
                                         .frame(
                                             width: geo.size.width > 40 ? geo.size.width - 40 : geo.size.width,
-                                            height: geo.size.height > 120 ? geo.size.height - 120 : geo.size.height
+                                            height: geo.size.height > 80 ? geo.size.height - 80 : geo.size.height
                                         )
                                         .padding(.horizontal, 20)
                                     }
@@ -64,6 +102,11 @@ struct WorkoutView: View {
                             })
                             .onPreferenceChange(ViewOffsetKey.self) {
                                 currentExerciseIndex = visibleExerciseIndex(forOffset: $0)
+                                currentAnimationOpacity = calculateOpacityOfAnimation(forOffset: $0, numberOfExercises: todayExercises.count)
+                                currentXOffset = calculateXOffset(forOffset: $0)
+                                let exercise = todayExercises[currentExerciseIndex]
+                                let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type))
+                                currentProgressionAnimationName = progression?.animationFileName
                             }
                             .scrollTargetLayout()
                         }
@@ -106,8 +149,34 @@ struct WorkoutView: View {
     }
     
     func visibleExerciseIndex(forOffset offset: CGFloat) -> Int {
-        let index = Int(floor(offset / screenWidth))
-        return index > 0 ? index : 0
+        return Int((offset / screenWidth).rounded(.toNearestOrAwayFromZero))
+    }
+    
+    func calculateOpacityOfAnimation(forOffset offset: CGFloat, numberOfExercises: Int) -> Double {
+        let maxWidth = screenWidth * CGFloat(numberOfExercises - 1)
+
+        if offset < 0 || offset > maxWidth {
+            return 1
+        }
+        let index = visibleExerciseIndex(forOffset: offset)
+            
+        let nearestIndexOffset = CGFloat(index) * screenWidth // Calculate the offset of the nearest index
+ 
+        let distance = abs(offset - nearestIndexOffset) // Calculate the distance from that offset value
+        
+        let halfScreenWidth = screenWidth / 2
+        let opacity = 1 - Double(min(distance, halfScreenWidth)) / Double(halfScreenWidth)
+        
+        return max(opacity, 0) // Ensure opacity is not negative
+    }
+    
+    func calculateXOffset(forOffset offset: CGFloat) -> Double {
+        // print("offset: \(offset), screenWidth: \(screenWidth)")
+        let index = visibleExerciseIndex(forOffset: offset)
+        let nearestIndexOffset = CGFloat(index) * screenWidth // Calculate the offset of the nearest index
+        let distance = offset - nearestIndexOffset // Calculate the distance from that offset value
+        
+        return (0 - distance / 3)
     }
     
     func nextExerciseWithSetsId(after exercise: Exercise) -> UUID {

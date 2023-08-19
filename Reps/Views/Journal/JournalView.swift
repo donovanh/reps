@@ -11,25 +11,66 @@ import Algorithms
 
 struct JournalView: View {
     
+    // TODO: Redo this maybe as a calendar with sheet containing day's summary
+    // And some graphs
+    
     @Environment(\.modelContext) private var context
     @Query private var users: [User]
     @Query private var journalEntries: [JournalEntry]
+    
+    let yearFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy"
+        return formatter
+    }()
+    
+    let monthFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM"
+        return formatter
+    }()
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    let dayFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }()
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
                     if journalEntries.count > 0 {
-                        let chunkedByYear = getChunkedByYear(entries: journalEntries)
-                        ForEach(chunkedByYear, id: \.self) { yearEntries in
-                            let year = getDatePartString(yearEntries.first?.date ?? Date(), format: "YYYY")
-                            Text(year)
-                                .font(.largeTitle)
-                            let chunkedByMonth = getChunkedByMonth(entries: yearEntries)
-                            ForEach(chunkedByMonth, id: \.self) { monthEntries in
-                                let month = getDatePartString(monthEntries.first?.date ?? Date(), format: "LLLL")
-                                Section(month) {
-                                    MonthView(entries: monthEntries)
+                        let groupedEntries = groupEntriesByYearMonthDay(entries: journalEntries)
+                        
+                        ForEach(Array(groupedEntries.keys.sorted()), id: \.self) { yearKey in
+                            if let yearDate = self.yearFormatter.date(from: "\(yearKey)") {
+                                Text(self.yearFormatter.string(from: yearDate))
+                                    .font(.largeTitle)
+                                    .bold()
+                            }
+                            ForEach(Array(groupedEntries[yearKey]!.keys.sorted()), id: \.self) { monthKey in
+                                Text(monthFormatter.monthSymbols[monthKey - 1])
+                                    .font(.title)
+                                    .bold()
+                                ForEach(Array(groupedEntries[yearKey]![monthKey]!.keys.sorted()), id: \.self) { dayKey in
+                                    let dayEntries = groupedEntries[yearKey]![monthKey]![dayKey]!
+                                    let chunkedDayEntries = getChunkedByExerciseType(entries: dayEntries)
+                                    if let dayDate = self.dateFormatter.date(from: "\(yearKey)-\(monthKey)-\(dayKey)") {
+                                        DisclosureGroup {
+                                            ForEach(chunkedDayEntries, id: \.self) { dayEntries in
+                                                EntryView(dayEntries: dayEntries)
+                                            }
+                                        } label: {
+                                            Text(self.dayFormatter.string(from: dayDate))
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -44,87 +85,35 @@ struct JournalView: View {
         }
     }
     
-    func getDatePartString(_ date: Date, format: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: date)
-    }
-    
-    func getChunkedByYear(entries: [JournalEntry]) -> [[JournalEntry]] {
-        return entries.chunked {
-            Calendar.current.isDate($0.date, equalTo: $1.date, toGranularity: .year)
-        }.map { Array($0) }
-    }
-    
-    func getChunkedByMonth(entries: [JournalEntry]) -> [[JournalEntry]] {
-        return entries.chunked {
-            Calendar.current.isDate($0.date, equalTo: $1.date, toGranularity: .month)
-        }.map { Array($0) }
-    }
-}
+    func groupEntriesByYearMonthDay(entries: [JournalEntry]) -> [Int: [Int: [Int: [JournalEntry]]]] {
+        var groupedEntries: [Int: [Int: [Int: [JournalEntry]]]] = [:]
 
-struct MonthView: View {
-    
-    @Environment(\.modelContext) private var context
-    @Query private var users: [User]
-    
-    let entries: [JournalEntry]
-    
-    var body: some View {
-        let chunkedDays = getChunkedByDay(entries: entries)
-        ForEach(chunkedDays, id: \.self) { dayEntries in
-            DisclosureGroup {
-                // Chunk by exerciseType, display each type for the day as a single item
-                let chunkedDayEntries = getChunkedByExerciseType(entries: entries)
-                
-                ForEach(chunkedDayEntries, id: \.self) { exerciseTypeEntries in
-                    let entry = exerciseTypeEntries[0]
-                    if users.first != nil {
-                        let progression = getExercise(ofType: entry.exerciseType, atStage: users.first?.getStage(forType: entry.exerciseType) ?? 1)
-                        let exerciseTypeName = ExerciseType(rawValue: entry.exerciseType)!.localizedStringResource
-                        if let progressionName = progression?.name {
-                            HStack(alignment: .top) {
-                                VStack(alignment: .leading) {
-                                    Text(String(localized: progressionName.rawValue))
-                                    Spacer()
-                                    Text(String(localized: exerciseTypeName))
-                                        .font(.caption)
-                                }
-                                Spacer()
-                                HStack {
-                                    if progression?.showSecondsForReps == true {
-                                        Text("Seconds: ")
-                                    } else {
-                                        Text("Reps: ")
-                                    }
-                                    let repsString = exerciseTypeEntries.map { "\($0.reps)" }.joined(separator: ", ")
-                                    Text(repsString)
-                                }
-                                .font(.caption)
-                            }
-                            .padding(10)
-                        }
-                    }
+        let calendar = Calendar.current
+        let dateComponents: Set<Calendar.Component> = [.year, .month, .day]
+
+        for entry in entries {
+            let components = calendar.dateComponents(dateComponents, from: entry.date)
+
+            if let year = components.year,
+               let month = components.month,
+               let day = components.day {
+                if groupedEntries[year] == nil {
+                    groupedEntries[year] = [:]
                 }
-            } label: {
-                Text("\(getDateFormatted(dayEntries.first!.date))")
+
+                if groupedEntries[year]![month] == nil {
+                    groupedEntries[year]![month] = [:]
+                }
+
+                if groupedEntries[year]![month]![day] == nil {
+                    groupedEntries[year]![month]![day] = []
+                }
+
+                groupedEntries[year]![month]![day]!.append(entry)
             }
         }
-    }
-    
-    func getDateFormatted(_ date: Date) -> String {
-        let weekDay = date.formatted(Date.FormatStyle().weekday(.wide))
-        let dayNum = date.formatted(Date.FormatStyle().day(.defaultDigits))
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .ordinal
-        let dayWithOrdinal = formatter.string(from: NSNumber(value: Int(dayNum) ?? 0))
-        return "\(weekDay), \(dayWithOrdinal!)"
-    }
-    
-    func getChunkedByDay(entries: [JournalEntry]) -> [[JournalEntry]] {
-        return entries.chunked {
-            Calendar.current.isDate($0.date, equalTo: $1.date, toGranularity: .day)
-        }.map { Array($0) }
+
+        return groupedEntries
     }
     
     func getChunkedByExerciseType(entries: [JournalEntry]) -> [[JournalEntry]] {
@@ -132,6 +121,46 @@ struct MonthView: View {
             $0.exerciseType == $1.exerciseType
         }.map { Array($0) }
     }
+}
+
+struct EntryView: View {
+    
+    @Environment(\.modelContext) private var context
+    @Query private var users: [User]
+    
+    let dayEntries: [JournalEntry]
+    
+    var body: some View {
+        if users.first != nil {
+            let entry = dayEntries[0]
+            let progression = getExercise(ofType: entry.exerciseType, atStage: users.first?.getStage(forType: entry.exerciseType) ?? 1)
+            let exerciseTypeName = ExerciseType(rawValue: entry.exerciseType)!.localizedStringResource
+            if let progressionName = progression?.name {
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        Text(String(localized: progressionName.rawValue))
+                            .bold()
+                        Spacer()
+                        Text(String(localized: exerciseTypeName))
+                            .font(.caption)
+                    }
+                    Spacer()
+                    HStack {
+                        if progression?.showSecondsForReps == true {
+                            Text("Seconds: ")
+                        } else {
+                            Text("Reps: ")
+                        }
+                        let repsString = dayEntries.map { "\($0.reps)" }.joined(separator: ", ")
+                        Text(repsString)
+                    }
+                    .font(.caption)
+                }
+                .padding(10)
+            }
+        }
+    }
+    
 }
 
 //#Preview {

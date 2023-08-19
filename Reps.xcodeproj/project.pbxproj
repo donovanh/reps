@@ -30,6 +30,15 @@
 		4549BD282A8A101000F3E2AD /* DifficultyStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD272A8A101000F3E2AD /* DifficultyStrings.swift */; };
 		4549BD302A8BB2A100F3E2AD /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD2F2A8BB2A100F3E2AD /* JournalView.swift */; };
 		4549BD382A8BCD3000F3E2AD /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 4549BD372A8BCD3000F3E2AD /* Algorithms */; };
+		4549BDA92A8F865800F3E2AD /* squat-05.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDA82A8F865800F3E2AD /* squat-05.dae */; };
+		4549BDAF2A8F8D1500F3E2AD /* wood.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDAE2A8F8D1500F3E2AD /* wood.jpg */; };
+		4549BDB72A8FD76900F3E2AD /* pushup-01.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDB62A8FD76900F3E2AD /* pushup-01.dae */; };
+		4549BDD52A8FF59A00F3E2AD /* pushup-02.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDD42A8FF59A00F3E2AD /* pushup-02.dae */; };
+		4549BDDE2A900C4A00F3E2AD /* pushup-04.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDDC2A900C4A00F3E2AD /* pushup-04.dae */; };
+		4549BDEB2A90213D00F3E2AD /* pushup-07.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDEA2A90213C00F3E2AD /* pushup-07.dae */; };
+		4549BDED2A913DCA00F3E2AD /* pushup-05.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDEC2A913DCA00F3E2AD /* pushup-05.dae */; };
+		4549BDEF2A9143D300F3E2AD /* pushup-03.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDEE2A9143D300F3E2AD /* pushup-03.dae */; };
+		4549BDF12A9144EE00F3E2AD /* pushup-06.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDF02A9144EE00F3E2AD /* pushup-06.dae */; };
 		459355202A6D90F2009EC063 /* RepsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593551F2A6D90F2009EC063 /* RepsApp.swift */; };
 		459355222A6D90F2009EC063 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459355212A6D90F2009EC063 /* WeekView.swift */; };
 		459355242A6D90F8009EC063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459355232A6D90F8009EC063 /* Assets.xcassets */; };
@@ -68,6 +77,15 @@
 		4549BD252A88202A00F3E2AD /* JournalEntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryModel.swift; sourceTree = "<group>"; };
 		4549BD272A8A101000F3E2AD /* DifficultyStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyStrings.swift; sourceTree = "<group>"; };
 		4549BD2F2A8BB2A100F3E2AD /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		4549BDA82A8F865800F3E2AD /* squat-05.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "squat-05.dae"; sourceTree = "<group>"; };
+		4549BDAE2A8F8D1500F3E2AD /* wood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wood.jpg; sourceTree = "<group>"; };
+		4549BDB62A8FD76900F3E2AD /* pushup-01.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-01.dae"; sourceTree = "<group>"; };
+		4549BDD42A8FF59A00F3E2AD /* pushup-02.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-02.dae"; sourceTree = "<group>"; };
+		4549BDDC2A900C4A00F3E2AD /* pushup-04.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-04.dae"; sourceTree = "<group>"; };
+		4549BDEA2A90213C00F3E2AD /* pushup-07.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-07.dae"; sourceTree = "<group>"; };
+		4549BDEC2A913DCA00F3E2AD /* pushup-05.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-05.dae"; sourceTree = "<group>"; };
+		4549BDEE2A9143D300F3E2AD /* pushup-03.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-03.dae"; sourceTree = "<group>"; };
+		4549BDF02A9144EE00F3E2AD /* pushup-06.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-06.dae"; sourceTree = "<group>"; };
 		4593551C2A6D90F2009EC063 /* Reps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4593551F2A6D90F2009EC063 /* RepsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsApp.swift; sourceTree = "<group>"; };
 		459355212A6D90F2009EC063 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
@@ -183,9 +201,26 @@
 			path = Journal;
 			sourceTree = "<group>";
 		};
+		4549BD412A8C270900F3E2AD /* 3D Models */ = {
+			isa = PBXGroup;
+			children = (
+				4549BDEA2A90213C00F3E2AD /* pushup-07.dae */,
+				4549BDDC2A900C4A00F3E2AD /* pushup-04.dae */,
+				4549BDD42A8FF59A00F3E2AD /* pushup-02.dae */,
+				4549BDB62A8FD76900F3E2AD /* pushup-01.dae */,
+				4549BDAE2A8F8D1500F3E2AD /* wood.jpg */,
+				4549BDA82A8F865800F3E2AD /* squat-05.dae */,
+			);
+			path = "3D Models";
+			sourceTree = "<group>";
+		};
 		459355132A6D90F2009EC063 = {
 			isa = PBXGroup;
 			children = (
+				4549BDF02A9144EE00F3E2AD /* pushup-06.dae */,
+				4549BDEE2A9143D300F3E2AD /* pushup-03.dae */,
+				4549BDEC2A913DCA00F3E2AD /* pushup-05.dae */,
+				4549BD412A8C270900F3E2AD /* 3D Models */,
 				4593551E2A6D90F2009EC063 /* Reps */,
 				4593551D2A6D90F2009EC063 /* Products */,
 			);
@@ -324,6 +359,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4549BDF12A9144EE00F3E2AD /* pushup-06.dae in Resources */,
+				4549BDEF2A9143D300F3E2AD /* pushup-03.dae in Resources */,
+				4549BDED2A913DCA00F3E2AD /* pushup-05.dae in Resources */,
+				4549BDEB2A90213D00F3E2AD /* pushup-07.dae in Resources */,
+				4549BDDE2A900C4A00F3E2AD /* pushup-04.dae in Resources */,
+				4549BDD52A8FF59A00F3E2AD /* pushup-02.dae in Resources */,
+				4549BDB72A8FD76900F3E2AD /* pushup-01.dae in Resources */,
+				4549BDAF2A8F8D1500F3E2AD /* wood.jpg in Resources */,
+				4549BDA92A8F865800F3E2AD /* squat-05.dae in Resources */,
 				459355272A6D90F8009EC063 /* Preview Assets.xcassets in Resources */,
 				459355242A6D90F8009EC063 /* Assets.xcassets in Resources */,
 				4549BD192A7D86A000F3E2AD /* Localizable.xcstrings in Resources */,

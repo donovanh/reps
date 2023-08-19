@@ -122,7 +122,7 @@ struct TodayView: View {
                     isWorkoutInProgress: $isWorkoutInProgress,
                     currentExerciseId: currentExerciseId,
                     todayExercises: todayExercises,
-                    screenWidth: geo.size.width
+                    screenWidth: UIScreen.main.bounds.width + 8
                 )
             }
             .sheet(isPresented: $showingSettingsSheet) {
