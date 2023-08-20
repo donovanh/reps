@@ -70,7 +70,7 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ], animationFileName: "pushup-07.dae"),
+    ], showForEachSide: true, animationFileName: "pushup-07.dae"),
     Progression(stage: 8, type: .pushup, name: .halfOneArmPushups, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -79,7 +79,7 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], showForEachSide: true, animationFileName: "pushup-08.dae"),
     Progression(stage: 9, type: .pushup, name: .leverPushups, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -88,7 +88,7 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], showForEachSide: true, animationFileName: "pushup-09.dae"),
     Progression(stage: 10, type: .pushup, name: .oneArmPushups, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -97,5 +97,5 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 1
-    ]),
+    ], showForEachSide: true, animationFileName: "pushup-10.dae"),
 ]

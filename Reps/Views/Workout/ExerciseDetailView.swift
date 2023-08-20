@@ -59,12 +59,17 @@ struct ExerciseDetailView: View {
                         .font(.system(size: 128))
                         .fontWeight(.heavy)
                         .padding(.bottom, -40)
-                    if (progression.showSecondsForReps == true) {
+                    if progression.showSecondsForReps == true {
                         Text("seconds")
                             .font(.title)
                     } else {
-                        Text("reps")
-                            .font(.title)
+                        if progression.showForEachSide == true {
+                            Text("reps (each side)")
+                                .font(.title)
+                        } else {
+                            Text("reps")
+                                .font(.title)
+                        }
                     }
                     if (setsDoneToday >= sets) {
                         Text("All sets done!")
