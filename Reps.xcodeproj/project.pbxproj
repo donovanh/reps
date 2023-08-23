@@ -29,7 +29,6 @@
 		4549BD262A88202A00F3E2AD /* JournalEntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD252A88202A00F3E2AD /* JournalEntryModel.swift */; };
 		4549BD282A8A101000F3E2AD /* DifficultyStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD272A8A101000F3E2AD /* DifficultyStrings.swift */; };
 		4549BD302A8BB2A100F3E2AD /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD2F2A8BB2A100F3E2AD /* JournalView.swift */; };
-		4549BD382A8BCD3000F3E2AD /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 4549BD372A8BCD3000F3E2AD /* Algorithms */; };
 		4549BDA92A8F865800F3E2AD /* squat-05.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDA82A8F865800F3E2AD /* squat-05.dae */; };
 		4549BDAF2A8F8D1500F3E2AD /* wood.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDAE2A8F8D1500F3E2AD /* wood.jpg */; };
 		4549BDB72A8FD76900F3E2AD /* pushup-01.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDB62A8FD76900F3E2AD /* pushup-01.dae */; };
@@ -39,9 +38,9 @@
 		4549BDED2A913DCA00F3E2AD /* pushup-05.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDEC2A913DCA00F3E2AD /* pushup-05.dae */; };
 		4549BDEF2A9143D300F3E2AD /* pushup-03.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDEE2A9143D300F3E2AD /* pushup-03.dae */; };
 		4549BDF12A9144EE00F3E2AD /* pushup-06.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDF02A9144EE00F3E2AD /* pushup-06.dae */; };
-		4549BDF52A92C00400F3E2AD /* pushup-08.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDF22A92C00400F3E2AD /* pushup-08.dae */; };
-		4549BDF62A92C00400F3E2AD /* pushup-09.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDF32A92C00400F3E2AD /* pushup-09.dae */; };
-		4549BDF72A92C00400F3E2AD /* pushup-10.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDF42A92C00400F3E2AD /* pushup-10.dae */; };
+		4549BDF92A93D95C00F3E2AD /* pushup-10.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDF82A93D95C00F3E2AD /* pushup-10.dae */; };
+		4549BDFB2A93D9DD00F3E2AD /* pushup-08.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDFA2A93D9DD00F3E2AD /* pushup-08.dae */; };
+		4549BDFD2A93DA7B00F3E2AD /* pushup-09.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDFC2A93DA7B00F3E2AD /* pushup-09.dae */; };
 		459355202A6D90F2009EC063 /* RepsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593551F2A6D90F2009EC063 /* RepsApp.swift */; };
 		459355222A6D90F2009EC063 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459355212A6D90F2009EC063 /* WeekView.swift */; };
 		459355242A6D90F8009EC063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459355232A6D90F8009EC063 /* Assets.xcassets */; };
@@ -89,9 +88,9 @@
 		4549BDEC2A913DCA00F3E2AD /* pushup-05.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-05.dae"; sourceTree = "<group>"; };
 		4549BDEE2A9143D300F3E2AD /* pushup-03.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-03.dae"; sourceTree = "<group>"; };
 		4549BDF02A9144EE00F3E2AD /* pushup-06.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-06.dae"; sourceTree = "<group>"; };
-		4549BDF22A92C00400F3E2AD /* pushup-08.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-08.dae"; sourceTree = "<group>"; };
-		4549BDF32A92C00400F3E2AD /* pushup-09.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-09.dae"; sourceTree = "<group>"; };
-		4549BDF42A92C00400F3E2AD /* pushup-10.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-10.dae"; sourceTree = "<group>"; };
+		4549BDF82A93D95C00F3E2AD /* pushup-10.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-10.dae"; sourceTree = "<group>"; };
+		4549BDFA2A93D9DD00F3E2AD /* pushup-08.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-08.dae"; sourceTree = "<group>"; };
+		4549BDFC2A93DA7B00F3E2AD /* pushup-09.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-09.dae"; sourceTree = "<group>"; };
 		4593551C2A6D90F2009EC063 /* Reps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4593551F2A6D90F2009EC063 /* RepsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsApp.swift; sourceTree = "<group>"; };
 		459355212A6D90F2009EC063 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
@@ -113,7 +112,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4549BD382A8BCD3000F3E2AD /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,9 +208,9 @@
 		4549BD412A8C270900F3E2AD /* 3D Models */ = {
 			isa = PBXGroup;
 			children = (
-				4549BDF42A92C00400F3E2AD /* pushup-10.dae */,
-				4549BDF32A92C00400F3E2AD /* pushup-09.dae */,
-				4549BDF22A92C00400F3E2AD /* pushup-08.dae */,
+				4549BDF82A93D95C00F3E2AD /* pushup-10.dae */,
+				4549BDFC2A93DA7B00F3E2AD /* pushup-09.dae */,
+				4549BDFA2A93D9DD00F3E2AD /* pushup-08.dae */,
 				4549BDEA2A90213C00F3E2AD /* pushup-07.dae */,
 				4549BDF02A9144EE00F3E2AD /* pushup-06.dae */,
 				4549BDEC2A913DCA00F3E2AD /* pushup-05.dae */,
@@ -319,7 +317,6 @@
 			);
 			name = Reps;
 			packageProductDependencies = (
-				4549BD372A8BCD3000F3E2AD /* Algorithms */,
 			);
 			productName = Reps;
 			productReference = 4593551C2A6D90F2009EC063 /* Reps.app */;
@@ -351,8 +348,6 @@
 			);
 			mainGroup = 459355132A6D90F2009EC063;
 			packageReferences = (
-				4549BD312A8BC3CD00F3E2AD /* XCRemoteSwiftPackageReference "swift-algorithms" */,
-				4549BD362A8BCD3000F3E2AD /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = 4593551D2A6D90F2009EC063 /* Products */;
 			projectDirPath = "";
@@ -368,9 +363,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4549BDF52A92C00400F3E2AD /* pushup-08.dae in Resources */,
-				4549BDF62A92C00400F3E2AD /* pushup-09.dae in Resources */,
-				4549BDF72A92C00400F3E2AD /* pushup-10.dae in Resources */,
+				4549BDFD2A93DA7B00F3E2AD /* pushup-09.dae in Resources */,
+				4549BDFB2A93D9DD00F3E2AD /* pushup-08.dae in Resources */,
+				4549BDF92A93D95C00F3E2AD /* pushup-10.dae in Resources */,
 				4549BDF12A9144EE00F3E2AD /* pushup-06.dae in Resources */,
 				4549BDEF2A9143D300F3E2AD /* pushup-03.dae in Resources */,
 				4549BDED2A913DCA00F3E2AD /* pushup-05.dae in Resources */,
@@ -630,33 +625,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		4549BD312A8BC3CD00F3E2AD /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-algorithms.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		4549BD362A8BCD3000F3E2AD /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-algorithms.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		4549BD372A8BCD3000F3E2AD /* Algorithms */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4549BD312A8BC3CD00F3E2AD /* XCRemoteSwiftPackageReference "swift-algorithms" */;
-			productName = Algorithms;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 459355142A6D90F2009EC063 /* Project object */;
 }

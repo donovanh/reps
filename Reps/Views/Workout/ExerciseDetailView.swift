@@ -55,10 +55,12 @@ struct ExerciseDetailView: View {
                     Text(String(localized: progression.name.rawValue))
                         .font(.title)
                         .fontWeight(.bold)
+                    
                     Text("\(goalReps)")
                         .font(.system(size: 128))
                         .fontWeight(.heavy)
                         .padding(.bottom, -40)
+                    
                     if progression.showSecondsForReps == true {
                         Text("seconds")
                             .font(.title)

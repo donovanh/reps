@@ -995,9 +995,6 @@
     "reps (each side)" : {
 
     },
-    "Reps: " : {
-
-    },
     "Rest day" : {
 
     },
@@ -1046,9 +1043,6 @@
       }
     },
     "seconds" : {
-
-    },
-    "Seconds: " : {
 
     },
     "Set up a new routine" : {
@@ -1143,6 +1137,9 @@
           }
         }
       }
+    },
+    "TODO: Display %lld entries" : {
+
     },
     "Uneven handstand pushups" : {
       "localizations" : {
