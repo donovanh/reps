@@ -11,9 +11,6 @@
         }
       }
     },
-    "%@" : {
-
-    },
     "%lld" : {
 
     },
@@ -979,13 +976,23 @@
         }
       }
     },
-    "Record Set" : {
+    "Record another set" : {
 
+    },
+    "Record set %lld of %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Record set %1$lld of %2$lld"
+          }
+        }
+      }
     },
     "reps" : {
 
     },
-    "Reps: " : {
+    "reps (each side)" : {
 
     },
     "Rest day" : {
@@ -1037,19 +1044,6 @@
     },
     "seconds" : {
 
-    },
-    "Seconds: " : {
-
-    },
-    "Set %lld of %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Set %1$lld of %2$lld"
-          }
-        }
-      }
     },
     "Set up a new routine" : {
       "localizations" : {
@@ -1143,6 +1137,9 @@
           }
         }
       }
+    },
+    "TODO: Display %lld entries" : {
+
     },
     "Uneven handstand pushups" : {
       "localizations" : {

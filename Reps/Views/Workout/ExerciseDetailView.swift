@@ -19,7 +19,6 @@ struct ExerciseDetailView: View {
     @Environment(\.modelContext) private var context
     @Query private var journalEntries: [JournalEntry]
     
-    
     @Binding var showingTodayRoutine: Bool
     @Binding var isWorkoutComplete: Bool
     @Binding var isWorkoutInProgress: Bool
@@ -36,6 +35,8 @@ struct ExerciseDetailView: View {
     let exerciseId: UUID
     let nextExerciseWithSetsId: UUID
     let nextExerciseId: UUID
+    let currentExerciseIndex: Int
+    let exerciseIndex: Int
     
     var body: some View {
         let level = Level(rawValue: levelStr) ?? .beginner
@@ -47,91 +48,103 @@ struct ExerciseDetailView: View {
             ofType: progression.type.rawValue
         )
         
-        HStack {
-            Spacer()
-            VStack {
+        GeometryReader { geo in
+            HStack {
                 Spacer()
-                Text(String(localized: exerciseType.localizedStringResource))
-                    .font(.caption)
-                Text(String(localized: progression.name.rawValue))
-                    .font(.title)
-                    .padding(.top, 10)
-                Text("\(goalReps)")
-                    .font(.system(size: 128))
-                if (progression.showSecondsForReps == true) {
-                    Text("seconds")
-                        .font(.title)
-                } else {
-                    Text("reps")
-                        .font(.title)
-                }
-                if (setsDoneToday >= sets) {
-                    Text("All sets done!")
-                        .padding(.vertical)
-                } else {
-                    Text("Set \(setsDoneToday + 1) of \(sets)")
-                        .padding(.vertical)
-                }
-                Spacer()
-                Button("Record Set") {
-                    isRecordingSet = true
-                }
-                Spacer()
-            }
-            Spacer()
-            .sheet(isPresented: $isRecordingSet) {
                 VStack {
-                    Text("I managed...")
-                    HStack {
-                        Spacer()
-                        Button {
-                            decrementReps()
-                        } label: {
-                            Image(systemName: "minus.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 48)
-                        }
-                        .buttonRepeatBehavior(.enabled)
-                        
-                        Spacer()
-                        HStack {
-                            Text("\(reps)")
-                                .font(.system(size: 64))
-                            if (progression.showSecondsForReps == true) {
-                                Text("seconds")
-                            } else {
-                                Text("reps")
-                            }
-                        }
-                        Spacer()
-                        Button {
-                            incrementReps()
-                        } label: {
-                            Image(systemName: "plus.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 48)
-                        }
-                        .buttonRepeatBehavior(.enabled)
-                        Spacer()
-                    }
-                    Text("It was...")
-                    Picker("Difficulty level", selection: $difficulty) {
-                        ForEach(Difficulty.allCases, id: \.self) { diff in
-                            Text(diff.localizedStringResource)
+                    Text(String(localized: progression.name.rawValue))
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                    Text("\(goalReps)")
+                        .font(.system(size: 128))
+                        .fontWeight(.heavy)
+                        .padding(.bottom, -40)
+                    
+                    if progression.showSecondsForReps == true {
+                        Text("seconds")
+                            .font(.title)
+                    } else {
+                        if progression.showForEachSide == true {
+                            Text("reps (each side)")
+                                .font(.title)
+                        } else {
+                            Text("reps")
+                                .font(.title)
                         }
                     }
-                    .pickerStyle(.segmented)
-                    .padding(.horizontal)
-                    Button("Save") {
-                        saveSet(setsDoneToday: setsDoneToday, sets: sets)
+                    if (setsDoneToday >= sets) {
+                        Text("All sets done!")
+                            .padding(.vertical)
                     }
-                    .padding()
+                    if (setsDoneToday >= sets) {
+                        Button("Record another set") {
+                            isRecordingSet = true
+                        }
+                        .padding(.vertical)
+                    } else {
+                        Button("Record set \(setsDoneToday + 1) of \(sets)") {
+                            isRecordingSet = true
+                        }
+                        .padding(.vertical)
+                    }
                 }
-                .presentationDetents([.height(275)])
-                .presentationDragIndicator(.automatic)
+                .padding(.top, (geo.size.height / 2) + 80)
+                Spacer()
             }
+        }
+        .sheet(isPresented: $isRecordingSet) {
+            VStack {
+                Text("I managed...")
+                HStack {
+                    Spacer()
+                    Button {
+                        decrementReps()
+                    } label: {
+                        Image(systemName: "minus.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 48)
+                    }
+                    .buttonRepeatBehavior(.enabled)
+                    
+                    Spacer()
+                    HStack {
+                        Text("\(reps)")
+                            .font(.system(size: 64))
+                        if (progression.showSecondsForReps == true) {
+                            Text("seconds")
+                        } else {
+                            Text("reps")
+                        }
+                    }
+                    Spacer()
+                    Button {
+                        incrementReps()
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 48)
+                    }
+                    .buttonRepeatBehavior(.enabled)
+                    Spacer()
+                }
+                Text("It was...")
+                Picker("Difficulty level", selection: $difficulty) {
+                    ForEach(Difficulty.allCases, id: \.self) { diff in
+                        Text(diff.localizedStringResource)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal)
+                Button("Save") {
+                    saveSet(setsDoneToday: setsDoneToday, sets: sets)
+                }
+                .padding()
+            }
+            .presentationDetents([.height(300)])
+            .presentationDragIndicator(.automatic)
         }
         .onAppear {
             currentExerciseId = exerciseId
