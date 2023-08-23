@@ -38,7 +38,7 @@ struct WorkoutView: View {
                         // .temporalAntialiasingEnabled, .allowsCameraControl
                         ZStack {
                             AnimationView(
-                                currentProgressionAnimationName: currentProgressionAnimationName ?? "pushup-07",
+                                currentProgressionAnimationName: currentProgressionAnimationName ?? "pushup-09",
                                 currentExerciseIndex: currentExerciseIndex,
                                 width: geo.size.width,
                                 height: geo.size.width

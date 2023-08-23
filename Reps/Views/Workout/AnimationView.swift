@@ -20,26 +20,27 @@ struct AnimationView: View {
             print("Scene could not be loaded")
             return SCNScene()
         }
-        print(currentProgressionAnimationName)
-        let sceneURL = Bundle.main.url(forResource: currentProgressionAnimationName, withExtension: "dae")
-        let sceneSource = SCNSceneSource(url: sceneURL!, options: nil)
-        var animations = [String: CAAnimation]()
+
+        let animationUrl = Bundle.main.url(forResource: currentProgressionAnimationName, withExtension: "dae")
+        let animationSceneSource = SCNSceneSource(url: animationUrl!, options: nil)
         
         let animationIdentifier = "action_container-rig"
+        let cameraIdentifier = "Camera"
         
-        if let animationObj = sceneSource?.entryWithIdentifier(animationIdentifier,
+        // Load animation from source
+        if let animationObj = animationSceneSource?.entryWithIdentifier(animationIdentifier,
                                                          withClass: CAAnimation.self) {
             animationObj.repeatCount = .infinity
-//            animationObj.fadeInDuration = CGFloat(0)
-//            animationObj.fadeOutDuration = CGFloat(0.5)
+            scene.rootNode.addAnimation(animationObj, forKey: "action_container-rig")
+        }
+        
+        // Override camera position
+        if let animationSceneCameraNode = animationSceneSource?.entryWithIdentifier(cameraIdentifier, withClass: SCNNode.self),
+           let existingCameraNode = scene.rootNode.childNode(withName: cameraIdentifier, recursively: true) {
+            existingCameraNode.removeFromParentNode()
+            scene.rootNode.addChildNode(animationSceneCameraNode)
+        }
 
-            animations["loaded-animation"] = animationObj
-        }
-        
-        if animations["loaded-animation"] != nil {
-            scene.rootNode.addAnimation(animations["loaded-animation"]!, forKey: "action_container-rig")
-        }
-        
         // TODO: Set up background for dark mode support
         // scene.background.contents = UIColor.darkText
         return scene
