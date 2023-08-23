@@ -40,14 +40,14 @@ struct AnimationView: View {
             existingCameraNode.removeFromParentNode()
             scene.rootNode.addChildNode(animationSceneCameraNode)
         }
-
+        
         // TODO: Set up background for dark mode support
         // scene.background.contents = UIColor.darkText
         return scene
     }
     
     var body: some View {
-        SceneView(scene: loadScene(currentProgressionAnimationName))
+        SceneView(scene: loadScene(currentProgressionAnimationName)) // Override with "pullup-01-anim" to see the simpler file animation working
         .edgesIgnoringSafeArea(.all)
         .frame(width: width, height: height)
     }

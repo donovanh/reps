@@ -41,10 +41,10 @@
 		4549BDF92A93D95C00F3E2AD /* pushup-10.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDF82A93D95C00F3E2AD /* pushup-10.dae */; };
 		4549BDFB2A93D9DD00F3E2AD /* pushup-08.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDFA2A93D9DD00F3E2AD /* pushup-08.dae */; };
 		4549BDFD2A93DA7B00F3E2AD /* pushup-09.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BDFC2A93DA7B00F3E2AD /* pushup-09.dae */; };
-		4549BE032A95DFBD00F3E2AD /* pullup-01-anim.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BE012A95DFBD00F3E2AD /* pullup-01-anim.dae */; };
 		4549BE042A95DFBD00F3E2AD /* pullup-01-anim.dae-e in Resources */ = {isa = PBXBuildFile; fileRef = 4549BE022A95DFBD00F3E2AD /* pullup-01-anim.dae-e */; };
 		4549BE062A96975200F3E2AD /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BE052A96975200F3E2AD /* AnimationView.swift */; };
 		4549BE082A96985300F3E2AD /* base-model.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BE072A96985200F3E2AD /* base-model.dae */; };
+		4549BE0E2A96AF8E00F3E2AD /* pullup-01-anim.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4549BE0D2A96AF8E00F3E2AD /* pullup-01-anim.dae */; };
 		459355202A6D90F2009EC063 /* RepsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593551F2A6D90F2009EC063 /* RepsApp.swift */; };
 		459355222A6D90F2009EC063 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459355212A6D90F2009EC063 /* WeekView.swift */; };
 		459355242A6D90F8009EC063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 459355232A6D90F8009EC063 /* Assets.xcassets */; };
@@ -95,10 +95,10 @@
 		4549BDF82A93D95C00F3E2AD /* pushup-10.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-10.dae"; sourceTree = "<group>"; };
 		4549BDFA2A93D9DD00F3E2AD /* pushup-08.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-08.dae"; sourceTree = "<group>"; };
 		4549BDFC2A93DA7B00F3E2AD /* pushup-09.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-09.dae"; sourceTree = "<group>"; };
-		4549BE012A95DFBD00F3E2AD /* pullup-01-anim.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pullup-01-anim.dae"; sourceTree = "<group>"; };
 		4549BE022A95DFBD00F3E2AD /* pullup-01-anim.dae-e */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "pullup-01-anim.dae-e"; sourceTree = "<group>"; };
 		4549BE052A96975200F3E2AD /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		4549BE072A96985200F3E2AD /* base-model.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "base-model.dae"; sourceTree = "<group>"; };
+		4549BE0D2A96AF8E00F3E2AD /* pullup-01-anim.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pullup-01-anim.dae"; sourceTree = "<group>"; };
 		4593551C2A6D90F2009EC063 /* Reps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4593551F2A6D90F2009EC063 /* RepsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsApp.swift; sourceTree = "<group>"; };
 		459355212A6D90F2009EC063 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 		4549BE002A95DFAA00F3E2AD /* Anim Only */ = {
 			isa = PBXGroup;
 			children = (
-				4549BE012A95DFBD00F3E2AD /* pullup-01-anim.dae */,
+				4549BE0D2A96AF8E00F3E2AD /* pullup-01-anim.dae */,
 				4549BE022A95DFBD00F3E2AD /* pullup-01-anim.dae-e */,
 			);
 			path = "Anim Only";
@@ -383,8 +383,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4549BE0E2A96AF8E00F3E2AD /* pullup-01-anim.dae in Resources */,
 				4549BE082A96985300F3E2AD /* base-model.dae in Resources */,
-				4549BE032A95DFBD00F3E2AD /* pullup-01-anim.dae in Resources */,
 				4549BE042A95DFBD00F3E2AD /* pullup-01-anim.dae-e in Resources */,
 				4549BDFD2A93DA7B00F3E2AD /* pushup-09.dae in Resources */,
 				4549BDFB2A93D9DD00F3E2AD /* pushup-08.dae in Resources */,
