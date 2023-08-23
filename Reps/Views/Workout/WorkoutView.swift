@@ -18,26 +18,30 @@ struct AnimationView: View {
     let height: CGFloat
     
     func loadScene(_ currentProgressionAnimationName: String) -> SCNScene {
-        guard let scene = SCNScene(named: currentProgressionAnimationName) else {
+        guard let scene = SCNScene(named: "base-model") else {
             print("Scene could not be loaded")
             return SCNScene()
         }
+        print(currentProgressionAnimationName)
+        let sceneURL = Bundle.main.url(forResource: currentProgressionAnimationName, withExtension: "dae")
+        let sceneSource = SCNSceneSource(url: sceneURL!, options: nil)
+        var animations = [String: CAAnimation]()
         
-        // Set up an other scene from which to load the animation
-//        let sceneURL = Bundle.main.url(forResource: "pushup-01", withExtension: "dae")
-//        let sceneSource = SCNSceneSource(url: sceneURL!, options: nil)
+        let animationIdentifier = "action_container-rig"
         
-        // from https://stackoverflow.com/questions/46209555/scenekit-how-to-get-animations-for-a-dae-model#62594220
-        // Blocker: How do I identify the animation in the dae file?
-//        if let animationObj = sceneSource?.entryWithIdentifier(animationIdentifier,
-//                                                         withClass: CAAnimation.self) {
-//            animationObj.repeatCount = 1
-//            animationObj.fadeInDuration = CGFloat(1)
-//            animationObj.fadeOutDuration = CGFloat(0.5)
-//
-//            animations[withKey] = animationObj
-//        }
+        if let animationObj = sceneSource?.entryWithIdentifier(animationIdentifier,
+                                                         withClass: CAAnimation.self) {
+            animationObj.repeatCount = 1
+            animationObj.fadeInDuration = CGFloat(1)
+            animationObj.fadeOutDuration = CGFloat(0.5)
 
+            animations["loaded-animation"] = animationObj
+        }
+        
+        if animations["loaded-animation"] != nil {
+            scene.rootNode.addAnimation(animations["loaded-animation"]!, forKey: "action_container-rig")
+        }
+        
         // TODO: Set up background for dark mode support
         // scene.background.contents = UIColor.darkText
         return scene
@@ -79,7 +83,7 @@ struct WorkoutView: View {
                         // .temporalAntialiasingEnabled, .allowsCameraControl
                         ZStack {
                             AnimationView(
-                                currentProgressionAnimationName: currentProgressionAnimationName ?? "pushup-07.dae",
+                                currentProgressionAnimationName: currentProgressionAnimationName ?? "pushup-07",
                                 currentExerciseIndex: currentExerciseIndex,
                                 width: geo.size.width,
                                 height: geo.size.width

@@ -16,7 +16,7 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 3
-    ], animationFileName: "pushup-01.dae"),
+    ], animationFileName: "pushup-01"),
     Progression(stage: 2, type: .pushup, name: .inclinePushups, reps: [
         .beginner: 10,
         .intermediate: 20,
@@ -25,7 +25,7 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 3
-    ], animationFileName: "pushup-02.dae"),
+    ], animationFileName: "pushup-02"),
     Progression(stage: 3, type: .pushup, name: .kneelingPushups, reps: [
         .beginner: 10,
         .intermediate: 15,
@@ -34,7 +34,7 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 3
-    ], animationFileName: "pushup-03.dae"),
+    ], animationFileName: "pushup-03"),
     Progression(stage: 4, type: .pushup, name: .halfPushups, reps: [
         .beginner: 8,
         .intermediate: 12,
@@ -43,7 +43,7 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ], animationFileName: "pushup-04.dae"),
+    ], animationFileName: "pushup-04"),
     Progression(stage: 5, type: .pushup, name: .fullPushups, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -52,7 +52,7 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ], animationFileName: "pushup-05.dae"),
+    ], animationFileName: "pushup-05"),
     Progression(stage: 6, type: .pushup, name: .closePushups, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -61,7 +61,7 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ], animationFileName: "pushup-06.dae"),
+    ], animationFileName: "pushup-06"),
     Progression(stage: 7, type: .pushup, name: .unevenPushups, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -70,7 +70,7 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ], showForEachSide: true, animationFileName: "pushup-07.dae"),
+    ], showForEachSide: true, animationFileName: "pushup-07"),
     Progression(stage: 8, type: .pushup, name: .halfOneArmPushups, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -79,7 +79,7 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ], showForEachSide: true, animationFileName: "pushup-08.dae"),
+    ], showForEachSide: true, animationFileName: "pushup-08"),
     Progression(stage: 9, type: .pushup, name: .leverPushups, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -88,7 +88,7 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ], showForEachSide: true, animationFileName: "pushup-09.dae"),
+    ], showForEachSide: true, animationFileName: "pushup-09"),
     Progression(stage: 10, type: .pushup, name: .oneArmPushups, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -97,5 +97,5 @@ let pushupDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 1
-    ], showForEachSide: true, animationFileName: "pushup-10.dae"),
+    ], showForEachSide: true, animationFileName: "pushup-10"),
 ]

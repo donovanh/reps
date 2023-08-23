@@ -52,7 +52,7 @@ let squatDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ], animationFileName: "squat-05.dae"),
+    ], animationFileName: "squat-05"),
     Progression(stage: 6, type: .squat, name: .closeSquats, reps: [
         .beginner: 5,
         .intermediate: 10,
