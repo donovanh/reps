@@ -135,6 +135,7 @@
       }
     },
     "1/2 One-arm pull-ups" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -271,6 +272,7 @@
       }
     },
     "Assisted One-arm pull-ups" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -578,7 +580,14 @@
         }
       }
     },
+    "Half One-arm pull-ups" : {
+
+    },
+    "Half One-arm push-ups" : {
+
+    },
     "Half One-Arm push-ups" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -886,6 +895,9 @@
         }
       }
     },
+    "One-arm negative pull-ups" : {
+
+    },
     "One-arm pull-ups" : {
       "localizations" : {
         "de" : {
@@ -896,7 +908,11 @@
         }
       }
     },
+    "One-arm push-ups" : {
+
+    },
     "One-Arm push-ups" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
