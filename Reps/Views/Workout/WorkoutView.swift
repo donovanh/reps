@@ -35,10 +35,9 @@ struct WorkoutView: View {
             GeometryReader { geo in
                 ZStack {
                     VStack {
-                        // .temporalAntialiasingEnabled, .allowsCameraControl
                         ZStack {
                             AnimationView(
-                                currentProgressionAnimationName: currentProgressionAnimationName ?? "pullup-01-anim",
+                                currentProgressionAnimationName: currentProgressionAnimationName ?? "pushup-01",
                                 currentExerciseIndex: currentExerciseIndex,
                                 width: geo.size.width,
                                 height: geo.size.width

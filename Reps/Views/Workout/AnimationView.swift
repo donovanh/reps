@@ -15,50 +15,59 @@ struct AnimationView: View {
     let width: CGFloat
     let height: CGFloat
     
+    // TODO: Add credit for model
+    /*
+     Name: Wooden mannequin - Rigged
+     Author: jgilhutton
+     Permalink: http://www.blendswap.com/blends/view/74733
+     */
+    
     func loadScene(_ currentProgressionAnimationName: String) -> SCNScene {
         guard let scene = SCNScene(named: "base-model") else {
             print("Scene could not be loaded")
             return SCNScene()
         }
-
-        let animationUrl = Bundle.main.url(forResource: currentProgressionAnimationName, withExtension: "dae")
-        let animationSceneSource = SCNSceneSource(url: animationUrl!, options: nil)
         
+        guard let animationSceneSourceUrl = Bundle.main.url(forResource: currentProgressionAnimationName, withExtension: "dae"),
+              let animationSceneSource = SCNSceneSource(url: animationSceneSourceUrl, options: nil) else {
+            print("Animation file \"\(currentProgressionAnimationName)\" could not be loaded")
+            return SCNScene()
+        }
+
         let animationIdentifier = "action_container-rig"
         let footballAnimationIdentifier = "football2_ball_football2_ballAction_transform"
         let cameraIdentifier = "Camera"
         
         // Load dummy animation from source
-        if let animationObj = animationSceneSource?.entryWithIdentifier(animationIdentifier,
+        if let animationObj = animationSceneSource.entryWithIdentifier(animationIdentifier,
                                                          withClass: CAAnimation.self) {
-            print("Animation rig")
             animationObj.repeatCount = .infinity
             scene.rootNode.addAnimation(animationObj, forKey: animationIdentifier)
         }
         
         // Load animation for football if found
-        // TODO: Remake this something tidy
-        if let footballAnimationObj = animationSceneSource?.entryWithIdentifier(footballAnimationIdentifier,
+        // TODO: Fix the missing object issue from anim-only files
+        if let footballAnimationObj = animationSceneSource.entryWithIdentifier(footballAnimationIdentifier,
                                                          withClass: CAAnimation.self) {
-            print("Applying football animation")
             footballAnimationObj.repeatCount = .infinity
             scene.rootNode.addAnimation(footballAnimationObj, forKey: footballAnimationIdentifier)
         }
         
         // Override camera position
-        if let animationSceneCameraNode = animationSceneSource?.entryWithIdentifier(cameraIdentifier, withClass: SCNNode.self),
+        if let animationSceneCameraNode = animationSceneSource.entryWithIdentifier(cameraIdentifier, withClass: SCNNode.self),
            let existingCameraNode = scene.rootNode.childNode(withName: cameraIdentifier, recursively: true) {
             existingCameraNode.removeFromParentNode()
             scene.rootNode.addChildNode(animationSceneCameraNode)
         }
-        
+
         // TODO: Set up background for dark mode support
         // scene.background.contents = UIColor.darkText
         return scene
     }
     
     var body: some View {
-        SceneView(scene: loadScene(currentProgressionAnimationName)) // Override with "pullup-01-anim" to see the simpler file animation working
+        // , .allowsCameraControl
+        SceneView(scene: loadScene(currentProgressionAnimationName), options: [.temporalAntialiasingEnabled])
         .edgesIgnoringSafeArea(.all)
         .frame(width: width, height: height)
     }

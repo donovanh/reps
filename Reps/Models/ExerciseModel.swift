@@ -57,8 +57,8 @@ enum ProgressionName: LocalizedStringResource {
     case fullPullups = "Full pull-ups"
     case closePullups = "Close pull-ups"
     case unevenPullups = "Uneven pull-ups"
-    case halfOneArmPullups = "1/2 One-arm pull-ups"
-    case assistedOneArmPullups = "Assisted One-arm pull-ups"
+    case halfOneArmPullups = "Half One-arm pull-ups"
+    case assistedOneArmPullups = "One-arm negative pull-ups"
     case oneArmPullups = "One-arm pull-ups"
     
     case wallPushups = "Wall push-ups"
@@ -68,9 +68,9 @@ enum ProgressionName: LocalizedStringResource {
     case fullPushups = "Full push-ups"
     case closePushups = "Close push-ups"
     case unevenPushups = "Uneven push-ups"
-    case halfOneArmPushups = "Half One-Arm push-ups"
+    case halfOneArmPushups = "Half One-arm push-ups"
     case leverPushups = "Lever push-ups"
-    case oneArmPushups = "One-Arm push-ups"
+    case oneArmPushups = "One-arm push-ups"
     
     case shoulderStands = "Shoulder stands"
     case jackknifeSquats = "Jackknife squats"
