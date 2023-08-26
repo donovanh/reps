@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 3.6.1 commit date:2023-07-17, commit time:12:50, hash:8bda729ef4dc</authoring_tool>
     </contributor>
-    <created>2023-08-25T18:40:55</created>
-    <modified>2023-08-25T18:40:55</modified>
+    <created>2023-08-26T13:37:59</created>
+    <modified>2023-08-26T13:37:59</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -160,6 +160,50 @@
     </light>
   </library_lights>
   <library_images/>
+  <library_geometries>
+    <geometry id="football2_ball-mesh" name="football2_ball">
+      <mesh>
+        <source id="football2_ball-mesh-positions">
+          <float_array id="football2_ball-mesh-positions-array" count="72">0.6671545 0.5340713 -0.6171807 -0.2816258 0.9825825 -0.1345542 -0.8099788 0.4391087 0.5868199 -0.1087157 0.3204366 -0.9522206 0.5579808 -0.7294068 -0.4181321 -0.193574 -1.000605 0.1812477 0.794529 -0.4743617 0.4758855 -0.2182114 -0.4443762 -0.9259152 -0.3030163 0.3674044 0.8903674 0.3821763 -0.8149786 0.3926019 0.454155 0.5136806 0.879565 0.2275799 -0.1087725 -0.9392915 -0.3461603 -0.08628356 0.9299455 -0.9345544 -0.3768079 0.034958 -0.3343468 0.9756454 -0.06267458 0.1573251 0.9138619 0.5440055 -0.592294 0.5951005 -0.6155773 0.8999393 -0.3897719 -0.2755483 -0.1112907 -0.3571766 0.9579896 -1.018548 -0.1524968 0.07079148 -0.5325822 -0.466754 -0.7553308 0.6802105 0.6903087 -0.1409589 0.7007314 0.6592074 0.1395406 -0.4484523 -0.9164372 0.004757583</float_array>
+          <technique_common>
+            <accessor source="#football2_ball-mesh-positions-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="football2_ball-mesh-normals">
+          <float_array id="football2_ball-mesh-normals-array" count="48">-0.7427814 -0.5570861 -0.3713907 -0.8728716 -0.4364358 -0.2182179 -0.5962848 -0.745356 -0.2981424 -0.1075801 0.3170896 -0.9422743 -0.2731676 0.9530718 -0.1305131 0.6945692 0.7048806 -0.1439344 0 1 0 -1 0 0 0 0 1 0 -1 0 0.1463356 0.8500263 0.5060053 -0.3235883 0.9442517 -0.06065785 -0.3000957 0.3638632 0.8817858 -0.5143796 -0.4508012 -0.729515 -0.9866489 -0.1477208 0.06857442 -0.568911 0.5716066 -0.5912751</float_array>
+          <technique_common>
+            <accessor source="#football2_ball-mesh-normals-array" count="16" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="football2_ball-mesh-map-0">
+          <float_array id="football2_ball-mesh-map-0-array" count="96">0.2080418 0.06627005 0.1697088 -0.02998036 -0.1206156 -0.07187104 -0.05123943 -0.2133775 0.03839927 -0.1086507 0.143939 0.1868065 -0.01980012 0.1536514 0.2831791 0.1368507 0.2155622 0.196668 0.2134523 0.05010235 0.05579 -0.0916835 0.07790333 0.1670143 0.2831791 0.1368507 -0.01980012 0.1536514 0.2155622 0.196668 -0.05123943 -0.2133775 0.143939 0.1868065 0.03839927 -0.1086507 -0.1658057 0.0746122 -0.2003211 -0.1952592 -0.09704101 -0.1781826 0.05509424 -0.08296614 0.2134523 0.05010235 0.07966005 0.1714581 0.1547212 -0.1128701 -0.2172624 -0.1429634 -0.1218544 -0.2692035 -0.09704101 -0.1781826 -0.2003211 -0.1952592 -0.1658057 0.0746122 0.1518324 0.06867438 0.1335876 -0.2631831 0.2341461 -0.02435499 -0.1667026 -0.2035838 -0.09354144 -0.01637458 0.1503555 -0.1759631 0.1697088 -0.02998036 0.2080418 0.06627005 -0.1206156 -0.07187104 0.1518324 0.06867438 0.2341461 -0.02435499 0.02018404 -0.1134101 -0.1288098 -0.06068372 0.1547212 -0.1128701 -0.1218544 -0.2692035 -0.1667026 -0.2035838 0.1503555 -0.1759631 -0.09354144 -0.01637458</float_array>
+          <technique_common>
+            <accessor source="#football2_ball-mesh-map-0-array" count="48" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="football2_ball-mesh-vertices">
+          <input semantic="POSITION" source="#football2_ball-mesh-positions"/>
+        </vertices>
+        <triangles count="16">
+          <input semantic="VERTEX" source="#football2_ball-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#football2_ball-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#football2_ball-mesh-map-0" offset="2" set="0"/>
+          <p>12 0 0 2 1 1 13 2 2 3 3 3 1 4 4 21 5 5 6 6 6 22 6 7 10 6 8 18 7 9 5 7 10 9 7 11 22 6 12 6 6 13 10 6 14 3 3 15 21 5 16 1 4 17 4 8 18 7 8 19 23 8 20 5 7 21 18 7 22 9 7 23 0 9 24 17 9 25 11 9 26 23 8 27 7 8 28 4 8 29 15 10 30 14 11 31 8 12 32 20 13 33 19 14 34 16 15 35 2 1 36 12 0 37 13 2 38 15 10 39 8 12 40 14 11 41 17 9 42 0 9 43 11 9 44 20 13 45 16 15 46 19 14 47</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
   <library_controllers/>
   <library_animations>
     <animation id="action_container-rig" name="rig">
@@ -2663,6 +2707,10 @@
   </library_animations>
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
+      <node id="football2_ball" name="football2_ball" type="NODE">
+        <matrix sid="transform">0.131692 -5.74201e-8 -0.3525857 0.75 -0.3524422 -2.14554e-8 -0.1317456 -2.84 0 0.3762424 -6.13226e-8 0.376243 0 0 0 1</matrix>
+        <instance_geometry url="#football2_ball-mesh" name="football2_ball"/>
+      </node>
       <node id="rig" name="rig" type="NODE">
         <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
         <node id="rig_root" name="root" sid="root" type="JOINT">

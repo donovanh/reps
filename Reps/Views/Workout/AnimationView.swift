@@ -23,7 +23,8 @@ struct AnimationView: View {
      */
     
     func loadScene(_ currentProgressionAnimationName: String) -> SCNScene {
-        guard let scene = SCNScene(named: "base-model") else {
+        guard let scene = SCNScene(named: "base-model"),
+              let sceneSource = SCNSceneSource(url: Bundle.main.url(forResource: "base-model", withExtension: "dae")!, options: nil) else {
             print("Scene could not be loaded")
             return SCNScene()
         }
@@ -35,6 +36,7 @@ struct AnimationView: View {
         }
 
         let animationIdentifier = "action_container-rig"
+        let footballObjectIdentifier = "football2_ball"
         let footballAnimationIdentifier = "football2_ball_football2_ballAction_transform"
         let cameraIdentifier = "Camera"
         
@@ -45,13 +47,29 @@ struct AnimationView: View {
             scene.rootNode.addAnimation(animationObj, forKey: animationIdentifier)
         }
         
-        // Load animation for football if found
-        // TODO: Fix the missing object issue from anim-only files
+        // Load animation for football if found, or try just the position
         if let footballAnimationObj = animationSceneSource.entryWithIdentifier(footballAnimationIdentifier,
                                                          withClass: CAAnimation.self) {
+            print("Found animation")
             footballAnimationObj.repeatCount = .infinity
             scene.rootNode.addAnimation(footballAnimationObj, forKey: footballAnimationIdentifier)
+        } else {
+            if let footballObj = animationSceneSource.entryWithIdentifier(footballObjectIdentifier,
+                                                                          withClass: SCNNode.self) {
+                let sourceFootballObj = sceneSource.entryWithIdentifier(footballObjectIdentifier,
+                                                                        withClass: SCNNode.self)!
+                let sourceFootballObjCopy = sourceFootballObj
+                print("Source object, \(sourceFootballObj.position)")
+                print("Found object, \(footballObj.position)")
+                sourceFootballObj.removeFromParentNode()
+                
+                sourceFootballObjCopy.position = footballObj.position
+                print("Copy object, \(sourceFootballObjCopy.position)")
+                scene.rootNode.addChildNode(sourceFootballObjCopy)
+            }
         }
+        
+        
         
         // Override camera position
         if let animationSceneCameraNode = animationSceneSource.entryWithIdentifier(cameraIdentifier, withClass: SCNNode.self),
