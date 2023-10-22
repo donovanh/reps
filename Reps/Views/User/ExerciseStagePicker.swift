@@ -26,7 +26,7 @@ struct ExerciseStagePicker: View {
                     .tag(progression.stage)
             }
         }
-        .onChange(of: selectedOption) {
+        .onChange(of: selectedOption) { // TODO - check iTour - is this onChange needed?
             saveProgressionStage(exerciseType.rawValue, stage: selectedOption)
         }
     }

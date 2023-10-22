@@ -191,6 +191,6 @@ struct TodayView: View {
     }
 }
 
-//#Preview {
-//    TodayView()
-//}
+#Preview {
+    TodayView()
+}

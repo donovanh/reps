@@ -37,6 +37,7 @@ struct WorkoutView: View {
                     VStack {
                         ZStack {
                             AnimationView(
+                                baseModel: "base-model",
                                 currentProgressionAnimationName: currentProgressionAnimationName ?? "pushup-01",
                                 currentExerciseIndex: currentExerciseIndex,
                                 width: geo.size.width,
@@ -69,10 +70,9 @@ struct WorkoutView: View {
                                         )
                                         .id(exercise.id)
                                         .frame(
-                                            width: geo.size.width > 40 ? geo.size.width - 40 : geo.size.width,
+                                            width: geo.size.width,
                                             height: geo.size.height > 80 ? geo.size.height - 80 : geo.size.height
                                         )
-                                        .padding(.horizontal, 20)
                                     }
                                 }
                             }

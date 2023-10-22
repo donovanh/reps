@@ -16,7 +16,7 @@ let squatDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 3
-    ]),
+    ], animationFileName: "squat-01"),
     Progression(stage: 2, type: .squat, name: .jackknifeSquats, reps: [
         .beginner: 10,
         .intermediate: 20,
@@ -25,7 +25,7 @@ let squatDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 3
-    ]),
+    ], animationFileName: "squat-02"),
     Progression(stage: 3, type: .squat, name: .supportedSquats, reps: [
         .beginner: 10,
         .intermediate: 15,
@@ -34,7 +34,7 @@ let squatDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 3
-    ]),
+    ], animationFileName: "squat-03"),
     Progression(stage: 4, type: .squat, name: .halfSquats, reps: [
         .beginner: 8,
         .intermediate: 35,
@@ -43,7 +43,7 @@ let squatDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], animationFileName: "squat-04"),
     Progression(stage: 5, type: .squat, name: .fullSquats, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -61,7 +61,7 @@ let squatDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], animationFileName: "squat-06"),
     Progression(stage: 7, type: .squat, name: .unevenSquats, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -70,7 +70,7 @@ let squatDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], showForEachSide: true, animationFileName: "squat-07"),
     Progression(stage: 8, type: .squat, name: .halfOneLegSquats, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -79,7 +79,7 @@ let squatDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], showForEachSide: true, animationFileName: "squat-08"),
     Progression(stage: 9, type: .squat, name: .assistedOneLegSquats, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -88,7 +88,7 @@ let squatDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], showForEachSide: true, animationFileName: "squat-09"),
     Progression(stage: 10, type: .squat, name: .oneLegSquats, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -97,5 +97,5 @@ let squatDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], showForEachSide: true, animationFileName: "squat-10")
 ]

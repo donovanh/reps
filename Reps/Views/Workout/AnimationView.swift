@@ -10,6 +10,7 @@ import SceneKit
 
 struct AnimationView: View {
     
+    let baseModel: String
     let currentProgressionAnimationName: String
     let currentExerciseIndex: Int
     let width: CGFloat
@@ -23,8 +24,8 @@ struct AnimationView: View {
      */
     
     func loadScene(_ currentProgressionAnimationName: String) -> SCNScene {
-        guard let scene = SCNScene(named: "base-model"),
-              let sceneSource = SCNSceneSource(url: Bundle.main.url(forResource: "base-model", withExtension: "dae")!, options: nil) else {
+        guard let scene = SCNScene(named: baseModel),
+              let sceneSource = SCNSceneSource(url: Bundle.main.url(forResource: baseModel, withExtension: "dae")!, options: nil) else {
             print("Scene could not be loaded")
             return SCNScene()
         }
@@ -32,12 +33,13 @@ struct AnimationView: View {
         guard let animationSceneSourceUrl = Bundle.main.url(forResource: currentProgressionAnimationName, withExtension: "dae"),
               let animationSceneSource = SCNSceneSource(url: animationSceneSourceUrl, options: nil) else {
             print("Animation file \"\(currentProgressionAnimationName)\" could not be loaded")
+            
             return SCNScene()
         }
 
         let animationIdentifier = "action_container-rig"
         let footballObjectIdentifier = "football2_ball"
-        let footballAnimationIdentifier = "football2_ball_football2_ballAction_transform"
+        let footballAnimationIdentifier = "football2_ball_football2_ballAction_002_transform"
         let cameraIdentifier = "Camera"
         
         // Load dummy animation from source
@@ -50,7 +52,6 @@ struct AnimationView: View {
         // Load animation for football if found, or try just the position
         if let footballAnimationObj = animationSceneSource.entryWithIdentifier(footballAnimationIdentifier,
                                                          withClass: CAAnimation.self) {
-            print("Found animation")
             footballAnimationObj.repeatCount = .infinity
             scene.rootNode.addAnimation(footballAnimationObj, forKey: footballAnimationIdentifier)
         } else {
@@ -59,18 +60,13 @@ struct AnimationView: View {
                 let sourceFootballObj = sceneSource.entryWithIdentifier(footballObjectIdentifier,
                                                                         withClass: SCNNode.self)!
                 let sourceFootballObjCopy = sourceFootballObj
-                print("Source object, \(sourceFootballObj.position)")
-                print("Found object, \(footballObj.position)")
                 sourceFootballObj.removeFromParentNode()
                 
                 sourceFootballObjCopy.position = footballObj.position
-                print("Copy object, \(sourceFootballObjCopy.position)")
                 scene.rootNode.addChildNode(sourceFootballObjCopy)
             }
         }
-        
-        
-        
+
         // Override camera position
         if let animationSceneCameraNode = animationSceneSource.entryWithIdentifier(cameraIdentifier, withClass: SCNNode.self),
            let existingCameraNode = scene.rootNode.childNode(withName: cameraIdentifier, recursively: true) {
@@ -84,9 +80,19 @@ struct AnimationView: View {
     }
     
     var body: some View {
-        // , .allowsCameraControl
         SceneView(scene: loadScene(currentProgressionAnimationName), options: [.temporalAntialiasingEnabled])
         .edgesIgnoringSafeArea(.all)
         .frame(width: width, height: height)
     }
 }
+
+#Preview {
+    AnimationView(
+        baseModel: "base-model",
+        currentProgressionAnimationName: "hspu--04",
+        currentExerciseIndex: 1,
+        width: 350,
+        height: 400
+    )
+}
+

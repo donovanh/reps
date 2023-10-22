@@ -16,7 +16,7 @@ let handstandpushupsDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 1,
         .progression: 1
-    ], showSecondsForReps: true),
+    ], showSecondsForReps: true, animationFileName: "hspu--01"),
     Progression(stage: 2, type: .handstandpushup, name: .crow, reps: [
         .beginner: 10,
         .intermediate: 30,
@@ -25,7 +25,7 @@ let handstandpushupsDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 1,
         .progression: 1
-    ], showSecondsForReps: true),
+    ], showSecondsForReps: true, animationFileName: "hspu--02"),
     Progression(stage: 3, type: .handstandpushup, name: .wallHandstands, reps: [
         .beginner: 30,
         .intermediate: 60,
@@ -34,7 +34,7 @@ let handstandpushupsDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 1,
         .progression: 1
-    ], showSecondsForReps: true),
+    ], showSecondsForReps: true, animationFileName: "hspu--03"),
     Progression(stage: 4, type: .handstandpushup, name: .halfHandstandPushups, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -43,7 +43,7 @@ let handstandpushupsDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], animationFileName: "hspu--04"),
     Progression(stage: 5, type: .handstandpushup, name: .handstandPushups, reps: [
         .beginner: 5,
         .intermediate: 10,
@@ -52,7 +52,7 @@ let handstandpushupsDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], animationFileName: "hspu--05"),
     Progression(stage: 6, type: .handstandpushup, name: .closeHandstandPushups, reps: [
         .beginner: 5,
         .intermediate: 9,
@@ -61,7 +61,7 @@ let handstandpushupsDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], animationFileName: "hspu--06"),
     Progression(stage: 7, type: .handstandpushup, name: .unevenHandstandPushups, reps: [
         .beginner: 5,
         .intermediate: 8,
@@ -70,7 +70,7 @@ let handstandpushupsDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], showForEachSide: true, animationFileName: "hspu--07"),
     Progression(stage: 8, type: .handstandpushup, name: .halfOneArmHandstandPushups, reps: [
         .beginner: 4,
         .intermediate: 6,
@@ -79,7 +79,7 @@ let handstandpushupsDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], showForEachSide: true, animationFileName: "hspu--08"),
     Progression(stage: 9, type: .handstandpushup, name: .leverHandstandPushups, reps: [
         .beginner: 3,
         .intermediate: 4,
@@ -88,7 +88,7 @@ let handstandpushupsDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 2
-    ]),
+    ], showForEachSide: true, animationFileName: "hspu--09"),
     Progression(stage: 10, type: .handstandpushup, name: .oneArmHandstandPushups, reps: [
         .beginner: 1,
         .intermediate: 2,
@@ -97,5 +97,5 @@ let handstandpushupsDataSet: [Progression] = [
         .beginner: 1,
         .intermediate: 2,
         .progression: 1
-    ]),
+    ], showForEachSide: true, animationFileName: "hspu--10"),
 ]
