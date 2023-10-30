@@ -12,6 +12,7 @@ struct ExerciseBrowserView: View {
     @State private var selectedExerciseType: ExerciseType = ExerciseType.pushup
     @State private var selectedProgression: Int = 1
     @State private var animationName: String = "pushup-01"
+    @State private var isAnimating = false
     
     @Binding var showingExerciseBrowserView: Bool
     
@@ -35,8 +36,24 @@ struct ExerciseBrowserView: View {
                     width: geo.size.width,
                     height: geo.size.width
                 )
+                .opacity(isAnimating ? 1 : 0)
                 .onAppear {
                     setAnimationName()
+                    withAnimation {
+                        isAnimating = true
+                    }
+                }
+                .onChange(of: selectedExerciseType) {
+                    isAnimating = false
+                    withAnimation {
+                        isAnimating = true
+                    }
+                }
+                .onChange(of: selectedProgression) {
+                    isAnimating = false
+                    withAnimation {
+                        isAnimating = true
+                    }
                 }
                 Form {
                     VStack {
