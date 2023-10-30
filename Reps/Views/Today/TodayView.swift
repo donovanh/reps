@@ -27,6 +27,7 @@ struct TodayView: View {
     @State private var showingPlanBuilder = false
     @State private var showingTodayRoutine = false
     @State private var showingSettingsSheet = false
+    @State private var showingExerciseBrowserSheet = false
     
     @State private var isWorkoutInProgress = false
     @State private var isWorkoutComplete = false
@@ -97,6 +98,13 @@ struct TodayView: View {
                                 Text("Maybe go for a walk!")
                             }
                         }
+                        Button {
+                            showingExerciseBrowserSheet = true
+                        } label: {
+                            Label("Browse Exercises", systemImage: "book")
+                        }
+                        .padding(.vertical, 20)
+                        Spacer()
                     }
                     .navigationTitle("Your Day: \(getDayName(forDate: Date()))")
                     .toolbar {
@@ -127,6 +135,9 @@ struct TodayView: View {
         .sheet(isPresented: $showingSettingsSheet) {
             UserView()
         }
+        .sheet(isPresented: $showingExerciseBrowserSheet) {
+            ExerciseBrowserView(showingExerciseBrowserView: $showingExerciseBrowserSheet)
+        }
         .onAppear {
             isWorkoutInProgress = false
             if users.isEmpty {
@@ -147,10 +158,14 @@ struct TodayView: View {
         return f.weekdaySymbols[dayNum - 1]
     }
     
-    func getTodayExercises() -> [Exercise] {
+    func getDayNum() -> Int {
         let currentDate = Date()
         let calendar = Calendar.current
-        let dayNum = calendar.component(.weekday, from: currentDate)
+        return calendar.component(.weekday, from: currentDate)
+    }
+    
+    func getTodayExercises() -> [Exercise] {
+        let dayNum = getDayNum()
         let routine = getRoutine(forDay: dayNum, fromRoutines: routines)
         return routine.exercises
     }
@@ -188,7 +203,23 @@ struct TodayView: View {
         return true
     }
 }
-//
-//#Preview {
-//    TodayView()
-//}
+
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: User.self, Routine.self, configurations: config)
+        container.mainContext.insert(DefaultUser)
+
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let dayNum = calendar.component(.weekday, from: currentDate)
+        let exampleExercise = Exercise(id: UUID(), type: ExerciseType.pushup.rawValue)
+        let exampleRoutine = Routine(day: dayNum, exercises: [])
+        // TODO: Work out how to pass exercises here
+        container.mainContext.insert(exampleRoutine)
+        
+        return TodayView().modelContainer(container)
+    }  catch {
+        fatalError("Failed to create Today view model container in Preview")
+    }
+}

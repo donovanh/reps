@@ -15,7 +15,7 @@ struct WeekView: View {
     @State private var isPresentingAddExercise: Bool = false
     @State private var showingPlanBuilder = false
     
-    let weekDays = [2,3,4,5,6,7,1]
+    let weekDays = [2,3,4,5,6,7,1] // TODO: Internationalise to Sunday first
     
     var body: some View {
         NavigationView {

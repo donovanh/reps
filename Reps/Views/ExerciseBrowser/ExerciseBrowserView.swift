@@ -13,9 +13,20 @@ struct ExerciseBrowserView: View {
     @State private var selectedProgression: Int = 1
     @State private var animationName: String = "pushup-01"
     
+    @Binding var showingExerciseBrowserView: Bool
+    
     var body: some View {
         GeometryReader { geo in
             VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        showingExerciseBrowserView = false
+                    } label: {
+                        Text("Close")
+                    }
+                    .padding(20)
+                }
                 Spacer()
                 AnimationView(
                     baseModel: "base-model",
@@ -62,5 +73,10 @@ struct ExerciseBrowserView: View {
 }
 
 #Preview {
-    ExerciseBrowserView()
+    @State var value = true
+    do {
+        return ExerciseBrowserView(showingExerciseBrowserView: $value)
+    } catch {
+        
+    }
 }
