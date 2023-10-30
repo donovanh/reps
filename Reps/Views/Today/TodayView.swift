@@ -33,112 +33,110 @@ struct TodayView: View {
     @State private var currentExerciseId: UUID?
     
     var body: some View {
-        GeometryReader { geo in
-            NavigationView {
-                ScrollView {
-                    if let user = users.first {
-                        VStack {
-                            if todayExercises.count > 0 {
-                                ForEach(todayExercises, id: \.self) { exercise in
-                                    let level = user.getLevel(forType: exercise.type)
-                                    let sets = getSets(forExerciseType: exercise.type)
-                                    let setsDone = getSetsDone(entries: journalEntries, forDate: Date(), ofType: exercise.type)
-                                    if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
-                                        ExerciseItemView(
-                                            progression: progression,
-                                            exerciseType: ExerciseType(rawValue: exercise.type) ?? .bridge, levelStr: level,
-                                            setsDone: setsDone
-                                        )
-                                        .onTapGesture {
+        NavigationView {
+            ScrollView {
+                if let user = users.first {
+                    VStack {
+                        if todayExercises.count > 0 {
+                            ForEach(todayExercises, id: \.self) { exercise in
+                                let level = user.getLevel(forType: exercise.type)
+                                let sets = getSets(forExerciseType: exercise.type)
+                                let setsDone = getSetsDone(entries: journalEntries, forDate: Date(), ofType: exercise.type)
+                                if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
+                                    ExerciseItemView(
+                                        progression: progression,
+                                        exerciseType: ExerciseType(rawValue: exercise.type) ?? .bridge, levelStr: level,
+                                        setsDone: setsDone
+                                    )
+                                    .onTapGesture {
+                                        currentExerciseId = exercise.id
+                                        showingTodayRoutine = true
+                                    }
+                                    .onAppear {
+                                        if setsDone < sets {
                                             currentExerciseId = exercise.id
-                                            showingTodayRoutine = true
                                         }
-                                        .onAppear {
+                                        if setsDone > 0 {
+                                            isWorkoutInProgress = true
+                                        }
+                                    }
+                                }
+                            }
+                            Spacer()
+                            if isWorkoutComplete != true {
+                                Button(isWorkoutInProgress ? "Continue Workout" : "Start Workout") {
+                                    if isWorkoutInProgress == true {
+                                        for exercise in todayExercises {
+                                            let sets = getSets(forExerciseType: exercise.type)
+                                            let setsDone = getSetsDone(entries: journalEntries, forDate: Date(), ofType: exercise.type)
                                             if setsDone < sets {
                                                 currentExerciseId = exercise.id
-                                            }
-                                            if setsDone > 0 {
-                                                isWorkoutInProgress = true
+                                                break
                                             }
                                         }
                                     }
+                                    showingTodayRoutine = true
                                 }
-                                Spacer()
-                                if isWorkoutComplete != true {
-                                    Button(isWorkoutInProgress ? "Continue Workout" : "Start Workout") {
-                                        if isWorkoutInProgress == true {
-                                            for exercise in todayExercises {
-                                                let sets = getSets(forExerciseType: exercise.type)
-                                                let setsDone = getSetsDone(entries: journalEntries, forDate: Date(), ofType: exercise.type)
-                                                if setsDone < sets {
-                                                    currentExerciseId = exercise.id
-                                                    break
-                                                }
-                                            }
-                                        }
-                                        showingTodayRoutine = true
-                                    }
-                                    .padding()
-                                } else {
-                                    Text("You're all done for today!")
-                                    Button("Do more") {
-                                        currentExerciseId = todayExercises.first?.id
-                                        showingTodayRoutine = true
-                                    }
-                                    .padding()
+                                .padding()
+                            } else {
+                                Text("You're all done for today!")
+                                Button("Do more") {
+                                    currentExerciseId = todayExercises.first?.id
+                                    showingTodayRoutine = true
+                                }
+                                .padding()
+                            }
+                        } else {
+                            if routines.count == 0 {
+                                Button("Set up a new routine") {
+                                    showingPlanBuilder = true
                                 }
                             } else {
-                                if routines.count == 0 {
-                                    Button("Set up a new routine") {
-                                        showingPlanBuilder = true
-                                    }
-                                } else {
-                                    Text("Rest day")
-                                        .font(.largeTitle)
-                                    Text("Maybe go for a walk!")
-                                }
+                                Text("Rest day")
+                                    .font(.largeTitle)
+                                Text("Maybe go for a walk!")
                             }
                         }
-                        .navigationTitle("Your Day: \(getDayName(forDate: Date()))")
-                        .toolbar {
-                            Button {
-                                showingSettingsSheet = true
-                            } label: {
-                                Label("User Profile", systemImage: "person.crop.circle")
-                            }
-                        }
-                    } else {
-                        Text("New user")
                     }
+                    .navigationTitle("Your Day: \(getDayName(forDate: Date()))")
+                    .toolbar {
+                        Button {
+                            showingSettingsSheet = true
+                        } label: {
+                            Label("User Profile", systemImage: "person.crop.circle")
+                        }
+                    }
+                } else {
+                    Text("New user")
                 }
             }
-            .sheet(isPresented: $showingPlanBuilder) {
-                PlanBuilderView(showingPlanBuilder: $showingPlanBuilder)
+        }
+        .sheet(isPresented: $showingPlanBuilder) {
+            PlanBuilderView(showingPlanBuilder: $showingPlanBuilder)
+        }
+        .sheet(isPresented: $showingTodayRoutine) {
+            WorkoutView(
+                showingTodayRoutine: $showingTodayRoutine,
+                isWorkoutComplete: $isWorkoutComplete,
+                isWorkoutInProgress: $isWorkoutInProgress,
+                currentExerciseId: currentExerciseId,
+                todayExercises: todayExercises,
+                screenWidth: UIScreen.main.bounds.width + 8
+            )
+        }
+        .sheet(isPresented: $showingSettingsSheet) {
+            UserView()
+        }
+        .onAppear {
+            isWorkoutInProgress = false
+            if users.isEmpty {
+                initUser()
             }
-            .sheet(isPresented: $showingTodayRoutine) {
-                WorkoutView(
-                    showingTodayRoutine: $showingTodayRoutine,
-                    isWorkoutComplete: $isWorkoutComplete,
-                    isWorkoutInProgress: $isWorkoutInProgress,
-                    currentExerciseId: currentExerciseId,
-                    todayExercises: todayExercises,
-                    screenWidth: UIScreen.main.bounds.width + 8
-                )
+            if routines.isEmpty {
+                applyEmptySchedule()
             }
-            .sheet(isPresented: $showingSettingsSheet) {
-                UserView()
-            }
-            .onAppear {
-                isWorkoutInProgress = false
-                if users.isEmpty {
-                    initUser()
-                }
-                if routines.isEmpty {
-                    applyEmptySchedule()
-                }
-                todayExercises = getTodayExercises()
-                isWorkoutComplete = checkIsWorkoutComplete(todayExercises: todayExercises)
-            }
+            todayExercises = getTodayExercises()
+            isWorkoutComplete = checkIsWorkoutComplete(todayExercises: todayExercises)
         }
     }
     
@@ -190,7 +188,7 @@ struct TodayView: View {
         return true
     }
 }
-
-#Preview {
-    TodayView()
-}
+//
+//#Preview {
+//    TodayView()
+//}

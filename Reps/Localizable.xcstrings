@@ -292,6 +292,9 @@
         }
       }
     },
+    "Beginner" : {
+
+    },
     "Bridges" : {
       "localizations" : {
         "de" : {
@@ -952,6 +955,9 @@
         }
       }
     },
+    "Progression" : {
+
+    },
     "Progression level" : {
       "localizations" : {
         "de" : {
@@ -1318,6 +1324,7 @@
 
     },
     "Your progressions" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

@@ -16,6 +16,23 @@ enum ExerciseType: String, CaseIterable, Codable {
     case pushup, pullup, squat, bridge, legraise, handstandpushup
 }
 
+enum Level: String, CaseIterable, Codable {
+    case beginner, intermediate, progression
+}
+
+extension Level {
+    var localizedStringResource: LocalizedStringResource {
+        switch self {
+            case .beginner:
+                return "Beginner"
+            case .intermediate:
+                return "Intermediate"
+            case .progression:
+                return "Progression"
+        }
+    }
+}
+
 enum ProgressionName: LocalizedStringResource {
     case shortBridges = "Short bridges"
     case straightBridges = "Straight bridges"
@@ -92,7 +109,7 @@ struct Progression: Hashable {
     let sets: [Level: Int]
     var showSecondsForReps: Bool?
     var showForEachSide: Bool?
-    var animationFileName: String?
+    var animationFileName: String
     
     func getReps(for level: Level) -> Int {
         return reps[level] ?? 0
@@ -101,8 +118,4 @@ struct Progression: Hashable {
     func getSets(for level: Level) -> Int {
         return sets[level] ?? 0
     }
-}
-
-enum Level: String, CaseIterable, Codable {
-    case beginner, intermediate, progression
 }

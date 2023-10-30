@@ -39,7 +39,7 @@ struct AnimationView: View {
 
         let animationIdentifier = "action_container-rig"
         let footballObjectIdentifier = "football2_ball"
-        let footballAnimationIdentifier = "football2_ball_football2_ballAction_002_transform"
+        let footballAnimationIdentifier = "football2_ball_football2_ballAction_transform"
         let cameraIdentifier = "Camera"
         
         // Load dummy animation from source
@@ -89,7 +89,7 @@ struct AnimationView: View {
 #Preview {
     AnimationView(
         baseModel: "base-model",
-        currentProgressionAnimationName: "hspu--04",
+        currentProgressionAnimationName: "pushup-01",
         currentExerciseIndex: 1,
         width: 350,
         height: 400

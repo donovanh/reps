@@ -119,4 +119,3 @@ let DefaultUser = User(
     legraiseLevel: Level.beginner.rawValue,
     handstandpushupLevel: Level.beginner.rawValue
 )
-
