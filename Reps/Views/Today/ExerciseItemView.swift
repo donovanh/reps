@@ -1,10 +1,3 @@
-//
-//  ExerciseView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 08/08/2023.
-//
-
 import SwiftUI
 
 struct ExerciseItemView: View {
@@ -58,6 +51,11 @@ struct ExerciseItemView: View {
     }
 }
 
-//#Preview {
-//    ExerciseView()
-//}
+#Preview {
+    ExerciseItemView(
+        progression: pullupDataSet[1],
+        exerciseType: .pullup,
+        levelStr: Level.intermediate.rawValue,
+        setsDone: 1
+    )
+}

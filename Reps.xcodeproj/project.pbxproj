@@ -80,6 +80,9 @@
 		45B7C9EE2AE5B78E003A696B /* hspu--05.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45B7C9ED2AE5B78E003A696B /* hspu--05.dae */; };
 		45B7C9F42AE5BA10003A696B /* hspu--10.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45B7C9F32AE5BA10003A696B /* hspu--10.dae */; };
 		45B7C9F82AE5BC3A003A696B /* hspu--09.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45B7C9F72AE5BC3A003A696B /* hspu--09.dae */; };
+		45BA6E8B2AF66C40003AD0A2 /* RecordExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA6E8A2AF66C40003AD0A2 /* RecordExerciseView.swift */; };
+		45BA6E8D2AF6719B003AD0A2 /* ExerciseNameAndRepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA6E8C2AF6719B003AD0A2 /* ExerciseNameAndRepsView.swift */; };
+		45BA6E8F2AF6A868003AD0A2 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA6E8E2AF6A868003AD0A2 /* DataController.swift */; };
 		45EA3A842ADBF14300FD6C6A /* bridge-01.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45EA3A832ADBF14300FD6C6A /* bridge-01.dae */; };
 		45EA3A902ADC2CCF00FD6C6A /* bridge-02.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45EA3A8F2ADC2CCF00FD6C6A /* bridge-02.dae */; };
 		45EA3A9B2ADC2EDC00FD6C6A /* bridge-06.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45EA3A932ADC2EDB00FD6C6A /* bridge-06.dae */; };
@@ -183,6 +186,9 @@
 		45B7C9ED2AE5B78E003A696B /* hspu--05.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "hspu--05.dae"; sourceTree = "<group>"; };
 		45B7C9F32AE5BA10003A696B /* hspu--10.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "hspu--10.dae"; sourceTree = "<group>"; };
 		45B7C9F72AE5BC3A003A696B /* hspu--09.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "hspu--09.dae"; sourceTree = "<group>"; };
+		45BA6E8A2AF66C40003AD0A2 /* RecordExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordExerciseView.swift; sourceTree = "<group>"; };
+		45BA6E8C2AF6719B003AD0A2 /* ExerciseNameAndRepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseNameAndRepsView.swift; sourceTree = "<group>"; };
+		45BA6E8E2AF6A868003AD0A2 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		45EA3A832ADBF14300FD6C6A /* bridge-01.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "bridge-01.dae"; sourceTree = "<group>"; };
 		45EA3A8F2ADC2CCF00FD6C6A /* bridge-02.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "bridge-02.dae"; sourceTree = "<group>"; };
 		45EA3A932ADC2EDB00FD6C6A /* bridge-06.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "bridge-06.dae"; sourceTree = "<group>"; };
@@ -224,7 +230,6 @@
 		4549BCF52A700BD400F3E2AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				45AD19D32AF04076005AEC2C /* ExerciseBrowser */,
 				4549BD002A70FB1100F3E2AD /* Main */,
 				4549BD152A7BB0DE00F3E2AD /* Today */,
 				4549BD2B2A8B531800F3E2AD /* Workout */,
@@ -232,6 +237,7 @@
 				4549BD2E2A8BB27000F3E2AD /* Journal */,
 				4549BD062A7241C900F3E2AD /* PlanBuilder */,
 				4549BCFF2A70FAAF00F3E2AD /* User */,
+				45AD19D32AF04076005AEC2C /* ExerciseBrowser */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -296,8 +302,10 @@
 			isa = PBXGroup;
 			children = (
 				4549BD212A8817D600F3E2AD /* WorkoutView.swift */,
-				4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */,
 				4549BE052A96975200F3E2AD /* AnimationView.swift */,
+				4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */,
+				45BA6E8C2AF6719B003AD0A2 /* ExerciseNameAndRepsView.swift */,
+				45BA6E8A2AF66C40003AD0A2 /* RecordExerciseView.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -348,6 +356,7 @@
 				4549BCF52A700BD400F3E2AD /* Views */,
 				4549BD1A2A7D9ADF00F3E2AD /* View Strings */,
 				4593552D2A6D9104009EC063 /* Models */,
+				45BA6E902AF6AA64003AD0A2 /* Controllers */,
 				459355402A6D9CFF009EC063 /* Helpers */,
 				459355332A6D9B92009EC063 /* DataSets */,
 				4593551F2A6D90F2009EC063 /* RepsApp.swift */,
@@ -424,6 +433,14 @@
 				45B7C9EA2AE5B350003A696B /* legraise-10.dae */,
 			);
 			path = legraise;
+			sourceTree = "<group>";
+		};
+		45BA6E902AF6AA64003AD0A2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				45BA6E8E2AF6A868003AD0A2 /* DataController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		45EA3A912ADC2CF500FD6C6A /* pullup */ = {
@@ -652,10 +669,12 @@
 				4593553F2A6D9C5F009EC063 /* HandstandPushups.swift in Sources */,
 				4549BD302A8BB2A100F3E2AD /* JournalView.swift in Sources */,
 				4593553B2A6D9C20009EC063 /* Bridges.swift in Sources */,
+				45BA6E8B2AF66C40003AD0A2 /* RecordExerciseView.swift in Sources */,
 				4549BD082A7241DC00F3E2AD /* PlanBuilderView.swift in Sources */,
 				4549BCF82A70228E00F3E2AD /* DayView.swift in Sources */,
 				459355222A6D90F2009EC063 /* WeekView.swift in Sources */,
 				4549BD142A7AE2F200F3E2AD /* Stages.swift in Sources */,
+				45BA6E8D2AF6719B003AD0A2 /* ExerciseNameAndRepsView.swift in Sources */,
 				4549BD172A7BB0EE00F3E2AD /* TodayView.swift in Sources */,
 				459355352A6D9BAD009EC063 /* Pushups.swift in Sources */,
 				459355312A6D9380009EC063 /* ExerciseModel.swift in Sources */,
@@ -679,6 +698,7 @@
 				4549BCFC2A7064A600F3E2AD /* UserModel.swift in Sources */,
 				4549BD262A88202A00F3E2AD /* JournalEntryModel.swift in Sources */,
 				459355422A6D9D18009EC063 /* ExercisesHelpers.swift in Sources */,
+				45BA6E8F2AF6A868003AD0A2 /* DataController.swift in Sources */,
 				4549BE062A96975200F3E2AD /* AnimationView.swift in Sources */,
 				4549BD0E2A78E48F00F3E2AD /* LevelOverviewView.swift in Sources */,
 				4549BD0C2A7853C300F3E2AD /* PlanBuilderModel.swift in Sources */,

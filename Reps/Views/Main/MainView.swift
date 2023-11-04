@@ -1,11 +1,5 @@
-//
-//  MainView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 26/07/2023.
-//
-
 import SwiftUI
+import SwiftData
 
 struct MainView: View {
     var body: some View {
@@ -39,6 +33,7 @@ struct MainView: View {
     }
 }
 
-//#Preview {
-//    MainView()
-//}
+#Preview {
+    MainView()
+        .modelContainer(DataController.previewContainer)
+}

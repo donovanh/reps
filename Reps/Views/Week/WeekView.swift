@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 23/07/2023.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -44,7 +37,7 @@ struct WeekView: View {
     }
 }
 
-//#Preview {
-//    WeekView()
-//        .modelContainer(for: Routine.self)
-//}
+#Preview {
+    WeekView()
+        .modelContainer(DataController.previewContainer)
+}

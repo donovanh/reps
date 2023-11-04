@@ -1,10 +1,3 @@
-//
-//  ExerciseListItemView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 25/07/2023.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -35,6 +28,11 @@ struct ExerciseListItemView: View {
     }
 }
 
-//#Preview {
-//    ExerciseListItemView()
-//}
+#Preview {
+    Form {
+        ExerciseListItemView(
+            exercise: Exercise(id: UUID(), type: .pullup)
+        )
+        .modelContainer(DataController.previewContainer)
+    }
+}

@@ -1,10 +1,3 @@
-//
-//  PlanBuilderView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 27/07/2023.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -64,7 +57,7 @@ struct PlanBuilderView: View {
                 }
                 if formStep == 3 {
                     Section("Apply new plan") {
-                        PlanOverviewView(level: $experienceLevelOption, schedule: $scheduleOption)
+                        PlanOverviewView(schedule: $scheduleOption, level: $experienceLevelOption)
                         Button("Apply this plan") {
                             applyPlan()
                         }
@@ -123,6 +116,7 @@ struct PlanBuilderView: View {
     }
 }
 
-//#Preview {
-//    PlanBuilderView()
-//}
+#Preview {
+    PlanBuilderView(showingPlanBuilder: .constant(true))
+        .modelContainer(DataController.previewContainer)
+}

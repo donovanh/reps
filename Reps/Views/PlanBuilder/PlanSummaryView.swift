@@ -1,16 +1,9 @@
-//
-//  PlanOverviewView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 01/08/2023.
-//
-
 import SwiftUI
 
 struct PlanOverviewView: View {
     
-    @Binding var level: ExperienceLevel
     @Binding var schedule: Schedule
+    @Binding var level: ExperienceLevel
     
     var body: some View {
         Text("Apply this plan")
@@ -21,6 +14,11 @@ struct PlanOverviewView: View {
     }
 }
 
-//#Preview {
-//    PlanOverviewView()
-//}
+#Preview {
+    Form {
+        PlanOverviewView(
+            schedule: .constant(Schedule.advancedPushPullSchedule),
+            level: .constant(ExperienceLevel.intermediate)
+        )
+    }
+}

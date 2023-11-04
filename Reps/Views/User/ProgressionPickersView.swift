@@ -1,10 +1,3 @@
-//
-//  ExerciseTypePicker.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 26/07/2023.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -74,18 +67,8 @@ struct ProgressionPickersView: View {
 }
 
 #Preview {
-    @State var selectedOption = 2
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: User.self, configurations: config)
-        container.mainContext.insert(DefaultUser)
-        return Form {
-            Section("Progressions") {
-                ProgressionPickersView(exerciseType: ExerciseType.handstandpushup)
-                    .modelContainer(container)
-            }
-        }
-    } catch {
-        fatalError("Failed to create settings model container in preview")
+    Form {
+        ProgressionPickersView(exerciseType: ExerciseType.handstandpushup)
+            .modelContainer(DataController.previewContainer)
     }
 }

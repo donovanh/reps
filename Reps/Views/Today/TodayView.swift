@@ -1,10 +1,3 @@
-//
-//  TodayView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 03/08/2023.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -205,22 +198,6 @@ struct TodayView: View {
 }
 
 #Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: User.self, Routine.self, configurations: config)
-        container.mainContext.insert(DefaultUser)
-
-        let currentDate = Date()
-        let calendar = Calendar.current
-        let dayNum = calendar.component(.weekday, from: currentDate)
-        let exampleExercise = Exercise(id: UUID(), type: ExerciseType.pushup)
-        let exampleRoutine = Routine(day: dayNum, exercises: [
-            // Exercise(id: UUID(), type: ExerciseType.pushup)
-        ])
-        container.mainContext.insert(exampleRoutine)
-        
-        return TodayView().modelContainer(container)
-    }  catch {
-        fatalError("Failed to create Today view model container in Preview")
-    }
+    TodayView()
+        .modelContainer(DataController.previewContainer)
 }

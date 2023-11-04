@@ -1,17 +1,9 @@
-//
-//  ScheduleOverviewView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 01/08/2023.
-//
-
 import SwiftUI
 
 struct ScheduleOverviewView: View {
     
     @Binding var scheduleOption: Schedule
     @Binding var experienceLevelOption: ExperienceLevel
-    
     
     var body: some View {
         Section {
@@ -60,6 +52,11 @@ struct ScheduleOverviewView: View {
     }
 }
 
-//#Preview {
-//    ScheduleOverviewView()
-//}
+#Preview {
+    Form {
+        ScheduleOverviewView(
+            scheduleOption: .constant(Schedule.advancedPushPullSchedule),
+            experienceLevelOption: .constant(ExperienceLevel.intermediate)
+        )
+    }
+}

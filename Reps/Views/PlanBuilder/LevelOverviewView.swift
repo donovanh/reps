@@ -1,10 +1,3 @@
-//
-//  LabelOverviewView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 01/08/2023.
-//
-
 import SwiftUI
 
 struct LevelOverviewView: View {
@@ -38,6 +31,8 @@ struct LevelOverviewView: View {
         }
     }
 
-//#Preview {
-//    LevelOverviewView()
-//}
+#Preview {
+    Form {
+        LevelOverviewView(level: .constant(ExperienceLevel.intermediate))
+    }
+}

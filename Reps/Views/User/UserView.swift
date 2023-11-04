@@ -1,10 +1,3 @@
-//
-//  UserSettingsView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 25/07/2023.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -66,12 +59,6 @@ struct UserView: View {
 }
 
 #Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: User.self, configurations: config)
-        container.mainContext.insert(DefaultUser)
-        return UserView().modelContainer(container)
-    } catch {
-        fatalError("Failed to create settings model container in preview")
-    }
+    UserView()
+        .modelContainer(DataController.previewContainer)
 }

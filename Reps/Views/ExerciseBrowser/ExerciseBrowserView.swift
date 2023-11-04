@@ -1,10 +1,3 @@
-//
-//  ExerciseBrowserView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 30/10/2023.
-//
-
 import SwiftUI
 
 struct ExerciseBrowserView: View {
@@ -90,10 +83,5 @@ struct ExerciseBrowserView: View {
 }
 
 #Preview {
-    @State var value = true
-    do {
-        return ExerciseBrowserView(showingExerciseBrowserView: $value)
-    } catch {
-        
-    }
+    ExerciseBrowserView(showingExerciseBrowserView: .constant(true))
 }

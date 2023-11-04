@@ -16,21 +16,21 @@ final class JournalEntry: Identifiable {
     let exerciseType: String
     let stage: Int
     let reps: Int
-    let difficulty: String
+    //let difficulty: String
     
     init(
         date: Date,
         exerciseType: String,
         stage: Int,
-        reps: Int,
-        difficulty: String
+        reps: Int
+        //difficulty: String
     ) {
         self.id = UUID().uuidString
         self.date = date
         self.exerciseType = exerciseType
         self.stage = stage
         self.reps = reps
-        self.difficulty = difficulty
+        //self.difficulty = difficulty
     }
 }
 
@@ -68,7 +68,8 @@ func getLatestRecordedDifficulty(entries: [JournalEntry], forType exerciseType: 
     }
     
     if let latestEntry = entriesOfType.last {
-        return Difficulty(rawValue: latestEntry.difficulty) ?? defaultDifficulty
+        return defaultDifficulty
+        //Difficulty(rawValue: latestEntry.difficulty) ?? defaultDifficulty
     }
     
     return defaultDifficulty

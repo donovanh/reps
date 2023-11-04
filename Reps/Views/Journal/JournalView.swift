@@ -169,6 +169,7 @@ struct JournalView: View {
 //    
 //}
 
-//#Preview {
-//    JournalView()
-//}
+#Preview {
+    JournalView()
+        .modelContainer(DataController.previewContainer)
+}

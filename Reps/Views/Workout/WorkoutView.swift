@@ -1,10 +1,3 @@
-//
-//  ExerciseView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 12/08/2023.
-//
-
 import SwiftUI
 import SwiftData
 import Combine
@@ -60,14 +53,14 @@ struct WorkoutView: View {
                                             isWorkoutInProgress: $isWorkoutInProgress,
                                             currentExerciseId: currentExerciseId,
                                             progression: progression,
-                                            exerciseType: exercise.type,
                                             levelStr: level,
                                             scrollViewValue: scrollViewValue,
                                             exerciseId: exercise.id,
                                             nextExerciseWithSetsId: nextExerciseWithSetsId(after: exercise),
                                             nextExerciseId: nextExerciseId(after: exercise),
                                             currentExerciseIndex: currentExerciseIndex,
-                                            exerciseIndex: index
+                                            exerciseIndex: index,
+                                            journalEntries: journalEntries
                                         )
                                         .id(exercise.id)
                                         .frame(
@@ -229,6 +222,18 @@ struct ViewOffsetKey: PreferenceKey {
     }
 }
 
-//#Preview {
-//    ExercisesView()
-//}
+#Preview {
+    WorkoutView(
+        showingTodayRoutine: .constant(true),
+        isWorkoutComplete: .constant(false),
+        isWorkoutInProgress: .constant(true),
+        currentExerciseId: UUID(),
+        todayExercises: [
+            Exercise(id: UUID(), type: .pullup),
+            Exercise(id: UUID(), type: .pushup),
+            Exercise(id: UUID(), type: .squat)
+        ],
+        screenWidth: 375.0
+    )
+    .modelContainer(DataController.previewContainer)
+}

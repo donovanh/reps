@@ -1,10 +1,3 @@
-//
-//  AnimationView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 23/08/2023.
-//
-
 import SwiftUI
 import SceneKit
 
@@ -89,7 +82,7 @@ struct AnimationView: View {
 #Preview {
     AnimationView(
         baseModel: "base-model",
-        currentProgressionAnimationName: "pushup-01",
+        currentProgressionAnimationName: "pushup-10",
         currentExerciseIndex: 1,
         width: 350,
         height: 400

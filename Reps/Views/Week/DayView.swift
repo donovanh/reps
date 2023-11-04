@@ -1,10 +1,3 @@
-//
-//  DayView.swift
-//  Reps
-//
-//  Created by Donovan Hutchinson on 25/07/2023.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -107,6 +100,9 @@ struct DayView: View {
     }
 }
 
-//#Preview {
-//    DayView(day: DayOfWeek.monday)
-//}
+#Preview {
+    Form {
+        DayView(day: 7)
+            .modelContainer(DataController.previewContainer)
+    }
+}
