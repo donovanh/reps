@@ -68,7 +68,7 @@ struct ExerciseBrowserView: View {
                             setAnimationName()
                         }
                         Picker("Progression", selection: $selectedProgression) {
-                            let progressions = getExercises(ofType: selectedExerciseType.rawValue)
+                            let progressions = getExercises(ofType: selectedExerciseType)
                             ForEach(progressions, id: \.self) { progression in
                                 Text(String(localized: progression.name.rawValue))
                                     .tag(progression.stage)
@@ -84,7 +84,7 @@ struct ExerciseBrowserView: View {
     }
     
     func setAnimationName() {
-        let progression = getExercise(ofType: selectedExerciseType.rawValue, atStage: selectedProgression)
+        let progression = getExercise(ofType: selectedExerciseType, atStage: selectedProgression)
         animationName = progression?.animationFileName ?? "pushup-01"
     }
 }

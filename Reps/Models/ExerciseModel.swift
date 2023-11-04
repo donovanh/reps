@@ -9,7 +9,7 @@ import Foundation
 
 struct Exercise: Identifiable, Hashable, Codable {
     let id: UUID
-    let type: String
+    let type: ExerciseType
 }
 
 enum ExerciseType: String, CaseIterable, Codable {

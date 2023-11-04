@@ -79,7 +79,7 @@ struct DayView: View {
     func routineContainsExercise(ofType type: ExerciseType) -> Bool {
         let routine = getRoutine(forDay: day, fromRoutines: routines)
         for exercise in routine.exercises {
-            if exercise.type == type.rawValue {
+            if exercise.type == type {
                 return true
             }
         }
@@ -88,7 +88,7 @@ struct DayView: View {
     
     func addExercise(ofType type: ExerciseType) {
         guard users.first != nil else { return }
-        let newExercise = Exercise(id: UUID(), type: type.rawValue)
+        let newExercise = Exercise(id: UUID(), type: type)
         
         if let index = routines.firstIndex(where: { $0.day == day }) {
             routines[index].exercises.append(newExercise)

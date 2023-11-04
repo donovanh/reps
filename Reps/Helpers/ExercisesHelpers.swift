@@ -7,13 +7,13 @@
 
 import Foundation
 
-func getExercise(ofType type: String, atStage stage: Int) -> Progression? {
+func getExercise(ofType type: ExerciseType, atStage stage: Int) -> Progression? {
     return getExercises(ofType: type).first { $0.stage == stage }
 }
 
-func getExercises(ofType type: String) -> [Progression] {
+func getExercises(ofType type: ExerciseType) -> [Progression] {
 
-    guard let exercises = getAllExercises()[type] else {
+    guard let exercises = getAllExercises()[type.rawValue] else {
         print("Exercise missing for type: \(type)")
         return []
     }

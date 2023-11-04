@@ -38,20 +38,20 @@ func getJournalEntries(entries: [JournalEntry], forDate date: Date) -> [JournalE
     return entries.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
 }
 
-func getJournalEntries(entries: [JournalEntry], forDate date: Date, ofType exerciseType: String) -> [JournalEntry] {
+func getJournalEntries(entries: [JournalEntry], forDate date: Date, ofType exerciseType: ExerciseType) -> [JournalEntry] {
     return entries.filter { entry in
-        return Calendar.current.isDate(entry.date, inSameDayAs: date) && entry.exerciseType == exerciseType
+        return Calendar.current.isDate(entry.date, inSameDayAs: date) && entry.exerciseType == exerciseType.rawValue
     }
 }
 
-func getSetsDone(entries: [JournalEntry], forDate date: Date, ofType exerciseType: String) -> Int {
-    let entries = getJournalEntries(entries: entries, forDate: date, ofType:  exerciseType)
+func getSetsDone(entries: [JournalEntry], forDate date: Date, ofType exerciseType: ExerciseType) -> Int {
+    let entries = getJournalEntries(entries: entries, forDate: date, ofType: exerciseType)
     return entries.count
 }
 
-func getLatestRecordedReps(entries: [JournalEntry], forType exerciseType: String) -> Int {
+func getLatestRecordedReps(entries: [JournalEntry], forType exerciseType: ExerciseType) -> Int {
     let entriesOfType = entries.filter { entry in
-        entry.exerciseType == exerciseType
+        entry.exerciseType == exerciseType.rawValue
     }
     
     if let latestEntry = entriesOfType.last {
@@ -61,10 +61,10 @@ func getLatestRecordedReps(entries: [JournalEntry], forType exerciseType: String
     return 0
 }
 
-func getLatestRecordedDifficulty(entries: [JournalEntry], forType exerciseType: String) -> Difficulty {
+func getLatestRecordedDifficulty(entries: [JournalEntry], forType exerciseType: ExerciseType) -> Difficulty {
     let defaultDifficulty: Difficulty = .moderate
     let entriesOfType = entries.filter { entry in
-        entry.exerciseType == exerciseType
+        entry.exerciseType == exerciseType.rawValue
     }
     
     if let latestEntry = entriesOfType.last {

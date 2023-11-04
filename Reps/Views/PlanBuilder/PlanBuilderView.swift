@@ -92,7 +92,7 @@ struct PlanBuilderView: View {
                 var dayExercises: [Exercise] = []
                 for exerciseType in exercises {
                     if !(experienceLevelOption == .gettingStarted && exerciseType == .handstandpushup) {
-                        dayExercises.append(Exercise(id: UUID(), type: exerciseType.rawValue))
+                        dayExercises.append(Exercise(id: UUID(), type: exerciseType))
                     }
                 }
                 if let index = routines.firstIndex(where: { $0.day == day }) {

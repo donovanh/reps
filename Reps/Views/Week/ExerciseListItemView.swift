@@ -18,7 +18,7 @@ struct ExerciseListItemView: View {
     var body: some View {
         if let user = users.first {
             let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type))
-            let exerciseName = ExerciseType(rawValue: exercise.type)!.localizedStringResource
+            let exerciseName = exercise.type.localizedStringResource
             
             if let progressionName = progression?.name {
                 HStack {

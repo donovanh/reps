@@ -21,7 +21,7 @@ struct ProgressionPickersView: View {
         if let user = users.first {
             VStack {
                 Picker(String(localized: exerciseType.localizedStringResource), selection: $selectedProgression) {
-                    let progressions = getExercises(ofType: exerciseType.rawValue)
+                    let progressions = getExercises(ofType: exerciseType)
                     ForEach(progressions, id: \.self) { progression in
                         Text(String(localized: progression.name.rawValue))
                             .tag(progression.stage)
@@ -29,12 +29,12 @@ struct ProgressionPickersView: View {
                 }
                 .padding(.top, 10)
                 .onChange(of: selectedProgression) {
-                    saveProgression(exerciseType.rawValue, stage: selectedProgression)
-                    saveLevel(exerciseType.rawValue, levelStr: Level.beginner.rawValue)
+                    saveProgression(exerciseType, stage: selectedProgression)
+                    saveLevel(exerciseType, levelStr: Level.beginner.rawValue)
                     selectedLevel = Level.beginner.rawValue
                 }
                 .onAppear {
-                    selectedProgression = user.getStage(forType: exerciseType.rawValue)
+                    selectedProgression = user.getStage(forType: exerciseType)
                 }
                 Picker(String(localized: exerciseType.localizedStringResource), selection: $selectedLevel) {
                     ForEach(Level.allCases, id: \.self) { level in
@@ -45,16 +45,16 @@ struct ProgressionPickersView: View {
                 .padding(.bottom, 10)
                 .pickerStyle(.segmented)
                 .onChange(of: selectedLevel) {
-                    saveLevel(exerciseType.rawValue, levelStr: selectedLevel)
+                    saveLevel(exerciseType, levelStr: selectedLevel)
                 }
                 .onAppear {
-                    selectedLevel = user.getLevel(forType: exerciseType.rawValue)
+                    selectedLevel = user.getLevel(forType: exerciseType)
                 }
             }
         }
     }
     
-    func saveProgression(_ type: String, stage: Int) {
+    func saveProgression(_ type: ExerciseType, stage: Int) {
         if let user = users.first {
             user.setStage(forType: type, stage: stage)
             user.setLevel(forType: type, level: Level.beginner.rawValue)
@@ -63,7 +63,7 @@ struct ProgressionPickersView: View {
         }
     }
     
-    func saveLevel(_ type: String, levelStr: String) {
+    func saveLevel(_ type: ExerciseType, levelStr: String) {
         if let user = users.first {
             user.setLevel(forType: type, level: levelStr)
         } else {

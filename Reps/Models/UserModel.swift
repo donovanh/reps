@@ -56,51 +56,47 @@ final class User: Identifiable {
         self.handstandpushupLevel = handstandpushupLevel
     }
     
-    func getStage(forType type: String) -> Int {
+    func getStage(forType type: ExerciseType) -> Int {
         switch type {
-        case ExerciseType.bridge.rawValue: return self.bridgeStage
-        case ExerciseType.handstandpushup.rawValue: return self.handstandpushupStage
-        case ExerciseType.legraise.rawValue: return self.legraiseStage
-        case ExerciseType.pullup.rawValue: return self.pullupStage
-        case ExerciseType.pushup.rawValue: return self.pushupStage
-        case ExerciseType.squat.rawValue: return self.squatStage
-        default: return 1
+        case ExerciseType.bridge: return self.bridgeStage
+        case ExerciseType.handstandpushup: return self.handstandpushupStage
+        case ExerciseType.legraise: return self.legraiseStage
+        case ExerciseType.pullup: return self.pullupStage
+        case ExerciseType.pushup: return self.pushupStage
+        case ExerciseType.squat: return self.squatStage
         }
     }
     
-    func getLevel(forType type: String) -> String {
+    func getLevel(forType type: ExerciseType) -> String {
         switch type {
-        case ExerciseType.bridge.rawValue: return self.bridgeLevel
-        case ExerciseType.handstandpushup.rawValue: return self.handstandpushupLevel
-        case ExerciseType.legraise.rawValue: return self.legraiseLevel
-        case ExerciseType.pullup.rawValue: return self.pullupLevel
-        case ExerciseType.pushup.rawValue: return self.pushupLevel
-        case ExerciseType.squat.rawValue: return self.squatLevel
-        default: return Level.beginner.rawValue
+        case ExerciseType.bridge: return self.bridgeLevel
+        case ExerciseType.handstandpushup: return self.handstandpushupLevel
+        case ExerciseType.legraise: return self.legraiseLevel
+        case ExerciseType.pullup: return self.pullupLevel
+        case ExerciseType.pushup: return self.pushupLevel
+        case ExerciseType.squat: return self.squatLevel
         }
     }
     
-    func setStage(forType type: String, stage: Int) {
+    func setStage(forType type: ExerciseType, stage: Int) {
         switch type {
-        case ExerciseType.bridge.rawValue: self.bridgeStage = stage
-        case ExerciseType.handstandpushup.rawValue: self.handstandpushupStage = stage
-        case ExerciseType.legraise.rawValue: self.legraiseStage = stage
-        case ExerciseType.pullup.rawValue: self.pullupStage = stage
-        case ExerciseType.pushup.rawValue: self.pushupStage = stage
-        case ExerciseType.squat.rawValue: self.squatStage = stage
-        default: break
+        case ExerciseType.bridge: self.bridgeStage = stage
+        case ExerciseType.handstandpushup: self.handstandpushupStage = stage
+        case ExerciseType.legraise: self.legraiseStage = stage
+        case ExerciseType.pullup: self.pullupStage = stage
+        case ExerciseType.pushup: self.pushupStage = stage
+        case ExerciseType.squat: self.squatStage = stage
         }
     }
     
-    func setLevel(forType type: String, level: String) {
+    func setLevel(forType type: ExerciseType, level: String) {
         switch type {
-        case ExerciseType.bridge.rawValue: self.bridgeLevel = level
-        case ExerciseType.handstandpushup.rawValue: self.handstandpushupLevel = level
-        case ExerciseType.legraise.rawValue: self.legraiseLevel = level
-        case ExerciseType.pullup.rawValue: self.pullupLevel = level
-        case ExerciseType.pushup.rawValue: self.pushupLevel = level
-        case ExerciseType.squat.rawValue: self.squatLevel = level
-        default: break
+        case ExerciseType.bridge: self.bridgeLevel = level
+        case ExerciseType.handstandpushup: self.handstandpushupLevel = level
+        case ExerciseType.legraise: self.legraiseLevel = level
+        case ExerciseType.pullup: self.pullupLevel = level
+        case ExerciseType.pushup: self.pushupLevel = level
+        case ExerciseType.squat: self.squatLevel = level
         }
     }
 }

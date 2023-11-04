@@ -45,7 +45,7 @@ struct ExerciseDetailView: View {
         let setsDoneToday = getSetsDone(
             entries: journalEntries,
             forDate: Date(),
-            ofType: progression.type.rawValue
+            ofType: progression.type
         )
         
         GeometryReader { geo in
@@ -148,9 +148,9 @@ struct ExerciseDetailView: View {
         }
         .onAppear {
             currentExerciseId = exerciseId
-            let latestRepCount = getLatestRecordedReps(entries: journalEntries, forType: progression.type.rawValue)
+            let latestRepCount = getLatestRecordedReps(entries: journalEntries, forType: progression.type)
             reps = latestRepCount > 0 ? latestRepCount : progression.getReps(for: level)
-            difficulty = getLatestRecordedDifficulty(entries: journalEntries, forType: progression.type.rawValue)
+            difficulty = getLatestRecordedDifficulty(entries: journalEntries, forType: progression.type)
         }
     }
     
