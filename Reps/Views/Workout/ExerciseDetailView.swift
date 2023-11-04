@@ -70,7 +70,7 @@ struct ExerciseDetailView: View {
         }
         .sheet(isPresented: $isRecordingSet) {
             RecordExerciseView(
-                isRecordingSet: isRecordingSet,
+                isRecordingSet: $isRecordingSet,
                 sets: sets,
                 setsDoneToday: setsDoneToday,
                 reps: reps,

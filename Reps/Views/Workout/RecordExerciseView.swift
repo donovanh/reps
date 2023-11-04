@@ -5,7 +5,7 @@ struct RecordExerciseView: View {
     
     @Environment(\.modelContext) private var context
     
-    @State var isRecordingSet: Bool
+    @Binding var isRecordingSet: Bool
     @State var sets: Int
     @State var setsDoneToday: Int
     @State var reps: Int
@@ -111,7 +111,7 @@ struct RecordExerciseView: View {
 #Preview {
     ScrollViewReader { scrollViewValue in
         RecordExerciseView(
-            isRecordingSet: true,
+            isRecordingSet: .constant(true),
             sets: 2,
             setsDoneToday: 1,
             reps: 9000,
