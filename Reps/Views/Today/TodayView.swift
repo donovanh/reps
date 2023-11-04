@@ -214,7 +214,9 @@ struct TodayView: View {
         let calendar = Calendar.current
         let dayNum = calendar.component(.weekday, from: currentDate)
         let exampleExercise = Exercise(id: UUID(), type: ExerciseType.pushup.rawValue)
-        let exampleRoutine = Routine(day: dayNum, exercises: [])
+        let exampleRoutine = Routine(day: dayNum, exercises: [
+            // Exercise(id: UUID(), type: ExerciseType.pushup)
+        ])
         // TODO: Work out how to pass exercises here
         container.mainContext.insert(exampleRoutine)
         
