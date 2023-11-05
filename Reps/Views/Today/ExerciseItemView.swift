@@ -15,7 +15,8 @@ struct ExerciseItemView: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(String(localized: progression.name.rawValue))
-                    .font(.title)
+                    .font(.title2)
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 
                 Text(String(localized: exerciseType.localizedStringResource))
                     .font(.caption)
@@ -47,15 +48,29 @@ struct ExerciseItemView: View {
                 }
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 
 #Preview {
-    ExerciseItemView(
-        progression: pullupDataSet[1],
-        exerciseType: .pullup,
-        levelStr: Level.intermediate.rawValue,
-        setsDone: 1
-    )
+    VStack {
+        ExerciseItemView(
+            progression: pullupDataSet[1],
+            exerciseType: .pullup,
+            levelStr: Level.intermediate.rawValue,
+            setsDone: 1
+        )
+        ExerciseItemView(
+            progression: pushupDataSet[5],
+            exerciseType: .pushup,
+            levelStr: Level.progression.rawValue,
+            setsDone: 1
+        )
+        ExerciseItemView(
+            progression: squatDataSet[1],
+            exerciseType: .squat,
+            levelStr: Level.intermediate.rawValue,
+            setsDone: 1
+        )
+    }
 }

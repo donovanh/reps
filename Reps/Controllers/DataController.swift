@@ -21,11 +21,14 @@ class DataController {
                 stage: 1,
                 reps: 8000
             )
-            let exampleRoutine = makeExampleRoutineForToday(numberOfExercises: 6)
-
+            
             container.mainContext.insert(DefaultUser)
             container.mainContext.insert(exampleJournalEntry)
-            container.mainContext.insert(exampleRoutine)
+            
+            let exampleRoutines = Routine.generateExampleRoutines()
+            exampleRoutines.forEach { exampleRoutine in
+                container.mainContext.insert(exampleRoutine)
+            }
 
             return container
         } catch {

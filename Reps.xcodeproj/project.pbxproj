@@ -83,6 +83,8 @@
 		45BA6E8B2AF66C40003AD0A2 /* RecordExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA6E8A2AF66C40003AD0A2 /* RecordExerciseView.swift */; };
 		45BA6E8D2AF6719B003AD0A2 /* ExerciseNameAndRepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA6E8C2AF6719B003AD0A2 /* ExerciseNameAndRepsView.swift */; };
 		45BA6E8F2AF6A868003AD0A2 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA6E8E2AF6A868003AD0A2 /* DataController.swift */; };
+		45BA6E922AF81C7E003AD0A2 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA6E912AF81C7E003AD0A2 /* PreviewContainer.swift */; };
+		45BA6E982AF820AA003AD0A2 /* RoutineExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA6E972AF820AA003AD0A2 /* RoutineExamples.swift */; };
 		45EA3A842ADBF14300FD6C6A /* bridge-01.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45EA3A832ADBF14300FD6C6A /* bridge-01.dae */; };
 		45EA3A902ADC2CCF00FD6C6A /* bridge-02.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45EA3A8F2ADC2CCF00FD6C6A /* bridge-02.dae */; };
 		45EA3A9B2ADC2EDC00FD6C6A /* bridge-06.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45EA3A932ADC2EDB00FD6C6A /* bridge-06.dae */; };
@@ -189,6 +191,8 @@
 		45BA6E8A2AF66C40003AD0A2 /* RecordExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordExerciseView.swift; sourceTree = "<group>"; };
 		45BA6E8C2AF6719B003AD0A2 /* ExerciseNameAndRepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseNameAndRepsView.swift; sourceTree = "<group>"; };
 		45BA6E8E2AF6A868003AD0A2 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		45BA6E912AF81C7E003AD0A2 /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
+		45BA6E972AF820AA003AD0A2 /* RoutineExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineExamples.swift; sourceTree = "<group>"; };
 		45EA3A832ADBF14300FD6C6A /* bridge-01.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "bridge-01.dae"; sourceTree = "<group>"; };
 		45EA3A8F2ADC2CCF00FD6C6A /* bridge-02.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "bridge-02.dae"; sourceTree = "<group>"; };
 		45EA3A932ADC2EDB00FD6C6A /* bridge-06.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "bridge-06.dae"; sourceTree = "<group>"; };
@@ -371,6 +375,8 @@
 			isa = PBXGroup;
 			children = (
 				459355262A6D90F8009EC063 /* Preview Assets.xcassets */,
+				45BA6E912AF81C7E003AD0A2 /* PreviewContainer.swift */,
+				45BA6E972AF820AA003AD0A2 /* RoutineExamples.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -665,6 +671,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45BA6E922AF81C7E003AD0A2 /* PreviewContainer.swift in Sources */,
 				4549BD282A8A101000F3E2AD /* DifficultyStrings.swift in Sources */,
 				4593553F2A6D9C5F009EC063 /* HandstandPushups.swift in Sources */,
 				4549BD302A8BB2A100F3E2AD /* JournalView.swift in Sources */,
@@ -682,6 +689,7 @@
 				459355202A6D90F2009EC063 /* RepsApp.swift in Sources */,
 				4549BD102A78E4FA00F3E2AD /* ScheduleOverviewView.swift in Sources */,
 				4593552F2A6D9118009EC063 /* RoutineModel.swift in Sources */,
+				45BA6E982AF820AA003AD0A2 /* RoutineExamples.swift in Sources */,
 				4549BD222A8817D600F3E2AD /* WorkoutView.swift in Sources */,
 				4549BD202A8220F100F3E2AD /* ExerciseItemView.swift in Sources */,
 				459355392A6D9BF8009EC063 /* LegRaises.swift in Sources */,
