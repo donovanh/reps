@@ -15,6 +15,7 @@ class DataController {
             let config = ModelConfiguration(isStoredInMemoryOnly: true)
             let container = try ModelContainer(for: User.self, JournalEntry.self, Routine.self, configurations: config, config, config)
 
+            // Set up JournalExamples to set journal entries for today, today minus x days, etc
             let exampleJournalEntry = JournalEntry(
                 date: Date(),
                 exerciseType: "pushup",
