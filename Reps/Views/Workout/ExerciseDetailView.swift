@@ -5,6 +5,8 @@ import Foundation
 struct ExerciseDetailView: View {
     
     // TODO
+    // Show a confirmation when exercise entered, with option to progress or regress if needed
+    // Incorporate logic to present the option to progress or step up as a suggestion, manual for now
     // Show a success screen when all exercises done - or return to home view with a success message there?
     // Offer option to record another set even if complete
     // Think about how to allow users to add extra sets of *any* exercise / progression
@@ -49,11 +51,11 @@ struct ExerciseDetailView: View {
                     )
                     .padding(.top, (geo.size.height / 2) + 80)
                     
-                    if (setsDoneToday >= sets) {
+                    if setsDoneToday >= sets {
                         Text("All sets done!")
                             .padding(.vertical)
                     }
-                    if (setsDoneToday >= sets) {
+                    if setsDoneToday >= sets {
                         Button("Record another set") {
                             isRecordingSet = true
                         }
@@ -79,6 +81,7 @@ struct ExerciseDetailView: View {
                 showingTodayRoutine: showingTodayRoutine,
                 isWorkoutComplete: isWorkoutComplete,
                 progression: progression,
+                level: level,
                 exerciseId: exerciseId,
                 nextExerciseWithSetsId: nextExerciseWithSetsId,
                 scrollViewValue: scrollViewValue

@@ -47,6 +47,8 @@ struct ProgressionPickersView: View {
         }
     }
     
+    // TODO: Extend model to support these
+    
     func saveProgression(_ type: ExerciseType, stage: Int) {
         if let user = users.first {
             user.setStage(forType: type, stage: stage)
