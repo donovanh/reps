@@ -87,6 +87,7 @@
 		45BA6E982AF820AA003AD0A2 /* RoutineExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA6E972AF820AA003AD0A2 /* RoutineExamples.swift */; };
 		45BA6E9A2AFA3A49003AD0A2 /* WorkoutsByDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA6E992AFA3A49003AD0A2 /* WorkoutsByDay.swift */; };
 		45BA6E9C2AFA4252003AD0A2 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA6E9B2AFA4252003AD0A2 /* DateHelpers.swift */; };
+		45BA6E9E2AFB8814003AD0A2 /* AdjustProgression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA6E9D2AFB8813003AD0A2 /* AdjustProgression.swift */; };
 		45EA3A842ADBF14300FD6C6A /* bridge-01.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45EA3A832ADBF14300FD6C6A /* bridge-01.dae */; };
 		45EA3A902ADC2CCF00FD6C6A /* bridge-02.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45EA3A8F2ADC2CCF00FD6C6A /* bridge-02.dae */; };
 		45EA3A9B2ADC2EDC00FD6C6A /* bridge-06.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45EA3A932ADC2EDB00FD6C6A /* bridge-06.dae */; };
@@ -197,6 +198,7 @@
 		45BA6E972AF820AA003AD0A2 /* RoutineExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineExamples.swift; sourceTree = "<group>"; };
 		45BA6E992AFA3A49003AD0A2 /* WorkoutsByDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsByDay.swift; sourceTree = "<group>"; };
 		45BA6E9B2AFA4252003AD0A2 /* DateHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
+		45BA6E9D2AFB8813003AD0A2 /* AdjustProgression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustProgression.swift; sourceTree = "<group>"; };
 		45EA3A832ADBF14300FD6C6A /* bridge-01.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "bridge-01.dae"; sourceTree = "<group>"; };
 		45EA3A8F2ADC2CCF00FD6C6A /* bridge-02.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "bridge-02.dae"; sourceTree = "<group>"; };
 		45EA3A932ADC2EDB00FD6C6A /* bridge-06.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "bridge-06.dae"; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				4549BD232A881A6200F3E2AD /* ExerciseDetailView.swift */,
 				45BA6E8C2AF6719B003AD0A2 /* ExerciseNameAndRepsView.swift */,
 				45BA6E8A2AF66C40003AD0A2 /* RecordExerciseView.swift */,
+				45BA6E9D2AFB8813003AD0A2 /* AdjustProgression.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				45BA6E8F2AF6A868003AD0A2 /* DataController.swift in Sources */,
 				4549BE062A96975200F3E2AD /* AnimationView.swift in Sources */,
 				4549BD0E2A78E48F00F3E2AD /* LevelOverviewView.swift in Sources */,
+				45BA6E9E2AFB8814003AD0A2 /* AdjustProgression.swift in Sources */,
 				4549BD0C2A7853C300F3E2AD /* PlanBuilderModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,7 +16,6 @@ struct ExerciseDetailView: View {
     @Binding var isWorkoutComplete: Bool
     @Binding var isWorkoutInProgress: Bool
 
-//    @State var reps: Int = 123
     @State var isRecordingSet = false
     @State var currentExerciseId: UUID?
     

@@ -152,7 +152,7 @@ func getNextLevel(for progression: Progression, at level: Level) -> Level {
     switch level {
         case Level.beginner: return Level.intermediate
         case Level.intermediate: return Level.progression
-        case Level.progression: return Level.progression
+        case Level.progression: return Level.beginner
     }
 }
 

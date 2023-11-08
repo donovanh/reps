@@ -145,7 +145,6 @@ struct WorkoutView: View {
     }
     
     func calculateXOffset(forOffset offset: CGFloat) -> Double {
-        // print("offset: \(offset), screenWidth: \(screenWidth)")
         let index = visibleExerciseIndex(forOffset: offset)
         let nearestIndexOffset = CGFloat(index) * screenWidth // Calculate the offset of the nearest index
         let distance = offset - nearestIndexOffset // Calculate the distance from that offset value

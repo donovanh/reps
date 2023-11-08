@@ -24,67 +24,49 @@ struct RecordExerciseView: View {
     let nextExerciseWithSetsId: UUID
     let scrollViewValue: ScrollViewProxy
     
-    @State private var isShowingConfirmation = false
-    @State private var isShowingNewProgressionDetails = false
+    @State var isShowingConfirmation = false
+    @State var isShowingAdjustProgression = false
     
     // TODO:
     // Summarise what this does for future me
+    // Pull Confirmation View into it's own thing
     
     var body: some View {
         if isShowingConfirmation == true {
-            let goalReps = progression.getReps(for: level)
-            VStack {
-                Text("Confirmation view")
-                if reps >= goalReps { // TODO: And both sets done!
-                    // Offer progression option
-                    if progressionHasNextLevel(for: progression, at: level) {
-                        let nextLevel = getNextLevel(for: progression, at: level)
+            if isShowingAdjustProgression == true {
+                AdjustProgression(
+                    progression: progression,
+                    level: level
+                )
+                Spacer()
+            } else {
+                let goalReps = progression.getReps(for: level)
+                VStack {
+                    Text("Confirmation view")
+                        .font(.title)
+                    // TODO: Congrats image (and animation)
+                    // TODO: Suggest a level/stage progression if streak of hitting the full rep + sets goal
+                    Text("Great work! Staying consistent and gradually improving over time is the key to progress.")
+                    if reps >= goalReps && setsDoneToday >= sets {
                         Text("Ready to go to the next level?")
                         Button {
-                            setLevel(progression.type, levelStr: nextLevel.rawValue)
-                            isShowingNewProgressionDetails = true
+                            isShowingAdjustProgression = true
                         } label: {
                             Text("Progress to next level")
-                        }
-                    } else if progressionHasNextStage(for: progression) {
-                        let nextStage = getNextStage(for: progression)
-                        Text("Ready to go to the next stage?")
-                        Button {
-                            setProgression(progression.type, stage: nextStage)
-                            isShowingNewProgressionDetails = true
-                        } label: {
-                            Text("Progress to next stage")
-                        }
-                    }
-                } else {
-                    // Offer regression option
-                    if progressionHasPreviousLevel(for: progression, at: level) {
-                        let prevLevel = getPreviousLevel(for: progression, at: level)
-                        Text("Ready to go to the previous level?")
-                        Button {
-                            setLevel(progression.type, levelStr: prevLevel.rawValue)
-                            isShowingNewProgressionDetails = true
-                        } label: {
-                            Text("Progress to previous level")
-                        }
-                    } else if progressionHasPreviousStage(for: progression) {
-                        let prevStage = getPreviousStage(for: progression)
-                        Text("Ready to go to the previous stage?")
-                        Button {
-                            setProgression(progression.type, stage: prevStage)
-                            isShowingNewProgressionDetails = true
-                        } label: {
-                            Text("Progress to previous stage")
                         }
                     }
                 }
                 Spacer()
-                Button("Next") {
-                    goToNext()
+                Button("Adjust this progression") {
+                    isShowingAdjustProgression = true
                 }
+                .padding(.vertical)
             }
-                .presentationDetents([.height(300)])
-                .presentationDragIndicator(.automatic)
+            Button("Next") {
+                goToNext()
+            }
+            .presentationDetents([.height(300)])
+            .presentationDragIndicator(.automatic)
         } else {
             VStack {
                 Text("I managed...")
@@ -146,23 +128,6 @@ struct RecordExerciseView: View {
         reps -= 1
     }
     
-    func setProgression(_ type: ExerciseType, stage: Int) {
-        if let user = users.first {
-            user.setStage(forType: type, stage: stage)
-            user.setLevel(forType: type, level: Level.beginner.rawValue)
-        } else {
-            print("No user set when saving")
-        }
-    }
-    
-    func setLevel(_ type: ExerciseType, levelStr: String) {
-        if let user = users.first {
-            user.setLevel(forType: type, level: levelStr)
-        } else {
-            print("No user set when saving")
-        }
-    }
-    
     func saveSet(setsDoneToday: Int, sets: Int) {
         // Insert exercise if not already in WorkoutsByDay for this day
         let status = setsDoneToday + 1 >= sets ? WorkoutCompleteStatus.complete : WorkoutCompleteStatus.inProgress
@@ -219,7 +184,7 @@ struct RecordExerciseView: View {
             showingTodayRoutine: true,
             isWorkoutComplete: false,
             progression: pullupDataSet[5],
-            level: Level.intermediate,
+            level: Level.beginner,
             exerciseId: UUID(),
             nextExerciseWithSetsId: UUID(),
             scrollViewValue: scrollViewValue
