@@ -13,7 +13,7 @@ final class Routine: Identifiable {
     
     let id: String
     let day: Int
-    @Relationship var exercises: [Exercise]
+    var exercises: [Exercise]
     
     init(day: Int, exercises: [Exercise]) {
         self.id = UUID().uuidString

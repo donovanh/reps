@@ -441,6 +441,9 @@
         }
       }
     },
+    "Confirmation view" : {
+
+    },
     "Continue Workout" : {
 
     },
@@ -955,6 +958,18 @@
         }
       }
     },
+    "Progress to next level" : {
+
+    },
+    "Progress to next stage" : {
+
+    },
+    "Progress to previous level" : {
+
+    },
+    "Progress to previous stage" : {
+
+    },
     "Progression" : {
 
     },
@@ -997,6 +1012,18 @@
           }
         }
       }
+    },
+    "Ready to go to the next level?" : {
+
+    },
+    "Ready to go to the next stage?" : {
+
+    },
+    "Ready to go to the previous level?" : {
+
+    },
+    "Ready to go to the previous stage?" : {
+
     },
     "Record another set" : {
 

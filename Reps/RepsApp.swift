@@ -14,6 +14,6 @@ struct RepsApp: App {
         WindowGroup {
             MainView()
         }
-        .modelContainer(for: [Routine.self, User.self, JournalEntry.self])
+        .modelContainer(for: [Routine.self, User.self, JournalEntry.self, WorkoutsByDay.self])
     }
 }

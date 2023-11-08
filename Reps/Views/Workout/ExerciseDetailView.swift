@@ -15,9 +15,8 @@ struct ExerciseDetailView: View {
     @Binding var showingTodayRoutine: Bool
     @Binding var isWorkoutComplete: Bool
     @Binding var isWorkoutInProgress: Bool
-    
-    @State var reps = 0
-    @State var difficulty: Difficulty = .moderate
+
+//    @State var reps: Int = 123
     @State var isRecordingSet = false
     @State var currentExerciseId: UUID?
     
@@ -75,8 +74,6 @@ struct ExerciseDetailView: View {
                 isRecordingSet: $isRecordingSet,
                 sets: sets,
                 setsDoneToday: setsDoneToday,
-                reps: reps,
-                difficulty: difficulty,
                 isWorkoutInProgress: isWorkoutInProgress,
                 showingTodayRoutine: showingTodayRoutine,
                 isWorkoutComplete: isWorkoutComplete,
@@ -88,10 +85,7 @@ struct ExerciseDetailView: View {
             )
         }
         .onAppear {
-            let latestRepCount = getLatestRecordedReps(entries: journalEntries, forType: progression.type)
-            reps = latestRepCount > 0 ? latestRepCount : progression.getReps(for: level)
             currentExerciseId = exerciseId
-            // difficulty = getLatestRecordedDifficulty(entries: journalEntries, forType: progression.type)
         }
     }
 }

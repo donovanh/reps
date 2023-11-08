@@ -6,12 +6,14 @@ struct RecordExerciseView: View {
     // TODO: Repurpose this to control two sub-views
     @Environment(\.modelContext) private var context
     @Query private var users: [User]
+    @Query private var workoutsByDay: [WorkoutsByDay]
+    @Query private var journalEntries: [JournalEntry]
+    
+    @State var reps: Int = 0
     
     @Binding var isRecordingSet: Bool
     @State var sets: Int
     @State var setsDoneToday: Int
-    @State var reps: Int
-    @State var difficulty: Difficulty
     @State var isWorkoutInProgress: Bool
     @State var showingTodayRoutine: Bool
     @State var isWorkoutComplete: Bool
@@ -25,17 +27,21 @@ struct RecordExerciseView: View {
     @State private var isShowingConfirmation = false
     @State private var isShowingNewProgressionDetails = false
     
+    // TODO:
+    // Summarise what this does for future me
+    
     var body: some View {
         if isShowingConfirmation == true {
             let goalReps = progression.getReps(for: level)
             VStack {
                 Text("Confirmation view")
-                if reps >= goalReps {
+                if reps >= goalReps { // TODO: And both sets done!
+                    // Offer progression option
                     if progressionHasNextLevel(for: progression, at: level) {
                         let nextLevel = getNextLevel(for: progression, at: level)
                         Text("Ready to go to the next level?")
                         Button {
-                            setLevel(progression.type, levelStr: level.rawValue)
+                            setLevel(progression.type, levelStr: nextLevel.rawValue)
                             isShowingNewProgressionDetails = true
                         } label: {
                             Text("Progress to next level")
@@ -50,24 +56,31 @@ struct RecordExerciseView: View {
                             Text("Progress to next stage")
                         }
                     }
+                } else {
+                    // Offer regression option
+                    if progressionHasPreviousLevel(for: progression, at: level) {
+                        let prevLevel = getPreviousLevel(for: progression, at: level)
+                        Text("Ready to go to the previous level?")
+                        Button {
+                            setLevel(progression.type, levelStr: prevLevel.rawValue)
+                            isShowingNewProgressionDetails = true
+                        } label: {
+                            Text("Progress to previous level")
+                        }
+                    } else if progressionHasPreviousStage(for: progression) {
+                        let prevStage = getPreviousStage(for: progression)
+                        Text("Ready to go to the previous stage?")
+                        Button {
+                            setProgression(progression.type, stage: prevStage)
+                            isShowingNewProgressionDetails = true
+                        } label: {
+                            Text("Progress to previous stage")
+                        }
+                    }
                 }
                 Spacer()
                 Button("Next") {
                     goToNext()
-                }
-            }
-            .onAppear {
-                if progressionHasPreviousLevel(for: progression, at: level) {
-                    print("Has previous level")
-                }
-                if progressionHasPreviousStage(for: progression) {
-                    print("Has previous stage")
-                }
-                if progressionHasNextLevel(for: progression, at: level) {
-                    print("Has Next level")
-                }
-                if progressionHasNextStage(for: progression) {
-                    print("Has Next stage")
                 }
             }
                 .presentationDetents([.height(300)])
@@ -109,21 +122,16 @@ struct RecordExerciseView: View {
                     .buttonRepeatBehavior(.enabled)
                     Spacer()
                 }
-                // TODO: Rethink difficulty
-                //            Text("It was...")
-                //            Picker("Difficulty level", selection: $difficulty) {
-                //                ForEach(Difficulty.allCases, id: \.self) { diff in
-                //                    Text(diff.localizedStringResource)
-                //                }
-                //            }
-                //            .pickerStyle(.segmented)
-                //            .padding(.horizontal)
                 Spacer()
                 Button("Save") {
                     saveSet(setsDoneToday: setsDoneToday, sets: sets)
                     isShowingConfirmation = true
                 }
                 .padding()
+            }
+            .onAppear {
+                let latestRepCount = getLatestRecordedReps(entries: journalEntries, forType: progression.type)
+                reps = latestRepCount > 0 ? latestRepCount : progression.getReps(for: level)
             }
             .presentationDetents([.height(300)])
             .presentationDragIndicator(.automatic)
@@ -137,51 +145,6 @@ struct RecordExerciseView: View {
     func decrementReps() {
         reps -= 1
     }
-    
-    // --------- //
-    // TODO: Move this logic to the Exercise model
-    
-    func progressionHasPreviousLevel(for progression: Progression, at level: Level) -> Bool {
-        return level != Level.beginner
-    }
-    
-    func progressionHasPreviousStage(for: Progression) -> Bool {
-        return progression.stage > 1
-    }
-    
-    func getPreviousLevel(for: Progression, at level: Level) -> Level {
-        switch level {
-            case Level.beginner: return Level.beginner
-            case Level.intermediate: return Level.beginner
-            case Level.progression: return Level.intermediate
-        }
-    }
-    
-    func getPreviousStage(for: Progression) -> Int {
-        return progression.stage > 1 ? progression.stage - 1 : 1
-    }
-    
-    func progressionHasNextLevel(for: Progression, at: Level) -> Bool {
-        return level != Level.progression
-    }
-    
-    func progressionHasNextStage(for: Progression) -> Bool {
-        return progression.stage < 10
-    }
-    
-    func getNextLevel(for: Progression, at: Level) -> Level {
-        switch level {
-            case Level.beginner: return Level.intermediate
-            case Level.intermediate: return Level.progression
-            case Level.progression: return Level.progression
-        }
-    }
-    
-    func getNextStage(for: Progression) -> Int {
-        return progression.stage > 10 ? progression.stage + 1 : 10
-    }
-    
-    // --------- //
     
     func setProgression(_ type: ExerciseType, stage: Int) {
         if let user = users.first {
@@ -201,15 +164,32 @@ struct RecordExerciseView: View {
     }
     
     func saveSet(setsDoneToday: Int, sets: Int) {
+        // Insert exercise if not already in WorkoutsByDay for this day
+        let status = setsDoneToday + 1 >= sets ? WorkoutCompleteStatus.complete : WorkoutCompleteStatus.inProgress
+        updateTodaysWorkoutStatus(for: progression.type, status: status)
+        var level = Level.beginner.rawValue
+        if let user = users.first {
+            level = user.getLevel(forType: progression.type)
+        }
         context.insert(
             JournalEntry(
                 date: Date(),
                 exerciseType: progression.type.rawValue,
                 stage: progression.stage,
-                reps: reps//,
-                //difficulty: difficulty.rawValue
+                level: Level(rawValue: level) ?? Level.beginner,
+                reps: reps
             )
         )
+    }
+    
+    func updateTodaysWorkoutStatus(for exerciseType: ExerciseType, status: WorkoutCompleteStatus) {
+        let currentDate = getCurrentDate()
+        if var currentWorkout = getWorkout(entries: workoutsByDay, forDate: currentDate) {
+            currentWorkout[exerciseType] = status
+        } else {
+            let newWorkoutByDay = WorkoutsByDay(date: currentDate, workout: [exerciseType: status])
+            context.insert(newWorkoutByDay)
+        }
     }
     
     func goToNext() {
@@ -235,8 +215,6 @@ struct RecordExerciseView: View {
             isRecordingSet: .constant(true),
             sets: 2,
             setsDoneToday: 1,
-            reps: 9000,
-            difficulty: Difficulty.moderate, // TODO: remove perhaps
             isWorkoutInProgress: true,
             showingTodayRoutine: true,
             isWorkoutComplete: false,

@@ -9,26 +9,26 @@ import Foundation
 
 let stages: [ExperienceLevel: [ExerciseType: Int]] = [
     .gettingStarted: [
-        .pushup: 1,
-        .pullup: 1,
-        .squat: 1,
-        .bridge: 1,
-        .legraise: 1
+        .pushup: 0,
+        .pullup: 0,
+        .squat: 0,
+        .bridge: 0,
+        .legraise: 0
     ],
     .intermediate: [
+        .pushup: 4,
+        .pullup: 4,
+        .squat: 4,
+        .bridge: 2,
+        .legraise: 2,
+        .handstandpushup: 0
+    ],
+    .advanced: [
         .pushup: 5,
         .pullup: 5,
         .squat: 5,
-        .bridge: 3,
-        .legraise: 3,
-        .handstandpushup: 1
-    ],
-    .advanced: [
-        .pushup: 6,
-        .pullup: 6,
-        .squat: 6,
-        .bridge: 5,
-        .legraise: 5,
-        .handstandpushup: 3
+        .bridge: 4,
+        .legraise: 4,
+        .handstandpushup: 2
     ]
 ]

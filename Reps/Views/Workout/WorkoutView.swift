@@ -9,8 +9,8 @@ struct WorkoutView: View {
     @Query private var journalEntries: [JournalEntry]
     
     @Binding var showingTodayRoutine: Bool
-    @Binding var isWorkoutComplete: Bool
-    @Binding var isWorkoutInProgress: Bool
+    @Binding var isTodayComplete: Bool
+    @Binding var isTodayInProgress: Bool
     
     let currentExerciseId: UUID?
     let todayExercises: [Exercise]
@@ -49,8 +49,8 @@ struct WorkoutView: View {
                                     if let progression = getExercise(ofType: exercise.type, atStage: user.getStage(forType: exercise.type)) {
                                         ExerciseDetailView(
                                             showingTodayRoutine: $showingTodayRoutine,
-                                            isWorkoutComplete: $isWorkoutComplete,
-                                            isWorkoutInProgress: $isWorkoutInProgress,
+                                            isWorkoutComplete: $isTodayComplete,
+                                            isWorkoutInProgress: $isTodayInProgress,
                                             currentExerciseId: currentExerciseId,
                                             progression: progression,
                                             levelStr: level,
@@ -225,8 +225,8 @@ struct ViewOffsetKey: PreferenceKey {
 #Preview {
     WorkoutView(
         showingTodayRoutine: .constant(true),
-        isWorkoutComplete: .constant(false),
-        isWorkoutInProgress: .constant(true),
+        isTodayComplete: .constant(false),
+        isTodayInProgress: .constant(true),
         currentExerciseId: UUID(),
         todayExercises: [
             Exercise(id: UUID(), type: .pullup),

@@ -102,12 +102,12 @@ final class User: Identifiable {
 }
 
 let DefaultUser = User(
-    pushupStage: 1,
-    pullupStage: 1,
-    squatStage: 1,
-    bridgeStage: 1,
-    legraiseStage: 1,
-    handstandpushupStage: 1,
+    pushupStage: 0,
+    pullupStage: 0,
+    squatStage: 0,
+    bridgeStage: 0,
+    legraiseStage: 0,
+    handstandpushupStage: 0,
     pushupLevel: Level.beginner.rawValue,
     pullupLevel: Level.beginner.rawValue,
     squatLevel: Level.beginner.rawValue,

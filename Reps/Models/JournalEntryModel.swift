@@ -11,26 +11,26 @@ import SwiftData
 @Model
 final class JournalEntry: Identifiable {
     
-    let id: String
+    let id: UUID
     let date: Date
     let exerciseType: String
     let stage: Int
+    let level: Level
     let reps: Int
-    //let difficulty: String
     
     init(
         date: Date,
         exerciseType: String,
         stage: Int,
+        level: Level,
         reps: Int
-        //difficulty: String
     ) {
-        self.id = UUID().uuidString
+        self.id = UUID()
         self.date = date
         self.exerciseType = exerciseType
         self.stage = stage
+        self.level = level
         self.reps = reps
-        //self.difficulty = difficulty
     }
 }
 
@@ -59,23 +59,4 @@ func getLatestRecordedReps(entries: [JournalEntry], forType exerciseType: Exerci
     }
     
     return 0
-}
-
-func getLatestRecordedDifficulty(entries: [JournalEntry], forType exerciseType: ExerciseType) -> Difficulty {
-    let defaultDifficulty: Difficulty = .moderate
-    let entriesOfType = entries.filter { entry in
-        entry.exerciseType == exerciseType.rawValue
-    }
-    
-    if let latestEntry = entriesOfType.last {
-        return defaultDifficulty
-        //Difficulty(rawValue: latestEntry.difficulty) ?? defaultDifficulty
-    }
-    
-    return defaultDifficulty
-}
-
-
-enum Difficulty: String, CaseIterable {
-    case easy, moderate, difficult
 }

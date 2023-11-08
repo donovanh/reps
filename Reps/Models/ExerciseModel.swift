@@ -119,3 +119,43 @@ struct Progression: Hashable {
         return sets[level] ?? 0
     }
 }
+
+func progressionHasPreviousLevel(for progression: Progression, at level: Level) -> Bool {
+    return level != Level.beginner
+}
+
+func progressionHasPreviousStage(for progression: Progression) -> Bool {
+    return progression.stage > 0
+}
+
+func getPreviousLevel(for progression: Progression, at level: Level) -> Level {
+    switch level {
+        case Level.beginner: return Level.beginner
+        case Level.intermediate: return Level.beginner
+        case Level.progression: return Level.intermediate
+    }
+}
+
+func getPreviousStage(for progression: Progression) -> Int {
+    return progression.stage > 0 ? progression.stage - 1 : 0
+}
+
+func progressionHasNextLevel(for progression: Progression, at level: Level) -> Bool {
+    return level != Level.progression
+}
+
+func progressionHasNextStage(for progression: Progression) -> Bool {
+    return progression.stage < 9
+}
+
+func getNextLevel(for progression: Progression, at level: Level) -> Level {
+    switch level {
+        case Level.beginner: return Level.intermediate
+        case Level.intermediate: return Level.progression
+        case Level.progression: return Level.progression
+    }
+}
+
+func getNextStage(for progression: Progression) -> Int {
+    return progression.stage < 9 ? progression.stage + 1 : 9
+}
