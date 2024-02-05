@@ -1,0 +1,1380 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    " " : {
+
+    },
+    "%lld" : {
+
+    },
+    "%lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      }
+    },
+    "%lld x %lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld x %2$lld %3$@"
+          }
+        }
+      }
+    },
+    "%lld x %lld reps" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld x %#@arg2@"
+          },
+          "substitutions" : {
+            "arg2" : {
+              "argNum" : 2,
+              "formatSpecifier" : "lld",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg wiederholungen"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg wiederholungen"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld x %#@arg2@"
+          },
+          "substitutions" : {
+            "arg2" : {
+              "argNum" : 2,
+              "formatSpecifier" : "lld",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg rep"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg reps"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld x %lld seconds" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld x %#@arg2@"
+          },
+          "substitutions" : {
+            "arg2" : {
+              "argNum" : 2,
+              "formatSpecifier" : "lld",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg sekunden"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg sekunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld x %#@arg2@"
+          },
+          "substitutions" : {
+            "arg2" : {
+              "argNum" : 2,
+              "formatSpecifier" : "lld",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg second"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg seconds"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "^[%lld set](inflect: true) done" : {
+
+    },
+    "1 set" : {
+
+    },
+    "1/2 One-arm pull-ups" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1/2 einarmige Klimmzüge"
+          }
+        }
+      }
+    },
+    "A heavier workout routine, focusing on alternate pushing and pulling days." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein anspruchsvolleres Trainingsprogramm mit Schwerpunkt auf abwechselnden Zug- und Zugtagen."
+          }
+        }
+      }
+    },
+    "A heavier workout routine, with alternating days focusing on upper and lower body exercises." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine anspruchsvollere Trainingsroutine mit abwechselnden Tagen, die sich auf Ober- und Unterkörperübungen konzentrieren."
+          }
+        }
+      }
+    },
+    "A plan that allows you to focus on alternately pushing and pulling, broken up into four workouts per week." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Plan, der es Ihnen ermöglicht, sich auf abwechselndes Drücken und Ziehen zu konzentrieren, aufgeteilt in vier Trainingseinheiten pro Woche."
+          }
+        }
+      }
+    },
+    "A solid workout, three times each week. This allows for time for recovery while also ensuring progress." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein solides Training, dreimal pro Woche. Dies gibt Zeit für die Erholung und sichert gleichzeitig den Fortschritt."
+          }
+        }
+      }
+    },
+    "Add" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzufügen"
+          }
+        }
+      }
+    },
+    "Adding exercise" : {
+
+    },
+    "Admin" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Administratorin"
+          }
+        }
+      }
+    },
+    "Advanced" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortgeschritten"
+          }
+        }
+      }
+    },
+    "Advanced (push/pull) " : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortgeschritten (Drücken/Ziehen)"
+          }
+        }
+      }
+    },
+    "Advanced (upper/lower)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortgeschritten (oben/unten)"
+          }
+        }
+      }
+    },
+    "All done!" : {
+
+    },
+    "All sets done" : {
+
+    },
+    "Angled bridges" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abgewinkelte Brücken"
+          }
+        }
+      }
+    },
+    "Apply new plan" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuen Plan anwenden"
+          }
+        }
+      }
+    },
+    "Apply this plan" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenden Sie diesen Plan an"
+          }
+        }
+      }
+    },
+    "Assisted One-arm pull-ups" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterstützte einarmige Klimmzüge"
+          }
+        }
+      }
+    },
+    "Assisted one-leg squats" : {
+
+    },
+    "Assisted One-leg squats" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterstützte einbeinige Kniebeugen"
+          }
+        }
+      }
+    },
+    "Beginner" : {
+
+    },
+    "Bridges" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brücken"
+          }
+        }
+      }
+    },
+    "Build a strong foundation, beginning with the fundamental movements to get strong while avoiding injury." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bauen Sie ein starkes Fundament auf und beginnen Sie mit den Grundbewegungen, um stark zu werden und gleichzeitig Verletzungen zu vermeiden."
+          }
+        }
+      }
+    },
+    "Build new plan" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstellen Sie einen neuen Plan"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stornieren"
+          }
+        }
+      }
+    },
+    "Change level" : {
+
+    },
+    "Choose a schedule" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wählen Sie einen Zeitplan"
+          }
+        }
+      }
+    },
+    "Choose your progression level" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wählen Sie Ihre Fortschrittsstufe"
+          }
+        }
+      }
+    },
+    "Choose your weekly plan" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wählen Sie Ihren Wochenplan"
+          }
+        }
+      }
+    },
+    "Clear all data (dev)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Daten löschen (dev)"
+          }
+        }
+      }
+    },
+    "Close handstand pushups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enge Handstand-Liegestütze"
+          }
+        }
+      }
+    },
+    "Close pull-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klimmzüge schließen"
+          }
+        }
+      }
+    },
+    "Close push-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liegestütze schließen"
+          }
+        }
+      }
+    },
+    "Close squats" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enge Kniebeugen"
+          }
+        }
+      }
+    },
+    "Closing bridges" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brücken schließen"
+          }
+        }
+      }
+    },
+    "Continue Workout" : {
+
+    },
+    "Crow" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Krähe"
+          }
+        }
+      }
+    },
+    "Current level" : {
+
+    },
+    "Default" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard"
+          }
+        }
+      }
+    },
+    "Done" : {
+
+    },
+    "Edit" : {
+
+    },
+    "Editing schedule" : {
+
+    },
+    "Flat bent leg raises" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flaches, gebeugtes Beinheben"
+          }
+        }
+      }
+    },
+    "Flat frog raises" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flacher Frosch hebt"
+          }
+        }
+      }
+    },
+    "Flat knee leg raises" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flaches Knie-Beinheben"
+          }
+        }
+      }
+    },
+    "Flat straight-leg raises" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flaches Heben mit geradem Bein"
+          }
+        }
+      }
+    },
+    "Full bridges" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volle Brücken"
+          }
+        }
+      }
+    },
+    "Full pull-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volle Klimmzüge"
+          }
+        }
+      }
+    },
+    "Full push-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volle Liegestütze"
+          }
+        }
+      }
+    },
+    "Full squats" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volle Kniebeugen"
+          }
+        }
+      }
+    },
+    "Getting started" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loslegen"
+          }
+        }
+      }
+    },
+    "Half bridges" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halbbrücken"
+          }
+        }
+      }
+    },
+    "Half one-arm handstand pushups" : {
+
+    },
+    "Half One-arm handstand pushups" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halbe einarmige Handstand-Liegestütze"
+          }
+        }
+      }
+    },
+    "Half one-arm pull-ups" : {
+
+    },
+    "Half one-arm push-ups" : {
+
+    },
+    "Half One-Arm push-ups" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halbe einarmige Liegestütze"
+          }
+        }
+      }
+    },
+    "Half one-leg squats" : {
+
+    },
+    "Half One-leg squats" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halbe einbeinige Kniebeugen"
+          }
+        }
+      }
+    },
+    "Half pull-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halbe Klimmzüge"
+          }
+        }
+      }
+    },
+    "Half push-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halbe Liegestütze"
+          }
+        }
+      }
+    },
+    "Half squats" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halbe Kniebeugen"
+          }
+        }
+      }
+    },
+    "Half-handstand pushups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liegestütze im Halbhandstand"
+          }
+        }
+      }
+    },
+    "Handstand Push-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Handstand-Liegestütze"
+          }
+        }
+      }
+    },
+    "Handstand pushups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Handstand-Liegestütze"
+          }
+        }
+      }
+    },
+    "Hanging bent-leg raises" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hängendes Anheben der gebeugten Beine"
+          }
+        }
+      }
+    },
+    "Hanging frog raises" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hängender Frosch hebt sich"
+          }
+        }
+      }
+    },
+    "Hanging knee raises" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hängende Knieheben"
+          }
+        }
+      }
+    },
+    "Hanging straight-leg raises" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hängendes Heben mit geradem Bein"
+          }
+        }
+      }
+    },
+    "Head bridges" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopfbrücken"
+          }
+        }
+      }
+    },
+    "Hello" : {
+
+    },
+    "Horizontal pull-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horizontale Klimmzüge"
+          }
+        }
+      }
+    },
+    "Incline push-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schräglage-Liegestütze"
+          }
+        }
+      }
+    },
+    "Intermediate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dazwischenliegend"
+          }
+        }
+      }
+    },
+    "Jackknife pull-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klappmesser-Klimmzüge"
+          }
+        }
+      }
+    },
+    "Jackknife squats" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jackknife-Kniebeugen"
+          }
+        }
+      }
+    },
+    "Journal TODO" : {
+
+    },
+    "Keep level" : {
+
+    },
+    "Knee tucks" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kniebeugen"
+          }
+        }
+      }
+    },
+    "Kneeling push-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kniende Liegestütze"
+          }
+        }
+      }
+    },
+    "Leg Raises" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beinheben"
+          }
+        }
+      }
+    },
+    "Level: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eben: %@"
+          }
+        }
+      }
+    },
+    "Lever handstand pushups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hebel-Handstand-Liegestütze"
+          }
+        }
+      }
+    },
+    "Lever push-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hebel-Liegestütze"
+          }
+        }
+      }
+    },
+    "New user" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuer Benutzer"
+          }
+        }
+      }
+    },
+    "Next" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nächste"
+          }
+        }
+      }
+    },
+    "Next day" : {
+
+    },
+    "No progression found" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Fortschritt gefunden"
+          }
+        }
+      }
+    },
+    "Not started" : {
+
+    },
+    "Not visionOS" : {
+
+    },
+    "Note: You can adjust these as needed in your weekly overview." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweis: Diese können Sie in Ihrer Wochenübersicht nach Bedarf anpassen."
+          }
+        }
+      }
+    },
+    "One-arm handstand pushups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einarmige Handstand-Liegestütze"
+          }
+        }
+      }
+    },
+    "One-arm negative pull-ups" : {
+
+    },
+    "One-arm pull-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einarmige Klimmzüge"
+          }
+        }
+      }
+    },
+    "One-arm push-ups" : {
+
+    },
+    "One-Arm push-ups" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einarmige Liegestütze"
+          }
+        }
+      }
+    },
+    "One-leg squats" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einbeinige Kniebeugen"
+          }
+        }
+      }
+    },
+    "Partial straight-leg raises" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teilweises Anheben des gestreckten Beins"
+          }
+        }
+      }
+    },
+    "Plan Builder" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planersteller"
+          }
+        }
+      }
+    },
+    "Prev day" : {
+
+    },
+    "Progression" : {
+
+    },
+    "Progression level" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortschrittsstufe"
+          }
+        }
+      }
+    },
+    "Progressions" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortschritte"
+          }
+        }
+      }
+    },
+    "Pull-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klimmzüge"
+          }
+        }
+      }
+    },
+    "Push-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liegestütze"
+          }
+        }
+      }
+    },
+    "reps" : {
+
+    },
+    "Rest Day" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruhetag"
+          }
+        }
+      }
+    },
+    "Rest day! Maybe go for a walk." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruhetag! Vielleicht einen Spaziergang machen."
+          }
+        }
+      }
+    },
+    "Save set" : {
+
+    },
+    "Schedule" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitplan"
+          }
+        }
+      }
+    },
+    "Schedule: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitplan: %@"
+          }
+        }
+      }
+    },
+    "seconds" : {
+
+    },
+    "Set %lld of %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Set %1$lld of %2$lld"
+          }
+        }
+      }
+    },
+    "Set up a new routine" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richten Sie eine neue Routine ein"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        }
+      }
+    },
+    "Short bridges" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurze Brücken"
+          }
+        }
+      }
+    },
+    "Shoulder stands" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schulterständer"
+          }
+        }
+      }
+    },
+    "Squats" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kniebeugen"
+          }
+        }
+      }
+    },
+    "Stand-to-stand bridges" : {
+
+    },
+    "Stand-to-Stand bridges" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stand-zu-Stand-Brücken"
+          }
+        }
+      }
+    },
+    "Start Workout" : {
+
+    },
+    "Straight bridges" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerade Brücken"
+          }
+        }
+      }
+    },
+    "Supported squats" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterstützte Kniebeugen"
+          }
+        }
+      }
+    },
+    "Today" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute"
+          }
+        }
+      }
+    },
+    "Uneven handstand pushups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungleichmäßige Handstand-Liegestütze"
+          }
+        }
+      }
+    },
+    "Uneven pull-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungleichmäßige Klimmzüge"
+          }
+        }
+      }
+    },
+    "Uneven push-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungleichmäßige Liegestütze"
+          }
+        }
+      }
+    },
+    "Uneven squats" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungleichmäßige Kniebeugen"
+          }
+        }
+      }
+    },
+    "Vertical pull-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vertikale Klimmzüge"
+          }
+        }
+      }
+    },
+    "Wall handstands" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wandhandstände"
+          }
+        }
+      }
+    },
+    "Wall headstands" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wandkopfstände"
+          }
+        }
+      }
+    },
+    "Wall push-ups" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liegestütze an der Wand"
+          }
+        }
+      }
+    },
+    "Wall walking (down)" : {
+
+    },
+    "Wall Walking (Down)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mauerwandern (nach unten)"
+          }
+        }
+      }
+    },
+    "Wall walking (up)" : {
+
+    },
+    "Wall Walking (Up)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mauerwandern (nach oben)"
+          }
+        }
+      }
+    },
+    "Week" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Woche"
+          }
+        }
+      }
+    },
+    "Weekly Plan" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wöchentlicher Plan"
+          }
+        }
+      }
+    },
+    "You know the basics and you're ready to build stength." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie kennen die Grundlagen und sind bereit, Stärke aufzubauen."
+          }
+        }
+      }
+    },
+    "You've been doing this for a while and you're ready to take it to the next level." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du machst das schon eine Weile und bist bereit, es auf die nächste Stufe zu bringen."
+          }
+        }
+      }
+    },
+    "Your Day" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Tag"
+          }
+        }
+      }
+    },
+    "Your progressions" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Fortschritte"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
