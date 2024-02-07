@@ -47,37 +47,32 @@ extension ProgressionViewer {
             return result
         }
         
-        func calculateScrollWidth(screenWidth: CGFloat, numberOfProgressions: Int) -> CGFloat {
-            return screenWidth * CGFloat(numberOfProgressions)
-        }
-        
         func visibleExerciseIndex(screenWidth: CGFloat, forOffset offset: CGFloat) -> Int {
-            return Int((offset / screenWidth).rounded(.toNearestOrAwayFromZero))
+            return screenWidth > 0 ? Int((offset / (screenWidth + 20)).rounded(.toNearestOrAwayFromZero)) : 0
         }
         
         func calculateOpacityOfAnimation(screenWidth: CGFloat, forOffset offset: CGFloat, numberOfExercises: Int) -> Double {
-            let maxWidth = screenWidth * CGFloat(numberOfExercises - 1)
+            let adjustedWidth = screenWidth + 20 // Adjusting to allow for the scrollview spacing
+            let maxWidth = adjustedWidth * CGFloat(numberOfExercises - 1)
 
             if offset < 0 || offset > maxWidth {
                 return 1
             }
-            let index = visibleExerciseIndex(screenWidth: screenWidth, forOffset: offset)
-                
-            let nearestIndexOffset = CGFloat(index) * screenWidth // Calculate the offset of the nearest index
-     
-            let distance = abs(offset - nearestIndexOffset) // Calculate the distance from that offset value
             
-            let halfScreenWidth = screenWidth / 2
+            let index = visibleExerciseIndex(screenWidth: adjustedWidth, forOffset: offset)
+            let nearestIndexOffset = CGFloat(index) * adjustedWidth
+            let distance = abs(offset - nearestIndexOffset)
+            let halfScreenWidth = adjustedWidth / 2
             let opacity = 1 - Double(min(distance, halfScreenWidth)) / Double(halfScreenWidth)
-            
+            // print(max(opacity, 0))
             return max(opacity, 0) // Ensure opacity is not negative
         }
         
         func calculateXOffset(screenWidth: CGFloat, forOffset offset: CGFloat) -> Double {
-            let index = visibleExerciseIndex(screenWidth: screenWidth, forOffset: offset)
-            let nearestIndexOffset = CGFloat(index) * screenWidth // Calculate the offset of the nearest index
-            let distance = offset - nearestIndexOffset // Calculate the distance from that offset value
-            
+            let adjustedWidth = screenWidth + 20
+            let index = visibleExerciseIndex(screenWidth: adjustedWidth, forOffset: offset)
+            let nearestIndexOffset = CGFloat(index) * adjustedWidth
+            let distance = offset - nearestIndexOffset
             return (0 - distance / 3)
         }
         

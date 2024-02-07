@@ -14,7 +14,9 @@ struct RepsApp: App {
         WindowGroup {
             //AnimationView2()
             DayView(day: Date().dayNumberOfWeek() ?? 0)
+                .background(Color.blue.edgesIgnoringSafeArea(.all))
+                //.preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
         }
-        .modelContainer(for: [JournalEntryV2.self])
+        .modelContainer(for: [JournalEntry.self])
     }
 }

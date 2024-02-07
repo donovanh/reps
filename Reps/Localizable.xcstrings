@@ -27,6 +27,16 @@
         }
       }
     },
+    "%lld of ^[%lld set](inflect: true) done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld of ^[%2$lld set](inflect: true) done"
+          }
+        }
+      }
+    },
     "%lld x %lld %@" : {
       "localizations" : {
         "en" : {
@@ -217,6 +227,7 @@
       }
     },
     "Add" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -225,6 +236,9 @@
           }
         }
       }
+    },
+    "Add exercise" : {
+
     },
     "Adding exercise" : {
 
@@ -496,12 +510,6 @@
       }
     },
     "Done" : {
-
-    },
-    "Edit" : {
-
-    },
-    "Editing schedule" : {
 
     },
     "Flat bent leg raises" : {
@@ -899,9 +907,6 @@
         }
       }
     },
-    "Next day" : {
-
-    },
     "No progression found" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -912,9 +917,6 @@
           }
         }
       }
-    },
-    "Not started" : {
-
     },
     "Not visionOS" : {
 
@@ -995,9 +997,6 @@
           }
         }
       }
-    },
-    "Prev day" : {
-
     },
     "Progression" : {
 

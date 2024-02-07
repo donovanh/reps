@@ -12,7 +12,7 @@ extension DayView {
     @Observable
     class ViewModel {
         
-        func isTodayDone(journalEntries: [JournalEntryV2], exerciseTypes: [ExerciseType], userExerciseStages: UserExerciseStages) -> Bool {
+        func isTodayDone(journalEntries: [JournalEntry], exerciseTypes: [ExerciseType], userExerciseStages: UserExerciseStages) -> Bool {
             var done = true
             
             let todayProgressions = makeProgressions(exerciseTypes: exerciseTypes, userExerciseStages: userExerciseStages)
@@ -25,7 +25,7 @@ extension DayView {
             return done
         }
         
-        func isTodayInProgress(journalEntries: [JournalEntryV2], exerciseTypes: [ExerciseType], userExerciseStages: UserExerciseStages) -> Bool {
+        func isTodayInProgress(journalEntries: [JournalEntry], exerciseTypes: [ExerciseType], userExerciseStages: UserExerciseStages) -> Bool {
             var inProgress = false
             
             let todayProgressions = makeProgressions(exerciseTypes: exerciseTypes, userExerciseStages: userExerciseStages)
@@ -40,7 +40,7 @@ extension DayView {
             return inProgress
         }
         
-        func isProgressionDone(journalEntries: [JournalEntryV2], progression: Progression, userExerciseStages: UserExerciseStages) -> Bool {
+        func isProgressionDone(journalEntries: [JournalEntry], progression: Progression, userExerciseStages: UserExerciseStages) -> Bool {
             let level = userExerciseStages.level(for: progression.type)
             let requiredSets = progression.getSets(for: level)
             let setsDone = journalEntryMethods().getSetsDone(entries: journalEntries, forDate: Date(), ofType: progression.type, ofStage: progression.stage, ofLevel: level)
@@ -50,7 +50,7 @@ extension DayView {
             return true
         }
         
-        func firstNotDoneProgressionIndex(journalEntries: [JournalEntryV2], progressions: [Progression], userExerciseStages: UserExerciseStages) -> Int {
+        func firstNotDoneProgressionIndex(journalEntries: [JournalEntry], progressions: [Progression], userExerciseStages: UserExerciseStages) -> Int {
             for i in 0..<progressions.count {
                 if !isProgressionDone(journalEntries: journalEntries, progression: progressions[i], userExerciseStages: userExerciseStages) {
                     return i
@@ -59,7 +59,7 @@ extension DayView {
             return -1
         }
         
-        func nextUnfinishedProgressionIndex(journalEntries: [JournalEntryV2], progressions: [Progression], progression: Progression, userExerciseStages: UserExerciseStages) -> Int {
+        func nextUnfinishedProgressionIndex(journalEntries: [JournalEntry], progressions: [Progression], progression: Progression, userExerciseStages: UserExerciseStages) -> Int {
             guard let currentIndex = progressions.firstIndex(where: { $0 == progression }) else {
                     return -1
                 }

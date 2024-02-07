@@ -28,7 +28,9 @@ struct ChangeProgression: View {
         VStack {
             Text(String(localized: displayProgression.name.rawValue))
                 .font(.largeTitle.bold())
-                .padding(.top, geo.size.height / 2)
+                .fixedSize(horizontal: false, vertical: true)
+                .multilineTextAlignment(.center)
+                .padding(.top, (geo.size.height / 2) + 10)
             
             HStack {
                 Spacer()
@@ -39,8 +41,8 @@ struct ChangeProgression: View {
                         scrollViewValue.scrollTo(progressions[prev.stage])
                     }
                 } label: {
-                    Image(systemName: "chevron.left.circle")
-                        .foregroundStyle(.secondary)
+                    Image(systemName: "arrowshape.left.fill")
+                        .foregroundStyle(Color.secondaryButtonBg)
                         .font(.largeTitle)
                 }
                 .opacity(stage == 0 && level == .beginner ? 0.25 : 1)
@@ -59,8 +61,8 @@ struct ChangeProgression: View {
                         scrollViewValue.scrollTo(progressions[next.stage])
                     }
                 } label: {
-                    Image(systemName: "chevron.right.circle")
-                        .foregroundStyle(.secondary)
+                    Image(systemName: "arrowshape.right.fill")
+                        .foregroundStyle(Color.secondaryButtonBg)
                         .font(.largeTitle)
                 }
                 .opacity(stage == 9 && level == .progression ? 0.25 : 1)
@@ -79,7 +81,7 @@ struct ChangeProgression: View {
             }
             .buttonStyle(PrimaryButton())
             Spacer()
-         }
+        }
         .onAppear {
             stage = displayProgression.stage
         }

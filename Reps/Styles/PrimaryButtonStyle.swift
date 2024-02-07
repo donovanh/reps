@@ -10,12 +10,12 @@ import SwiftUI
 struct PrimaryButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.title2)
-            .padding(.horizontal, 20)
+            .font(.headline.bold())
             .padding()
-            .background(.blue)
-            .foregroundStyle(.white)
-            .clipShape(.rect(cornerSize: CGSize(width: 20, height: 20)))
+            .background(.thinMaterial)
+            .background(Color.primaryButtonBg)
+            .foregroundStyle(.primary)
+            .clipShape(.rect(cornerSize: CGSize(width: 10, height: 10)))
             .scaleEffect(configuration.isPressed ? 0.9 : 1)
     }
 }

@@ -21,8 +21,15 @@
 		451952822B70361000F570C8 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451952812B70361000F570C8 /* PrimaryButtonStyle.swift */; };
 		451952842B70444600F570C8 /* AnimationView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451952832B70444500F570C8 /* AnimationView2.swift */; };
 		451952882B704B1000F570C8 /* base-model-test.scn in Resources */ = {isa = PBXBuildFile; fileRef = 451952872B704B1000F570C8 /* base-model-test.scn */; };
-		4519528A2B704B6900F570C8 /* bridge-01.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 451952892B704B6800F570C8 /* bridge-01.usdz */; };
 		4519528C2B71125800F570C8 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4519528B2B71125800F570C8 /* Routine.swift */; };
+		4519528E2B71230A00F570C8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4519528D2B71230A00F570C8 /* Color.swift */; };
+		451952902B714B0100F570C8 /* SizePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4519528F2B714B0100F570C8 /* SizePreference.swift */; };
+		451952932B72727900F570C8 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451952922B72727900F570C8 /* Icon.swift */; };
+		451952A92B72B7E000F570C8 /* bridge-pose-anim.dae in Resources */ = {isa = PBXBuildFile; fileRef = 451952A82B72B7E000F570C8 /* bridge-pose-anim.dae */; };
+		451952AB2B72C57200F570C8 /* legraise-pose-anim.dae in Resources */ = {isa = PBXBuildFile; fileRef = 451952AA2B72C57200F570C8 /* legraise-pose-anim.dae */; };
+		451952AD2B72C71800F570C8 /* bridge-pose.dae in Resources */ = {isa = PBXBuildFile; fileRef = 451952AC2B72C71800F570C8 /* bridge-pose.dae */; };
+		451952AF2B72C88D00F570C8 /* squat-pose.dae in Resources */ = {isa = PBXBuildFile; fileRef = 451952AE2B72C88D00F570C8 /* squat-pose.dae */; };
+		451952B12B72C9D200F570C8 /* pullup-pose.dae in Resources */ = {isa = PBXBuildFile; fileRef = 451952B02B72C9D200F570C8 /* pullup-pose.dae */; };
 		451CC5392A9A33F3000D7711 /* base-model.dae in Resources */ = {isa = PBXBuildFile; fileRef = 451CC5382A9A33F3000D7711 /* base-model.dae */; };
 		4549BD082A7241DC00F3E2AD /* PlanBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD072A7241DC00F3E2AD /* PlanBuilderView.swift */; };
 		4549BD0A2A778C1800F3E2AD /* Schedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD092A778C1800F3E2AD /* Schedules.swift */; };
@@ -132,8 +139,15 @@
 		451952812B70361000F570C8 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		451952832B70444500F570C8 /* AnimationView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView2.swift; sourceTree = "<group>"; };
 		451952872B704B1000F570C8 /* base-model-test.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "base-model-test.scn"; sourceTree = "<group>"; };
-		451952892B704B6800F570C8 /* bridge-01.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "bridge-01.usdz"; sourceTree = "<group>"; };
 		4519528B2B71125800F570C8 /* Routine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
+		4519528D2B71230A00F570C8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		4519528F2B714B0100F570C8 /* SizePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreference.swift; sourceTree = "<group>"; };
+		451952922B72727900F570C8 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		451952A82B72B7E000F570C8 /* bridge-pose-anim.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "bridge-pose-anim.dae"; sourceTree = "<group>"; };
+		451952AA2B72C57200F570C8 /* legraise-pose-anim.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "legraise-pose-anim.dae"; sourceTree = "<group>"; };
+		451952AC2B72C71800F570C8 /* bridge-pose.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "bridge-pose.dae"; sourceTree = "<group>"; };
+		451952AE2B72C88D00F570C8 /* squat-pose.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "squat-pose.dae"; sourceTree = "<group>"; };
+		451952B02B72C9D200F570C8 /* pullup-pose.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pullup-pose.dae"; sourceTree = "<group>"; };
 		451CC5382A9A33F3000D7711 /* base-model.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "base-model.dae"; sourceTree = "<group>"; };
 		4549BD072A7241DC00F3E2AD /* PlanBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanBuilderView.swift; sourceTree = "<group>"; };
 		4549BD092A778C1800F3E2AD /* Schedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedules.swift; sourceTree = "<group>"; };
@@ -278,8 +292,29 @@
 			isa = PBXGroup;
 			children = (
 				451952812B70361000F570C8 /* PrimaryButtonStyle.swift */,
+				4519528D2B71230A00F570C8 /* Color.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		451952912B72724300F570C8 /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				451952922B72727900F570C8 /* Icon.swift */,
+			);
+			path = Icon;
+			sourceTree = "<group>";
+		};
+		451952B22B72D50A00F570C8 /* StaticPoses */ = {
+			isa = PBXGroup;
+			children = (
+				451952B02B72C9D200F570C8 /* pullup-pose.dae */,
+				451952AE2B72C88D00F570C8 /* squat-pose.dae */,
+				451952AC2B72C71800F570C8 /* bridge-pose.dae */,
+				451952AA2B72C57200F570C8 /* legraise-pose-anim.dae */,
+				451952A82B72B7E000F570C8 /* bridge-pose-anim.dae */,
+			);
+			path = StaticPoses;
 			sourceTree = "<group>";
 		};
 		4549BCF52A700BD400F3E2AD /* Views */ = {
@@ -287,6 +322,7 @@
 			children = (
 				4519527A2B6FCCE700F570C8 /* DayView */,
 				4519526F2B6E5A2F00F570C8 /* ProgressionViewer */,
+				451952912B72724300F570C8 /* Icon */,
 				4549BD2E2A8BB27000F3E2AD /* Journal */,
 				4549BD062A7241C900F3E2AD /* PlanBuilder */,
 			);
@@ -325,6 +361,7 @@
 		4549BD412A8C270900F3E2AD /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				451952B22B72D50A00F570C8 /* StaticPoses */,
 				45EA3A922ADC2CFD00FD6C6A /* pushup */,
 				45EA3A912ADC2CF500FD6C6A /* pullup */,
 				45B7C9D82AE5A172003A696B /* legraise */,
@@ -341,7 +378,6 @@
 		459355132A6D90F2009EC063 = {
 			isa = PBXGroup;
 			children = (
-				451952892B704B6800F570C8 /* bridge-01.usdz */,
 				4593551E2A6D90F2009EC063 /* Reps */,
 				4593551D2A6D90F2009EC063 /* Products */,
 			);
@@ -372,6 +408,7 @@
 				459355232A6D90F8009EC063 /* Assets.xcassets */,
 				459355252A6D90F8009EC063 /* Preview Content */,
 				4549BD182A7D86A000F3E2AD /* Localizable.xcstrings */,
+				4519528F2B714B0100F570C8 /* SizePreference.swift */,
 			);
 			path = Reps;
 			sourceTree = "<group>";
@@ -586,7 +623,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4519528A2B704B6900F570C8 /* bridge-01.usdz in Resources */,
+				451952B12B72C9D200F570C8 /* pullup-pose.dae in Resources */,
+				451952AF2B72C88D00F570C8 /* squat-pose.dae in Resources */,
+				451952AD2B72C71800F570C8 /* bridge-pose.dae in Resources */,
+				451952AB2B72C57200F570C8 /* legraise-pose-anim.dae in Resources */,
+				451952A92B72B7E000F570C8 /* bridge-pose-anim.dae in Resources */,
 				451952752B6EC09800F570C8 /* squat-02.dae in Resources */,
 				45AD19D72AF0484A005AEC2C /* pushup-09.dae in Resources */,
 				45B7C9F82AE5BC3A003A696B /* hspu--09.dae in Resources */,
@@ -665,6 +706,7 @@
 			files = (
 				45BA6E922AF81C7E003AD0A2 /* PreviewContainer.swift in Sources */,
 				45AA64462B6C1C6300E7DAE4 /* DayView.swift in Sources */,
+				451952932B72727900F570C8 /* Icon.swift in Sources */,
 				4593553F2A6D9C5F009EC063 /* HandstandPushups.swift in Sources */,
 				4549BD302A8BB2A100F3E2AD /* JournalView.swift in Sources */,
 				4593553B2A6D9C20009EC063 /* Bridges.swift in Sources */,
@@ -673,6 +715,7 @@
 				4519527C2B6FCD4400F570C8 /* DayViewModel.swift in Sources */,
 				4549BD082A7241DC00F3E2AD /* PlanBuilderView.swift in Sources */,
 				4519526C2B6E3E1E00F570C8 /* Level.swift in Sources */,
+				451952902B714B0100F570C8 /* SizePreference.swift in Sources */,
 				4549BD142A7AE2F200F3E2AD /* Stages.swift in Sources */,
 				451952642B6D915300F570C8 /* ExerciseItem.swift in Sources */,
 				459355352A6D9BAD009EC063 /* Pushups.swift in Sources */,
@@ -694,6 +737,7 @@
 				4549BD122A78E51B00F3E2AD /* PlanSummaryView.swift in Sources */,
 				4549BD0A2A778C1800F3E2AD /* Schedules.swift in Sources */,
 				4549BD1C2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift in Sources */,
+				4519528E2B71230A00F570C8 /* Color.swift in Sources */,
 				451952662B6E3B5600F570C8 /* LevelStrings.swift in Sources */,
 				451952822B70361000F570C8 /* PrimaryButtonStyle.swift in Sources */,
 				45AA64502B6C41A700E7DAE4 /* AddExerciseSheet.swift in Sources */,

@@ -1,15 +1,33 @@
 //
 //  DayView.swift
 //
-// TODO: Bug: Not filling some exercises properly even though it seems to
 
-// Add a ProgressTracking class to store number of times each progression has been done - like .pushup stage 2 level .beginner, count 10 would mean halfway to filling that ring
-// Design an icon for each progression, dynamically generated with colours and initials for the exercise type
+// BUG: Adding last item makes sheet re-appear
+// BUG: Button position jumps on the plus and minus on record exercise
+
+// TODO: Design an icon for each progression, using 3d model
+// TODO: Try a USDZ model, see if can attach animation from existing files
+
+// TODO: Check aligment issues don't persist on other devides
+// TODO: Maybe have custom layout on ipad
+
+// TODO: Make sure continue workout goes to the next set incomplete set with fewer sets than the previous
+
+// TODO: Animate the today's exercises in using s staggered fade
 
 // TODO: Make edit mode put an edit icon in front of the progression so selecting the progression chooses level
 // TODO: Maybe have next/ prev day buttons but when not in "Edit schedule" mode, show that day's actual workout from journal
 // TODO: Present a nice empty state
-// TODO: Buttons - primary, a subtle add button, etc
+// TODO: Buttons:
+//      Add button
+//      Edit button
+//      Close button
+// TODO: Iterate on the animation view. Maybe a circle like the icon?
+// TODO: Journal view
+// TODO: Export / reset journal options
+// TODO: Reference guide
+// TODO: Link reference info from the record view - using a modal
+// TODO: Link similarly from the change progression view - using a modal
 
 import SwiftData
 import SwiftUI
@@ -17,15 +35,13 @@ import SwiftUI
 struct DayView: View {
 
     @Environment(\.modelContext) private var context
-    @Query private var journalEntries: [JournalEntryV2]
+    @Query private var journalEntries: [JournalEntry]
     @State private var viewModel = ViewModel()
-    
     @State private var isPresentingAddExercise: Bool = false
     @State private var isPresentingWorkout: Bool = false
-    
     @State private var isEditMode = false
-    
     @State private var userExerciseStages = UserExerciseStages()
+    @State private var isAnimating = false
     
     @State var day: Int
     
@@ -75,38 +91,82 @@ struct DayView: View {
             NavigationView {
                 VStack {
                     List {
-                        ForEach(workout.exerciseTypes.indices, id: \.self) { index in
-                            let exerciseType = workout.exerciseTypes[index]
-                            ExerciseItem(
-                                userExerciseStages: userExerciseStages,
-                                exerciseType: exerciseType,
-                                isEditMode: isEditMode,
-                                progressions: progressions,
-                                index: index,
-                                geo: geo
-                            )
-                            .id(exerciseType)
-                        }
-                        .onMove(perform: workout.moveExercise(fromOffsets:toOffset:))
-                        .onDelete(perform: workout.removeExerciseType)
-                        if workout.exerciseTypes.count < 6 {
-                            Button("Add") {
-                                isPresentingAddExercise = true
+                        Section {
+                            ForEach(workout.exerciseTypes.indices, id: \.self) { index in
+                                let exerciseType = workout.exerciseTypes[index]
+                                let delay = 0.25 + (0.05 * Double(index))
+                                ExerciseItem(
+                                    userExerciseStages: userExerciseStages,
+                                    exerciseType: exerciseType,
+                                    isEditMode: isEditMode,
+                                    progressions: progressions,
+                                    index: index,
+                                    geo: geo
+                                )
+                                
+                                .id(exerciseType)
+                                .foregroundColor(.primary)
+                                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(Color.clear)
+                                .opacity(isAnimating ? 1 : 0)
+                                .animation(.easeIn.delay(delay), value: isAnimating)
                             }
-                            .confirmationDialog("Adding exercise", isPresented: $isPresentingAddExercise) {
-                                AddExerciseSheet(workout: workout)
+                            .onMove(perform: workout.moveExercise(fromOffsets:toOffset:))
+                            .onDelete(perform: workout.removeExerciseType)
+                            .onAppear {
+                                isAnimating = true
                             }
+                            
+                            if workout.exerciseTypes.count < 6 {
+                                let buttonDelay = 0.3 + (0.05 * Double(workout.exerciseTypes.count))
+                                Button {
+                                    isPresentingAddExercise = true
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "plus.circle.fill")
+                                            .font(.system(size: isEditMode ? 24 : 34))
+                                            
+                                        if workout.exerciseTypes.count == 0 {
+                                            Text("Add exercise")
+                                                .font(.headline)
+                                        }
+                                    }
+                                }
+                                .foregroundStyle(Color.secondaryButtonBg)
+                                .padding(isEditMode ? -2 : 2)
+                                .padding(.top, isEditMode ? 14 : 10)
+                                .opacity(isAnimating ? 1 : 0)
+                                .animation(.easeIn.delay(buttonDelay), value: isAnimating)
+                                .confirmationDialog("Adding exercise", isPresented: $isPresentingAddExercise) {
+                                    AddExerciseSheet(workout: workout)
+                                }
+                                .listRowBackground(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(.white.opacity(0))
+                                        .padding(.bottom, 10)
+                                )
+                            }
+//                            Button("Clear today's journal") {
+//                                let currentDate = Date()
+//
+//                                let entriesToDelete = journalEntries.filter { entry in
+//                                    let entryDate = Calendar.current.startOfDay(for: entry.date)
+//                                    let currentDate = Calendar.current.startOfDay(for: currentDate)
+//                                    return entryDate == currentDate
+//                                }
+//
+//                                for entryToDelete in entriesToDelete {
+//                                    context.delete(entryToDelete)
+//                                }
+//                            }
                         }
                     }
-                    .listStyle(.plain)
-                    .buttonStyle(BorderlessButtonStyle())
                     
-                    if isEditMode {
-                        Text("Editing schedule")
-                    } else if isTodayDone {
+                    if isTodayDone {
                         Text("All done!")
                             .font(.callout) // TODO: Celebration animation
-                    } else {
+                    } else if !isEditMode {
                         Button(isTodayInProgress ? "Continue Workout" : "Start Workout") {
                             isPresentingWorkout = true
                         }
@@ -118,25 +178,45 @@ struct DayView: View {
                     ToolbarItemGroup(placement: .navigationBarLeading) {
                         if isEditMode {
                             HStack {
-                                Button("Prev day") {
+                                Button {
                                     changeDay(direction: "prev")
+                                } label: {
+                                    Image(systemName: "arrowshape.left.fill")
                                 }
                                 Spacer()
-                                Button("Next day") {
+                                Button {
                                     changeDay(direction: "next")
+                                } label: {
+                                    Image(systemName: "arrowshape.right.fill")
                                 }
                             }
+                            .foregroundStyle(Color.secondaryButtonBg)
+                            .font(.system(size: 20))
                         }
                     }
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button(isEditMode ? "Done" : "Edit") {
+                        Button {
                             withAnimation {
                                 isEditMode.toggle()
                                 day = Date().dayNumberOfWeek() ?? 0
                             }
+                        } label: {
+                            if !isEditMode {
+                                Image(systemName: "pencil.circle")
+                                    
+                                    
+                            } else {
+                                Text("Done")
+                            }
                         }
+                        .foregroundStyle(Color.secondaryButtonBg)
+                        .font(.headline)
+                        
                     }
                 }
+                .scrollContentBackground(.hidden)
+                .containerRelativeFrame([.horizontal, .vertical])
+                .background(Color.lightBg)
                 .environment(\.editMode, .constant(isEditMode ? EditMode.active : EditMode.inactive))
             }
             .sheet(isPresented: $isPresentingWorkout) {

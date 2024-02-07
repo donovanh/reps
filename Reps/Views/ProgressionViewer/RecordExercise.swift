@@ -10,7 +10,6 @@ struct RecordExercise: View {
     
     let progressions: [Progression]
     let displayProgression: Progression
-    let level: Level
     let startingIndex: Int
     let scrollViewValue: ScrollViewProxy
     let geo: GeometryProxy
@@ -18,17 +17,17 @@ struct RecordExercise: View {
     let dismiss: DismissAction
     
     @Environment(\.modelContext) private var context
-    @Query private var journalEntries: [JournalEntryV2]
+    @Query private var journalEntries: [JournalEntry]
     @State private var viewModel = ProgressionViewer.ViewModel()
     @State private var stage = 1
     @State private var reps: Int = 0
     
-    var calculatedExerciseStages: UserExerciseStages {
-        userExerciseStages
+    var nextProgressionIndex: Int {
+        DayView.ViewModel().nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progressions[0], userExerciseStages: userExerciseStages)
     }
     
-    var nextProgressionIndex: Int {
-        DayView.ViewModel().nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progressions[0], userExerciseStages: calculatedExerciseStages)
+    var level: Level {
+        userExerciseStages.level(for: displayProgression.type)
     }
     
     var body: some View {
@@ -41,7 +40,9 @@ struct RecordExercise: View {
                 Spacer()
                 Text(String(localized: displayProgression.name.rawValue))
                     .font(.largeTitle.bold())
-                    .padding(.top, geo.size.height / 2)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, (geo.size.height / 2) + 10)
                 Spacer()
             }
             
@@ -67,9 +68,8 @@ struct RecordExercise: View {
                         decrementReps()
                     } label: {
                         Image(systemName: "minus.circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 48)
+                            .font(.system(size: 48))
+                            .foregroundStyle(Color.secondaryButtonBg)
                     }
                     .buttonRepeatBehavior(.enabled)
                     
@@ -88,10 +88,10 @@ struct RecordExercise: View {
                         incrementReps()
                     } label: {
                         Image(systemName: "plus.circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 48)
+                            .font(.system(size: 48))
+                            .foregroundStyle(Color.secondaryButtonBg)
                     }
+                    .padding(.vertical, 10)
                     .buttonRepeatBehavior(.enabled)
                     Spacer()
                 }
@@ -126,9 +126,9 @@ struct RecordExercise: View {
     
     func saveReps(progressions: [Progression], progression: Progression, level: Level, reps: Int, dismiss: DismissAction, scrollViewProxy: ScrollViewProxy?) {
         // Check if progression is done already
-        let progressionAlreadyDone = DayView.ViewModel().isProgressionDone(journalEntries: journalEntries, progression: progression, userExerciseStages: calculatedExerciseStages)
+        let progressionAlreadyDone = DayView.ViewModel().isProgressionDone(journalEntries: journalEntries, progression: progression, userExerciseStages: userExerciseStages)
         context.insert(
-            JournalEntryV2(
+            JournalEntry(
                 date: Date(),
                 exerciseType: progression.type,
                 stage: progression.stage,
@@ -136,7 +136,7 @@ struct RecordExercise: View {
                 reps: reps
             )
         )
-        let nextProgression = DayView.ViewModel().nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progression, userExerciseStages: calculatedExerciseStages)
+        let nextProgression = DayView.ViewModel().nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progression, userExerciseStages: userExerciseStages)
         if (nextProgression > -1) {
             withAnimation {
                 scrollViewValue.scrollTo(progressions[nextProgression])
@@ -166,7 +166,6 @@ struct RecordExercise: View {
             RecordExercise(
                 progressions: Progression.defaultProgressionMixedSet,
                 displayProgression: Progression.defaultProgressionMixedSet[2],
-                level: .intermediate,
                 startingIndex: 2,
                 scrollViewValue: scrollViewValue,
                 geo: geo,

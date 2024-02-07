@@ -30,7 +30,8 @@ struct Progression: Hashable {
     
     static let defaultProgressionSingleType = pushupDataSet
     
-    static let defaultProgressionMixedSet = [pushupDataSet[4], pullupDataSet[2], bridgeDataSet[3], handstandpushupsDataSet[3]]
+    static let defaultProgressionMixedSet = [pushupDataSet[4], pullupDataSet[2], bridgeDataSet[3], handstandpushupsDataSet[3], squatDataSet[5], legRaisesDataSet[6]]
+    
 }
 
 enum ProgressionName: LocalizedStringResource {

@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class JournalEntryV2: Identifiable {
+final class JournalEntry: Identifiable {
     
     let id: UUID
     let date: Date
@@ -35,28 +35,28 @@ final class JournalEntryV2: Identifiable {
 }
 
 struct journalEntryMethods {
-    func getJournalEntries(entries: [JournalEntryV2], forDate date: Date) -> [JournalEntryV2] {
+    func getJournalEntries(entries: [JournalEntry], forDate date: Date) -> [JournalEntry] {
         return entries.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
     }
 
-    func getJournalEntries(entries: [JournalEntryV2], forDate date: Date, ofType exerciseType: ExerciseType) -> [JournalEntryV2] {
+    func getJournalEntries(entries: [JournalEntry], forDate date: Date, ofType exerciseType: ExerciseType) -> [JournalEntry] {
         return entries.filter { entry in
             return Calendar.current.isDate(entry.date, inSameDayAs: date) && entry.exerciseType == exerciseType
         }
     }
     
-    func getJournalEntries(entries: [JournalEntryV2], forDate date: Date, ofType exerciseType: ExerciseType, ofStage stage: Int, ofLevel level: Level) -> [JournalEntryV2] {
+    func getJournalEntries(entries: [JournalEntry], forDate date: Date, ofType exerciseType: ExerciseType, ofStage stage: Int, ofLevel level: Level) -> [JournalEntry] {
         return entries.filter { entry in
             return Calendar.current.isDate(entry.date, inSameDayAs: date) && entry.exerciseType == exerciseType && entry.stage == stage && entry.level == level
         }
     }
 
-    func getSetsDone(entries: [JournalEntryV2], forDate date: Date, ofType exerciseType: ExerciseType, ofStage stage: Int, ofLevel level: Level) -> Int {
+    func getSetsDone(entries: [JournalEntry], forDate date: Date, ofType exerciseType: ExerciseType, ofStage stage: Int, ofLevel level: Level) -> Int {
         let entries = getJournalEntries(entries: entries, forDate: date, ofType: exerciseType, ofStage: stage, ofLevel: level)
         return entries.count
     }
 
-    func getLatestRecordedReps(entries: [JournalEntryV2], forType exerciseType: ExerciseType) -> Int {
+    func getLatestRecordedReps(entries: [JournalEntry], forType exerciseType: ExerciseType) -> Int {
         let entriesOfType = entries.filter { entry in
             entry.exerciseType == exerciseType
         }
