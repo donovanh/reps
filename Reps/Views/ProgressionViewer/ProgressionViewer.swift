@@ -140,9 +140,9 @@ struct ProgressionViewer: View {
                                 dismiss()
                             } label: {
                                 Image(systemName: "multiply.circle")
-                                    .foregroundStyle(Color.secondaryButtonBg)
-                                    .font(.headline)
                             }
+                            .foregroundColor(.themeColor)
+                            .controlSize(.large)
                             .padding()
                         }
                         Spacer()

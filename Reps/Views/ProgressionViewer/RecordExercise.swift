@@ -60,6 +60,7 @@ struct RecordExercise: View {
                     Text("All sets done")
                 }
             }
+            .padding(.bottom)
             
             VStack {
                 HStack {
@@ -68,30 +69,34 @@ struct RecordExercise: View {
                         decrementReps()
                     } label: {
                         Image(systemName: "minus.circle")
-                            .font(.system(size: 48))
-                            .foregroundStyle(Color.secondaryButtonBg)
                     }
+                    .foregroundColor(.themeColor)
+                    .tint(.themeColor)
+                    .font(.system(size: 48))
+                    .controlSize(.large)
                     .buttonRepeatBehavior(.enabled)
-                    
-                    Spacer()
-                    HStack {
+                    VStack {
                         Text("\(reps)")
                             .font(.system(size: 64).bold())
+                            .padding(.top, -10)
+                            .padding(.bottom, -15)
+                            .contentTransition(.numericText())
                         if (displayProgression.showSecondsForReps == true) {
-                            Text("seconds")
+                            Text("\(reps > 1 ? "seconds" : "second")")
                         } else {
-                            Text("reps")
+                            Text("\(reps > 1 ? "reps" : "rep")")
                         }
                     }
-                    Spacer()
+                    .frame(width: 125)
                     Button {
                         incrementReps()
                     } label: {
                         Image(systemName: "plus.circle")
-                            .font(.system(size: 48))
-                            .foregroundStyle(Color.secondaryButtonBg)
                     }
-                    .padding(.vertical, 10)
+                    .foregroundColor(.themeColor)
+                    .tint(.themeColor)
+                    .font(.system(size: 48))
+                    .controlSize(.large)
                     .buttonRepeatBehavior(.enabled)
                     Spacer()
                 }
@@ -103,11 +108,19 @@ struct RecordExercise: View {
             Button {
                 saveReps(progressions: progressions, progression: displayProgression, level: level, reps: reps, dismiss: dismiss, scrollViewProxy: scrollViewValue)
             } label: {
-                Text("Save set")
+                if (displayProgression.showSecondsForReps == true) {
+                    Text("Log ^[\(reps) second](inflect: true)")
+                        .contentTransition(.numericText())
+                } else {
+                    Text("Log ^[\(reps) rep](inflect: true)")
+                        .contentTransition(.numericText())
+                }
             }
-            .buttonStyle(PrimaryButton())
-            
-            Spacer()
+            .foregroundColor(.white)
+            .tint(.themeColor)
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+
             Spacer()
          }
         .onAppear {
@@ -117,11 +130,19 @@ struct RecordExercise: View {
     }
     
     func incrementReps() {
-        reps += 1
+        if reps < 999 {
+            withAnimation {
+                reps += 1
+            }
+        }
     }
     
     func decrementReps() {
-        reps -= 1
+        if reps > 1 {
+            withAnimation {
+                reps -= 1
+            }
+        }
     }
     
     func saveReps(progressions: [Progression], progression: Progression, level: Level, reps: Int, dismiss: DismissAction, scrollViewProxy: ScrollViewProxy?) {

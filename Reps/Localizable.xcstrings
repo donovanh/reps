@@ -14,6 +14,9 @@
     " " : {
 
     },
+    "%@" : {
+
+    },
     "%lld" : {
 
     },
@@ -512,6 +515,9 @@
     "Done" : {
 
     },
+    "Edit" : {
+
+    },
     "Flat bent leg raises" : {
       "localizations" : {
         "de" : {
@@ -886,6 +892,12 @@
         }
       }
     },
+    "Log ^[%lld rep](inflect: true)" : {
+
+    },
+    "Log ^[%lld second](inflect: true)" : {
+
+    },
     "New user" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1041,9 +1053,6 @@
         }
       }
     },
-    "reps" : {
-
-    },
     "Rest Day" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1066,9 +1075,6 @@
         }
       }
     },
-    "Save set" : {
-
-    },
     "Schedule" : {
       "localizations" : {
         "de" : {
@@ -1088,9 +1094,6 @@
           }
         }
       }
-    },
-    "seconds" : {
-
     },
     "Set %lld of %lld" : {
       "localizations" : {

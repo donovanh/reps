@@ -18,7 +18,6 @@
 		451952792B6FA92F00F570C8 /* RecordExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451952782B6FA92F00F570C8 /* RecordExercise.swift */; };
 		4519527C2B6FCD4400F570C8 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4519527B2B6FCD4400F570C8 /* DayViewModel.swift */; };
 		4519527F2B6FE18400F570C8 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4519527E2B6FE18400F570C8 /* JournalEntry.swift */; };
-		451952822B70361000F570C8 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451952812B70361000F570C8 /* PrimaryButtonStyle.swift */; };
 		451952842B70444600F570C8 /* AnimationView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451952832B70444500F570C8 /* AnimationView2.swift */; };
 		451952882B704B1000F570C8 /* base-model-test.scn in Resources */ = {isa = PBXBuildFile; fileRef = 451952872B704B1000F570C8 /* base-model-test.scn */; };
 		4519528C2B71125800F570C8 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4519528B2B71125800F570C8 /* Routine.swift */; };
@@ -136,7 +135,6 @@
 		451952782B6FA92F00F570C8 /* RecordExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordExercise.swift; sourceTree = "<group>"; };
 		4519527B2B6FCD4400F570C8 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		4519527E2B6FE18400F570C8 /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
-		451952812B70361000F570C8 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		451952832B70444500F570C8 /* AnimationView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView2.swift; sourceTree = "<group>"; };
 		451952872B704B1000F570C8 /* base-model-test.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "base-model-test.scn"; sourceTree = "<group>"; };
 		4519528B2B71125800F570C8 /* Routine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 		451952802B7035E400F570C8 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				451952812B70361000F570C8 /* PrimaryButtonStyle.swift */,
 				4519528D2B71230A00F570C8 /* Color.swift */,
 			);
 			path = Styles;
@@ -739,7 +736,6 @@
 				4549BD1C2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift in Sources */,
 				4519528E2B71230A00F570C8 /* Color.swift in Sources */,
 				451952662B6E3B5600F570C8 /* LevelStrings.swift in Sources */,
-				451952822B70361000F570C8 /* PrimaryButtonStyle.swift in Sources */,
 				45AA64502B6C41A700E7DAE4 /* AddExerciseSheet.swift in Sources */,
 				451952682B6E3C9C00F570C8 /* Progression.swift in Sources */,
 				4593553D2A6D9C3A009EC063 /* Squats.swift in Sources */,

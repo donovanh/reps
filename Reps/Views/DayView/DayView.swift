@@ -1,9 +1,16 @@
 //
 //  DayView.swift
 //
+// V0.1 Testflight required items
+// Onboarding flow
+// Welcome image
+// Better buttons
+// Check top row icon sizes
+// Journal with todo text
+// Icon
+// Set up Testflight-ready app configuration
 
-// BUG: Adding last item makes sheet re-appear
-// BUG: Button position jumps on the plus and minus on record exercise
+// BUG: Adding last item makes sheet re-appear (iOS bug?)
 
 // TODO: Design an icon for each progression, using 3d model
 // TODO: Try a USDZ model, see if can attach animation from existing files
@@ -170,7 +177,10 @@ struct DayView: View {
                         Button(isTodayInProgress ? "Continue Workout" : "Start Workout") {
                             isPresentingWorkout = true
                         }
-                        .buttonStyle(PrimaryButton())
+                        .tint(.themeColor)
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.large)
+                        .buttonBorderShape(.roundedRectangle(radius: 10))
                     }
                 }
                 .navigationTitle(title)
@@ -181,17 +191,19 @@ struct DayView: View {
                                 Button {
                                     changeDay(direction: "prev")
                                 } label: {
-                                    Image(systemName: "arrowshape.left.fill")
+                                    Image(systemName: "arrow.left")
                                 }
                                 Spacer()
                                 Button {
                                     changeDay(direction: "next")
                                 } label: {
-                                    Image(systemName: "arrowshape.right.fill")
+                                    Image(systemName: "arrow.right")
                                 }
                             }
-                            .foregroundStyle(Color.secondaryButtonBg)
-                            .font(.system(size: 20))
+                            .tint(.themeColor)
+                            .buttonStyle(.bordered)
+                            .controlSize(.small)
+                            .buttonBorderShape(.roundedRectangle(radius: 10))
                         }
                     }
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -202,16 +214,14 @@ struct DayView: View {
                             }
                         } label: {
                             if !isEditMode {
-                                Image(systemName: "pencil.circle")
-                                    
-                                    
+                                Text("Edit")
                             } else {
                                 Text("Done")
                             }
                         }
-                        .foregroundStyle(Color.secondaryButtonBg)
-                        .font(.headline)
-                        
+                        .tint(.themeColor)
+                        .buttonStyle(.bordered)
+                        .controlSize(.small)
                     }
                 }
                 .scrollContentBackground(.hidden)

@@ -15,7 +15,6 @@ struct AddExerciseSheet: View {
         ForEach(ExerciseType.allCases, id: \.self) { exerciseType in
             if !workout.exerciseTypes.contains(exerciseType) {
                 Button(String(localized: exerciseType.localizedStringResource)) {
-                    dismiss()
                     workout.addExerciseType(type: exerciseType)
                 }
             }

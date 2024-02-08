@@ -10,12 +10,12 @@ import SwiftData
 
 @main
 struct RepsApp: App {
+    
     var body: some Scene {
         WindowGroup {
             //AnimationView2()
             DayView(day: Date().dayNumberOfWeek() ?? 0)
                 .background(Color.blue.edgesIgnoringSafeArea(.all))
-                //.preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
         }
         .modelContainer(for: [JournalEntry.self])
     }

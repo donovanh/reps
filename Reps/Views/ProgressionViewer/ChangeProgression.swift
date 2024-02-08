@@ -41,16 +41,19 @@ struct ChangeProgression: View {
                         scrollViewValue.scrollTo(progressions[prev.stage])
                     }
                 } label: {
-                    Image(systemName: "arrowshape.left.fill")
-                        .foregroundStyle(Color.secondaryButtonBg)
-                        .font(.largeTitle)
+                    Image(systemName: "arrow.left")
                 }
+                .foregroundColor(.themeColor)
+                .tint(.themeColor)
+                .buttonStyle(.bordered)
+                .controlSize(.large)
                 .opacity(stage == 0 && level == .beginner ? 0.25 : 1)
                 .disabled(stage == 0 && level == .beginner)
                 Spacer()
                 VStack {
                     Text("\(sets) x \(reps) \(displayProgression.showSecondsForReps == true ? "seconds" : "reps")")
                         .font(.title2.bold())
+                        .contentTransition(.numericText())
                     Text(String(localized: level.localizedStringResource))
                 }
                 Spacer()
@@ -61,10 +64,12 @@ struct ChangeProgression: View {
                         scrollViewValue.scrollTo(progressions[next.stage])
                     }
                 } label: {
-                    Image(systemName: "arrowshape.right.fill")
-                        .foregroundStyle(Color.secondaryButtonBg)
-                        .font(.largeTitle)
+                    Image(systemName: "arrow.right")
                 }
+                .foregroundColor(.themeColor)
+                .tint(.themeColor)
+                .buttonStyle(.bordered)
+                .controlSize(.large)
                 .opacity(stage == 9 && level == .progression ? 0.25 : 1)
                 .disabled(stage == 9 && level == .progression)
                 Spacer()
@@ -79,7 +84,11 @@ struct ChangeProgression: View {
             Button(isCurrentLevel ? "Keep level" : "Change level") {
                 saveProgression(newProgression: displayProgression, newLevel: level, dismiss: dismiss)
             }
-            .buttonStyle(PrimaryButton())
+            .foregroundColor(.white)
+            .tint(.themeColor)
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+            .buttonBorderShape(.roundedRectangle(radius: 10))
             Spacer()
         }
         .onAppear {
