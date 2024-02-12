@@ -44,42 +44,44 @@ struct Icon: View {
                 .fill(complete ? Color.themeColor.opacity(0.8) : .gray.opacity(0.25))
                 .frame(width: size * 0.7)
             Circle()
-                .fill(.white.opacity(0.5))
+                .fill(Color.darkBg)
+                //.fill(.white.opacity(0.5))
                 .frame(width: size * 0.4)
             AnimationView(progressionAnimationName: name, height: size, isPaused: true)
                 .grayscale(complete ? 0.5 : 1)
                 .contrast(1.5)
-                .shadow(color: .white, radius: size * 0.01)
+                //.shadow(color: .white, radius: size * 0.01)
                 .offset(calculatedOffsets)
         }
         .frame(width: size, height: size)
     }
 }
 
-#Preview("Complete") {
+#Preview("Comparison") {
     ScrollView {
-        VStack {
-            Icon(exerciseType: .bridge, stage: 1, size: 300, complete: true)
-            Icon(exerciseType: .pushup, stage: 2, size: 300, complete: true)
-            Icon(exerciseType: .handstandpushup, stage: 3, size: 300, complete: true)
-            Icon(exerciseType: .legraise, stage: 4, size: 300, complete: true)
-            Icon(exerciseType: .squat, stage: 5, size: 300, complete: true)
-            Icon(exerciseType: .pullup, stage: 6, size: 300, complete: true)
+        HStack {
+            VStack {
+                Icon(exerciseType: .bridge, stage: 1, size: 100, complete: false)
+                Icon(exerciseType: .pushup, stage: 2, size: 100, complete: false)
+                Icon(exerciseType: .handstandpushup, stage: 3, size: 100, complete: false)
+                Icon(exerciseType: .legraise, stage: 4, size: 100, complete: false)
+                Icon(exerciseType: .squat, stage: 5, size: 100, complete: false)
+                Icon(exerciseType: .pullup, stage: 6, size: 100, complete: false)
+            }
+            VStack {
+                Icon(exerciseType: .bridge, stage: 1, size: 100, complete: true)
+                Icon(exerciseType: .pushup, stage: 2, size: 100, complete: true)
+                Icon(exerciseType: .handstandpushup, stage: 3, size: 100, complete: true)
+                Icon(exerciseType: .legraise, stage: 4, size: 100, complete: true)
+                Icon(exerciseType: .squat, stage: 5, size: 100, complete: true)
+                Icon(exerciseType: .pullup, stage: 6, size: 100, complete: true)
+            }
         }
         .frame(width: .infinity)
     }
 }
 
-#Preview("Not complete") {
-    ScrollView {
-        VStack {
-            Icon(exerciseType: .bridge, stage: 1, size: 300, complete: false)
-            Icon(exerciseType: .pushup, stage: 2, size: 300, complete: false)
-            Icon(exerciseType: .handstandpushup, stage: 3, size: 300, complete: false)
-            Icon(exerciseType: .legraise, stage: 4, size: 300, complete: false)
-            Icon(exerciseType: .squat, stage: 5, size: 300, complete: false)
-            Icon(exerciseType: .pullup, stage: 6, size: 300, complete: false)
-        }
-        .frame(width: .infinity)
-    }
+#Preview("App Icon") {
+    Icon(exerciseType: .pushup, stage: 6, size: 1024, complete: true)
+        .background(Color.darkBg)
 }

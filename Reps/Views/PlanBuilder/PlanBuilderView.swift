@@ -3,112 +3,152 @@ import SwiftData
 
 struct PlanBuilderView: View {
     
-    // TODO: Builder that has options for experience level
-    // It should note that this will replace the current plan
+    // TODO: Back button
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var colorScheme
     
-    // When building plan, preserve progression level if stage doesn't change
-    // Nice to have: Store the previous plan and an option to revert it after applying the new plan
-    // Levels:
-    // Beginner - start at start and hold off handstand progressions?
-    // Enthusiast - you know your way around a pushup or two, but would like guidance on how to get really good
-    // Advanced - choose your own starting level for each exercise
-    // Have a way to skip the weekly plan with "Keep current week" or "Don't plan my week" depending on if a plan exists
-   
-    @Environment(\.modelContext) private var context
-    @Query private var routines: [Routine]
-    @Binding var showingPlanBuilder: Bool
+    @State var dayViewModel: DayView.ViewModel
+    @Binding var isEditMode: Bool
     
     @State private var formStep: Int = 1
     @State private var experienceLevelOption: ExperienceLevel = ExperienceLevel.gettingStarted
     @State private var scheduleOption: Schedule = Schedule.defaultSchedule
     
     var body: some View {
-        VStack {
-            Form {
-                if formStep == 1 {
-                    Section("Progression level") {
-                        Picker("Choose your progression level", selection: $experienceLevelOption) {
-                            ForEach(ExperienceLevel.allCases, id: \.self) { level in
-                                Text(level.rawValue).tag(level)
-                            }
-                        }
+        ZStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    if formStep == 1 {
+                        Text("Exercise level")
                     }
-                    LevelOverviewView(level: $experienceLevelOption)
-                    Button("Choose a schedule") {
-                        formStep = 2
+                    if formStep == 2 {
+                        Text("Weekly schedule")
+                    }
+                    if formStep == 3 {
+                        Text("Confirm your plan")
                     }
                 }
-                if formStep == 2 {
-                    Section("Schedule") {
-                        Picker("Choose your weekly plan", selection: $scheduleOption) {
-                            ForEach(Schedule.allCases, id: \.self) { schedule in
-                                Text(schedule.rawValue).tag(schedule)
+                .font(.title.bold())
+                .padding()
+                .padding(.top, 40)
+                Form {
+                    if formStep == 1 {
+                        Section("Choose your progression level") {
+                            Picker("Progression levels", selection: $experienceLevelOption) {
+                                ForEach(ExperienceLevel.allCases, id: \.self) { level in
+                                    Text(level.rawValue).tag(level)
+                                        .id(level)
+                                }
                             }
+                            .labelsHidden()
+                            .pickerStyle(.inline)
+                        }
+                        .listRowBackground(Color.themeColor.opacity(0.1))
+                        LevelOverviewView(level: $experienceLevelOption)
+                            .listRowBackground(Color.themeColor.opacity(0.1))
+                    }
+                    if formStep == 2 {
+                        Section("Choose a weekly schedule") {
+                            Picker("Choose your weekly plan", selection: $scheduleOption) {
+                                ForEach(Schedule.allCases, id: \.self) { schedule in
+                                    Text(schedule.rawValue).tag(schedule)
+                                        .id(schedule)
+                                }
+                            }
+                            .labelsHidden()
+                            .pickerStyle(.inline)
+                        }
+                        .listRowBackground(Color.themeColor.opacity(0.1))
+                        ScheduleOverviewView(scheduleOption: $scheduleOption, experienceLevelOption: $experienceLevelOption)
+                            .listRowBackground(Color.themeColor.opacity(0.1))
+                    }
+                    if formStep == 3 {
+                        Section("Apply new plan") {
+                            PlanOverviewView(schedule: $scheduleOption, level: $experienceLevelOption)
+                            LevelOverviewView(level: $experienceLevelOption, showDescription: false)
+                                .listRowBackground(Color.themeColor.opacity(0.1))
+                            ScheduleOverviewView(scheduleOption: $scheduleOption, experienceLevelOption: $experienceLevelOption, showDescription: false)
+                                .listRowBackground(Color.themeColor.opacity(0.1))
                         }
                     }
-                    ScheduleOverviewView(scheduleOption: $scheduleOption, experienceLevelOption: $experienceLevelOption)
-                    Section {
+                }
+                HStack {
+                    if formStep == 1 {
+                        Spacer()
+                        Button("Choose a schedule") {
+                            withAnimation {
+                                formStep = 2
+                            }
+                        }
+                        Spacer()
+                    }
+                    if formStep == 2 {
                         Button("Next") {
-                            formStep = 3
+                            withAnimation {
+                                formStep = 3
+                            }
                         }
                     }
-                }
-                if formStep == 3 {
-                    Section("Apply new plan") {
-                        PlanOverviewView(schedule: $scheduleOption, level: $experienceLevelOption)
+                    if formStep == 3 {
                         Button("Apply this plan") {
                             applyPlan()
                         }
                     }
                 }
+                .tint(.themeColor)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .frame(maxWidth: .infinity)
+                   
             }
-            .navigationTitle("Plan Builder")
-            Spacer()
-            Button("Cancel") {
-                showingPlanBuilder = false
+            Section {
+                VStack {
+                    HStack {
+                        if formStep > 1 {
+                            Button("Go back") {
+                                withAnimation {
+                                    formStep = formStep == 3 ? 2 : 1
+                                }
+                            }
+                            .buttonStyle(.bordered)
+                            .foregroundColor(.themeColor)
+                            .controlSize(.small)
+                            .tint(Color.themeColor)
+                            .padding()
+                        }
+                        Spacer()
+                        Button {
+                            dismiss()
+                        } label: {
+                            Image(systemName: "multiply")
+                        }
+                        .buttonStyle(.bordered)
+                        .foregroundColor(.themeColor)
+                        .controlSize(.small)
+                        .tint(Color.themeColor)
+                        .padding()
+                    }
+                    Spacer()
+                }
             }
         }
+        .scrollContentBackground(.hidden)
+        .containerRelativeFrame([.horizontal, .vertical])
+        .background(colorScheme == .dark ? Color.darkBg : Color.lightBg)
     }
     
     func applyPlan() {
-//        let schedule = schedules[scheduleOption] ?? [:]
-//        if schedule.count > 0 {
-//            for (day, exercises) in schedule {
-//                var dayExercises: [Exercise] = []
-//                for exerciseType in exercises {
-//                    if !(experienceLevelOption == .gettingStarted && exerciseType == .handstandpushup) {
-//                        dayExercises.append(Exercise(id: UUID(), type: exerciseType))
-//                    }
-//                }
-//                if let index = routines.firstIndex(where: { $0.day == day }) {
-//                     routines[index].exercises = dayExercises
-//                 } else {
-//                     let newRoutine = Routine(day: day, exercises: dayExercises)
-//                     context.insert(newRoutine)
-//                 }
-//            }
-//        }
-//
-//        if users.first == nil {
-//            context.insert(DefaultUser)
-//        }
-//        // Empty existing routines
-//        let user = users.first ?? DefaultUser
-//
-//        let exerciseStages = stages[experienceLevelOption] ?? [:]
-//
-//        user.pushupStage = exerciseStages[.pushup] ?? 1
-//        user.pullupStage = exerciseStages[.pullup] ?? 1
-//        user.squatStage = exerciseStages[.squat] ?? 1
-//        user.bridgeStage = exerciseStages[.bridge] ?? 1
-//        user.legraiseStage = exerciseStages[.legraise] ?? 1
-//        user.handstandpushupStage = exerciseStages[.handstandpushup] ?? 1
-
-        showingPlanBuilder = false
+//        userExerciseStages.setStages(to: stagesByExperienceLevel[experienceLevelOption]!)
+//        exerciseTypesByDay.addExerciseTypes(typeByDay: weekSchedules[scheduleOption]!)
+        isEditMode = false
+        dismiss()
     }
 }
 
 #Preview {
-    PlanBuilderView(showingPlanBuilder: .constant(true))
-        .modelContainer(DataController.previewContainer)
+    PlanBuilderView(
+        dayViewModel: DayView.ViewModel(),
+        isEditMode: .constant(false)
+    )
+    .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

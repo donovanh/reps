@@ -10,12 +10,29 @@ import SwiftData
 
 struct JournalView: View {
     
+    @Query private var journalEntries: [JournalEntry]
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
-        Text("Journal TODO")
+        ZStack {
+            Rectangle()
+                .fill(Color.darkBg)
+                .ignoresSafeArea()
+            VStack {
+                Text("Coming soon")
+                    .font(.title.bold())
+                Text("You have recorded **\(journalEntries.count)** sets so far.")
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 80)
+                    .multilineTextAlignment(.center)
+            }
+        }
+        .background(Color.darkBg)
     }
 }
 
 #Preview {
     JournalView()
         .modelContainer(DataController.previewContainer)
+        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

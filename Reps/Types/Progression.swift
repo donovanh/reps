@@ -4,7 +4,6 @@
 //
 //  Created by Donovan Hutchinson on 03/02/2024.
 //
-// TODO: Move strings into view strings
 
 import Foundation
 

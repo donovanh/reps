@@ -7,7 +7,7 @@
 
 import Foundation
 
-let stages: [ExperienceLevel: [ExerciseType: Int]] = [
+let stagesByExperienceLevel: [ExperienceLevel: [ExerciseType: Int]] = [
     .gettingStarted: [
         .pushup: 0,
         .pullup: 0,

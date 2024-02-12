@@ -8,12 +8,14 @@ import SwiftUI
 
 struct RecordExercise: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     let progressions: [Progression]
     let displayProgression: Progression
     let startingIndex: Int
     let scrollViewValue: ScrollViewProxy
     let geo: GeometryProxy
-    @State var userExerciseStages: UserExerciseStages
+    @State var dayViewModel: DayView.ViewModel
     let dismiss: DismissAction
     
     @Environment(\.modelContext) private var context
@@ -23,11 +25,11 @@ struct RecordExercise: View {
     @State private var reps: Int = 0
     
     var nextProgressionIndex: Int {
-        DayView.ViewModel().nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progressions[0], userExerciseStages: userExerciseStages)
+        dayViewModel.nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progressions[0])
     }
     
     var level: Level {
-        userExerciseStages.level(for: displayProgression.type)
+        dayViewModel.getLevel(for: displayProgression.type)
     }
     
     var body: some View {
@@ -147,7 +149,7 @@ struct RecordExercise: View {
     
     func saveReps(progressions: [Progression], progression: Progression, level: Level, reps: Int, dismiss: DismissAction, scrollViewProxy: ScrollViewProxy?) {
         // Check if progression is done already
-        let progressionAlreadyDone = DayView.ViewModel().isProgressionDone(journalEntries: journalEntries, progression: progression, userExerciseStages: userExerciseStages)
+        let progressionAlreadyDone = dayViewModel.isProgressionDone(journalEntries: journalEntries, progression: progression)
         context.insert(
             JournalEntry(
                 date: Date(),
@@ -157,7 +159,7 @@ struct RecordExercise: View {
                 reps: reps
             )
         )
-        let nextProgression = DayView.ViewModel().nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progression, userExerciseStages: userExerciseStages)
+        let nextProgression = dayViewModel.nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progression)
         if (nextProgression > -1) {
             withAnimation {
                 scrollViewValue.scrollTo(progressions[nextProgression])
@@ -190,7 +192,7 @@ struct RecordExercise: View {
                 startingIndex: 2,
                 scrollViewValue: scrollViewValue,
                 geo: geo,
-                userExerciseStages: UserExerciseStages(),
+                dayViewModel: DayView.ViewModel(),
                 dismiss: dismiss
             )
             .modelContainer(DataController.previewContainer)

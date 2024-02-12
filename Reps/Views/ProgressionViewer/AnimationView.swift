@@ -2,11 +2,9 @@ import SwiftUI
 import SceneKit
 import SpriteKit
 
-// TODO: Tidy this function
-
 func loadScene(_ currentProgressionAnimationName: String, isPaused: Bool) -> SCNScene {
     guard let scene = SCNScene(named: "base-model"),
-          let sceneSource = SCNSceneSource(url: Bundle.main.url(forResource: "base-model", withExtension: "dae")!, options: nil) else {
+          let baseSceneSource = SCNSceneSource(url: Bundle.main.url(forResource: "base-model", withExtension: "dae")!, options: nil) else {
         print("Scene could not be loaded")
         return SCNScene()
     }
@@ -14,7 +12,6 @@ func loadScene(_ currentProgressionAnimationName: String, isPaused: Bool) -> SCN
     guard let animationSceneSourceUrl = Bundle.main.url(forResource: currentProgressionAnimationName, withExtension: "dae"),
           let animationSceneSource = SCNSceneSource(url: animationSceneSourceUrl, options: nil) else {
         print("Animation file \"\(currentProgressionAnimationName)\" could not be loaded")
-        
         return SCNScene()
     }
 
@@ -22,8 +19,7 @@ func loadScene(_ currentProgressionAnimationName: String, isPaused: Bool) -> SCN
     let footballObjectIdentifier = "football2_ball"
     let footballAnimationIdentifier = "football2_ball_football2_ballAction_transform"
     let cameraIdentifier = "Camera"
-    
-    // Load dummy animation from source
+
     if let animationObj = animationSceneSource.entryWithIdentifier(animationIdentifier,
                                                      withClass: CAAnimation.self) {
         animationObj.repeatCount = .infinity
@@ -38,7 +34,7 @@ func loadScene(_ currentProgressionAnimationName: String, isPaused: Bool) -> SCN
     } else {
         if let footballObj = animationSceneSource.entryWithIdentifier(footballObjectIdentifier,
                                                                       withClass: SCNNode.self) {
-            let sourceFootballObj = sceneSource.entryWithIdentifier(footballObjectIdentifier,
+            let sourceFootballObj = baseSceneSource.entryWithIdentifier(footballObjectIdentifier,
                                                                     withClass: SCNNode.self)!
             let sourceFootballObjCopy = sourceFootballObj
             sourceFootballObj.removeFromParentNode()
@@ -55,11 +51,9 @@ func loadScene(_ currentProgressionAnimationName: String, isPaused: Bool) -> SCN
         scene.rootNode.addChildNode(animationSceneCameraNode)
     }
     
-    // Pause animation
     scene.isPaused = isPaused
-
-    // TODO: Set up background for dark mode support
     scene.background.contents = Color.clear
+
     return scene
 }
 
@@ -111,15 +105,14 @@ struct AnimationSpriteView: View {
 #Preview {
     ZStack {
         Ellipse()
-            .fill(Color.lightAnimationBg)
+            .fill(Color.blue)
             .frame(width: 280, height: 200)
             .rotationEffect(.degrees(-45))
         AnimationView(
             progressionAnimationName: "pushup-05",
             height: 300
         )
-        .colorMultiply(.green)
-        .saturation(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+        .contrast(1.25)
     }
 }
 

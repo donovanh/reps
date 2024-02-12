@@ -7,7 +7,7 @@
 
 import Foundation
 
-let schedules: [Schedule: [Int: [ExerciseType]]] = [
+let weekSchedules: [Schedule: [Int: [ExerciseType]]] = [
     .defaultSchedule: [
         2: [.pushup, .pullup, .squat, .bridge, .legraise, .handstandpushup],
         3: [],

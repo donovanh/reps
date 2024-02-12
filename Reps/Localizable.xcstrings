@@ -50,144 +50,11 @@
         }
       }
     },
-    "%lld x %lld reps" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld x %#@arg2@"
-          },
-          "substitutions" : {
-            "arg2" : {
-              "argNum" : 2,
-              "formatSpecifier" : "lld",
-              "variations" : {
-                "plural" : {
-                  "one" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "%arg wiederholungen"
-                    }
-                  },
-                  "other" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "%arg wiederholungen"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld x %#@arg2@"
-          },
-          "substitutions" : {
-            "arg2" : {
-              "argNum" : 2,
-              "formatSpecifier" : "lld",
-              "variations" : {
-                "plural" : {
-                  "one" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "%arg rep"
-                    }
-                  },
-                  "other" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "%arg reps"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "%lld x %lld seconds" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld x %#@arg2@"
-          },
-          "substitutions" : {
-            "arg2" : {
-              "argNum" : 2,
-              "formatSpecifier" : "lld",
-              "variations" : {
-                "plural" : {
-                  "one" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "%arg sekunden"
-                    }
-                  },
-                  "other" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "%arg sekunden"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld x %#@arg2@"
-          },
-          "substitutions" : {
-            "arg2" : {
-              "argNum" : 2,
-              "formatSpecifier" : "lld",
-              "variations" : {
-                "plural" : {
-                  "one" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "%arg second"
-                    }
-                  },
-                  "other" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "%arg seconds"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "^[%lld set](inflect: true) done" : {
 
     },
     "1 set" : {
 
-    },
-    "1/2 One-arm pull-ups" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1/2 einarmige Klimmzüge"
-          }
-        }
-      }
     },
     "A heavier workout routine, focusing on alternate pushing and pulling days." : {
       "localizations" : {
@@ -229,33 +96,11 @@
         }
       }
     },
-    "Add" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hinzufügen"
-          }
-        }
-      }
-    },
     "Add exercise" : {
 
     },
     "Adding exercise" : {
 
-    },
-    "Admin" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Administratorin"
-          }
-        }
-      }
     },
     "Advanced" : {
       "localizations" : {
@@ -323,30 +168,8 @@
         }
       }
     },
-    "Assisted One-arm pull-ups" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unterstützte einarmige Klimmzüge"
-          }
-        }
-      }
-    },
     "Assisted one-leg squats" : {
 
-    },
-    "Assisted One-leg squats" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unterstützte einbeinige Kniebeugen"
-          }
-        }
-      }
     },
     "Beginner" : {
 
@@ -371,27 +194,6 @@
         }
       }
     },
-    "Build new plan" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erstellen Sie einen neuen Plan"
-          }
-        }
-      }
-    },
-    "Cancel" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stornieren"
-          }
-        }
-      }
-    },
     "Change level" : {
 
     },
@@ -404,6 +206,9 @@
           }
         }
       }
+    },
+    "Choose a weekly schedule" : {
+
     },
     "Choose your progression level" : {
       "localizations" : {
@@ -421,17 +226,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wählen Sie Ihren Wochenplan"
-          }
-        }
-      }
-    },
-    "Clear all data (dev)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alle Daten löschen (dev)"
           }
         }
       }
@@ -486,7 +280,13 @@
         }
       }
     },
+    "Confirm your plan" : {
+
+    },
     "Continue Workout" : {
+
+    },
+    "Create my weekly routine" : {
 
     },
     "Crow" : {
@@ -516,6 +316,9 @@
 
     },
     "Edit" : {
+
+    },
+    "Exercise level" : {
 
     },
     "Flat bent leg raises" : {
@@ -598,6 +401,9 @@
         }
       }
     },
+    "Generate new plan" : {
+
+    },
     "Getting started" : {
       "localizations" : {
         "de" : {
@@ -607,6 +413,9 @@
           }
         }
       }
+    },
+    "Go back" : {
+
     },
     "Half bridges" : {
       "localizations" : {
@@ -621,47 +430,14 @@
     "Half one-arm handstand pushups" : {
 
     },
-    "Half One-arm handstand pushups" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Halbe einarmige Handstand-Liegestütze"
-          }
-        }
-      }
-    },
     "Half one-arm pull-ups" : {
 
     },
     "Half one-arm push-ups" : {
 
     },
-    "Half One-Arm push-ups" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Halbe einarmige Liegestütze"
-          }
-        }
-      }
-    },
     "Half one-leg squats" : {
 
-    },
-    "Half One-leg squats" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Halbe einbeinige Kniebeugen"
-          }
-        }
-      }
     },
     "Half pull-ups" : {
       "localizations" : {
@@ -786,6 +562,9 @@
         }
       }
     },
+    "I'll manage it myself" : {
+
+    },
     "Incline push-ups" : {
       "localizations" : {
         "de" : {
@@ -826,6 +605,9 @@
         }
       }
     },
+    "Journal" : {
+
+    },
     "Journal TODO" : {
 
     },
@@ -862,15 +644,18 @@
         }
       }
     },
-    "Level: %@" : {
+    "Let's add some exercises, at **%@** level, with an **%@** schedule." : {
       "localizations" : {
-        "de" : {
+        "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eben: %@"
+            "state" : "new",
+            "value" : "Let's add some exercises, at **%1$@** level, with an **%2$@** schedule."
           }
         }
       }
+    },
+    "Let's get started!" : {
+
     },
     "Lever handstand pushups" : {
       "localizations" : {
@@ -898,17 +683,6 @@
     "Log ^[%lld second](inflect: true)" : {
 
     },
-    "New user" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neuer Benutzer"
-          }
-        }
-      }
-    },
     "Next" : {
       "localizations" : {
         "de" : {
@@ -919,29 +693,8 @@
         }
       }
     },
-    "No progression found" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kein Fortschritt gefunden"
-          }
-        }
-      }
-    },
     "Not visionOS" : {
 
-    },
-    "Note: You can adjust these as needed in your weekly overview." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hinweis: Diese können Sie in Ihrer Wochenübersicht nach Bedarf anpassen."
-          }
-        }
-      }
     },
     "One-arm handstand pushups" : {
       "localizations" : {
@@ -969,17 +722,6 @@
     "One-arm push-ups" : {
 
     },
-    "One-Arm push-ups" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Einarmige Liegestütze"
-          }
-        }
-      }
-    },
     "One-leg squats" : {
       "localizations" : {
         "de" : {
@@ -1000,28 +742,11 @@
         }
       }
     },
-    "Plan Builder" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planersteller"
-          }
-        }
-      }
-    },
     "Progression" : {
 
     },
-    "Progression level" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fortschrittsstufe"
-          }
-        }
-      }
+    "Progression levels" : {
+
     },
     "Progressions" : {
       "localizations" : {
@@ -1053,8 +778,10 @@
         }
       }
     },
+    "Reps is designed to help you record and progress bodyweight exercises." : {
+
+    },
     "Rest Day" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1064,36 +791,8 @@
         }
       }
     },
-    "Rest day! Maybe go for a walk." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ruhetag! Vielleicht einen Spaziergang machen."
-          }
-        }
-      }
-    },
-    "Schedule" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zeitplan"
-          }
-        }
-      }
-    },
-    "Schedule: %@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zeitplan: %@"
-          }
-        }
-      }
+    "Select an exercise to adjust level" : {
+
     },
     "Set %lld of %lld" : {
       "localizations" : {
@@ -1101,28 +800,6 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Set %1$lld of %2$lld"
-          }
-        }
-      }
-    },
-    "Set up a new routine" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Richten Sie eine neue Routine ein"
-          }
-        }
-      }
-    },
-    "Settings" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Einstellungen"
           }
         }
       }
@@ -1160,17 +837,6 @@
     "Stand-to-stand bridges" : {
 
     },
-    "Stand-to-Stand bridges" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stand-zu-Stand-Brücken"
-          }
-        }
-      }
-    },
     "Start Workout" : {
 
     },
@@ -1194,16 +860,8 @@
         }
       }
     },
-    "Today" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heute"
-          }
-        }
-      }
+    "Take it easy! Recovery is important." : {
+
     },
     "Uneven handstand pushups" : {
       "localizations" : {
@@ -1288,52 +946,17 @@
     "Wall walking (down)" : {
 
     },
-    "Wall Walking (Down)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mauerwandern (nach unten)"
-          }
-        }
-      }
-    },
     "Wall walking (up)" : {
 
     },
-    "Wall Walking (Up)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mauerwandern (nach oben)"
-          }
-        }
-      }
+    "Weekly overview" : {
+
     },
-    "Week" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Woche"
-          }
-        }
-      }
+    "Weekly schedule" : {
+
     },
-    "Weekly Plan" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wöchentlicher Plan"
-          }
-        }
-      }
+    "Welcome!" : {
+
     },
     "You know the basics and you're ready to build stength." : {
       "localizations" : {
@@ -1351,28 +974,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Du machst das schon eine Weile und bist bereit, es auf die nächste Stufe zu bringen."
-          }
-        }
-      }
-    },
-    "Your Day" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dein Tag"
-          }
-        }
-      }
-    },
-    "Your progressions" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deine Fortschritte"
           }
         }
       }

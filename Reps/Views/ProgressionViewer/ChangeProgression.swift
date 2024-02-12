@@ -7,6 +7,8 @@ import SwiftUI
 
 struct ChangeProgression: View {
 
+    @Environment(\.colorScheme) var colorScheme
+    
     let progressions: [Progression]
     let displayProgression: Progression
     @Binding var level: Level
@@ -14,7 +16,7 @@ struct ChangeProgression: View {
     let startingLevel: Level
     let scrollViewValue: ScrollViewProxy
     let geo: GeometryProxy
-    @State var userExerciseStages: UserExerciseStages
+    @State var dayViewModel: DayView.ViewModel
     let dismiss: DismissAction
     
     @State private var viewModel = ProgressionViewer.ViewModel()
@@ -97,7 +99,7 @@ struct ChangeProgression: View {
     }
     
     func saveProgression(newProgression: Progression, newLevel: Level, dismiss: DismissAction) {
-        userExerciseStages.setStageAndLevel(for: newProgression.type, stage: newProgression.stage, level: newLevel)
+        dayViewModel.setStageAndLevel(for: newProgression.type, stage: newProgression.stage, level: newLevel)
         dismiss()
     }
 }
@@ -115,7 +117,7 @@ struct ChangeProgression: View {
                 startingLevel: .intermediate,
                 scrollViewValue: scrollViewValue,
                 geo: geo,
-                userExerciseStages: UserExerciseStages(),
+                dayViewModel: DayView.ViewModel(),
                 dismiss: dismiss
             )
         }

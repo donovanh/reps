@@ -8,9 +8,10 @@ struct ProgressionViewer: View {
     }
     
     @Environment(\.dismiss) var dismiss
+    @Environment(\.colorScheme) var colorScheme
     @State private var viewModel = ViewModel()
     
-    @State var userExerciseStages: UserExerciseStages
+    @State var dayViewModel: DayView.ViewModel
     let viewToShow: ViewsToShow
     let progressions: [Progression]
     let startingIndex: Int
@@ -38,11 +39,11 @@ struct ProgressionViewer: View {
                             ZStack {
                                 ZStack {
                                     Ellipse()
-                                        .fill(Color.lightAnimationBg)
+                                        .fill(colorScheme == .dark ? Color.darkAnimationBg : Color.lightAnimationBg)
                                         .frame(width: geo.size.width, height: geo.size.width / 1.5)
                                         .rotationEffect(.degrees(45))
                                         .offset(x: currentXOffset * 0.5, y: 20)
-                                        .blur(radius: 14)
+                                        .blur(radius: 10)
                                     AnimationView(
                                         progressionAnimationName: animationFileName,
                                         height: animationHeight
@@ -73,7 +74,7 @@ struct ProgressionViewer: View {
                                                     startingLevel: startingLevel,
                                                     scrollViewValue: scrollViewValue,
                                                     geo: geo,
-                                                    userExerciseStages: userExerciseStages,
+                                                    dayViewModel: dayViewModel,
                                                     dismiss: dismiss
                                                 )
                                             case .workoutView:
@@ -83,7 +84,7 @@ struct ProgressionViewer: View {
                                                     startingIndex: 2,
                                                     scrollViewValue: scrollViewValue,
                                                     geo: geo,
-                                                    userExerciseStages: userExerciseStages,
+                                                    dayViewModel: dayViewModel,
                                                     dismiss: dismiss
                                                 )
                                             }
@@ -139,10 +140,12 @@ struct ProgressionViewer: View {
                             Button {
                                 dismiss()
                             } label: {
-                                Image(systemName: "multiply.circle")
+                                Image(systemName: "multiply")
                             }
+                            .buttonStyle(.bordered)
                             .foregroundColor(.themeColor)
-                            .controlSize(.large)
+                            .controlSize(.small)
+                            .tint(Color.themeColor)
                             .padding()
                         }
                         Spacer()
@@ -150,7 +153,7 @@ struct ProgressionViewer: View {
                 }
             }
             .containerRelativeFrame([.horizontal, .vertical])
-            .background(Color.lightBg)
+            .background(colorScheme == .dark ? Color.darkBg : Color.lightBg)
         }
     }
 }
@@ -161,13 +164,14 @@ struct ProgressionViewer: View {
     func mainAction(_: Progression, _: Level, _: Int, _: DismissAction, _: ScrollViewProxy?) {}
     return GeometryReader { geo in
         ProgressionViewer(
-            userExerciseStages: UserExerciseStages(),
+            dayViewModel: DayView.ViewModel(),
             viewToShow: .changeProgression,
             progressions: getProgressions(ofType: .pushup),
             startingIndex: 7,
             startingLevel: .intermediate,
             screenWidth: geo.size.width
         )
+        .preferredColorScheme(.dark)
     }
 }
 
@@ -175,12 +179,13 @@ struct ProgressionViewer: View {
     func mainAction(_: Progression, _: Level, _: Int, _: DismissAction, _: ScrollViewProxy?) {}
     return GeometryReader { geo in
         ProgressionViewer(
-            userExerciseStages: UserExerciseStages(),
+            dayViewModel: DayView.ViewModel(),
             viewToShow: .workoutView,
             progressions: Progression.defaultProgressionMixedSet,
             startingIndex: 1,
             startingLevel: .intermediate,
             screenWidth: geo.size.width
         )
+        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
     }
 }

@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct AddExerciseSheet: View {
-    @Environment(\.dismiss) var dismiss
-    let workout: ExerciseTypesByDay
+    @Environment(\.dismiss) private var dismiss
+    let viewModel: DayView.ViewModel
+    let day: Int
 
     var body: some View {
+        let workoutSchedule = viewModel.weeklySchedule[day] ?? []
         ForEach(ExerciseType.allCases, id: \.self) { exerciseType in
-            if !workout.exerciseTypes.contains(exerciseType) {
+            if !workoutSchedule.contains(exerciseType) {
                 Button(String(localized: exerciseType.localizedStringResource)) {
-                    workout.addExerciseType(type: exerciseType)
+                    viewModel.addExerciseType(for: exerciseType, forDay: day)
                 }
             }
         }
@@ -23,5 +25,5 @@ struct AddExerciseSheet: View {
 }
 
 #Preview {
-    AddExerciseSheet(workout: ExerciseTypesByDay(day: 5))
+    AddExerciseSheet(viewModel: DayView.ViewModel(), day: 2)
 }

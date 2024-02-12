@@ -15,16 +15,6 @@ class DataController {
             let config = ModelConfiguration(isStoredInMemoryOnly: true)
             let container = try ModelContainer(for: JournalEntry.self, configurations: config)
 
-            // Set up JournalExamples to set journal entries for today, today minus x days, etc
-//            let exampleJournalEntry = JournalEntryV2(
-//                date: Date(),
-//                exerciseType: "pushup",
-//                stage: 4,
-//                level: Level.intermediate,
-//                reps: 30
-//            )
-//            container.mainContext.insert(exampleJournalEntry)
-            
             // Make array of journal entries, for today, and yesterday
             let today = Date()
             let yesterday = Date().daysOffset(offset: -1)

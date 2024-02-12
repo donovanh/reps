@@ -10,6 +10,34 @@ import SwiftUI
 
 // TODO: Maybe WorkoutsByDay really?
 
+// Refactor
+final class WorkoutSchedule {
+    private let storageKey = "ExerciseTypesByDay"
+    
+    var exerciseTypesByDay: [Int: [ExerciseType]] = [:] {
+        didSet {
+            if let encoded = try? JSONEncoder().encode(exerciseTypesByDay) {
+                UserDefaults.standard.set(encoded, forKey: storageKey)
+            }
+        }
+    }
+    
+    init() {
+        if let savedWorkouts = UserDefaults.standard.data(forKey: storageKey) {
+            if let decodedItems = try? JSONDecoder().decode([Int: [ExerciseType]].self, from: savedWorkouts) {
+                self.exerciseTypesByDay = decodedItems
+                return
+            }
+        }
+
+        self.exerciseTypesByDay = [:]
+    }
+    
+    func exerciseTypes(forDay day: Int) -> [ExerciseType] {
+        self.exerciseTypesByDay[day] ?? []
+    }
+}
+
 @Observable
 final class ExerciseTypesByDay {
     let day: Int
@@ -40,29 +68,33 @@ final class ExerciseTypesByDay {
         self.exerciseTypesByDay[day] ?? []
     }
     
-    func addExerciseType(type: ExerciseType) {
-        withAnimation {
-            var currentDayExerciseTypes = exerciseTypes
-            currentDayExerciseTypes.append(type)
-            self.exerciseTypesByDay[day] = currentDayExerciseTypes
-        }
-    }
-    
-    func moveExercise(fromOffsets: IndexSet, toOffset: Int) {
-        withAnimation {
-            var currentDayExerciseTypes = exerciseTypes
-            currentDayExerciseTypes.move(fromOffsets: fromOffsets, toOffset: toOffset)
-            self.exerciseTypesByDay[day] = currentDayExerciseTypes
-        }
-    }
-    
-    func removeExerciseType(at offsets: IndexSet) {
-        withAnimation {
-            var currentDayExerciseTypes = exerciseTypes
-            for offset in offsets {
-                currentDayExerciseTypes.remove(at: offset)
-            }
-            self.exerciseTypesByDay[day] = currentDayExerciseTypes
-        }
-    }
+//    func addExerciseType(type: ExerciseType) {
+//        withAnimation {
+//            var currentDayExerciseTypes = exerciseTypes
+//            currentDayExerciseTypes.append(type)
+//            self.exerciseTypesByDay[day] = currentDayExerciseTypes
+//        }
+//    }
+//    
+//    func addExerciseTypes(typeByDay: [Int: [ExerciseType]]) {
+//        self.exerciseTypesByDay = typeByDay
+//    }
+//    
+//    func moveExercise(fromOffsets: IndexSet, toOffset: Int) {
+//        withAnimation {
+//            var currentDayExerciseTypes = exerciseTypes
+//            currentDayExerciseTypes.move(fromOffsets: fromOffsets, toOffset: toOffset)
+//            self.exerciseTypesByDay[day] = currentDayExerciseTypes
+//        }
+//    }
+//    
+//    func removeExerciseType(at offsets: IndexSet) {
+//        withAnimation {
+//            var currentDayExerciseTypes = exerciseTypes
+//            for offset in offsets {
+//                currentDayExerciseTypes.remove(at: offset)
+//            }
+//            self.exerciseTypesByDay[day] = currentDayExerciseTypes
+//        }
+//    }
 }

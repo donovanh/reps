@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ExerciseItem: View {
     
-    @State var userExerciseStages: UserExerciseStages
+    @State var viewModel: DayView.ViewModel
     let exerciseType: ExerciseType
     let isEditMode: Bool
     let progressions: [Progression]
@@ -23,21 +23,20 @@ struct ExerciseItem: View {
     @State private var setsDone = 0
     
     var progression: Progression {
-        getProgression(ofType: exerciseType, atStage: userExerciseStages.stage(for: exerciseType)) ?? Progression.defaultProgression
+        viewModel.getProgression(for: exerciseType)
     }
     
     var level: Level {
-        userExerciseStages.level(for: exerciseType)
+        viewModel.getLevel(for: exerciseType)
     }
     
     var body: some View {
         let setsDone = journalEntryMethods().getSetsDone(entries: journalEntries, forDate: Date(), ofType: progression.type, ofStage: progression.stage, ofLevel: level)
-        let stage = userExerciseStages.stage(for: exerciseType)
         
         ExerciseItemView(
             progression: progression,
             exerciseType: exerciseType,
-            stage: stage,
+            stage: progression.stage,
             level: level,
             setsDone: setsDone,
             isEditMode: isEditMode
@@ -52,7 +51,7 @@ struct ExerciseItem: View {
         })
         .sheet(isPresented: $isPresentingExerciseSelection) {
             ProgressionViewer(
-                userExerciseStages: userExerciseStages,
+                dayViewModel: viewModel,
                 viewToShow: .changeProgression,
                 progressions: getProgressions(ofType: exerciseType),
                 startingIndex: progression.stage,
@@ -62,7 +61,7 @@ struct ExerciseItem: View {
         }
         .sheet(isPresented: $isPresentingWorkout) {
             ProgressionViewer(
-                userExerciseStages: userExerciseStages,
+                dayViewModel: viewModel,
                 viewToShow: .workoutView,
                 progressions: progressions,
                 startingIndex: index,
@@ -148,7 +147,7 @@ struct ExerciseItemView: View {
 #Preview("ExerciseItem") {
     GeometryReader{ geo in
         ExerciseItem(
-            userExerciseStages: UserExerciseStages(),
+            viewModel: DayView.ViewModel(),
             exerciseType: .pushup,
             isEditMode: false,
             progressions: Progression.defaultProgressionSingleType,
