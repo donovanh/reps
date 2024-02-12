@@ -280,6 +280,9 @@
         }
       }
     },
+    "Coming soon" : {
+
+    },
     "Confirm your plan" : {
 
     },
@@ -606,9 +609,6 @@
       }
     },
     "Journal" : {
-
-    },
-    "Journal TODO" : {
 
     },
     "Keep level" : {
@@ -956,6 +956,9 @@
 
     },
     "Welcome!" : {
+
+    },
+    "You have recorded **%lld** sets so far." : {
 
     },
     "You know the basics and you're ready to build stength." : {

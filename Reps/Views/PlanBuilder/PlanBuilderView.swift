@@ -138,8 +138,8 @@ struct PlanBuilderView: View {
     }
     
     func applyPlan() {
-//        userExerciseStages.setStages(to: stagesByExperienceLevel[experienceLevelOption]!)
-//        exerciseTypesByDay.addExerciseTypes(typeByDay: weekSchedules[scheduleOption]!)
+        dayViewModel.setStages(to: stagesByExperienceLevel[experienceLevelOption]!)
+        dayViewModel.setWeeklySchedule(typeByDay: weekSchedules[scheduleOption]!)
         isEditMode = false
         dismiss()
     }

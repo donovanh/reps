@@ -45,9 +45,15 @@ extension DayView {
             currentDetails.stage = stage
             currentDetails.level = level
             userExerciseStages[type] = currentDetails
-            // Store change in UserDefaults
-            // TODO: Have a simpler set function on userExerciseStagesStore and give it currentDetails
             userExerciseStagesStore.userExerciseStages = userExerciseStages
+        }
+        
+        func setStages(to userStages: [ExerciseType: Int]) {
+            var updatedStages: [ExerciseType: UserExerciseStageDetails] = [:]
+            for (exerciseType, stage) in userStages {
+                updatedStages[exerciseType] = UserExerciseStageDetails(stage: stage, level: .beginner)
+            }
+            self.userExerciseStages = updatedStages
         }
         
         func addExerciseType(for type: ExerciseType, forDay day: Int) {
