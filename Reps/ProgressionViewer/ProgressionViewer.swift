@@ -140,11 +140,10 @@ struct ProgressionViewer: View {
                             Button {
                                 dismiss()
                             } label: {
-                                Image(systemName: "multiply")
+                                Image(systemName: "xmark.circle.fill")
                             }
-                            .buttonStyle(.bordered)
                             .foregroundColor(.themeColor)
-                            .controlSize(.small)
+                            .controlSize(.large)
                             .tint(Color.themeColor)
                             .padding()
                         }
