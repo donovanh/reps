@@ -12,8 +12,6 @@ extension DayView {
     @Observable
     class ViewModel {
         
-        /* #### Refactor to make day view updates cleaner */
-        //
         var weeklySchedule: [Int: [ExerciseType]] = [:]
         var userExerciseStages: [ExerciseType: UserExerciseStageDetails] = [:]
         
@@ -134,6 +132,7 @@ extension DayView {
             return true
         }
         
+        // TODO: should be moved to a workout model
         func firstNotDoneProgressionIndex(journalEntries: [JournalEntry], progressions: [Progression]) -> Int {
             for i in 0..<progressions.count {
                 if !isProgressionDone(journalEntries: journalEntries, progression: progressions[i]) {

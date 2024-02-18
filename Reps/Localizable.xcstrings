@@ -194,6 +194,9 @@
         }
       }
     },
+    "Cancel" : {
+
+    },
     "Change level" : {
 
     },
@@ -790,6 +793,9 @@
           }
         }
       }
+    },
+    "Saving..." : {
+
     },
     "Select an exercise to adjust level" : {
 

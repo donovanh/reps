@@ -9,6 +9,14 @@ import SwiftUI
 struct RecordExercise: View {
     
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.modelContext) private var context
+    
+    @Query private var journalEntries: [JournalEntry]
+    @State private var viewModel = ProgressionViewer.ViewModel()
+    @State private var stage = 1
+    @State private var reps: Int = 0
+    @State private var isSavingExercise = false
+    @State private var savingTask: Task<Void, Error>?
     
     let progressions: [Progression]
     let displayProgression: Progression
@@ -17,12 +25,6 @@ struct RecordExercise: View {
     let geo: GeometryProxy
     @State var dayViewModel: DayView.ViewModel
     let dismiss: DismissAction
-    
-    @Environment(\.modelContext) private var context
-    @Query private var journalEntries: [JournalEntry]
-    @State private var viewModel = ProgressionViewer.ViewModel()
-    @State private var stage = 1
-    @State private var reps: Int = 0
     
     var nextProgressionIndex: Int {
         dayViewModel.nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progressions[0])
@@ -107,21 +109,42 @@ struct RecordExercise: View {
             .presentationDragIndicator(.automatic)
             
             Spacer()
-            Button {
-                saveReps(progressions: progressions, progression: displayProgression, level: level, reps: reps, dismiss: dismiss, scrollViewProxy: scrollViewValue)
-            } label: {
-                if (displayProgression.showSecondsForReps == true) {
-                    Text("Log ^[\(reps) second](inflect: true)")
-                        .contentTransition(.numericText())
-                } else {
-                    Text("Log ^[\(reps) rep](inflect: true)")
+            if !isSavingExercise {
+                Button {
+                    savingTask = Task {
+                        withAnimation {
+                            isSavingExercise = true
+                        }
+                        try await Task.sleep(for: .seconds(2))
+                        saveReps(progressions: progressions, progression: displayProgression, level: level, reps: reps, dismiss: dismiss, scrollViewProxy: scrollViewValue)
+                        withAnimation {
+                            isSavingExercise = false
+                        }
+                    }
+                } label: {
+                    let TextView = displayProgression.showSecondsForReps == true
+                    ? Text("Log ^[\(reps) second](inflect: true)")
+                    : Text("Log ^[\(reps) rep](inflect: true)")
+                    
+                    TextView
                         .contentTransition(.numericText())
                 }
+                .foregroundColor(.white)
+                .tint(.themeColor)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+            } else {
+                Text("Saving...")
+                    .font(.title)
+                Button("Cancel") {
+                    isSavingExercise = false
+                    savingTask?.cancel()
+                }
+                .tint(.themeColor)
+                .buttonStyle(.bordered)
+                .controlSize(.small)
             }
-            .foregroundColor(.white)
-            .tint(.themeColor)
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
+            
 
             Spacer()
          }
@@ -150,15 +173,6 @@ struct RecordExercise: View {
     func saveReps(progressions: [Progression], progression: Progression, level: Level, reps: Int, dismiss: DismissAction, scrollViewProxy: ScrollViewProxy?) {
         // Check if progression is done already
         let progressionAlreadyDone = dayViewModel.isProgressionDone(journalEntries: journalEntries, progression: progression)
-        context.insert(
-            JournalEntry(
-                date: Date(),
-                exerciseType: progression.type,
-                stage: progression.stage,
-                level: level,
-                reps: reps
-            )
-        )
         let nextProgression = dayViewModel.nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progression)
         if (nextProgression > -1) {
             withAnimation {
@@ -177,6 +191,19 @@ struct RecordExercise: View {
                     dismiss()
                 }
             }
+        }
+        // Lastly update the context, but with a slight delay to remove UI jumpiness
+        Task {
+            try await Task.sleep(for: .seconds(0.5))
+            context.insert(
+                JournalEntry(
+                    date: Date(),
+                    exerciseType: progression.type,
+                    stage: progression.stage,
+                    level: level,
+                    reps: reps
+                )
+            )
         }
     }
 }

@@ -64,7 +64,6 @@ extension ProgressionViewer {
             let distance = abs(offset - nearestIndexOffset)
             let halfScreenWidth = adjustedWidth / 2
             let opacity = 1 - Double(min(distance, halfScreenWidth)) / Double(halfScreenWidth)
-            // print(max(opacity, 0))
             return max(opacity, 0) // Ensure opacity is not negative
         }
         

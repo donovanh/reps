@@ -261,8 +261,6 @@
 			children = (
 				451952612B6D7D1A00F570C8 /* ProgressionViewer.swift */,
 				4519526D2B6E3F4500F570C8 /* ProgressionViewerModel.swift */,
-				451952702B6E5ACB00F570C8 /* ChangeProgression.swift */,
-				451952782B6FA92F00F570C8 /* RecordExercise.swift */,
 				4549BE052A96975200F3E2AD /* AnimationView.swift */,
 				451952832B70444500F570C8 /* AnimationView2.swift */,
 			);
@@ -324,10 +322,11 @@
 			children = (
 				457B97A32B782A8800B7DE92 /* WelcomeScreen */,
 				4519527A2B6FCCE700F570C8 /* DayView */,
-				4519526F2B6E5A2F00F570C8 /* ProgressionViewer */,
-				451952912B72724300F570C8 /* Icon */,
+				45A76B752B8231930086B16B /* RecordExercise */,
+				45A76B762B8231AE0086B16B /* ChangeProgression */,
 				4549BD2E2A8BB27000F3E2AD /* Journal */,
 				4549BD062A7241C900F3E2AD /* PlanBuilder */,
+				451952912B72724300F570C8 /* Icon */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -407,6 +406,7 @@
 			children = (
 				4593551F2A6D90F2009EC063 /* RepsApp.swift */,
 				4549BCF52A700BD400F3E2AD /* Views */,
+				4519526F2B6E5A2F00F570C8 /* ProgressionViewer */,
 				451952802B7035E400F570C8 /* Styles */,
 				4549BD1A2A7D9ADF00F3E2AD /* View Strings */,
 				4519527D2B6FE16700F570C8 /* Stored Data */,
@@ -459,6 +459,22 @@
 				4549BD132A7AE2F200F3E2AD /* StagesByExperienceLevel.swift */,
 			);
 			path = DataSets;
+			sourceTree = "<group>";
+		};
+		45A76B752B8231930086B16B /* RecordExercise */ = {
+			isa = PBXGroup;
+			children = (
+				451952782B6FA92F00F570C8 /* RecordExercise.swift */,
+			);
+			path = RecordExercise;
+			sourceTree = "<group>";
+		};
+		45A76B762B8231AE0086B16B /* ChangeProgression */ = {
+			isa = PBXGroup;
+			children = (
+				451952702B6E5ACB00F570C8 /* ChangeProgression.swift */,
+			);
+			path = ChangeProgression;
 			sourceTree = "<group>";
 		};
 		45B7C9D82AE5A172003A696B /* legraise */ = {
