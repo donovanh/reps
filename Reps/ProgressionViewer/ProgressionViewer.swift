@@ -141,9 +141,10 @@ struct ProgressionViewer: View {
                                 dismiss()
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
+                                    .font(.title)
                             }
                             .foregroundColor(.themeColor)
-                            .controlSize(.large)
+                            .controlSize(.extraLarge)
                             .tint(Color.themeColor)
                             .padding()
                         }
@@ -165,7 +166,7 @@ struct ProgressionViewer: View {
         ProgressionViewer(
             dayViewModel: DayView.ViewModel(),
             viewToShow: .changeProgression,
-            progressions: getProgressions(ofType: .pushup),
+            progressions: Progressions().getProgressions(ofType: .pushup),
             startingIndex: 7,
             startingLevel: .intermediate,
             screenWidth: geo.size.width
@@ -188,3 +189,19 @@ struct ProgressionViewer: View {
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
     }
 }
+
+#Preview("Record Timed Workout") {
+    func mainAction(_: Progression, _: Level, _: Int, _: DismissAction, _: ScrollViewProxy?) {}
+    return GeometryReader { geo in
+        ProgressionViewer(
+            dayViewModel: DayView.ViewModel(),
+            viewToShow: .workoutView,
+            progressions: Progression.defaultProgressionSingleTypeTimed,
+            startingIndex: 2,
+            startingLevel: .intermediate,
+            screenWidth: geo.size.width
+        )
+        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+    }
+}
+

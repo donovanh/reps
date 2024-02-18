@@ -53,7 +53,7 @@ struct ExerciseItem: View {
             ProgressionViewer(
                 dayViewModel: viewModel,
                 viewToShow: .changeProgression,
-                progressions: getProgressions(ofType: exerciseType),
+                progressions: Progressions().getProgressions(ofType: exerciseType),
                 startingIndex: progression.stage,
                 startingLevel: level,
                 screenWidth: geo.size.width

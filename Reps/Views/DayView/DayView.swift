@@ -51,6 +51,7 @@ struct DayView: View {
     
     @State var day: Int
     
+    // Move to viewModel
     var workoutSchedule: [ExerciseType] {
         viewModel.weeklySchedule[day] ?? []
     }

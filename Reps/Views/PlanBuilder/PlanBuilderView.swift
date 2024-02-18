@@ -121,9 +121,10 @@ struct PlanBuilderView: View {
                             dismiss()
                         } label: {
                             Image(systemName: "xmark.circle.fill")
+                                .font(.title)
                         }
                         .foregroundColor(.themeColor)
-                        .controlSize(.large)
+                        .controlSize(.extraLarge)
                         .tint(Color.themeColor)
                         .padding()
                     }

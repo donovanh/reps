@@ -28,7 +28,7 @@ struct LevelOverviewView: View {
             DisclosureGroup("Progressions") {
                 let exerciseLevels = stagesByExperienceLevel[level] ?? [:]
                 ForEach(exerciseLevels.sorted(by: { $0.key.rawValue < $1.key.rawValue }), id: \.key) { exerciseType, stage in
-                    let exercise = getProgression(ofType: exerciseType, atStage: stage)
+                    let exercise = Progressions().getProgression(ofType: exerciseType, atStage: stage)
                         HStack {
                             Text(exercise?.name.rawValue ?? "")
                             Spacer()

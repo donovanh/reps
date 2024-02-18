@@ -680,6 +680,9 @@
         }
       }
     },
+    "Log %@ seconds" : {
+
+    },
     "Log ^[%lld rep](inflect: true)" : {
 
     },
@@ -784,6 +787,9 @@
     "Reps is designed to help you record and progress bodyweight exercises." : {
 
     },
+    "Reset" : {
+
+    },
     "Rest Day" : {
       "localizations" : {
         "de" : {
@@ -794,7 +800,13 @@
         }
       }
     },
+    "Resume" : {
+
+    },
     "Saving..." : {
+
+    },
+    "seconds" : {
 
     },
     "Select an exercise to adjust level" : {
@@ -843,7 +855,13 @@
     "Stand-to-stand bridges" : {
 
     },
+    "Start" : {
+
+    },
     "Start Workout" : {
+
+    },
+    "Stop" : {
 
     },
     "Straight bridges" : {
@@ -867,6 +885,9 @@
       }
     },
     "Take it easy! Recovery is important." : {
+
+    },
+    "Timer or manual entry" : {
 
     },
     "Uneven handstand pushups" : {

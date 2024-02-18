@@ -73,6 +73,13 @@
 		4593553B2A6D9C20009EC063 /* Bridges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593553A2A6D9C20009EC063 /* Bridges.swift */; };
 		4593553D2A6D9C3A009EC063 /* Squats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593553C2A6D9C3A009EC063 /* Squats.swift */; };
 		4593553F2A6D9C5F009EC063 /* HandstandPushups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593553E2A6D9C5F009EC063 /* HandstandPushups.swift */; };
+		45A76B782B824E350086B16B /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A76B772B824E350086B16B /* TimerView.swift */; };
+		45A76B7A2B824E8C0086B16B /* RepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A76B792B824E8C0086B16B /* RepsView.swift */; };
+		45A76B7C2B827B9E0086B16B /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A76B7B2B827B9E0086B16B /* TimerViewModel.swift */; };
+		45A76B7E2B82858F0086B16B /* Bundle-AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A76B7D2B82858F0086B16B /* Bundle-AudioPlayer.swift */; };
+		45A76B992B828A8E0086B16B /* confirmation_004.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45A76B952B828A8E0086B16B /* confirmation_004.wav */; };
+		45A76B9A2B828A8E0086B16B /* confirmation_003.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45A76B962B828A8E0086B16B /* confirmation_003.wav */; };
+		45A76B9E2B82900F0086B16B /* tone1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45A76B9D2B82900F0086B16B /* tone1.wav */; };
 		45AA64462B6C1C6300E7DAE4 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA64452B6C1C6300E7DAE4 /* DayView.swift */; };
 		45AA64482B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA64472B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift */; };
 		45AA644A2B6C388200E7DAE4 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA64492B6C388200E7DAE4 /* DateExtension.swift */; };
@@ -193,6 +200,13 @@
 		4593553A2A6D9C20009EC063 /* Bridges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bridges.swift; sourceTree = "<group>"; };
 		4593553C2A6D9C3A009EC063 /* Squats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squats.swift; sourceTree = "<group>"; };
 		4593553E2A6D9C5F009EC063 /* HandstandPushups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandstandPushups.swift; sourceTree = "<group>"; };
+		45A76B772B824E350086B16B /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		45A76B792B824E8C0086B16B /* RepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsView.swift; sourceTree = "<group>"; };
+		45A76B7B2B827B9E0086B16B /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		45A76B7D2B82858F0086B16B /* Bundle-AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-AudioPlayer.swift"; sourceTree = "<group>"; };
+		45A76B952B828A8E0086B16B /* confirmation_004.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = confirmation_004.wav; sourceTree = "<group>"; };
+		45A76B962B828A8E0086B16B /* confirmation_003.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = confirmation_003.wav; sourceTree = "<group>"; };
+		45A76B9D2B82900F0086B16B /* tone1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tone1.wav; sourceTree = "<group>"; };
 		45AA64452B6C1C6300E7DAE4 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		45AA64472B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypesByDay.swift; sourceTree = "<group>"; };
 		45AA64492B6C388200E7DAE4 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -414,12 +428,14 @@
 				45BA6E902AF6AA64003AD0A2 /* Controllers */,
 				459355332A6D9B92009EC063 /* DataSets */,
 				4549BD412A8C270900F3E2AD /* Animations */,
+				45A76B7F2B8285A80086B16B /* Audio */,
 				45AA644D2B6C3CF800E7DAE4 /* Exercises.swift */,
+				45A76B7D2B82858F0086B16B /* Bundle-AudioPlayer.swift */,
 				45AA64492B6C388200E7DAE4 /* DateExtension.swift */,
+				4519528F2B714B0100F570C8 /* SizePreference.swift */,
 				459355232A6D90F8009EC063 /* Assets.xcassets */,
 				459355252A6D90F8009EC063 /* Preview Content */,
 				4549BD182A7D86A000F3E2AD /* Localizable.xcstrings */,
-				4519528F2B714B0100F570C8 /* SizePreference.swift */,
 			);
 			path = Reps;
 			sourceTree = "<group>";
@@ -465,6 +481,9 @@
 			isa = PBXGroup;
 			children = (
 				451952782B6FA92F00F570C8 /* RecordExercise.swift */,
+				45A76B772B824E350086B16B /* TimerView.swift */,
+				45A76B7B2B827B9E0086B16B /* TimerViewModel.swift */,
+				45A76B792B824E8C0086B16B /* RepsView.swift */,
 			);
 			path = RecordExercise;
 			sourceTree = "<group>";
@@ -475,6 +494,16 @@
 				451952702B6E5ACB00F570C8 /* ChangeProgression.swift */,
 			);
 			path = ChangeProgression;
+			sourceTree = "<group>";
+		};
+		45A76B7F2B8285A80086B16B /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				45A76B962B828A8E0086B16B /* confirmation_003.wav */,
+				45A76B952B828A8E0086B16B /* confirmation_004.wav */,
+				45A76B9D2B82900F0086B16B /* tone1.wav */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		45B7C9D82AE5A172003A696B /* legraise */ = {
@@ -684,6 +713,7 @@
 				45EA3ABB2ADC74D900FD6C6A /* squat-10.dae in Resources */,
 				45EA3ABC2ADC74D900FD6C6A /* squat-05.dae in Resources */,
 				45EA3ABD2ADC74D900FD6C6A /* squat-04.dae in Resources */,
+				45A76B9A2B828A8E0086B16B /* confirmation_003.wav in Resources */,
 				45EA3ABE2ADC74D900FD6C6A /* squat-08.dae in Resources */,
 				45EA3ABF2ADC74D900FD6C6A /* squat-03.dae in Resources */,
 				45EA3AA92ADC314F00FD6C6A /* bridge-04.dae in Resources */,
@@ -708,6 +738,7 @@
 				4549BE372A9921C100F3E2AD /* pullup-06.dae in Resources */,
 				4549BE382A9921C100F3E2AD /* pullup-07.dae in Resources */,
 				4549BE392A9921C100F3E2AD /* pullup-09.dae in Resources */,
+				45A76B9E2B82900F0086B16B /* tone1.wav in Resources */,
 				4549BE3A2A9921C100F3E2AD /* pullup-04.dae in Resources */,
 				4549BE3B2A9921C100F3E2AD /* pullup-08.dae in Resources */,
 				4549BE3C2A9921C100F3E2AD /* pullup-05.dae in Resources */,
@@ -718,6 +749,7 @@
 				4549BE442A9921C100F3E2AD /* pushup-08.dae in Resources */,
 				4549BE452A9921C100F3E2AD /* pullup-03.dae in Resources */,
 				4549BDAF2A8F8D1500F3E2AD /* wood.jpg in Resources */,
+				45A76B992B828A8E0086B16B /* confirmation_004.wav in Resources */,
 				459355272A6D90F8009EC063 /* Preview Assets.xcassets in Resources */,
 				459355242A6D90F8009EC063 /* Assets.xcassets in Resources */,
 				4549BD192A7D86A000F3E2AD /* Localizable.xcstrings in Resources */,
@@ -731,8 +763,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45A76B7E2B82858F0086B16B /* Bundle-AudioPlayer.swift in Sources */,
 				45BA6E922AF81C7E003AD0A2 /* PreviewContainer.swift in Sources */,
 				45AA64462B6C1C6300E7DAE4 /* DayView.swift in Sources */,
+				45A76B7A2B824E8C0086B16B /* RepsView.swift in Sources */,
 				451952932B72727900F570C8 /* Icon.swift in Sources */,
 				4593553F2A6D9C5F009EC063 /* HandstandPushups.swift in Sources */,
 				4549BD302A8BB2A100F3E2AD /* JournalView.swift in Sources */,
@@ -758,6 +792,7 @@
 				45AA64482B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift in Sources */,
 				451952792B6FA92F00F570C8 /* RecordExercise.swift in Sources */,
 				459355392A6D9BF8009EC063 /* LegRaises.swift in Sources */,
+				45A76B7C2B827B9E0086B16B /* TimerViewModel.swift in Sources */,
 				451952622B6D7D1A00F570C8 /* ProgressionViewer.swift in Sources */,
 				4519528C2B71125800F570C8 /* Routine.swift in Sources */,
 				459355372A6D9BDA009EC063 /* Pullups.swift in Sources */,
@@ -765,6 +800,7 @@
 				45AA644C2B6C38BF00E7DAE4 /* UserExerciseStages.swift in Sources */,
 				4549BD122A78E51B00F3E2AD /* PlanSummaryView.swift in Sources */,
 				4549BD0A2A778C1800F3E2AD /* WeekSchedules.swift in Sources */,
+				45A76B782B824E350086B16B /* TimerView.swift in Sources */,
 				4549BD1C2A7D9B0A00F3E2AD /* ExerciseTypeStrings.swift in Sources */,
 				4519528E2B71230A00F570C8 /* Color.swift in Sources */,
 				451952662B6E3B5600F570C8 /* LevelStrings.swift in Sources */,

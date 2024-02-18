@@ -15,8 +15,6 @@ struct RecordExercise: View {
     @State private var viewModel = ProgressionViewer.ViewModel()
     @State private var stage = 1
     @State private var reps: Int = 0
-    @State private var isSavingExercise = false
-    @State private var savingTask: Task<Void, Error>?
     
     let progressions: [Progression]
     let displayProgression: Progression
@@ -64,88 +62,13 @@ struct RecordExercise: View {
                     Text("All sets done")
                 }
             }
-            .padding(.bottom)
             
-            VStack {
-                HStack {
-                    Spacer()
-                    Button {
-                        decrementReps()
-                    } label: {
-                        Image(systemName: "minus.circle")
-                    }
-                    .foregroundColor(.themeColor)
-                    .tint(.themeColor)
-                    .font(.system(size: 48))
-                    .controlSize(.large)
-                    .buttonRepeatBehavior(.enabled)
-                    VStack {
-                        Text("\(reps)")
-                            .font(.system(size: 64).bold())
-                            .padding(.top, -10)
-                            .padding(.bottom, -15)
-                            .contentTransition(.numericText())
-                        if (displayProgression.showSecondsForReps == true) {
-                            Text("\(reps > 1 ? "seconds" : "second")")
-                        } else {
-                            Text("\(reps > 1 ? "reps" : "rep")")
-                        }
-                    }
-                    .frame(width: 125)
-                    Button {
-                        incrementReps()
-                    } label: {
-                        Image(systemName: "plus.circle")
-                    }
-                    .foregroundColor(.themeColor)
-                    .tint(.themeColor)
-                    .font(.system(size: 48))
-                    .controlSize(.large)
-                    .buttonRepeatBehavior(.enabled)
-                    Spacer()
-                }
-                .padding(.bottom)
-            }
-            .presentationDragIndicator(.automatic)
-            
-            Spacer()
-            if !isSavingExercise {
-                Button {
-                    savingTask = Task {
-                        withAnimation {
-                            isSavingExercise = true
-                        }
-                        try await Task.sleep(for: .seconds(2))
-                        saveReps(progressions: progressions, progression: displayProgression, level: level, reps: reps, dismiss: dismiss, scrollViewProxy: scrollViewValue)
-                        withAnimation {
-                            isSavingExercise = false
-                        }
-                    }
-                } label: {
-                    let TextView = displayProgression.showSecondsForReps == true
-                    ? Text("Log ^[\(reps) second](inflect: true)")
-                    : Text("Log ^[\(reps) rep](inflect: true)")
-                    
-                    TextView
-                        .contentTransition(.numericText())
-                }
-                .foregroundColor(.white)
-                .tint(.themeColor)
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
+            if displayProgression.showSecondsForReps == true {
+                TimerView(displayProgression: displayProgression, level: level, saveAction: saveReps)
             } else {
-                Text("Saving...")
-                    .font(.title)
-                Button("Cancel") {
-                    isSavingExercise = false
-                    savingTask?.cancel()
-                }
-                .tint(.themeColor)
-                .buttonStyle(.bordered)
-                .controlSize(.small)
+                RepsView(displayProgression: displayProgression, level: level, saveAction: saveReps)
             }
             
-
             Spacer()
          }
         .onAppear {
@@ -154,23 +77,7 @@ struct RecordExercise: View {
         }
     }
     
-    func incrementReps() {
-        if reps < 999 {
-            withAnimation {
-                reps += 1
-            }
-        }
-    }
-    
-    func decrementReps() {
-        if reps > 1 {
-            withAnimation {
-                reps -= 1
-            }
-        }
-    }
-    
-    func saveReps(progressions: [Progression], progression: Progression, level: Level, reps: Int, dismiss: DismissAction, scrollViewProxy: ScrollViewProxy?) {
+    func saveReps(progression: Progression, level: Level, reps: Int) {
         // Check if progression is done already
         let progressionAlreadyDone = dayViewModel.isProgressionDone(journalEntries: journalEntries, progression: progression)
         let nextProgression = dayViewModel.nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progression)
@@ -181,6 +88,7 @@ struct RecordExercise: View {
         } else {
             if progressionAlreadyDone {
                 // All are done and this was already done, so dismiss
+                addJournalEntry(progression: progression)
                 dismiss()
             } else {
                 // Check if it's now done
@@ -188,27 +96,32 @@ struct RecordExercise: View {
                 let setsDone = journalEntryMethods().getSetsDone(entries: journalEntries, forDate: Date(), ofType: displayProgression.type, ofStage: displayProgression.stage, ofLevel: level)
  
                 if setsDone + 1 >= sets {
+                    addJournalEntry(progression: progression)
                     dismiss()
                 }
             }
         }
-        // Lastly update the context, but with a slight delay to remove UI jumpiness
+        // Lastly update the context, but with a slight delay to visible UI change and potential scrolling jumpiness
         Task {
-            try await Task.sleep(for: .seconds(0.5))
-            context.insert(
-                JournalEntry(
-                    date: Date(),
-                    exerciseType: progression.type,
-                    stage: progression.stage,
-                    level: level,
-                    reps: reps
-                )
-            )
+            try await Task.sleep(for: .seconds(0.1))
+            addJournalEntry(progression: progression)
         }
+    }
+    
+    func addJournalEntry(progression: Progression) {
+        context.insert(
+            JournalEntry(
+                date: Date(),
+                exerciseType: progression.type,
+                stage: progression.stage,
+                level: level,
+                reps: reps
+            )
+        )
     }
 }
 
-#Preview {
+#Preview("Reps") {
     @Environment(\.dismiss) var dismiss
     func mainAction(_: Progression, _: Level, _: Int, _: DismissAction, _: ScrollViewProxy?) {}
     return ScrollViewReader { scrollViewValue in
@@ -216,6 +129,24 @@ struct RecordExercise: View {
             RecordExercise(
                 progressions: Progression.defaultProgressionMixedSet,
                 displayProgression: Progression.defaultProgressionMixedSet[2],
+                startingIndex: 2,
+                scrollViewValue: scrollViewValue,
+                geo: geo,
+                dayViewModel: DayView.ViewModel(),
+                dismiss: dismiss
+            )
+            .modelContainer(DataController.previewContainer)
+        }
+    }
+}
+
+#Preview("Seconds") {
+    @Environment(\.dismiss) var dismiss
+    return ScrollViewReader { scrollViewValue in
+        GeometryReader { geo in
+            RecordExercise(
+                progressions: Progression.defaultProgressionMixedSet,
+                displayProgression: Progression.defaultProgressionSingleTypeTimed[2],
                 startingIndex: 2,
                 scrollViewValue: scrollViewValue,
                 geo: geo,
