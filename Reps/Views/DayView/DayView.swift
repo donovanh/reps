@@ -52,9 +52,7 @@ struct DayView: View {
     @State var day: Int
     
     var workoutSchedule: [ExerciseType] {
-        let thing = viewModel.weeklySchedule[day] ?? []
-        print("\(thing.count)")
-        return viewModel.weeklySchedule[day] ?? []
+        viewModel.weeklySchedule[day] ?? []
     }
     
     var isTodayEmpty: Bool {
@@ -96,6 +94,9 @@ struct DayView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
+                // Load anmiation model to save flash of grey
+                Icon(exerciseType: .pushup, stage: 5, size: 10, complete: false)
+                    .opacity(0)
                 NavigationView {
                     VStack {
                         Spacer()
@@ -304,7 +305,6 @@ struct DayView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.significantTimeChangeNotification)) { _ in
             day = Date().dayNumberOfWeek() ?? 0
-            print("Time changed: \(day)")
         }
     }
     
