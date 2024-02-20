@@ -1,35 +1,58 @@
 //
 //  DayView.swift
 //
-// Refactor all viewModel.userExerciseStagesStore methods into viewModel, make the store simpler
-// Remove observation from data stores and ensure viewModel is handling it
+//
+//
+// TESTING feedback
+// TODO: Place the "Set 1 of 2" text closer to the reps number
+// TODO: Add saving flow for measured seconds
+// TODO: Add plus and minus beside the log button to adjust the measured seconds
+// TODO: Hide animation when doing the scrollto (fade out and in)
+// TODO: Reset timer after saving measured seconds
+// TODO: Make sure continue workout goes to the next set incomplete set with fewer sets than the previous
+// TODO: Display previously recorded reps amount for progression
+// TODO: Retain logging measured seconds when switching to manual and back
+// TODO: Set up sound so that it doesn't stop existing sounds playing
 
-// BUG: Adding last item makes sheet re-appear (iOS bug?)
-// BUG: Grey box on first showing icons - preload somehow? Maybe load the six icons I'll need to show invisibly somewhere?
+// Features
+// TODO: Empty day view list the upcoming day's exercises "This Tuesday you have <a category day> / n exercises"
 
-// Pull DayView into smaller pieces - like main view, edit view, etc
+// TODO: Journal view
+// TODO: Progressions overview table, showing +/- on current goal-hitting
+// TODO: Have a Level Up / Level Down suggestion within this context based on behaviour
+// TODO: Show progression overview on main view under today's workout, linking to Journal
+// TODO: Journal data export / import
+// TODO: Way to explore historical training data (calendar?)
 
-// TODO: Make add exercise list give the right exercise names
+// TODO: "Done" overlay with emoji / paper confetti or fireworks
+// TODO: Have a social media sharing aspect too for clout
 
-// TODO: Design an icon for each progression, using 3d model
+// TODO: Reference guide
+// TODO: Link reference info from the record view - using a modal
+// TODO: Link similarly from the change progression view - using a modal
+
 // TODO: Try a USDZ model, see if can attach animation from existing files
-
-// TODO: Check aligment issues don't persist on other devides
 // TODO: Maybe have custom layout on ipad
 
-// TODO: Make sure continue workout goes to the next set incomplete set with fewer sets than the previous
+// TODO: Notifications when it's time to train
 
-// TODO: Animate the today's exercises in using s staggered fade
+// Bugs
+// TODO: 3 sets marked done in Squats when I did two?
+// TODO: Adding last item makes sheet re-appear (iOS bug?)
+// TODO: Grey box on first showing icons - preload somehow? Maybe load the six icons I'll need to show invisibly somewhere?
+// TODO: Grey box on larger animations too
 
+// Debt / tweaks
+// TODO: Put colours into assets
+// TODO: Pull DayView into smaller pieces - like main view, edit view, etc
+// TODO: Check aligment issues don't persist on other devices
+// TODO: Make add exercise list show exercise names
+// TODO: Design an icon for each progression, using 3d model
 // TODO: Make edit mode put an edit icon in front of the progression so selecting the progression chooses level
 // TODO: Maybe have next/ prev day buttons but when not in "Edit schedule" mode, show that day's actual workout from journal
 // TODO: Illustration for empty state
 // TODO: Iterate on the animation view. Maybe a circle like the icon?
-// TODO: Journal view
-// TODO: Export / reset journal options
-// TODO: Reference guide
-// TODO: Link reference info from the record view - using a modal
-// TODO: Link similarly from the change progression view - using a modal
+
 
 import SwiftData
 import SwiftUI

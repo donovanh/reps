@@ -90,6 +90,7 @@ struct RecordExercise: View {
                 // All are done and this was already done, so dismiss
                 addJournalEntry(progression: progression)
                 dismiss()
+                return
             } else {
                 // Check if it's now done
                 let sets = displayProgression.getSets(for: level)
@@ -98,6 +99,7 @@ struct RecordExercise: View {
                 if setsDone + 1 >= sets {
                     addJournalEntry(progression: progression)
                     dismiss()
+                    return
                 }
             }
         }
