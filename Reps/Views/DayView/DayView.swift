@@ -27,12 +27,15 @@
 // TODO: Link reference info from the record view - using a modal
 // TODO: Link similarly from the change progression view - using a modal
 
+// TODO: Store data with iCloud so it can persist
+
 // TODO: Try a USDZ model, see if can attach animation from existing files
 // TODO: Maybe have custom layout on ipad
 
 // TODO: Notifications when it's time to train
 
 // Bugs
+// TODO: Double check the layout works properly on SE
 // TODO: Adding last item makes sheet re-appear (iOS bug?)
 // TODO: Grey box on first showing icons - preload somehow? Maybe load the six icons I'll need to show invisibly somewhere?
 // TODO: Grey box on larger animations too

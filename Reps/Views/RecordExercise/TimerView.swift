@@ -21,6 +21,8 @@ struct TimerView: View {
     @State private var savingTask: Task<Void, Error>?
     
     var body: some View {
+        let isSmallScreen = UIScreen.portraitHeight < 700
+        
         VStack {
             Picker(selection: $viewModel.selectedPickerOption) {
                 ForEach(viewModel.pickerOptions, id: \.self) { option in
@@ -159,8 +161,7 @@ struct TimerView: View {
                 }
                 .opacity(!viewModel.isTimerRunning && viewModel.timeAchieved > 0 ? 1 : 0)
                 .disabled(viewModel.isTimerRunning || viewModel.timeAchieved == 0.0)
-                .padding()
-
+                .padding(isSmallScreen ? 0 : 20)
                 
             } else {
                 RepsView(
