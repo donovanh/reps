@@ -29,7 +29,7 @@ struct ProgressionViewer: View {
     
     var body: some View {
         GeometryReader { geo in
-            let halfHeight = geo.size.height / 2
+            let halfHeight = UIScreen.portraitHeight < 700 ? 250 : geo.size.height / 2
             let maxWidth = geo.size.width - 40
             let animationHeight = halfHeight > maxWidth ? maxWidth : halfHeight
             ZStack {
@@ -110,6 +110,7 @@ struct ProgressionViewer: View {
                         }
                         .scrollTargetBehavior(.viewAligned)
                         .onAppear {
+                            print(UIScreen.portraitHeight)
                             displayIndex = startingIndex
                             displayLevel = startingLevel
                             animationFileName = progressions[displayIndex].animationFileName
@@ -152,6 +153,7 @@ struct ProgressionViewer: View {
                     }
                 }
             }
+            .padding(.vertical)
             .containerRelativeFrame([.horizontal, .vertical])
             .background(colorScheme == .dark ? Color.darkBg : Color.lightBg)
         }

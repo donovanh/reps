@@ -26,13 +26,15 @@ struct ChangeProgression: View {
         let reps = displayProgression.getReps(for: level)
         let sets = displayProgression.getSets(for: level)
         let isCurrentLevel = stage == startingIndex && level == startingLevel
+        let halfHeight = UIScreen.portraitHeight < 700 ? 250 : geo.size.height / 2
 
         VStack {
             Text(String(localized: displayProgression.name.rawValue))
                 .font(.largeTitle.bold())
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
-                .padding(.top, (geo.size.height / 2) + 10)
+                .padding(.horizontal)
+                .padding(.top, halfHeight + 10)
             
             HStack {
                 Spacer()

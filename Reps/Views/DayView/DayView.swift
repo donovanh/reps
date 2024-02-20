@@ -4,18 +4,14 @@
 //
 //
 // TESTING feedback
-// TODO: Place the "Set 1 of 2" text closer to the reps number
-// TODO: Add saving flow for measured seconds
-// TODO: Add plus and minus beside the log button to adjust the measured seconds
 // TODO: Hide animation when doing the scrollto (fade out and in)
-// TODO: Reset timer after saving measured seconds
 // TODO: Make sure continue workout goes to the next set incomplete set with fewer sets than the previous
 // TODO: Display previously recorded reps amount for progression
-// TODO: Retain logging measured seconds when switching to manual and back
-// TODO: Set up sound so that it doesn't stop existing sounds playing
 
 // Features
 // TODO: Empty day view list the upcoming day's exercises "This Tuesday you have <a category day> / n exercises"
+
+// TODO: Haptic effects throughout
 
 // TODO: Journal view
 // TODO: Progressions overview table, showing +/- on current goal-hitting
@@ -37,7 +33,6 @@
 // TODO: Notifications when it's time to train
 
 // Bugs
-// TODO: 3 sets marked done in Squats when I did two?
 // TODO: Adding last item makes sheet re-appear (iOS bug?)
 // TODO: Grey box on first showing icons - preload somehow? Maybe load the six icons I'll need to show invisibly somewhere?
 // TODO: Grey box on larger animations too
@@ -236,6 +231,7 @@ struct DayView: View {
                         } else if isTodayDone {
                             Text("All done!")
                                 .font(.callout) // TODO: Celebration animation
+                                .padding()
                         } else {
                             Button(isTodayInProgress ? "Continue Workout" : "Start Workout") {
                                 isPresentingWorkout = true

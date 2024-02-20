@@ -17,6 +17,9 @@ struct TimerView: View {
     let level: Level
     let saveAction: (_ progression: Progression, _ level: Level, _ reps: Int) -> Void
     
+    @State private var isSavingExercise = false
+    @State private var savingTask: Task<Void, Error>?
+    
     var body: some View {
         VStack {
             Picker(selection: $viewModel.selectedPickerOption) {
@@ -34,6 +37,7 @@ struct TimerView: View {
             .pickerStyle(.segmented)
             .padding(.horizontal, 80)
             .padding(.vertical)
+            .padding(.top, -20)
             .onAppear {
                 viewModel.targetSeconds = Double(displayProgression.getReps(for: level))
                 viewModel.timeRemaining = viewModel.targetSeconds
@@ -118,15 +122,40 @@ struct TimerView: View {
                 }
 
                 VStack {
-                    Button {
-                        saveAction(displayProgression, level, Int(viewModel.timeAchieved.rounded()))
-                    } label: {
-                        Text(viewModel.timeAchieved > 0 ? "Log \(viewModel.timeAchieved.formatted(.number.precision(.fractionLength(0)))) seconds" : "Start")
+                    if !isSavingExercise {
+                        Button {
+                            savingTask = Task {
+                                withAnimation {
+                                    isSavingExercise = true
+                                }
+                                try await Task.sleep(for: .seconds(2))
+                                saveAction(displayProgression, level, Int(viewModel.timeAchieved.rounded()))
+                                try await Task.sleep(for: .seconds(0.5))
+                                viewModel.resetTimer()
+                                withAnimation {
+                                    isSavingExercise = false
+                                }
+                            }
+                        } label: {
+                            Text(viewModel.timeAchieved > 0 ? "Log \(viewModel.timeAchieved.formatted(.number.precision(.fractionLength(0)))) seconds" : "Start")
+                        }
+                        .foregroundColor(.white)
+                        .tint(.themeColor)
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.large)
+                    } else {
+                        HStack {
+                            Text("Saving...")
+                                .font(.title)
+                            Button("Cancel") {
+                                isSavingExercise = false
+                                savingTask?.cancel()
+                            }
+                            .tint(.themeColor)
+                            .buttonStyle(.bordered)
+                            .controlSize(.small)
+                        }
                     }
-                    .foregroundColor(.white)
-                    .tint(.themeColor)
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
                 }
                 .opacity(!viewModel.isTimerRunning && viewModel.timeAchieved > 0 ? 1 : 0)
                 .disabled(viewModel.isTimerRunning || viewModel.timeAchieved == 0.0)
@@ -134,7 +163,12 @@ struct TimerView: View {
 
                 
             } else {
-                RepsView(displayProgression: displayProgression, level: level, saveAction: saveAction)
+                RepsView(
+                    displayProgression: displayProgression,
+                    level: level,
+                    saveAction: saveAction,
+                    reps: Int(viewModel.timeAchieved.rounded())
+                )
             }
         }
     }

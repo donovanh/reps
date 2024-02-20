@@ -17,6 +17,9 @@ extension Bundle {
             fatalError("Failed to load \(filename)")
         }
         
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
+        try? AVAudioSession.sharedInstance().setActive(true)
+        
         player.volume = Float(volume)
         player.prepareToPlay()
         

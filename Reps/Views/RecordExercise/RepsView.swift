@@ -14,8 +14,8 @@ struct RepsView: View {
     let displayProgression: Progression
     let level: Level
     let saveAction: (_ progression: Progression, _ level: Level, _ reps: Int) -> Void
+    @State var reps: Int = 0
     
-    @State private var reps: Int = 0
     @State private var isSavingExercise = false
     @State private var savingTask: Task<Void, Error>?
     
@@ -62,7 +62,9 @@ struct RepsView: View {
         }
         .presentationDragIndicator(.automatic)
         .onAppear {
-            reps = displayProgression.getReps(for: level)
+            if reps == 0 {
+                reps = displayProgression.getReps(for: level)
+            }
         }
 
         if !isSavingExercise {
@@ -90,15 +92,17 @@ struct RepsView: View {
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
         } else {
-            Text("Saving...")
-                .font(.title)
-            Button("Cancel") {
-                isSavingExercise = false
-                savingTask?.cancel()
+            HStack {
+                Text("Saving...")
+                    .font(.title)
+                Button("Cancel") {
+                    isSavingExercise = false
+                    savingTask?.cancel()
+                }
+                .tint(.themeColor)
+                .buttonStyle(.bordered)
+                .controlSize(.small)
             }
-            .tint(.themeColor)
-            .buttonStyle(.bordered)
-            .controlSize(.small)
         }
     }
     
@@ -124,6 +128,7 @@ struct RepsView: View {
     return RepsView(
         displayProgression: Progression.defaultProgression,
         level: .beginner,
-        saveAction: saveAction
+        saveAction: saveAction,
+        reps: 128
     )
 }

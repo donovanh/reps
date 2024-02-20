@@ -36,6 +36,7 @@ struct RecordExercise: View {
         let targetReps = displayProgression.getReps(for: level)
         let sets = displayProgression.getSets(for: level)
         let setsDone = journalEntryMethods().getSetsDone(entries: journalEntries, forDate: Date(), ofType: displayProgression.type, ofStage: displayProgression.stage, ofLevel: level)
+        let halfHeight = UIScreen.portraitHeight < 700 ? 250 : geo.size.height / 2
 
         VStack {
             HStack {
@@ -44,14 +45,13 @@ struct RecordExercise: View {
                     .font(.largeTitle.bold())
                     .fixedSize(horizontal: false, vertical: true)
                     .multilineTextAlignment(.center)
-                    .padding(.top, (geo.size.height / 2) + 10)
+                    .padding(.horizontal)
+                    .padding(.top, halfHeight + 10)
                 Spacer()
             }
             
             Text("\(targetReps) \(displayProgression.showSecondsForReps == true ? "seconds" : "reps")")
                 .font(.title2)
-                .padding(.bottom)
-            Spacer()
             
             HStack {
                 if sets > 1 && setsDone < sets {
@@ -62,6 +62,7 @@ struct RecordExercise: View {
                     Text("All sets done")
                 }
             }
+            .padding(.bottom)
             
             if displayProgression.showSecondsForReps == true {
                 TimerView(displayProgression: displayProgression, level: level, saveAction: saveReps)

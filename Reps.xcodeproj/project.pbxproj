@@ -80,6 +80,7 @@
 		45A76B992B828A8E0086B16B /* confirmation_004.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45A76B952B828A8E0086B16B /* confirmation_004.wav */; };
 		45A76B9A2B828A8E0086B16B /* confirmation_003.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45A76B962B828A8E0086B16B /* confirmation_003.wav */; };
 		45A76B9E2B82900F0086B16B /* tone1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45A76B9D2B82900F0086B16B /* tone1.wav */; };
+		45A76BC82B8543B00086B16B /* UIScreen-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A76BC72B8543B00086B16B /* UIScreen-Extension.swift */; };
 		45AA64462B6C1C6300E7DAE4 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA64452B6C1C6300E7DAE4 /* DayView.swift */; };
 		45AA64482B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA64472B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift */; };
 		45AA644A2B6C388200E7DAE4 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA64492B6C388200E7DAE4 /* DateExtension.swift */; };
@@ -207,6 +208,7 @@
 		45A76B952B828A8E0086B16B /* confirmation_004.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = confirmation_004.wav; sourceTree = "<group>"; };
 		45A76B962B828A8E0086B16B /* confirmation_003.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = confirmation_003.wav; sourceTree = "<group>"; };
 		45A76B9D2B82900F0086B16B /* tone1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tone1.wav; sourceTree = "<group>"; };
+		45A76BC72B8543B00086B16B /* UIScreen-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen-Extension.swift"; sourceTree = "<group>"; };
 		45AA64452B6C1C6300E7DAE4 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		45AA64472B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypesByDay.swift; sourceTree = "<group>"; };
 		45AA64492B6C388200E7DAE4 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				459355232A6D90F8009EC063 /* Assets.xcassets */,
 				459355252A6D90F8009EC063 /* Preview Content */,
 				4549BD182A7D86A000F3E2AD /* Localizable.xcstrings */,
+				45A76BC72B8543B00086B16B /* UIScreen-Extension.swift */,
 			);
 			path = Reps;
 			sourceTree = "<group>";
@@ -794,6 +797,7 @@
 				459355392A6D9BF8009EC063 /* LegRaises.swift in Sources */,
 				45A76B7C2B827B9E0086B16B /* TimerViewModel.swift in Sources */,
 				451952622B6D7D1A00F570C8 /* ProgressionViewer.swift in Sources */,
+				45A76BC82B8543B00086B16B /* UIScreen-Extension.swift in Sources */,
 				4519528C2B71125800F570C8 /* Routine.swift in Sources */,
 				459355372A6D9BDA009EC063 /* Pullups.swift in Sources */,
 				4519526E2B6E3F4500F570C8 /* ProgressionViewerModel.swift in Sources */,
