@@ -226,6 +226,7 @@ struct DayView: View {
                             .tint(.themeColor)
                             .buttonStyle(.borderedProminent)
                             .controlSize(.large)
+                            .padding()
                         } else if isTodayEmpty {
                             // Nothing currently
                         } else if isTodayDone {
@@ -239,6 +240,7 @@ struct DayView: View {
                             .tint(.themeColor)
                             .buttonStyle(.borderedProminent)
                             .controlSize(.large)
+                            .padding()
                         }
                     }
                     .navigationTitle(title)
