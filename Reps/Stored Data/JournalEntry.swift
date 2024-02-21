@@ -10,20 +10,20 @@ import SwiftData
 
 @Model
 final class JournalEntry: Identifiable {
-    
-    let id: UUID
-    let date: Date
-    let exerciseType: ExerciseType
-    let stage: Int
-    let level: Level
-    let reps: Int
-    
+
+    let id: UUID = UUID()
+    let date: Date = Date()
+    let exerciseType: ExerciseType = ExerciseType.pushup
+    let stage: Int = 0
+    let level: Level = Level.beginner
+    let reps: Int = 0
+
     init(
-        date: Date,
-        exerciseType: ExerciseType,
-        stage: Int,
-        level: Level,
-        reps: Int
+        date: Date = Date(),
+        exerciseType: ExerciseType = .pushup,
+        stage: Int = 0,
+        level: Level = .beginner,
+        reps: Int = 0
     ) {
         self.id = UUID()
         self.date = date

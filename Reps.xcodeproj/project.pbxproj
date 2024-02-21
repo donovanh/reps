@@ -209,6 +209,8 @@
 		45A76B962B828A8E0086B16B /* confirmation_003.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = confirmation_003.wav; sourceTree = "<group>"; };
 		45A76B9D2B82900F0086B16B /* tone1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tone1.wav; sourceTree = "<group>"; };
 		45A76BC72B8543B00086B16B /* UIScreen-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen-Extension.swift"; sourceTree = "<group>"; };
+		45A76BC92B8693600086B16B /* Reps.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Reps.entitlements; sourceTree = "<group>"; };
+		45A76BCA2B86942B0086B16B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		45AA64452B6C1C6300E7DAE4 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		45AA64472B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypesByDay.swift; sourceTree = "<group>"; };
 		45AA64492B6C388200E7DAE4 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -420,6 +422,8 @@
 		4593551E2A6D90F2009EC063 /* Reps */ = {
 			isa = PBXGroup;
 			children = (
+				45A76BCA2B86942B0086B16B /* Info.plist */,
+				45A76BC92B8693600086B16B /* Reps.entitlements */,
 				4593551F2A6D90F2009EC063 /* RepsApp.swift */,
 				4549BCF52A700BD400F3E2AD /* Views */,
 				4519526F2B6E5A2F00F570C8 /* ProgressionViewer */,
@@ -948,12 +952,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Reps/Reps.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Reps/Preview Content\"";
 				DEVELOPMENT_TEAM = HTBK33F6WA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Reps/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -978,12 +984,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Reps/Reps.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Reps/Preview Content\"";
 				DEVELOPMENT_TEAM = HTBK33F6WA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Reps/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

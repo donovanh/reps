@@ -23,6 +23,7 @@ struct RecordExercise: View {
     let geo: GeometryProxy
     @State var dayViewModel: DayView.ViewModel
     let dismiss: DismissAction
+    @Binding var isScrolling: Bool
     
     var nextProgressionIndex: Int {
         dayViewModel.nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progressions[0])
@@ -78,14 +79,27 @@ struct RecordExercise: View {
         }
     }
     
+    func scrollTo(_ progression: Progression) {
+        isScrolling = true
+        Task {
+            try await Task.sleep(for: .seconds(0.25))
+            withAnimation {
+                scrollViewValue.scrollTo(progression)
+            } completion: {
+                Task {
+                    try await Task.sleep(for: .seconds(0.25))
+                    isScrolling = false
+                }
+            }
+        }
+    }
+    
     func saveReps(progression: Progression, level: Level, reps: Int) {
         // Check if progression is done already
         let progressionAlreadyDone = dayViewModel.isProgressionDone(journalEntries: journalEntries, progression: progression)
-        let nextProgression = dayViewModel.nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progression)
-        if (nextProgression > -1) {
-            withAnimation {
-                scrollViewValue.scrollTo(progressions[nextProgression])
-            }
+        let nextProgressionIndex = dayViewModel.nextUnfinishedProgressionIndex(journalEntries: journalEntries, progressions: progressions, progression: progression)
+        if nextProgressionIndex > -1 {
+            scrollTo(progressions[nextProgressionIndex])
         } else {
             if progressionAlreadyDone {
                 // All are done and this was already done, so dismiss
@@ -136,7 +150,8 @@ struct RecordExercise: View {
                 scrollViewValue: scrollViewValue,
                 geo: geo,
                 dayViewModel: DayView.ViewModel(),
-                dismiss: dismiss
+                dismiss: dismiss,
+                isScrolling: .constant(false)
             )
             .modelContainer(DataController.previewContainer)
         }
@@ -154,7 +169,8 @@ struct RecordExercise: View {
                 scrollViewValue: scrollViewValue,
                 geo: geo,
                 dayViewModel: DayView.ViewModel(),
-                dismiss: dismiss
+                dismiss: dismiss,
+                isScrolling: .constant(false)
             )
             .modelContainer(DataController.previewContainer)
         }

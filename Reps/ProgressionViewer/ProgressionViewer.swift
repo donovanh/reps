@@ -26,6 +26,7 @@ struct ProgressionViewer: View {
     @State private var currentAnimationOpacity: CGFloat = 1.0
     @State private var currentXOffset: Double = 0.0
     @State private var animationFileName: String = "not-set"
+    @State private var isScrolling = false
     
     var body: some View {
         GeometryReader { geo in
@@ -48,6 +49,8 @@ struct ProgressionViewer: View {
                                         progressionAnimationName: animationFileName,
                                         height: animationHeight
                                     )
+                                    .opacity(isScrolling ? 0 : 1)
+                                    .animation(.easeOut, value: isScrolling)
                                     .offset(x: currentXOffset, y: 0)
                                 }
                                 .opacity(currentAnimationOpacity)
@@ -85,7 +88,8 @@ struct ProgressionViewer: View {
                                                     scrollViewValue: scrollViewValue,
                                                     geo: geo,
                                                     dayViewModel: dayViewModel,
-                                                    dismiss: dismiss
+                                                    dismiss: dismiss,
+                                                    isScrolling: $isScrolling
                                                 )
                                             }
                                         }
@@ -110,7 +114,6 @@ struct ProgressionViewer: View {
                         }
                         .scrollTargetBehavior(.viewAligned)
                         .onAppear {
-                            print(UIScreen.portraitHeight)
                             displayIndex = startingIndex
                             displayLevel = startingLevel
                             animationFileName = progressions[displayIndex].animationFileName
@@ -188,6 +191,7 @@ struct ProgressionViewer: View {
             startingLevel: .intermediate,
             screenWidth: geo.size.width
         )
+        .modelContainer(DataController.previewContainer)
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
     }
 }
@@ -203,6 +207,7 @@ struct ProgressionViewer: View {
             startingLevel: .intermediate,
             screenWidth: geo.size.width
         )
+        .modelContainer(DataController.previewContainer)
         .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
     }
 }
