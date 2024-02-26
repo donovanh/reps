@@ -4,14 +4,14 @@
 //
 //
 // TESTING feedback
-// TODO: Hide animation when doing the scrollto (fade out and in)
+// TODO: Keep timer going if screen switches off
+// TODO: Pause timer if swiping between exercises
 // TODO: Make sure continue workout goes to the next set incomplete set with fewer sets than the previous
 // TODO: Display previously recorded reps amount for progression
+// TODO: Add UserDefault-stored data to iCloud - have a userSettings SwiftData entry, populate it insteaf of userdefaults - or else try this https://medium.com/@janakmshah/quickly-sync-user-data-and-preferences-over-icloud-with-swift-4757a3904f1a
 
 // Features
 // TODO: Empty day view list the upcoming day's exercises "This Tuesday you have <a category day> / n exercises"
-
-// TODO: Haptic effects throughout
 
 // TODO: Journal view
 // TODO: Progressions overview table, showing +/- on current goal-hitting
@@ -20,14 +20,14 @@
 // TODO: Journal data export / import
 // TODO: Way to explore historical training data (calendar?)
 
+// TODO: Haptic effects throughout
+
 // TODO: "Done" overlay with emoji / paper confetti or fireworks
 // TODO: Have a social media sharing aspect too for clout
 
 // TODO: Reference guide
 // TODO: Link reference info from the record view - using a modal
 // TODO: Link similarly from the change progression view - using a modal
-
-// TODO: Store data with iCloud so it can persist
 
 // TODO: Try a USDZ model, see if can attach animation from existing files
 // TODO: Maybe have custom layout on ipad
@@ -95,6 +95,7 @@ struct DayView: View {
     
     var title: String {
         if isEditMode == true || day != Date().dayNumberOfWeek() ?? 0 {
+            print(day)
             return "\(viewModel.dayName(for: day))s"
         }
         

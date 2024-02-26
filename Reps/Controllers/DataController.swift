@@ -10,132 +10,33 @@ import SwiftData
 
 @MainActor
 class DataController {
+    // TODO: Have other types of previewcontainer as needed
     static let previewContainer: ModelContainer = {
+        let weeklySchedule: [Int : [ExerciseType]] = [
+            1: [],
+            2: [.pushup, .pullup, .bridge],
+            3: [],
+            4: [.pushup, .pullup, .bridge, .legraise, .handstandpushup, .squat],
+            5: [],
+            6: [.pushup, .pullup, .bridge, .legraise, .handstandpushup, .squat],
+            7: []
+        ]
+        let userExerciseStages: [ExerciseType : UserExerciseStageDetails] = [
+            .pushup: UserExerciseStageDetails(stage: 5, level: .intermediate),
+            .pullup: UserExerciseStageDetails(stage: 5, level: .intermediate),
+            .bridge: UserExerciseStageDetails(stage: 3, level: .intermediate),
+            .legraise: UserExerciseStageDetails(stage: 5, level: .intermediate),
+            .handstandpushup: UserExerciseStageDetails(stage: 3, level: .intermediate),
+            .squat: UserExerciseStageDetails(stage: 5, level: .intermediate)
+        ]
+        
         do {
             let config = ModelConfiguration(isStoredInMemoryOnly: true)
             let container = try ModelContainer(for: JournalEntry.self, configurations: config)
 
-            // Make array of journal entries, for today, and yesterday
-            let today = Date()
-            let yesterday = Date().daysOffset(offset: -1)
-            let dayBeforeYesterday = Date().daysOffset(offset: -2)
+            let trainingHistoryEntries = JournalData().generateHistoryFromContext(weeks: 26, weeklySchedule: weeklySchedule, userExerciseStages: userExerciseStages, completedNess: .matched)
             
-            let todayJournalEntries = [
-                JournalEntry(
-                    date: today,
-                    exerciseType: .pushup,
-                    stage: 0,
-                    level: .beginner,
-                    reps: 30
-                ),
-                JournalEntry(
-                    date: today,
-                    exerciseType: .pullup,
-                    stage: 4,
-                    level: .intermediate,
-                    reps: 30
-                ),
-                JournalEntry(
-                    date: today,
-                    exerciseType: .bridge,
-                    stage: 0,
-                    level: .beginner,
-                    reps: 5
-                ),
-                JournalEntry(
-                    date: today,
-                    exerciseType: .pushup,
-                    stage: 0,
-                    level: .beginner,
-                    reps: 25
-                ),
-                JournalEntry(
-                    date: today,
-                    exerciseType: .pullup,
-                    stage: 4,
-                    level: .intermediate,
-                    reps: 25
-                ),
-                JournalEntry(
-                    date: today,
-                    exerciseType: .handstandpushup,
-                    stage: 4,
-                    level: .intermediate,
-                    reps: 10
-                ),
-                JournalEntry(
-                    date: today,
-                    exerciseType: .squat,
-                    stage: 0,
-                    level: .beginner,
-                    reps: 200
-                )
-            ]
-            
-            todayJournalEntries.forEach { entry in
-                container.mainContext.insert(entry)
-            }
-            
-            let yesterdayJournalEntries = [
-                JournalEntry(
-                    date: yesterday,
-                    exerciseType: .pushup,
-                    stage: 0,
-                    level: .beginner,
-                    reps: 25
-                ),
-                JournalEntry(
-                    date: yesterday,
-                    exerciseType: .pullup,
-                    stage: 4,
-                    level: .intermediate,
-                    reps: 28
-                ),
-                JournalEntry(
-                    date: yesterday,
-                    exerciseType: .bridge,
-                    stage: 2,
-                    level: .intermediate,
-                    reps: 15
-                ),
-                JournalEntry(
-                    date: yesterday,
-                    exerciseType: .bridge,
-                    stage: 2,
-                    level: .intermediate,
-                    reps: 15
-                ),
-                JournalEntry(
-                    date: yesterday,
-                    exerciseType: .pushup,
-                    stage: 0,
-                    level: .beginner,
-                    reps: 25
-                ),
-                JournalEntry(
-                    date: yesterday,
-                    exerciseType: .pullup,
-                    stage: 4,
-                    level: .intermediate,
-                    reps: 25
-                ),
-                JournalEntry(
-                    date: yesterday,
-                    exerciseType: .handstandpushup,
-                    stage: 4,
-                    level: .intermediate,
-                    reps: 10
-                ),
-                JournalEntry(
-                    date: yesterday,
-                    exerciseType: .handstandpushup,
-                    stage: 3,
-                    level: .intermediate,
-                    reps: 5
-                )
-            ]
-            
-            yesterdayJournalEntries.forEach { entry in
+            trainingHistoryEntries.forEach { entry in
                 container.mainContext.insert(entry)
             }
             

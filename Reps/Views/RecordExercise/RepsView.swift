@@ -14,7 +14,7 @@ struct RepsView: View {
     let displayProgression: Progression
     let level: Level
     let saveAction: (_ progression: Progression, _ level: Level, _ reps: Int) -> Void
-    @State var reps: Int = 0
+    @State var reps: Int
     
     @State private var isSavingExercise = false
     @State private var savingTask: Task<Void, Error>?
@@ -109,7 +109,7 @@ struct RepsView: View {
     func incrementReps() {
         if reps < 999 {
             withAnimation {
-                reps += 1
+                reps = reps + 1
             }
         }
     }
@@ -117,7 +117,7 @@ struct RepsView: View {
     func decrementReps() {
         if reps > 1 {
             withAnimation {
-                reps -= 1
+                reps = reps - 1
             }
         }
     }

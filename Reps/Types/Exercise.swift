@@ -12,6 +12,10 @@ struct Exercise: Identifiable, Hashable, Codable {
     let type: ExerciseType
 }
 
-enum ExerciseType: String, CaseIterable, Codable {
+enum ExerciseType: String, CaseIterable, Codable, Comparable {
     case pushup, pullup, squat, bridge, legraise, handstandpushup
+    
+    static func < (lhs: ExerciseType, rhs: ExerciseType) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
 }

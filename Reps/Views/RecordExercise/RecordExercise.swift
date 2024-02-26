@@ -68,7 +68,7 @@ struct RecordExercise: View {
             if displayProgression.showSecondsForReps == true {
                 TimerView(displayProgression: displayProgression, level: level, saveAction: saveReps)
             } else {
-                RepsView(displayProgression: displayProgression, level: level, saveAction: saveReps)
+                RepsView(displayProgression: displayProgression, level: level, saveAction: saveReps, reps: reps)
             }
             
             Spacer()
@@ -103,7 +103,7 @@ struct RecordExercise: View {
         } else {
             if progressionAlreadyDone {
                 // All are done and this was already done, so dismiss
-                addJournalEntry(progression: progression)
+                addJournalEntry(progression: progression, reps: reps)
                 dismiss()
                 return
             } else {
@@ -112,7 +112,7 @@ struct RecordExercise: View {
                 let setsDone = journalEntryMethods().getSetsDone(entries: journalEntries, forDate: Date(), ofType: displayProgression.type, ofStage: displayProgression.stage, ofLevel: level)
  
                 if setsDone + 1 >= sets {
-                    addJournalEntry(progression: progression)
+                    addJournalEntry(progression: progression, reps: reps)
                     dismiss()
                     return
                 }
@@ -121,11 +121,11 @@ struct RecordExercise: View {
         // Lastly update the context, but with a slight delay to visible UI change and potential scrolling jumpiness
         Task {
             try await Task.sleep(for: .seconds(0.1))
-            addJournalEntry(progression: progression)
+            addJournalEntry(progression: progression, reps: reps)
         }
     }
     
-    func addJournalEntry(progression: Progression) {
+    func addJournalEntry(progression: Progression, reps: Int) {
         context.insert(
             JournalEntry(
                 date: Date(),

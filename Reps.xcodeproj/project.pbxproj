@@ -81,11 +81,12 @@
 		45A76B9A2B828A8E0086B16B /* confirmation_003.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45A76B962B828A8E0086B16B /* confirmation_003.wav */; };
 		45A76B9E2B82900F0086B16B /* tone1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 45A76B9D2B82900F0086B16B /* tone1.wav */; };
 		45A76BC82B8543B00086B16B /* UIScreen-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A76BC72B8543B00086B16B /* UIScreen-Extension.swift */; };
+		45A76BCE2B8B7B5C0086B16B /* JournalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A76BCD2B8B7B5C0086B16B /* JournalData.swift */; };
+		45A76BD02B8BC13B0086B16B /* TrainingLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A76BCF2B8BC13B0086B16B /* TrainingLog.swift */; };
 		45AA64462B6C1C6300E7DAE4 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA64452B6C1C6300E7DAE4 /* DayView.swift */; };
-		45AA64482B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA64472B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift */; };
+		45AA64482B6C1E0900E7DAE4 /* WorkoutSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA64472B6C1E0900E7DAE4 /* WorkoutSchedule.swift */; };
 		45AA644A2B6C388200E7DAE4 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA64492B6C388200E7DAE4 /* DateExtension.swift */; };
 		45AA644C2B6C38BF00E7DAE4 /* UserExerciseStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA644B2B6C38BF00E7DAE4 /* UserExerciseStages.swift */; };
-		45AA644E2B6C3CF800E7DAE4 /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA644D2B6C3CF800E7DAE4 /* Exercises.swift */; };
 		45AA64502B6C41A700E7DAE4 /* AddExerciseSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA644F2B6C41A700E7DAE4 /* AddExerciseSheet.swift */; };
 		45AD19D72AF0484A005AEC2C /* pushup-09.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45AD19D62AF0484A005AEC2C /* pushup-09.dae */; };
 		45B7C9C72AE59D8F003A696B /* squat-01.dae in Resources */ = {isa = PBXBuildFile; fileRef = 45B7C9C62AE59D8F003A696B /* squat-01.dae */; };
@@ -211,11 +212,12 @@
 		45A76BC72B8543B00086B16B /* UIScreen-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen-Extension.swift"; sourceTree = "<group>"; };
 		45A76BC92B8693600086B16B /* Reps.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Reps.entitlements; sourceTree = "<group>"; };
 		45A76BCA2B86942B0086B16B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		45A76BCD2B8B7B5C0086B16B /* JournalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalData.swift; sourceTree = "<group>"; };
+		45A76BCF2B8BC13B0086B16B /* TrainingLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingLog.swift; sourceTree = "<group>"; };
 		45AA64452B6C1C6300E7DAE4 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
-		45AA64472B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypesByDay.swift; sourceTree = "<group>"; };
+		45AA64472B6C1E0900E7DAE4 /* WorkoutSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSchedule.swift; sourceTree = "<group>"; };
 		45AA64492B6C388200E7DAE4 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		45AA644B2B6C38BF00E7DAE4 /* UserExerciseStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExerciseStages.swift; sourceTree = "<group>"; };
-		45AA644D2B6C3CF800E7DAE4 /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercises.swift; sourceTree = "<group>"; };
 		45AA644F2B6C41A700E7DAE4 /* AddExerciseSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseSheet.swift; sourceTree = "<group>"; };
 		45AD19D62AF0484A005AEC2C /* pushup-09.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pushup-09.dae"; sourceTree = "<group>"; };
 		45B7C9C62AE59D8F003A696B /* squat-01.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "squat-01.dae"; sourceTree = "<group>"; };
@@ -300,7 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				4519527E2B6FE18400F570C8 /* JournalEntry.swift */,
-				45AA64472B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift */,
+				45AA64472B6C1E0900E7DAE4 /* WorkoutSchedule.swift */,
 				45AA644B2B6C38BF00E7DAE4 /* UserExerciseStages.swift */,
 				457B97A62B7A094700B7DE92 /* Progressions.swift */,
 			);
@@ -374,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				4549BD2F2A8BB2A100F3E2AD /* JournalView.swift */,
+				45A76BCF2B8BC13B0086B16B /* TrainingLog.swift */,
 			);
 			path = Journal;
 			sourceTree = "<group>";
@@ -435,14 +438,13 @@
 				459355332A6D9B92009EC063 /* DataSets */,
 				4549BD412A8C270900F3E2AD /* Animations */,
 				45A76B7F2B8285A80086B16B /* Audio */,
-				45AA644D2B6C3CF800E7DAE4 /* Exercises.swift */,
 				45A76B7D2B82858F0086B16B /* Bundle-AudioPlayer.swift */,
 				45AA64492B6C388200E7DAE4 /* DateExtension.swift */,
 				4519528F2B714B0100F570C8 /* SizePreference.swift */,
+				45A76BC72B8543B00086B16B /* UIScreen-Extension.swift */,
 				459355232A6D90F8009EC063 /* Assets.xcassets */,
 				459355252A6D90F8009EC063 /* Preview Content */,
 				4549BD182A7D86A000F3E2AD /* Localizable.xcstrings */,
-				45A76BC72B8543B00086B16B /* UIScreen-Extension.swift */,
 			);
 			path = Reps;
 			sourceTree = "<group>";
@@ -534,6 +536,7 @@
 			isa = PBXGroup;
 			children = (
 				45BA6E8E2AF6A868003AD0A2 /* DataController.swift */,
+				45A76BCD2B8B7B5C0086B16B /* JournalData.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45A76B7E2B82858F0086B16B /* Bundle-AudioPlayer.swift in Sources */,
+				45A76BCE2B8B7B5C0086B16B /* JournalData.swift in Sources */,
 				45BA6E922AF81C7E003AD0A2 /* PreviewContainer.swift in Sources */,
 				45AA64462B6C1C6300E7DAE4 /* DayView.swift in Sources */,
 				45A76B7A2B824E8C0086B16B /* RepsView.swift in Sources */,
@@ -795,8 +799,7 @@
 				4549BD102A78E4FA00F3E2AD /* ScheduleOverviewView.swift in Sources */,
 				45BA6E982AF820AA003AD0A2 /* RoutineExamples.swift in Sources */,
 				45AA644A2B6C388200E7DAE4 /* DateExtension.swift in Sources */,
-				45AA644E2B6C3CF800E7DAE4 /* Exercises.swift in Sources */,
-				45AA64482B6C1E0900E7DAE4 /* ExerciseTypesByDay.swift in Sources */,
+				45AA64482B6C1E0900E7DAE4 /* WorkoutSchedule.swift in Sources */,
 				451952792B6FA92F00F570C8 /* RecordExercise.swift in Sources */,
 				459355392A6D9BF8009EC063 /* LegRaises.swift in Sources */,
 				45A76B7C2B827B9E0086B16B /* TimerViewModel.swift in Sources */,
@@ -813,6 +816,7 @@
 				4519528E2B71230A00F570C8 /* Color.swift in Sources */,
 				451952662B6E3B5600F570C8 /* LevelStrings.swift in Sources */,
 				45AA64502B6C41A700E7DAE4 /* AddExerciseSheet.swift in Sources */,
+				45A76BD02B8BC13B0086B16B /* TrainingLog.swift in Sources */,
 				451952682B6E3C9C00F570C8 /* Progression.swift in Sources */,
 				4593553D2A6D9C3A009EC063 /* Squats.swift in Sources */,
 				45BA6E8F2AF6A868003AD0A2 /* DataController.swift in Sources */,
@@ -963,8 +967,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -995,8 +999,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

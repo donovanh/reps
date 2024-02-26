@@ -23,6 +23,7 @@ extension DayView {
         init() {
             weeklySchedule = workoutScheduleStore.exerciseTypesByDay
             userExerciseStages = userExerciseStagesStore.userExerciseStages
+            // TODO: Load any stored userdefaults from icloud and apply
         }
         
         func getProgression(for type: ExerciseType) -> Progression {

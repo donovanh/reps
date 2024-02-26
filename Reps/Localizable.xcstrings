@@ -50,6 +50,16 @@
         }
       }
     },
+    "%lld%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld%2$@"
+          }
+        }
+      }
+    },
     "^[%lld set](inflect: true) done" : {
 
     },
@@ -283,9 +293,6 @@
         }
       }
     },
-    "Coming soon" : {
-
-    },
     "Confirm your plan" : {
 
     },
@@ -306,6 +313,9 @@
       }
     },
     "Current level" : {
+
+    },
+    "Daily log" : {
 
     },
     "Default" : {
