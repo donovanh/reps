@@ -59,6 +59,7 @@ extension TimerView {
         func startTimer() {
             timerStartSound.play()
             isCountdownRunning = true
+            UIApplication.shared.isIdleTimerDisabled = true
             countdownTimer = Timer.publish(every: 1, on: .main, in: .common)
             
             isTimerRunning = true
@@ -77,7 +78,6 @@ extension TimerView {
         
         func resetTimer() {
             stopCountdown()
-            
             isTimerRunning = false
             hasPlayedSuccessSound = false
             timeAchieved = 0.0
@@ -87,8 +87,8 @@ extension TimerView {
         
         func stopTimer() {
             stopCountdown()
-            
             isTimerRunning = false
+            UIApplication.shared.isIdleTimerDisabled = false
             timer.connect().cancel()
             applyTimer()
         }

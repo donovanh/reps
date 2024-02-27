@@ -4,7 +4,6 @@
 //
 //
 // TESTING feedback
-// TODO: Keep timer going if screen switches off
 // TODO: Pause timer if swiping between exercises
 // TODO: Make sure continue workout goes to the next set incomplete set with fewer sets than the previous
 // TODO: Display previously recorded reps amount for progression
@@ -19,6 +18,8 @@
 // TODO: Show progression overview on main view under today's workout, linking to Journal
 // TODO: Journal data export / import
 // TODO: Way to explore historical training data (calendar?)
+
+// TODO: Use ViewThatFits for layouts to have scrolling or smaller elements or what
 
 // TODO: Haptic effects throughout
 
