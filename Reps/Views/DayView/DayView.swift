@@ -5,19 +5,20 @@
 //
 // TESTING feedback
 // TODO: Pause timer if swiping between exercises
-// TODO: Make sure continue workout goes to the next set incomplete set with fewer sets than the previous
 // TODO: Display previously recorded reps amount for progression
 // TODO: Add UserDefault-stored data to iCloud - have a userSettings SwiftData entry, populate it insteaf of userdefaults - or else try this https://medium.com/@janakmshah/quickly-sync-user-data-and-preferences-over-icloud-with-swift-4757a3904f1a
+// TODO: Make sure continue workout goes to the next set incomplete set with fewer sets than the previous
 
 // Features
-// TODO: Empty day view list the upcoming day's exercises "This Tuesday you have <a category day> / n exercises"
-
 // TODO: Journal view
-// TODO: Progressions overview table, showing +/- on current goal-hitting
-// TODO: Have a Level Up / Level Down suggestion within this context based on behaviour
+// -> TODO: Create a +/- scoring for each progression based on performance
+// TODO: Progressions overview table, showing scoring
+// TODO: Have a Level Up / Level Down suggestion
 // TODO: Show progression overview on main view under today's workout, linking to Journal
 // TODO: Journal data export / import
 // TODO: Way to explore historical training data (calendar?)
+
+// TODO: Empty day view list the upcoming day's exercises "This Tuesday you have <a category day> / n exercises"
 
 // TODO: Use ViewThatFits for layouts to have scrolling or smaller elements or what
 
@@ -73,13 +74,18 @@ struct DayView: View {
     
     @State var day: Int
     
-    // Move to viewModel
     var workoutSchedule: [ExerciseType] {
         viewModel.weeklySchedule[day] ?? []
     }
     
     var isTodayEmpty: Bool {
         workoutSchedule.count == 0
+    }
+    
+    var progressScores: [ExerciseType: Double] {
+        ExerciseType.allCases.reduce(into: [:]) { (result, exerciseType) in
+            result[exerciseType] = viewModel.getLatestScore(forExerciseType: exerciseType)
+        }
     }
     
     var isTodayDone: Bool {
@@ -96,7 +102,6 @@ struct DayView: View {
     
     var title: String {
         if isEditMode == true || day != Date().dayNumberOfWeek() ?? 0 {
-            print(day)
             return "\(viewModel.dayName(for: day))s"
         }
         
@@ -119,11 +124,10 @@ struct DayView: View {
         GeometryReader { geo in
             ZStack {
                 // Load anmiation model to save flash of grey
-                Icon(exerciseType: .pushup, stage: 5, size: 10, complete: false)
+                Icon(exerciseType: .pushup, stage: 5, size: 10, score: 0.0, complete: false)
                     .opacity(0)
                 NavigationView {
                     VStack {
-                        Spacer()
                         List {
                             Section {
                                 if !isTodayEmpty {
@@ -134,6 +138,7 @@ struct DayView: View {
                                             ExerciseItem(
                                                 viewModel: viewModel,
                                                 exerciseType: exerciseType,
+                                                progressScore: progressScores[exerciseType] ?? 0.0,
                                                 isEditMode: isEditMode,
                                                 progressions: progressions,
                                                 index: index,
@@ -141,7 +146,7 @@ struct DayView: View {
                                             )
                                             .id(exerciseType)
                                             .foregroundColor(.primary)
-                                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                            .listRowInsets(.init(top: 0, leading: 0, bottom: -10, trailing: 0))
                                             .listRowSeparator(.hidden)
                                             .listRowBackground(Color.clear)
                                             .opacity(isAnimating ? 1 : 0)
@@ -220,6 +225,10 @@ struct DayView: View {
                                 // isUserWelcomeDone = false
                                 isAnimating = true
                                 isPresentingWelcomeScreen = !isUserWelcomeDone
+                                
+                                // Calculate the scores based on journal entries
+                                viewModel.calculateProgressionScores(journalEntries: journalEntries)
+                                print(progressScores) //
                             }
                         }
                         Spacer()
@@ -248,7 +257,8 @@ struct DayView: View {
                             .padding()
                         }
                     }
-                    .navigationTitle(title)
+                    .navigationTitle(isEditMode ? title : "REPS")
+                    .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarLeading) {
                             if isEditMode {

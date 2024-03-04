@@ -34,19 +34,13 @@ struct Icon: View {
     let exerciseType: ExerciseType
     let stage: Int
     let size: CGFloat
+    let score: Double
     let complete: Bool
-    
     
     var body: some View {
         let name = exerciseTypeAnimationFile[exerciseType] ?? "pushup-05"
         ZStack {
-            Circle()
-                .fill(complete ? Color.themeColor.opacity(0.8) : .gray.opacity(0.25))
-                .frame(width: size * 0.7)
-            Circle()
-                .fill(Color.darkBg)
-                //.fill(.white.opacity(0.5))
-                .frame(width: size * 0.4)
+            CircularProgressView(progress: score, size: size * 0.6, bgColor: .gray, highlightColor: complete ? .green : .gray.opacity(0.5))
             AnimationView(progressionAnimationName: name, height: size, isPaused: true)
                 .grayscale(complete ? 0.5 : 1)
                 .contrast(1.5)
@@ -61,20 +55,20 @@ struct Icon: View {
     ScrollView {
         HStack {
             VStack {
-                Icon(exerciseType: .bridge, stage: 1, size: 100, complete: false)
-                Icon(exerciseType: .pushup, stage: 2, size: 100, complete: false)
-                Icon(exerciseType: .handstandpushup, stage: 3, size: 100, complete: false)
-                Icon(exerciseType: .legraise, stage: 4, size: 100, complete: false)
-                Icon(exerciseType: .squat, stage: 5, size: 100, complete: false)
-                Icon(exerciseType: .pullup, stage: 6, size: 100, complete: false)
+                Icon(exerciseType: .bridge, stage: 1, size: 100, score: 0.5, complete: false)
+                Icon(exerciseType: .pushup, stage: 2, size: 100, score: 0.5, complete: false)
+                Icon(exerciseType: .handstandpushup, stage: 3, size: 100, score: 0.5, complete: false)
+                Icon(exerciseType: .legraise, stage: 4, size: 100, score: 0.5, complete: false)
+                Icon(exerciseType: .squat, stage: 5, size: 100, score: 0.5, complete: false)
+                Icon(exerciseType: .pullup, stage: 6, size: 100, score: 0.5, complete: false)
             }
             VStack {
-                Icon(exerciseType: .bridge, stage: 1, size: 100, complete: true)
-                Icon(exerciseType: .pushup, stage: 2, size: 100, complete: true)
-                Icon(exerciseType: .handstandpushup, stage: 3, size: 100, complete: true)
-                Icon(exerciseType: .legraise, stage: 4, size: 100, complete: true)
-                Icon(exerciseType: .squat, stage: 5, size: 100, complete: true)
-                Icon(exerciseType: .pullup, stage: 6, size: 100, complete: true)
+                Icon(exerciseType: .bridge, stage: 1, size: 100, score: 0.5, complete: true)
+                Icon(exerciseType: .pushup, stage: 2, size: 100, score: 0.5, complete: true)
+                Icon(exerciseType: .handstandpushup, stage: 3, size: 100, score: 0.5, complete: true)
+                Icon(exerciseType: .legraise, stage: 4, size: 100, score: 0.5, complete: true)
+                Icon(exerciseType: .squat, stage: 5, size: 100, score: 0.5, complete: true)
+                Icon(exerciseType: .pullup, stage: 6, size: 100, score: 0.5, complete: true)
             }
         }
         .frame(width: .infinity)
@@ -82,6 +76,12 @@ struct Icon: View {
 }
 
 #Preview("App Icon") {
-    Icon(exerciseType: .pushup, stage: 6, size: 1024, complete: true)
+    Icon(
+        exerciseType: .pushup,
+        stage: 6,
+        size: 1024,
+        score: 0.5,
+        complete: true
+    )
         .background(Color.darkBg)
 }

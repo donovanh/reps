@@ -20,11 +20,103 @@ import Foundation
 
 struct JournalData {
     
+    // V2: Generate a realistic history starting N weeks back
+    // Options: starting schedule and levels
+    // Other options: Level-up aggressiveness (how long to wait when approaching or after 1 in score)
+    
+    static func generateHistoryForUser(
+        forWeeks weeks: Int,
+        withSchedule schedule: [Int: [ExerciseType]],
+        withLevels userExerciseStages: [ExerciseType: UserExerciseStageDetails]
+    ) -> [JournalEntry] {
+        var journalEntries: [JournalEntry] = []
+        let daysOffset = weeks * 7
+        let currentDate = Date()
+        var workingDate = currentDate.daysOffset(offset: -(daysOffset))
+        
+        var copiedUserExerciseStages: [ExerciseType: UserExerciseStageDetails] = [:]
+        
+        for (exerciseType, details) in userExerciseStages {
+            copiedUserExerciseStages[exerciseType] = details
+        }
+        
+        while workingDate < currentDate {
+            
+            if let dayNum = workingDate.dayNumberOfWeek() {
+                if let exerciseTypes = schedule[dayNum] {
+                    for exerciseType in exerciseTypes {
+                        // Get the progression for this exercise type and user level and stage
+                        let stage = copiedUserExerciseStages[exerciseType]?.stage ?? 0
+                        let level = copiedUserExerciseStages[exerciseType]?.level ?? .beginner
+                        if let progression = Progressions().getProgression(ofType: exerciseType, atStage: stage) {
+                            // Decide whether to move it up  or not depending on score
+                            let (newStage, newLevel) = adjustedStageAndLevel(forProgression: progression, level: level, entries: journalEntries)
+                            copiedUserExerciseStages[exerciseType]?.stage = newStage
+                            copiedUserExerciseStages[exerciseType]?.level = newLevel
+                            let reps = progression.getReps(for: newLevel)
+                            let sets = progression.getSets(for: newLevel)
+                            for _ in 0..<sets {
+                                let entry = JournalEntry(
+                                    date: workingDate,
+                                    exerciseType: progression.type,
+                                    stage: newStage,
+                                    level: newLevel,
+                                    reps: reps
+                                )
+                                // Insert a journal entry for each set at the reps level
+                                // TODO: Adjust the reps and sets recorded to make more random or by config
+                                journalEntries.append(entry)
+                            }
+                        }
+                    }
+                }
+            }
+            workingDate = workingDate.daysOffset(offset: 1) // Move forward a day and keep looping
+        }
+        
+        return journalEntries
+    }
+    
+    static func adjustedStageAndLevel(forProgression progression: Progression, level: Level, entries: [JournalEntry]) -> (Int, Level) {
+        // Calculate scores
+        let filteredEntries = entries.filter {
+            $0.exerciseType == progression.type &&
+            $0.stage == progression.stage &&
+            $0.level == level
+        }
+        // print("\(String(localized: progression.name.rawValue)) \(progression.stage) \(level)")
+        if filteredEntries.count > 11 {
+//            let progressionScores = JournalEntry.generateScoresForProgression(entries: filteredEntries, progression: progression)
+//            let filteredScores = progressionScores.filter { $0.level == level }
+//            let sortedFilteredScores = filteredScores.sorted { $0.date > $1.date }
+//            for scoreStruct in sortedFilteredScores {
+//                
+//                if scoreStruct.score > 0.99 {
+                    // print("\(String(localized: progression.name.rawValue)) \(level): \(scoreStruct.score)")
+                    // Go to the next level or stage
+                    if level == .beginner {
+                        return (progression.stage, .intermediate)
+                    }
+                    if level == .intermediate {
+                        return (progression.stage, .progression)
+                    }
+                    if level == .progression && progression.stage < 9 {
+                        return (progression.stage + 1, .beginner)
+                    }
+//                }
+//            }
+        }
+        return (progression.stage, level)
+    }
+    
+    
     // Whether reps done were over or under required reps
     // Make this redundant with adjusting to create a progression over time
     enum Completedness {
         case under, over, matched
     }
+    
+    // TODO: Go through data and make sure it's actually generating progression without skipping levels
     
     func adjustStagesForWeekNum(userExerciseStages: [ExerciseType : UserExerciseStageDetails], weekNum: Int) -> [ExerciseType : UserExerciseStageDetails] {
         // Adjusts level every two weeks
@@ -108,7 +200,7 @@ struct JournalData {
                 for _ in 0..<sets {
                     if let reps = progression?.getReps(for: level) {
                         // Generate reps needed by completeness
-                        var repsDone = reps - 3
+                        var repsDone = reps
                         if completedNess == .over {
                             repsDone += 5 // TODO: More nuance here?
                         }

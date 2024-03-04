@@ -36,7 +36,7 @@ struct RecordExercise: View {
     var body: some View {
         let targetReps = displayProgression.getReps(for: level)
         let sets = displayProgression.getSets(for: level)
-        let setsDone = journalEntryMethods().getSetsDone(entries: journalEntries, forDate: Date(), ofType: displayProgression.type, ofStage: displayProgression.stage, ofLevel: level)
+        let setsDone = JournalEntry.getSetsDone(entries: journalEntries, forDate: Date(), ofType: displayProgression.type, ofStage: displayProgression.stage, ofLevel: level)
         let halfHeight = UIScreen.portraitHeight < 700 ? 250 : geo.size.height / 2
 
         VStack {
@@ -109,7 +109,7 @@ struct RecordExercise: View {
             } else {
                 // Check if it's now done
                 let sets = displayProgression.getSets(for: level)
-                let setsDone = journalEntryMethods().getSetsDone(entries: journalEntries, forDate: Date(), ofType: displayProgression.type, ofStage: displayProgression.stage, ofLevel: level)
+                let setsDone = JournalEntry.getSetsDone(entries: journalEntries, forDate: Date(), ofType: displayProgression.type, ofStage: displayProgression.stage, ofLevel: level)
  
                 if setsDone + 1 >= sets {
                     addJournalEntry(progression: progression, reps: reps)
@@ -135,6 +135,7 @@ struct RecordExercise: View {
                 reps: reps
             )
         )
+        dayViewModel.calculateProgressionScores(journalEntries: journalEntries)
     }
 }
 

@@ -17,6 +17,9 @@
     "%@" : {
 
     },
+    "%lf" : {
+
+    },
     "%lld" : {
 
     },
@@ -143,6 +146,9 @@
       }
     },
     "All done!" : {
+
+    },
+    "All progression scores" : {
 
     },
     "All sets done" : {

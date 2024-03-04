@@ -3,11 +3,13 @@
 //  Allows user to change progression level and stage
 //
 
+import SwiftData
 import SwiftUI
 
 struct ChangeProgression: View {
 
     @Environment(\.colorScheme) var colorScheme
+    @Query private var journalEntries: [JournalEntry]
     
     let progressions: [Progression]
     let displayProgression: Progression
@@ -102,6 +104,7 @@ struct ChangeProgression: View {
     
     func saveProgression(newProgression: Progression, newLevel: Level, dismiss: DismissAction) {
         dayViewModel.setStageAndLevel(for: newProgression.type, stage: newProgression.stage, level: newLevel)
+        dayViewModel.calculateProgressionScores(journalEntries: journalEntries)
         dismiss()
     }
 }

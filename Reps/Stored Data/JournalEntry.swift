@@ -34,29 +34,36 @@ final class JournalEntry: Identifiable {
     }
 }
 
-struct journalEntryMethods {
-    func getJournalEntries(entries: [JournalEntry], forDate date: Date) -> [JournalEntry] {
+extension JournalEntry {
+
+    static func getJournalEntries(entries: [JournalEntry], forDate date: Date) -> [JournalEntry] {
         return entries.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
     }
 
-    func getJournalEntries(entries: [JournalEntry], forDate date: Date, ofType exerciseType: ExerciseType) -> [JournalEntry] {
+    static func getJournalEntries(entries: [JournalEntry], forDate date: Date, ofType exerciseType: ExerciseType) -> [JournalEntry] {
         return entries.filter { entry in
             return Calendar.current.isDate(entry.date, inSameDayAs: date) && entry.exerciseType == exerciseType
         }
     }
     
-    func getJournalEntries(entries: [JournalEntry], forDate date: Date, ofType exerciseType: ExerciseType, ofStage stage: Int, ofLevel level: Level) -> [JournalEntry] {
+    static func getJournalEntries(entries: [JournalEntry], ofType exerciseType: ExerciseType, ofStage stage: Int, ofLevel level: Level) -> [JournalEntry] {
+        return entries.filter { entry in
+            return entry.exerciseType == exerciseType && entry.stage == stage && entry.level == level
+        }
+    }
+    
+    static func getJournalEntries(entries: [JournalEntry], forDate date: Date, ofType exerciseType: ExerciseType, ofStage stage: Int, ofLevel level: Level) -> [JournalEntry] {
         return entries.filter { entry in
             return Calendar.current.isDate(entry.date, inSameDayAs: date) && entry.exerciseType == exerciseType && entry.stage == stage && entry.level == level
         }
     }
 
-    func getSetsDone(entries: [JournalEntry], forDate date: Date, ofType exerciseType: ExerciseType, ofStage stage: Int, ofLevel level: Level) -> Int {
+    static func getSetsDone(entries: [JournalEntry], forDate date: Date, ofType exerciseType: ExerciseType, ofStage stage: Int, ofLevel level: Level) -> Int {
         let entries = getJournalEntries(entries: entries, forDate: date, ofType: exerciseType, ofStage: stage, ofLevel: level)
         return entries.count
     }
 
-    func getLatestRecordedReps(entries: [JournalEntry], forType exerciseType: ExerciseType) -> Int {
+    static func getLatestRecordedReps(entries: [JournalEntry], forType exerciseType: ExerciseType) -> Int {
         let entriesOfType = entries.filter { entry in
             entry.exerciseType == exerciseType
         }
@@ -67,5 +74,56 @@ struct journalEntryMethods {
         
         return 0
     }
+    
+    struct ProgressionScore: Identifiable {
+        let id = UUID()
+        let date: Date
+        let score: Double
+    }
+    
+    // Generate a dictionary of scores with the keys being the progression, and each containing an array of scores by date
+    // TODO: Adjust to be [Progression: [Level: [ProgressionScore]]]
+    static func generateScores(entries: [JournalEntry]) -> [Progression: [Level: [ProgressionScore]]] {
+        var result: [Progression: [Level: [ProgressionScore]]] = [:]
+        for entry in entries {
+            if let progression = Progressions().getProgression(ofType: entry.exerciseType, atStage: entry.stage) {
+                if result[progression] == nil {
+                    let progressionEntries = getJournalEntries(entries: entries, ofType: entry.exerciseType, ofStage: entry.stage, ofLevel: entry.level)
+                    result[progression] = [entry.level: generateScoresForProgression(entries: progressionEntries, progression: progression, level: entry.level)]
+                } else if result[progression]?[entry.level] == nil {
+                    let progressionEntries = getJournalEntries(entries: entries, ofType: entry.exerciseType, ofStage: entry.stage, ofLevel: entry.level)
+                    result[progression]?[entry.level] = generateScoresForProgression(entries: progressionEntries, progression: progression, level: entry.level)
+                }
+            }
+        }
+        return result
+    }
+    
+    // Gets score for one progression
+    static func generateScoresForProgression(
+        entries: [JournalEntry],
+        progression: Progression,
+        level: Level
+    ) -> [ProgressionScore] {
+        let filteredEntries = entries.filter { $0.level == level }
+        let sortedFilteredEntries = filteredEntries.sorted { $0.date < $1.date }
+        var score = 0.0 // Beginning score
+        return sortedFilteredEntries.map { entry in
+            let targetReps = progression.getReps(for: entry.level)
+            let targetSets = progression.getSets(for: entry.level)
+            score += calculateScoreOffset(forTargetReps: targetReps, forTargetSets: targetSets, reps: entry.reps)
+            // TODO: Regress the score if there's a significant time gap
+            return ProgressionScore(
+                date: entry.date,
+                score: score
+            )
+        }
+    }
+    
+    static func calculateScoreOffset(forTargetReps targetReps: Int, forTargetSets targetSets: Int, reps: Int) -> Double {
+        let offset = 0.08333 // Approx 1/12
+        let repsRatio = Double(reps) / Double(targetReps)
+        return (offset * repsRatio) / Double(targetSets)
+    }
+    
 }
-

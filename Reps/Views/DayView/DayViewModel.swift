@@ -14,6 +14,7 @@ extension DayView {
         
         var weeklySchedule: [Int: [ExerciseType]] = [:]
         var userExerciseStages: [ExerciseType: UserExerciseStageDetails] = [:]
+        var progressionScores: [ExerciseType: [JournalEntry.ProgressionScore]] = [:]
         
         // Stored data - loading and saving
         let workoutScheduleStore = WorkoutSchedule()
@@ -24,6 +25,30 @@ extension DayView {
             weeklySchedule = workoutScheduleStore.exerciseTypesByDay
             userExerciseStages = userExerciseStagesStore.userExerciseStages
             // TODO: Load any stored userdefaults from icloud and apply
+        }
+        
+        // Use journal entries and current user stage/level to calculate a score for current progress
+        func calculateProgressionScores(journalEntries: [JournalEntry]) {
+            var updatedProgressionScores: [ExerciseType: [JournalEntry.ProgressionScore]] = [:]
+            for exerciseType in ExerciseType.allCases {
+                if let stage = userExerciseStages[exerciseType]?.stage, let level = userExerciseStages[exerciseType]?.level {
+                    let filteredEntries = journalEntries.filter {
+                        $0.exerciseType == exerciseType &&
+                        $0.stage == stage &&
+                        $0.level == level
+                    }
+                    if let progression = Progressions().getProgression(ofType: exerciseType, atStage: stage) {
+                        let progressionScores = JournalEntry.generateScoresForProgression(entries: filteredEntries, progression: progression, level: level)
+                        updatedProgressionScores[exerciseType] = progressionScores
+                    }
+                }
+                
+            }
+            self.progressionScores = updatedProgressionScores
+        }
+        
+        func getLatestScore(forExerciseType exerciseType: ExerciseType) -> Double {
+            return progressionScores[exerciseType]?.max(by: { $0.score < $1.score })?.score ?? 0.0
         }
         
         func getProgression(for type: ExerciseType) -> Progression {
@@ -114,7 +139,7 @@ extension DayView {
             let todayProgressions = makeProgressions(exerciseTypes: exerciseTypes)
             for progression in todayProgressions {
                 let level = getLevel(for: progression.type)
-                let setsDone = journalEntryMethods().getSetsDone(entries: journalEntries, forDate: Date(), ofType: progression.type, ofStage: progression.stage, ofLevel: level)
+                let setsDone = JournalEntry.getSetsDone(entries: journalEntries, forDate: Date(), ofType: progression.type, ofStage: progression.stage, ofLevel: level)
                 if (setsDone > 0) {
                     inProgress = true
                     break
@@ -126,7 +151,7 @@ extension DayView {
         func isProgressionDone(journalEntries: [JournalEntry], progression: Progression) -> Bool {
             let level = getLevel(for: progression.type)
             let requiredSets = progression.getSets(for: level)
-            let setsDone = journalEntryMethods().getSetsDone(entries: journalEntries, forDate: Date(), ofType: progression.type, ofStage: progression.stage, ofLevel: level)
+            let setsDone = JournalEntry.getSetsDone(entries: journalEntries, forDate: Date(), ofType: progression.type, ofStage: progression.stage, ofLevel: level)
             if (setsDone < requiredSets) {
                 return false
             }
