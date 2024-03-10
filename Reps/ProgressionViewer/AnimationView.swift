@@ -63,7 +63,6 @@ struct AnimationView: View {
     let height: CGFloat
     var isPaused = false
     
-    // TODO: Add credit for model
     /*
      Name: Wooden mannequin - Rigged
      Author: jgilhutton

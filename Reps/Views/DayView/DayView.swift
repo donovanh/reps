@@ -70,6 +70,7 @@ struct DayView: View {
     @State private var isPresentingWorkout = false
     @State private var isPresentingPlanBuilder = false
     @State private var isPresentingWelcomeScreen = false
+    @State private var isPresentingAboutScreen = false
     @State private var isEditMode = false
     @State private var isAnimating = false
     
@@ -228,6 +229,7 @@ struct DayView: View {
                             } header: {
                                 HStack(alignment: .top) {
                                     Text(isEditMode ? title : "Today")
+                                        //.padding(.top, -20)
                                         .font(.largeTitle.bold())
                                         .foregroundColor(.white)
                                     if isEditMode {
@@ -270,7 +272,9 @@ struct DayView: View {
                                 Button("Generate new plan") {
                                     isPresentingPlanBuilder = true
                                 }
+                                .fontWeight(.bold)
                                 .tint(.themeColor)
+                                .foregroundColor(.black)
                                 .buttonStyle(.borderedProminent)
                                 .controlSize(.large)
                                 .padding()
@@ -294,7 +298,6 @@ struct DayView: View {
                         }
                         .frame(maxWidth: .infinity)
                     }
-                    .navigationTitle("REPS")
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarLeading) {
@@ -308,6 +311,16 @@ struct DayView: View {
                                 .buttonStyle(.bordered)
                                 .controlSize(.small)
                                 .listRowBackground(Color.clear)
+                        }
+                        ToolbarItem(placement: .principal) {
+                            VStack {
+                                Text("Reps")
+                                    .font(.headline)
+                                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
+                            }
+                            .onTapGesture {
+                                isPresentingAboutScreen = true
+                            }
                         }
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
                             Button {
@@ -355,6 +368,34 @@ struct DayView: View {
                     dayViewModel: viewModel,
                     isEditMode: $isEditMode
                 )
+            }
+            .sheet(isPresented: $isPresentingAboutScreen) {
+                VStack(alignment: .center) {
+                    Icon(
+                        exerciseType: .pushup,
+                        stage: 6,
+                        size: 80,
+                        score: 0.75,
+                        complete: false
+                    )
+                    .background(Color.darkBg)
+                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
+                    Text("About Reps")
+                        .font(.title.bold())
+                        
+                    Text("Reps is designed and built by Donovan Hutchinson in Dublin, Ireland.")
+                        .padding(.top)
+                    Text("The 3D mannequin is used with [credit to jgilhutton](https://www.blendswap.com/blends/view/74733).")
+                        .padding(.top)
+                    Text("Visit the [Reps website](https://reps.hop.ie).")
+                        .padding()
+                }
+                .padding()
+                .padding(.top, 20)
+                .fixedSize(horizontal: false, vertical: true)
+                .multilineTextAlignment(.center)
+                .presentationDetents([.height(500), .large])
+                .presentationDragIndicator(.automatic)
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.significantTimeChangeNotification)) { _ in

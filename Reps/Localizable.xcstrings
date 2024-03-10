@@ -119,6 +119,9 @@
         }
       }
     },
+    "About Reps" : {
+
+    },
     "Add exercise" : {
 
     },
@@ -807,7 +810,10 @@
         }
       }
     },
-    "REPS" : {
+    "Reps" : {
+
+    },
+    "Reps is designed and built by Donovan Hutchinson in Dublin, Ireland." : {
 
     },
     "Reset" : {
@@ -910,6 +916,9 @@
     "Take it easy! Recovery is important." : {
 
     },
+    "The 3D mannequin is used with [credit to jgilhutton](https://www.blendswap.com/blends/view/74733)." : {
+
+    },
     "Timer or manual entry" : {
 
     },
@@ -962,6 +971,9 @@
           }
         }
       }
+    },
+    "Visit the [Reps website](https://reps.hop.ie)." : {
+
     },
     "Wall handstands" : {
       "localizations" : {

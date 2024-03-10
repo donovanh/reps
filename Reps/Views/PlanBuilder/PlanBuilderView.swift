@@ -128,7 +128,6 @@ struct PlanBuilderView: View {
                         }
                         .foregroundColor(.secondary)
                         .controlSize(.large)
-                        .tint(Color.themeColor)
                         .padding()
                     }
                     Spacer()
