@@ -96,9 +96,11 @@ struct PlanBuilderView: View {
                     }
                 }
                 .tint(.themeColor)
+                .foregroundColor(.black)
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .frame(maxWidth: .infinity)
+                .padding()
                    
             }
             Section {
@@ -121,10 +123,10 @@ struct PlanBuilderView: View {
                             dismiss()
                         } label: {
                             Image(systemName: "xmark.circle.fill")
-                                .font(.title)
+                                .font(.title2)
                         }
-                        .foregroundColor(.themeColor)
-                        .controlSize(.extraLarge)
+                        .foregroundColor(.secondary)
+                        .controlSize(.large)
                         .tint(Color.themeColor)
                         .padding()
                     }

@@ -1,20 +1,16 @@
 //
 //  DayView.swift
 //
-//
-//
 // TESTING feedback
 // TODO: Pause timer if swiping between exercises
 // TODO: Use more efficient loading of resources
 // TODO: Display previously recorded reps amount for progression
 // TODO: Add UserDefault-stored data to iCloud - have a userSettings SwiftData entry, populate it insteaf of userdefaults - or else try this https://medium.com/@janakmshah/quickly-sync-user-data-and-preferences-over-icloud-with-swift-4757a3904f1a
-// TODO: Make sure continue workout goes to the next set incomplete set with fewer sets than the previous
 
 // Features
 
 // TODO: For shipping, tidy the onboarding
 // TODO: Onboarding images and text
-// TODO: Tidy icon also
 // TODO: Make About view that shows when pressing logo
 // TODO: Highlight current day on weeklyoverview
 // TODO: Handle selecting day on weeklyoverview
@@ -28,8 +24,6 @@
 // TODO: Empty day view list the upcoming day's exercises "This Tuesday you have <a category day> / n exercises"
 
 // TODO: Use ViewThatFits for layouts to have scrolling or smaller elements or what
-
-// TODO: Haptic effects throughout
 
 // TODO: "Done" overlay with emoji / paper confetti or fireworks
 // TODO: Have a social media sharing aspect too for clout
@@ -261,13 +255,13 @@ struct DayView: View {
                             }
                             .textCase(nil)
                             .onAppear {
+                                // For testing onboarding
                                 // isUserWelcomeDone = false
                                 isAnimating = true
                                 isPresentingWelcomeScreen = !isUserWelcomeDone
                                 
                                 // Calculate the scores based on journal entries
                                 viewModel.calculateProgressionScores(journalEntries: journalEntries)
-                                // print(progressScores)
                             }
                         }
                         Spacer()
