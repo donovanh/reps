@@ -49,7 +49,6 @@ struct Icon: View {
             )
             AnimationView(progressionAnimationName: name, height: size, isPaused: true)
                 .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.5), radius: 15)
-                .border(.black, width: 10)
                 .grayscale(complete ? 1 : 0.5)
                 .contrast(1.5)
                 .offset(calculatedOffsets)

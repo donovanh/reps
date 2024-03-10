@@ -261,7 +261,7 @@ struct DayView: View {
                             }
                             .textCase(nil)
                             .onAppear {
-                                isUserWelcomeDone = false
+                                // isUserWelcomeDone = false
                                 isAnimating = true
                                 isPresentingWelcomeScreen = !isUserWelcomeDone
                                 
