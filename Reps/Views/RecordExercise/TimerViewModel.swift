@@ -32,9 +32,9 @@ extension TimerView {
         }
         
         // Audio
-        let countdownSound = Bundle.main.audioPlayer(for: "tone1.wav", volume: 0.25)
-        let timerStartSound = Bundle.main.audioPlayer(for: "confirmation_003.wav", volume: 0.75)
-        let timerSuccessSound = Bundle.main.audioPlayer(for: "confirmation_004.wav", volume: 1)
+        let countdownSound = Bundle.main.audioPlayer(for: "select.caf", volume: 0.25)
+        let timerStartSound = Bundle.main.audioPlayer(for: "wrong.caf", volume: 0.75)
+        let timerSuccessSound = Bundle.main.audioPlayer(for: "correct.caf", volume: 1)
         
         func startCountdown() {
             countdownSound.play()

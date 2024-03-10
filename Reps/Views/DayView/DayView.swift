@@ -15,6 +15,11 @@
 // TODO: For shipping, tidy the onboarding
 // TODO: Onboarding images and text
 // TODO: Tidy icon also
+// TODO: Make About view that shows when pressing logo
+// TODO: Tidy sfx (use those from PatchMatch)
+// TODO: Back button on Journal should match close button (filled circle, larger)
+// TODO: Highlight current day on weeklyoverview
+// TODO: Handle selecting day on weeklyoverview
 
 // TODO: Journal view
 // TODO: Progressions overview table, showing scoring
