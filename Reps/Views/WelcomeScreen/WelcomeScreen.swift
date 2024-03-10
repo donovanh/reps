@@ -36,6 +36,7 @@ struct WelcomeScreen: View {
                 }
                 .tint(.themeColor)
                 .foregroundColor(.black)
+                .fontWeight(.bold)
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .padding()

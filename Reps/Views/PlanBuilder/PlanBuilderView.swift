@@ -96,6 +96,7 @@ struct PlanBuilderView: View {
                     }
                 }
                 .tint(.themeColor)
+                .fontWeight(.bold)
                 .foregroundColor(.black)
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
@@ -123,7 +124,7 @@ struct PlanBuilderView: View {
                             dismiss()
                         } label: {
                             Image(systemName: "xmark.circle.fill")
-                                .font(.title2)
+                                .font(.title)
                         }
                         .foregroundColor(.secondary)
                         .controlSize(.large)
