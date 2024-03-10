@@ -147,7 +147,7 @@ struct ProgressionViewer: View {
                                 dismiss()
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
-                                    .font(.title)
+                                    .font(.title2)
                             }
                             .controlSize(.extraLarge)
                             .tint(.secondary)

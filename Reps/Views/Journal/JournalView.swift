@@ -35,7 +35,8 @@ struct JournalView: View {
                             Button {
                                 presentationMode.wrappedValue.dismiss()
                             } label: {
-                                Image(systemName: "chevron.left.circle")
+                                Image(systemName: "chevron.left.circle.fill")
+                                    .font(.title2)
                                     .foregroundColor(.secondary)
                             }
                         }

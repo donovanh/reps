@@ -30,17 +30,9 @@ struct WeeklyOverview: View {
             return 1
         case .monday:
             return 2
-        case .tuesday:
-            return 3
-        case .wednesday:
-            return 4
-        case .thursday:
-            return 5
-        case .friday:
-            return 6
         case .saturday:
             return 7
-        @unknown default:
+        default:
             return 1
         }
     }
@@ -58,16 +50,6 @@ struct WeeklyOverview: View {
                 )
             )
         }
-//        for day in 1..<8 {
-//            result.append(
-//                DailyStatus(
-//                    dayNum: day,
-//                    count: schedule(forDay: day).count,
-//                    done: getExercisesCompleteCount(forDayNum: day, currentDayNum: todayNum)
-//                )
-//            )
-//        }
-        
         return result
     }
     
@@ -83,7 +65,8 @@ struct WeeklyOverview: View {
                         bgColor: .gray,
                         highlightColor: Color.themeColor,
                         displayNum: dailyStatus.count,
-                        label: dayName
+                        label: dayName,
+                        active: todayNum == dailyStatus.dayNum
                     )
                     .frame(maxWidth: geo.size.width / 7)
                 }

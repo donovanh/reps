@@ -24,24 +24,26 @@ struct WelcomeScreen: View {
                 .fill(Color.darkBg)
                 .ignoresSafeArea()
             VStack {
-                Text("Welcome!")
+                Text("Welcome to Reps")
                     .font(.largeTitle.bold())
                     .padding()
-                Text("Reps is designed to help you record and progress bodyweight exercises.")
+                Text("A guided approach to bodyweight exercises. Get strong at home with sets of exercises that progress with you.")
                     .multilineTextAlignment(.center)
                     .padding()
-                Text("Let's get started!")
-                Button("Create my weekly routine") {
+                Button("Plan my weekly routine") {
                     markUserWelcomeDone()
                     isPresentingPlanBuilder = true
                 }
                 .tint(.themeColor)
+                .foregroundColor(.black)
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .padding()
                 Button("I'll manage it myself") {
                     markUserWelcomeDone()
                 }
+                .fontWeight(.bold)
+                .foregroundColor(.white)
             }
         }
         .opacity(isShowing ? 1 : 0)

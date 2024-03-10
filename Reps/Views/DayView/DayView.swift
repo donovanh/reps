@@ -16,8 +16,6 @@
 // TODO: Onboarding images and text
 // TODO: Tidy icon also
 // TODO: Make About view that shows when pressing logo
-// TODO: Tidy sfx (use those from PatchMatch)
-// TODO: Back button on Journal should match close button (filled circle, larger)
 // TODO: Highlight current day on weeklyoverview
 // TODO: Handle selecting day on weeklyoverview
 
@@ -141,31 +139,6 @@ struct DayView: View {
                         WeeklyOverview(
                             viewModel: viewModel
                         )
-                        HStack(alignment: .top) {
-//                            Text(isEditMode ? title : "Today")
-//                                .font(.largeTitle.bold())
-//                            if isEditMode {
-//                                Spacer()
-//                                HStack {
-//                                    Button {
-//                                        changeDay(direction: "prev")
-//                                    } label: {
-//                                        Image(systemName: "arrow.left")
-//                                    }
-//                                    Button {
-//                                        changeDay(direction: "next")
-//                                    } label: {
-//                                        Image(systemName: "arrow.right")
-//                                    }
-//                                }
-//                                .padding(.top, 10)
-//                                .tint(.themeColor)
-//                                .buttonStyle(.bordered)
-//                                .buttonBorderShape(.roundedRectangle(radius: 10))
-//                            }
-                        }
-                        .padding(.horizontal)
-                        //.padding(.bottom, -30)
                         List {
                             Section {
                                 if !isTodayEmpty {
@@ -288,7 +261,7 @@ struct DayView: View {
                             }
                             .textCase(nil)
                             .onAppear {
-                                // isUserWelcomeDone = false
+                                isUserWelcomeDone = false
                                 isAnimating = true
                                 isPresentingWelcomeScreen = !isUserWelcomeDone
                                 
