@@ -76,6 +76,9 @@
     "1 set" : {
 
     },
+    "A guided approach to bodyweight exercises. Get strong at home with sets of exercises that progress with you." : {
+
+    },
     "A heavier workout routine, focusing on alternate pushing and pulling days." : {
       "localizations" : {
         "de" : {
@@ -310,9 +313,6 @@
 
     },
     "Continue Workout" : {
-
-    },
-    "Create my weekly routine" : {
 
     },
     "Crow" : {
@@ -680,9 +680,6 @@
         }
       }
     },
-    "Let's get started!" : {
-
-    },
     "Lever handstand pushups" : {
       "localizations" : {
         "de" : {
@@ -771,6 +768,9 @@
         }
       }
     },
+    "Plan my weekly routine" : {
+
+    },
     "Progression" : {
 
     },
@@ -808,9 +808,6 @@
       }
     },
     "REPS" : {
-
-    },
-    "Reps is designed to help you record and progress bodyweight exercises." : {
 
     },
     "Reset" : {
@@ -1008,7 +1005,7 @@
     "Weekly schedule" : {
 
     },
-    "Welcome!" : {
+    "Welcome to Reps" : {
 
     },
     "You have recorded **%lld** sets so far." : {

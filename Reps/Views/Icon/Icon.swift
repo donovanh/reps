@@ -44,10 +44,12 @@ struct Icon: View {
                 progress: score,
                 size: size * 0.6,
                 bgColor: .gray,
-                highlightColor: complete ? .gray.opacity(0.5) : Color.themeColor,
+                highlightColor: complete ? .gray.opacity(0.5) : Color.themeColor.opacity(0.5),
                 active: true
             )
             AnimationView(progressionAnimationName: name, height: size, isPaused: true)
+                .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.5), radius: 15)
+                .border(.black, width: 10)
                 .grayscale(complete ? 1 : 0.5)
                 .contrast(1.5)
                 .offset(calculatedOffsets)
@@ -84,9 +86,9 @@ struct Icon: View {
     Icon(
         exerciseType: .pushup,
         stage: 6,
-        size: 1024,
-        score: 0.5,
-        complete: true
+        size: 300,
+        score: 0.75,
+        complete: false
     )
         .background(Color.darkBg)
 }

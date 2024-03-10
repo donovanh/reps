@@ -377,12 +377,12 @@
 		4549BCF52A700BD400F3E2AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				457B97A32B782A8800B7DE92 /* WelcomeScreen */,
-				452330FE2B9CFE930093681E /* WeeklyOverview */,
 				4519527A2B6FCCE700F570C8 /* DayView */,
+				452330FE2B9CFE930093681E /* WeeklyOverview */,
 				45A76B752B8231930086B16B /* RecordExercise */,
 				45A76B762B8231AE0086B16B /* ChangeProgression */,
 				4549BD2E2A8BB27000F3E2AD /* Journal */,
+				457B97A32B782A8800B7DE92 /* WelcomeScreen */,
 				4549BD062A7241C900F3E2AD /* PlanBuilder */,
 				451952912B72724300F570C8 /* Icon */,
 				45A76BEE2B96697C0086B16B /* CircularProgressView */,

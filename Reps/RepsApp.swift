@@ -13,12 +13,18 @@ struct RepsApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            Icon(exerciseType: .pushup, stage: 6, size: 900, complete: true)
-//                .background(Color.darkBg)
-//                .padding()
-            DayView(day: Date().dayNumberOfWeek() ?? 0)
-                .background(Color.blue.edgesIgnoringSafeArea(.all))
-                .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+            Icon(
+                exerciseType: .pushup,
+                stage: 6,
+                size: 900,
+                score: 0.75,
+                complete: false
+            )
+                .background(Color.darkBg)
+                .padding()
+//            DayView(day: Date().dayNumberOfWeek() ?? 0)
+//                .background(Color.blue.edgesIgnoringSafeArea(.all))
+//                .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
         }
         .modelContainer(for: [JournalEntry.self])
     }
