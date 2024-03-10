@@ -20,7 +20,7 @@ import SwiftData
 struct JournalView: View {
     
     @Query private var journalEntries: [JournalEntry]
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) private var presentationMode
     
     var body: some View {
         ZStack {
@@ -28,6 +28,18 @@ struct JournalView: View {
                 .fill(Color.darkBg)
                 .ignoresSafeArea()
             VStack(alignment: .leading) {
+                Spacer()
+                    .navigationBarBackButtonHidden(true)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Image(systemName: "chevron.left.circle")
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
                 Text("You have recorded **\(journalEntries.count)** sets so far.")
                     .padding()
                 TrainingLog(monthGroupedEntries: monthGroupedEntries)

@@ -87,7 +87,8 @@ struct RepsView: View {
                 TextView
                     .contentTransition(.numericText())
             }
-            .foregroundColor(.white)
+            .foregroundColor(.black)
+            .fontWeight(.bold)
             .tint(.themeColor)
             .buttonStyle(.borderedProminent)
             .controlSize(.large)

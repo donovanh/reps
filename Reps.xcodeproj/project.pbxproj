@@ -29,6 +29,7 @@
 		451952AF2B72C88D00F570C8 /* squat-pose.dae in Resources */ = {isa = PBXBuildFile; fileRef = 451952AE2B72C88D00F570C8 /* squat-pose.dae */; };
 		451952B12B72C9D200F570C8 /* pullup-pose.dae in Resources */ = {isa = PBXBuildFile; fileRef = 451952B02B72C9D200F570C8 /* pullup-pose.dae */; };
 		451CC5392A9A33F3000D7711 /* base-model.dae in Resources */ = {isa = PBXBuildFile; fileRef = 451CC5382A9A33F3000D7711 /* base-model.dae */; };
+		452331002B9CFEE70093681E /* WeeklyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452330FF2B9CFEE70093681E /* WeeklyOverview.swift */; };
 		4549BD082A7241DC00F3E2AD /* PlanBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD072A7241DC00F3E2AD /* PlanBuilderView.swift */; };
 		4549BD0A2A778C1800F3E2AD /* WeekSchedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD092A778C1800F3E2AD /* WeekSchedules.swift */; };
 		4549BD0C2A7853C300F3E2AD /* PlanBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549BD0B2A7853C300F3E2AD /* PlanBuilder.swift */; };
@@ -171,6 +172,7 @@
 		451952AE2B72C88D00F570C8 /* squat-pose.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "squat-pose.dae"; sourceTree = "<group>"; };
 		451952B02B72C9D200F570C8 /* pullup-pose.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "pullup-pose.dae"; sourceTree = "<group>"; };
 		451CC5382A9A33F3000D7711 /* base-model.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = "base-model.dae"; sourceTree = "<group>"; };
+		452330FF2B9CFEE70093681E /* WeeklyOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyOverview.swift; sourceTree = "<group>"; };
 		4549BD072A7241DC00F3E2AD /* PlanBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanBuilderView.swift; sourceTree = "<group>"; };
 		4549BD092A778C1800F3E2AD /* WeekSchedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSchedules.swift; sourceTree = "<group>"; };
 		4549BD0B2A7853C300F3E2AD /* PlanBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanBuilder.swift; sourceTree = "<group>"; };
@@ -364,17 +366,26 @@
 			path = StaticPoses;
 			sourceTree = "<group>";
 		};
+		452330FE2B9CFE930093681E /* WeeklyOverview */ = {
+			isa = PBXGroup;
+			children = (
+				452330FF2B9CFEE70093681E /* WeeklyOverview.swift */,
+			);
+			path = WeeklyOverview;
+			sourceTree = "<group>";
+		};
 		4549BCF52A700BD400F3E2AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				45A76BEE2B96697C0086B16B /* CircularProgressView */,
 				457B97A32B782A8800B7DE92 /* WelcomeScreen */,
+				452330FE2B9CFE930093681E /* WeeklyOverview */,
 				4519527A2B6FCCE700F570C8 /* DayView */,
 				45A76B752B8231930086B16B /* RecordExercise */,
 				45A76B762B8231AE0086B16B /* ChangeProgression */,
 				4549BD2E2A8BB27000F3E2AD /* Journal */,
 				4549BD062A7241C900F3E2AD /* PlanBuilder */,
 				451952912B72724300F570C8 /* Icon */,
+				45A76BEE2B96697C0086B16B /* CircularProgressView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -862,6 +873,7 @@
 				451952932B72727900F570C8 /* Icon.swift in Sources */,
 				4593553F2A6D9C5F009EC063 /* HandstandPushups.swift in Sources */,
 				4549BD302A8BB2A100F3E2AD /* JournalView.swift in Sources */,
+				452331002B9CFEE70093681E /* WeeklyOverview.swift in Sources */,
 				4593553B2A6D9C20009EC063 /* Bridges.swift in Sources */,
 				45BA6E9A2AFA3A49003AD0A2 /* WorkoutsByDay.swift in Sources */,
 				451952712B6E5ACB00F570C8 /* ChangeProgression.swift in Sources */,

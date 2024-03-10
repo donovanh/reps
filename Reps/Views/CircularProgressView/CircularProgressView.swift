@@ -13,32 +13,41 @@ struct CircularProgressView: View {
     let bgColor: Color
     let highlightColor: Color
     @State var displayNum: Int?
+    @State var label: String?
     
     var body: some View {
-        ZStack {
-            Circle()
-                .stroke(
-                    bgColor.opacity(0.25),
-                    lineWidth: size / 3
-                )
-            Circle()
-                .trim(from: 0, to: progress)
-                .stroke(
-                    highlightColor,
-                    style: StrokeStyle(
-                        lineWidth: size / 3,
-                        lineCap: .round
-                    )
-                )
-                .rotationEffect(.degrees(-90))
-                .animation(.easeOut, value: progress)
-            if displayNum != nil {
-                Text(displayNum!.formatted())
+        VStack {
+            if label != nil {
+                Text(label!)
                     .font(.system(size: size * 0.5).bold())
+                    .textCase(.uppercase)
+                    .padding(.bottom, -(size * 0.1))
             }
+            ZStack {
+                Circle()
+                    .stroke(
+                        bgColor.opacity(0.25),
+                        lineWidth: size / 3
+                    )
+                Circle()
+                    .trim(from: 0, to: progress)
+                    .stroke(
+                        highlightColor,
+                        style: StrokeStyle(
+                            lineWidth: size / 3,
+                            lineCap: .round
+                        )
+                    )
+                    .rotationEffect(.degrees(-90))
+                    .animation(.easeOut, value: progress)
+                if displayNum != nil {
+                    Text(displayNum!.formatted())
+                        .font(.system(size: size * 0.5).bold())
+                }
+            }
+            .frame(width: size, height: size)
+            .padding(size * 0.2)
         }
-        .frame(width: size, height: size)
-        .padding()
     }
 }
 
@@ -48,21 +57,23 @@ struct CircularProgressView: View {
             progress: 0.0,
             size: 100,
             bgColor: .gray,
-            highlightColor: .green,
-            displayNum: 1
+            highlightColor: Color.themeColor,
+            displayNum: 1,
+            label: "Sun"
         )
         CircularProgressView(
             progress: 0.5,
             size: 100,
             bgColor: .gray,
-            highlightColor: .green,
-            displayNum: 3
+            highlightColor: Color.themeColor,
+            displayNum: 3,
+            label: "Mon"
         )
         CircularProgressView(
             progress: 0.75,
             size: 100,
             bgColor: .gray,
-            highlightColor: .green,
+            highlightColor: Color.themeColor,
             displayNum: 6
         )
     }

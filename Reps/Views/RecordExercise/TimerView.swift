@@ -62,7 +62,7 @@ struct TimerView: View {
                     VStack {
                         Text("\(viewModel.timeDisplay)")
                             .font(.system(size: 42).bold())
-                            .foregroundStyle(viewModel.timeAchieved > viewModel.targetSeconds ? .green : .primary)
+                            .foregroundStyle(viewModel.timeAchieved > viewModel.targetSeconds ? Color.themeColor : .primary)
                             .contentTransition(.numericText(countsDown: !(viewModel.timeAchieved > viewModel.targetSeconds)))
                             .padding(.top, -10)
                             .padding(.bottom, -5)
@@ -73,7 +73,7 @@ struct TimerView: View {
                                 }
                             }
                         Text("seconds")
-                            .foregroundStyle(viewModel.timeAchieved > viewModel.targetSeconds ? .green : .primary)
+                            .foregroundStyle(viewModel.timeAchieved > viewModel.targetSeconds ? Color.themeColor : .primary)
                         
                     }
                     .frame(width: 125)
@@ -141,7 +141,8 @@ struct TimerView: View {
                         } label: {
                             Text(viewModel.timeAchieved > 0 ? "Log \(viewModel.timeAchieved.formatted(.number.precision(.fractionLength(0)))) seconds" : "Start")
                         }
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
+                        .fontWeight(.bold)
                         .tint(.themeColor)
                         .buttonStyle(.borderedProminent)
                         .controlSize(.large)

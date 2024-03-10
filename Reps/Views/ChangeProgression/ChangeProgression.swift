@@ -14,6 +14,7 @@ struct ChangeProgression: View {
     let progressions: [Progression]
     let displayProgression: Progression
     @Binding var level: Level
+    let progressScore: Double
     let startingIndex: Int
     let startingLevel: Level
     let scrollViewValue: ScrollViewProxy
@@ -24,9 +25,17 @@ struct ChangeProgression: View {
     @State private var viewModel = ProgressionViewer.ViewModel()
     @State private var stage = 1
     
+    var reps: Int {
+        displayProgression.getReps(for: level)
+    }
+    
+    var sets: Int {
+        displayProgression.getSets(for: level)
+    }
+    
     var body: some View {
-        let reps = displayProgression.getReps(for: level)
-        let sets = displayProgression.getSets(for: level)
+        //let reps = displayProgression.getReps(for: level)
+        //let sets = displayProgression.getSets(for: level)
         let isCurrentLevel = stage == startingIndex && level == startingLevel
         let halfHeight = UIScreen.portraitHeight < 700 ? 250 : geo.size.height / 2
 
@@ -118,6 +127,7 @@ struct ChangeProgression: View {
                 progressions: Progression.defaultProgressionSingleType,
                 displayProgression: Progression.defaultProgressionSingleType[1],
                 level: .constant(.intermediate),
+                progressScore: 1,
                 startingIndex: 3,
                 startingLevel: .intermediate,
                 scrollViewValue: scrollViewValue,

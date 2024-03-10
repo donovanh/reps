@@ -40,11 +40,10 @@ struct Icon: View {
     var body: some View {
         let name = exerciseTypeAnimationFile[exerciseType] ?? "pushup-05"
         ZStack {
-            CircularProgressView(progress: score, size: size * 0.6, bgColor: .gray, highlightColor: complete ? .green : .gray.opacity(0.5))
+            CircularProgressView(progress: score, size: size * 0.6, bgColor: .gray, highlightColor: complete ? .gray.opacity(0.5) : Color.themeColor)
             AnimationView(progressionAnimationName: name, height: size, isPaused: true)
-                .grayscale(complete ? 0.5 : 1)
+                .grayscale(complete ? 1 : 0.5)
                 .contrast(1.5)
-                //.shadow(color: .white, radius: size * 0.01)
                 .offset(calculatedOffsets)
         }
         .frame(width: size, height: size)

@@ -16,6 +16,7 @@ struct ProgressionViewer: View {
     let progressions: [Progression]
     let startingIndex: Int
     let startingLevel: Level
+    let progressScore: Double
     @State var screenWidth: CGFloat
     
     @State private var displayIndex = 0
@@ -73,6 +74,7 @@ struct ProgressionViewer: View {
                                                     progressions: progressions,
                                                     displayProgression: displayProgression,
                                                     level: $displayLevel,
+                                                    progressScore: progressScore,
                                                     startingIndex: startingIndex,
                                                     startingLevel: startingLevel,
                                                     scrollViewValue: scrollViewValue,
@@ -147,9 +149,8 @@ struct ProgressionViewer: View {
                                 Image(systemName: "xmark.circle.fill")
                                     .font(.title)
                             }
-                            .foregroundColor(.themeColor)
                             .controlSize(.extraLarge)
-                            .tint(Color.themeColor)
+                            .tint(.secondary)
                             .padding()
                         }
                         Spacer()
@@ -174,6 +175,7 @@ struct ProgressionViewer: View {
             progressions: Progressions().getProgressions(ofType: .pushup),
             startingIndex: 7,
             startingLevel: .intermediate,
+            progressScore: 0.5,
             screenWidth: geo.size.width
         )
         .preferredColorScheme(.dark)
@@ -189,6 +191,7 @@ struct ProgressionViewer: View {
             progressions: Progression.defaultProgressionMixedSet,
             startingIndex: 1,
             startingLevel: .intermediate,
+            progressScore: 0.5,
             screenWidth: geo.size.width
         )
         .modelContainer(DataController.previewContainer)
@@ -205,6 +208,7 @@ struct ProgressionViewer: View {
             progressions: Progression.defaultProgressionSingleTypeTimed,
             startingIndex: 2,
             startingLevel: .intermediate,
+            progressScore: 0.5,
             screenWidth: geo.size.width
         )
         .modelContainer(DataController.previewContainer)

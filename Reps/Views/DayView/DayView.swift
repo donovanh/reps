@@ -5,15 +5,19 @@
 //
 // TESTING feedback
 // TODO: Pause timer if swiping between exercises
+// TODO: Use more efficient loading of resources
 // TODO: Display previously recorded reps amount for progression
 // TODO: Add UserDefault-stored data to iCloud - have a userSettings SwiftData entry, populate it insteaf of userdefaults - or else try this https://medium.com/@janakmshah/quickly-sync-user-data-and-preferences-over-icloud-with-swift-4757a3904f1a
 // TODO: Make sure continue workout goes to the next set incomplete set with fewer sets than the previous
 
 // Features
+
+// TODO: For shipping, tidy the onboarding
+// TODO: Onboarding images and text
+// TODO: Tidy icon also
+
 // TODO: Journal view
-// -> TODO: Create a +/- scoring for each progression based on performance
 // TODO: Progressions overview table, showing scoring
-// TODO: Have a Level Up / Level Down suggestion
 // TODO: Show progression overview on main view under today's workout, linking to Journal
 // TODO: Journal data export / import
 // TODO: Way to explore historical training data (calendar?)
@@ -124,10 +128,39 @@ struct DayView: View {
         GeometryReader { geo in
             ZStack {
                 // Load anmiation model to save flash of grey
+                // TODO: More efficient loading based on PatchMatch
                 Icon(exerciseType: .pushup, stage: 5, size: 10, score: 0.0, complete: false)
                     .opacity(0)
                 NavigationView {
-                    VStack {
+                    VStack(alignment: .leading) {
+                        WeeklyOverview(
+                            viewModel: viewModel
+                        )
+                        HStack(alignment: .top) {
+//                            Text(isEditMode ? title : "Today")
+//                                .font(.largeTitle.bold())
+//                            if isEditMode {
+//                                Spacer()
+//                                HStack {
+//                                    Button {
+//                                        changeDay(direction: "prev")
+//                                    } label: {
+//                                        Image(systemName: "arrow.left")
+//                                    }
+//                                    Button {
+//                                        changeDay(direction: "next")
+//                                    } label: {
+//                                        Image(systemName: "arrow.right")
+//                                    }
+//                                }
+//                                .padding(.top, 10)
+//                                .tint(.themeColor)
+//                                .buttonStyle(.bordered)
+//                                .buttonBorderShape(.roundedRectangle(radius: 10))
+//                            }
+                        }
+                        .padding(.horizontal)
+                        //.padding(.bottom, -30)
                         List {
                             Section {
                                 if !isTodayEmpty {
@@ -220,7 +253,35 @@ struct DayView: View {
                                     .listRowSeparator(.hidden)
                                     .listRowBackground(Color.clear)
                                 }
+                            } header: {
+                                HStack(alignment: .top) {
+                                    Text(isEditMode ? title : "Today")
+                                        .font(.largeTitle.bold())
+                                        .foregroundColor(.white)
+                                    if isEditMode {
+                                        Spacer()
+                                        HStack {
+                                            Button {
+                                                changeDay(direction: "prev")
+                                            } label: {
+                                                Image(systemName: "arrow.left")
+                                            }
+                                            Button {
+                                                changeDay(direction: "next")
+                                            } label: {
+                                                Image(systemName: "arrow.right")
+                                            }
+                                        }
+                                        .padding(.top, 10)
+                                        .tint(.secondary)
+                                        .buttonStyle(.bordered)
+                                        .buttonBorderShape(.roundedRectangle(radius: 10))
+                                    }
+                                }
+                                .padding(.horizontal, -10)
+                                .padding(.trailing, -10)
                             }
+                            .textCase(nil)
                             .onAppear {
                                 // isUserWelcomeDone = false
                                 isAnimating = true
@@ -228,70 +289,53 @@ struct DayView: View {
                                 
                                 // Calculate the scores based on journal entries
                                 viewModel.calculateProgressionScores(journalEntries: journalEntries)
-                                print(progressScores) //
+                                // print(progressScores)
                             }
                         }
                         Spacer()
-                        Spacer()
-                        if isEditMode {
-                            Button("Generate new plan") {
-                                isPresentingPlanBuilder = true
-                            }
-                            .tint(.themeColor)
-                            .buttonStyle(.borderedProminent)
-                            .controlSize(.large)
-                            .padding()
-                        } else if isTodayEmpty {
-                            // Nothing currently
-                        } else if isTodayDone {
-                            Text("All done!")
-                                .font(.callout) // TODO: Celebration animation
+                        VStack(alignment: .center) {
+                            if isEditMode {
+                                Button("Generate new plan") {
+                                    isPresentingPlanBuilder = true
+                                }
+                                .tint(.themeColor)
+                                .buttonStyle(.borderedProminent)
+                                .controlSize(.large)
                                 .padding()
-                        } else {
-                            Button(isTodayInProgress ? "Continue Workout" : "Start Workout") {
-                                isPresentingWorkout = true
+                            } else if isTodayEmpty {
+                                // Nothing currently
+                            } else if isTodayDone {
+                                Text("All done!")
+                                    .font(.callout) // TODO: Celebration animation
+                                    .padding()
+                            } else {
+                                Button(isTodayInProgress ? "Continue Workout" : "Start Workout") {
+                                    isPresentingWorkout = true
+                                }
+                                .foregroundColor(.black)
+                                .fontWeight(.bold)
+                                .tint(.themeColor)
+                                .buttonStyle(.borderedProminent)
+                                .controlSize(.large)
+                                .padding()
                             }
-                            .tint(.themeColor)
-                            .buttonStyle(.borderedProminent)
-                            .controlSize(.large)
-                            .padding()
                         }
+                        .frame(maxWidth: .infinity)
                     }
-                    .navigationTitle(isEditMode ? title : "REPS")
+                    .navigationTitle("REPS")
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarLeading) {
-                            if isEditMode {
-                                HStack {
-                                    Button {
-                                        changeDay(direction: "prev")
-                                    } label: {
-                                        Image(systemName: "arrow.left")
-                                    }
-                                    Spacer()
-                                    Button {
-                                        changeDay(direction: "next")
-                                    } label: {
-                                        Image(systemName: "arrow.right")
-                                    }
-                                }
-                                .tint(.themeColor)
-                                .buttonStyle(.bordered)
-                                .controlSize(.small)
-                                .buttonBorderShape(.roundedRectangle(radius: 10))
-                            } else {
-                               NavigationLink {
+                             NavigationLink {
                                    JournalView()
                                        .navigationTitle("Journal")
                                 } label: {
                                     Text("Journal")
                                 }
+                                .tint(.secondary)
                                 .buttonStyle(.bordered)
-                                .foregroundColor(.themeColor)
                                 .controlSize(.small)
-                                .tint(Color.themeColor)
                                 .listRowBackground(Color.clear)
-                            }
                         }
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
                             Button {
@@ -306,7 +350,7 @@ struct DayView: View {
                                     Text("Done")
                                 }
                             }
-                            .tint(.themeColor)
+                            .tint(.secondary)
                             .buttonStyle(.bordered)
                             .controlSize(.small)
                         }
@@ -330,6 +374,7 @@ struct DayView: View {
                     progressions: progressions,
                     startingIndex: firstNotDoneProgressionIndex,
                     startingLevel: viewModel.getLevel(for: progressions[firstNotDoneProgressionIndex].type),
+                    progressScore: progressScores[progressions[firstNotDoneProgressionIndex].type] ?? 0.0,
                     screenWidth: geo.size.width
                 )
             }

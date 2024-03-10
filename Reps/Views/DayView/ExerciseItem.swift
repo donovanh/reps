@@ -22,6 +22,7 @@ struct ExerciseItem: View {
     @State private var isPresentingExerciseSelection = false
     @State private var isPresentingWorkout = false
     @State private var setsDone = 0
+    @State private var showNextProgressionInProgressionViewer = false
     
     var progression: Progression {
         viewModel.getProgression(for: exerciseType)
@@ -41,7 +42,8 @@ struct ExerciseItem: View {
             stage: progression.stage,
             level: level,
             setsDone: setsDone,
-            isEditMode: isEditMode
+            isEditMode: isEditMode,
+            isPresentingExerciseSelection: $isPresentingExerciseSelection
         )
         .padding()
         .onTapGesture(perform: {
@@ -58,6 +60,7 @@ struct ExerciseItem: View {
                 progressions: Progressions().getProgressions(ofType: exerciseType),
                 startingIndex: progression.stage,
                 startingLevel: level,
+                progressScore: progressScore,
                 screenWidth: geo.size.width
             )
         }
@@ -68,6 +71,7 @@ struct ExerciseItem: View {
                 progressions: progressions,
                 startingIndex: index,
                 startingLevel: level,
+                progressScore: progressScore,
                 screenWidth: geo.size.width
             )
         }
@@ -82,38 +86,68 @@ struct ExerciseItemView: View {
     let level: Level
     let setsDone: Int
     let isEditMode: Bool
+    @Binding var isPresentingExerciseSelection: Bool
     
     var body: some View {
         let reps = progression.getReps(for: level)
         let sets = progression.getSets(for: level)
+        let isComplete = setsDone >= sets
         
-        HStack {
-            if !isEditMode {
-                Icon(exerciseType: exerciseType, stage: stage, size: 50, score: progressScore, complete: setsDone >= sets)
-            }
-            
-            VStack(alignment: .leading) {
-                Text(String(localized: progression.name.rawValue))
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color.clear.contentShape(Rectangle())
+            HStack {
+                let canUpgrade = progressScore > 0.98
+                if !isEditMode {
+                        Icon(
+                            exerciseType: exerciseType,
+                            stage: stage,
+                            size: 50,
+                            score: progressScore,
+                            complete: isComplete
+                        )
+                }
                 
-                if isEditMode {
-                    Text(String(localized: exerciseType.localizedStringResource))
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                } else {
-                    HStack {
-                        if setsDone > 0 && setsDone < sets {
-                            Text("\(setsDone) of ^[\(sets) set](inflect: true) done")
-                        } else if setsDone > 0 {
-                            Text("^[\(setsDone) set](inflect: true) done")
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(String(localized: progression.name.rawValue))
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        
+                        if isEditMode {
+                            Text(String(localized: exerciseType.localizedStringResource))
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
                         } else {
-                            Text("\(sets) x \(reps) \(progression.showSecondsForReps == true ? "seconds" : "reps")")
+                            HStack {
+                                if isComplete {
+                                    Text("All sets done")
+                                } else if setsDone > 0 && setsDone < sets {
+                                    Text("\(setsDone) of ^[\(sets) set](inflect: true) done")
+                                } else if setsDone > 0 {
+                                    Text("^[\(setsDone) set](inflect: true) done")
+                                } else {
+                                    Text("\(sets) x \(reps) \(progression.showSecondsForReps == true ? "seconds" : "reps")")
+                                }
+                            }
+                            .font(.caption)
                         }
                     }
-                    .font(.caption)
+                    .opacity(isComplete ? 0.25 : 1)
+                    if !isEditMode {
+                        Spacer()
+                        Button {
+                            isPresentingExerciseSelection = true
+                        } label: {
+                            Image(systemName: "arrow.up.circle")
+                                .font(.system(size: 20).bold())
+                                .foregroundColor(canUpgrade ? Color.themeColor : .secondary.opacity(0.5))
+                        }
+                        .onTapGesture(perform: {
+                            isPresentingExerciseSelection = true
+                        })
+                    }
                 }
+                Spacer()
             }
-            Spacer()
         }
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
     }
@@ -133,7 +167,8 @@ struct ExerciseItemView: View {
                     stage: stage[index],
                     level: .intermediate,
                     setsDone: setsDone[index],
-                    isEditMode: false
+                    isEditMode: false,
+                    isPresentingExerciseSelection: .constant(false)
                 )
             }
         }

@@ -189,6 +189,10 @@ extension DayView {
         func dayName(for dayNum: Int) -> String {
             DateFormatter().weekdaySymbols[dayNum - 1]
         }
+        
+        func shortDayName(for dayNum: Int) -> String {
+            DateFormatter().shortWeekdaySymbols[dayNum - 1]
+        }
 
         func changeDayNum(num: Int, direction: String) -> Int {
             switch direction {
